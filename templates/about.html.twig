@@ -1,13 +1,10 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Om{% endblock %}
-
 {% block body %}
-    <h1>Om</h1>
-    <p>En bild</p>
-    <a href="{{ asset('img/glider.svg') }}">
-        <img src="{{ asset('img/glider.svg') }}" alt="glider">
-    </a>
-
-    <img src="{{ asset('build/images/background.jpg') }}" alt="">
+    <main class="main">
+        {{ include('content/about.md')|markdown_to_html }}
+    </main>
+    <div class="aside">
+        {{ include('content/about-aside.md')|markdown_to_html }}
+    </div>
 {% endblock %}

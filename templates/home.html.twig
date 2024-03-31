@@ -1,8 +1,7 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Välkommen{% endblock %}
-
 {% block body %}
-    <h1>Startsida</h1>
-    <p>Välkommen....</p>
+    <main class="main">
+        {{ include('content/home.md')|markdown_to_html }}
+    </main>
 {% endblock %}
