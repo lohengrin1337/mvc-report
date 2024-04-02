@@ -1,4 +1,4 @@
-# Välkommen till min sida för kursen Objektorienterade webbteknologier (MVC)!
+# Välkommen!
 
 <figure class="img profile-img">
     <img src="img/profile.jpg" width="200" height="200" alt="En bild på Olof"/>

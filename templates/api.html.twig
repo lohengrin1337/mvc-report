@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main">
+        <h1>{{ pageTitle }}</h1>
+
+        <h2 class="header-m">Följande API:er finns tillgängliga:</h2>
+
+        <ul>
+            <li class="header-sm"><a href="{{ path('quote') }}">Dagens citat</a></li>
+        </ul>
+    </main>
+{% endblock %}

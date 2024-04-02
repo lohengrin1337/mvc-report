@@ -17,7 +17,3 @@
 Kursen *Objektorienterade webbteknologier (MVC)* är en del av *Webbprogrammering distans 120hp* vid Blekinge Tekniska Högskola.
 
 Vi lär oss arkitekturmönstret *MVC (Model-View-Controller)*, och jobbar med objektorienterad PHP, ramverket *Symfony*, databas och enhetstestning.
-
-[Kursens repo på GitHub](https://github.com/dbwebb-se/mvc)
-
-[Mitt eget repo på GitHub](https://github.com/lohengrin1337/mvc-report)

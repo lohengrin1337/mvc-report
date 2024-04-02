@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+// use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -93,7 +93,7 @@ class MainController extends AbstractController
     #[Route('/about', name: "about")]
     public function about()
     {
-        $this->data["pageTitle"] = "Om MVC";
+        $this->data["pageTitle"] = "Om";
 
         return $this->render("about.html.twig", $this->data);
     }
@@ -120,5 +120,15 @@ class MainController extends AbstractController
         $this->updateLuckyCredits();
 
         return $this->render("lucky.html.twig", $this->data);
+    }
+
+
+
+    #[Route('/api', name: "api")]
+    public function api()
+    {
+        $this->data["pageTitle"] = "API";
+
+        return $this->render("api.html.twig", $this->data);
     }
 }

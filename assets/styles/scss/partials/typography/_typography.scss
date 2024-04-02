@@ -15,7 +15,7 @@
     margin: 0;
 }
 
-.header {
+.site-header {
     .site-title {
         font-size: calc(1rem * math.pow(var.$scale-factor, 4));
         font-weight: 700;
@@ -52,6 +52,8 @@ p {
     font-weight: 400;
     margin: 0;
     margin-bottom: var.$baseline;
+
+    max-width: 700px;
 }
 
 a {
@@ -110,6 +112,15 @@ h4 {
 
 section {
     margin-bottom: var.$baseline-x4;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    margin-bottom: var.$baseline-half;
 }
 
 // .introduction {

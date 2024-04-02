@@ -1,12 +1,12 @@
 @use "../variables" as var;
 
 @media (max-width: 650px) {
-    .main,
+    .content-wrapper,
     .footer {
         padding: var.$baseline;
     }
 
-    .header {
+    .site-header {
         padding: var.$baseline-half var.$baseline;
     }
 }
