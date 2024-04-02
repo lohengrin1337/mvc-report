@@ -4,7 +4,10 @@
         "@babel/preset-env": "^7.16.0",
         "@symfony/webpack-encore": "^4.0.0",
         "core-js": "^3.23.0",
+        "normalize.css": "^8.0.1",
         "regenerator-runtime": "^0.13.9",
+        "sass": "^1.72.0",
+        "stylelint-config-sass-guidelines": "^11.1.0",
         "webpack": "^5.74.0",
         "webpack-cli": "^4.10.0",
         "webpack-notifier": "^1.15.0"
@@ -17,6 +20,8 @@
         "watch": "encore dev --watch",
         "build": "encore production --progress",
         "server": "php -S localhost:8888 -t public",
-        "debug": "bin/console debug:router"
+        "debug": "bin/console debug:router",
+        "sass-b": "sass assets/styles/scss/style.scss assets/styles/app.min.css --no-source-map --style compressed",
+        "sass-w": "sass assets/styles/scss/style.scss assets/styles/app.min.css --no-source-map --style compressed --watch"
     }
 }

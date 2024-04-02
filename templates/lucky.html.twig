@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main">
+        <h1>{{ pageTitle }}</h1>
+
+        <p>Ladda om sidan för att visa en ny bild...</p>
+
+        <picture>
+            <source
+                media="(max-width: 440px) and (orientation: portrait)"
+                srcset="img/lucky/{{ luckyNum }}/lucky-p-sm.jpg, img/lucky/{{ luckyNum }}/lucky-p-sm-2x.jpg 2x"/>
+            <source
+                media="(max-width: 900px) and (orientation: portrait)"
+                srcset="img/lucky/{{ luckyNum }}/lucky-p.jpg, img/lucky/{{ luckyNum }}/lucky-p-2x.jpg 2x"/>
+            <img
+                class="img"
+                src="img/lucky/{{ luckyNum }}/lucky-l.jpg"
+                srcset="img/lucky/{{ luckyNum }}/lucky-l-2x.jpg 2x"
+                alt="En lyckobild"/>
+        </picture>
+
+        <p>{{ luckyCredits|raw }}</p>
+    </main>
+{% endblock %}

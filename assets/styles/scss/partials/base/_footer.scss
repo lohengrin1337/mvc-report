@@ -1,0 +1,60 @@
+// FOOTER
+
+@use "../variables" as var;
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: var.$baseline var.$baseline-x2;
+    border-top: 3px solid var.$border-footer;
+    background-color: var.$bg-color-footer;
+
+    color: var.$color-footer;
+
+    // position: relative; // to position flash messages
+
+    // > * {
+    //     width: 50%;
+    //     flex: 1 0 auto;
+    //     padding: var.$baseline 0;
+    // }
+
+    // .social {
+    //     font-size: 2rem;
+    //     display: flex;
+    //     gap: var.$baseline;
+    // }
+
+    // .social a {
+    //     color: var.$color-footer;
+    // }
+
+    // .logo-sm {
+    //     position: relative;
+    //     top: 6px;
+    //     margin-left: var.$baseline-quart;
+    // }
+
+    // .credits {
+    //     text-align: right;
+    // }
+
+    // ul {
+    //     list-style: none;
+    //     padding: 0;
+    //     display: flex;
+    //     justify-content: end;
+    //     gap: var.$baseline;
+    // }
+
+    // li {
+    //     height: fit-content;
+    // }
+
+    p,
+    ul {
+        margin: 0;
+    }
+}

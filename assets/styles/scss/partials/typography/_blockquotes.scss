@@ -1,0 +1,20 @@
+// BLOCKQUOTES
+
+@use "../variables" as var;
+@use "sass:math";
+
+blockquote {
+    font-size: calc(1rem * math.pow(var.$scale-factor, 1));
+    font-weight: 500;
+    font-style: italic;
+    color: var.$color-blockquote;
+
+    margin: 0;
+    margin-left: var.$baseline;
+    padding-left: var.$baseline;
+    border-left: var.$baseline-quart solid var.$border-blockquote;
+
+    .lg{
+        font-size: calc(1rem * math.pow(var.$scale-factor, 4));;
+    }
+}

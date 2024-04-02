@@ -1,0 +1,29 @@
+@use "../variables" as var;
+
+code {
+    margin: 0 0.1em;
+    padding: 0.2em 0.4em;
+    border: 1px solid var.$border-code;
+    border-radius: 3px;
+    background: var.$bg-color-code;
+    font-family: monospace;
+    font-size: 0.85rem;
+    line-height: 2;
+
+}
+
+pre {
+    padding: var.$baseline-half;
+    border: 1px solid var.$border-code;
+    border-radius: 5px;
+    background: var.$bg-color-code;
+
+    code {
+        display: block;
+        margin: 0;
+        border: 0 none;
+        background: transparent;
+        overflow-x: auto;
+        line-height: 1.4;
+    }
+}

@@ -1,0 +1,143 @@
+// VARIABLES
+
+@use 'sass:color';
+
+// colors
+
+$blue-green-0: #1C7878; // Main Primary color */
+$blue-green-1: #569E9E;
+$blue-green-2: #338585;
+$blue-green-3: #0E6060;
+$blue-green-4: #004848;
+
+$yellow-0: #C7942E; // Main Secondary color (1) */
+$yellow-1: #FFD88A;
+$yellow-2: #DEB055;
+$yellow-3: #A17317;
+$yellow-4: #785000;
+
+$red-0: #C72E2E; // Main Secondary color (2) */
+$red-1: #FF8A8A;
+$red-2: #DE5555;
+$red-3: #A11717;
+$red-4: #780000;
+
+
+// primary reds
+// $red-light: #FC737A;
+// $red-semi-light: #FC737A;
+$red-main: #F4444D;
+$red-semi-dark: #B2030C;
+$red-dark: #850007;
+
+
+// complementary greens
+$green-light: #70DB64;
+// $green-semi-light: #47CC39;
+$green-main: #1DC10C;
+// $green-semi-dark: #109403;
+$green-dark: #0B6F00;
+$green-super-dark: color.adjust($green-dark, $blackness: 20%);
+
+
+
+
+// grays
+$white: #fff;
+$almost-white: #F2F3F2;
+$grey-light: #B4B6B4;
+$grey-mid: #828482;
+$grey-dark: #525652;
+$grey-super-dark: color.adjust($grey-dark, $lightness: -30%);
+// $almost-black: #181E18;
+$almost-black: color.adjust(#181E18, $lightness: -5%);
+$black: #000;
+
+
+// extra
+// $spotify-green: #1ED760;
+// $soundcloud-orange: #F6640F;
+// $youtube-red: #F00;
+
+
+// transparency
+$transparent: rgba(0, 0, 0, 0);
+$transparent-super-light: color.adjust($black, $alpha: -0.95);
+$transparent-light: color.adjust($black, $alpha: -0.75);
+$transparent-mid: color.adjust($black, $alpha: -0.6);
+$transparent-dark: color.adjust($black, $alpha: -0.35);
+$transparent-super-dark: color.adjust($black, $alpha: -0.15);
+$transparent-white: color.adjust($white, $alpha: -0.4);
+$transparent-white-light: color.adjust($white, $alpha: -0.95);
+
+
+// font-colors
+$color-body: $white;
+$color-header: $yellow-3;
+$color-footer: $yellow-2;
+$color-nav-links: $yellow-0;
+
+$color-blockquote: $green-light;
+$color-echoes-of-time: $green-dark;
+$color-text-stroke: $grey-light;
+$color-red-text: $red-main;
+$color-btn-strong: $white;
+$color-hover: $white;
+
+
+// background-colors
+$bg-color-body: $almost-black;
+$bg-color-header: $transparent-mid;
+$bg-color-footer: $transparent-mid;
+$bg-color-code: $transparent-white-light;
+
+$bg-color-main: $transparent-dark;
+$bg-color-main-highlights: $transparent-super-dark;
+$bg-color-content: $transparent-dark;
+$bg-color-highlights: $transparent-dark;
+$bg-color-cph-award: $transparent-light;
+$bg-color-button: $transparent;
+$bg-color-btn-strong: $green-dark;
+$bg-color-hover: $green-super-dark;
+$bg-color-blockquote: $transparent-mid;
+$bg-color-list-1: $transparent;
+$bg-color-list-2: $transparent-mid;
+$bg-flash: $transparent-super-dark;
+
+
+// borders
+$border-header: $blue-green-4;
+$border-footer: $blue-green-4;
+$border-regular: $green-main;
+$border-dark: $green-dark;
+$border-alternate: $yellow-0;
+$border-code: $grey-dark;
+
+
+$border-blockquote: $red-semi-dark;
+$border-hr: $red-dark;
+
+
+// shadows
+$box-shadow-light: 0 0 20px $transparent-white;
+
+
+// space
+$baseline: 1.4rem;
+$baseline-x2: calc($baseline * 2);
+$baseline-x3: calc($baseline * 3);
+$baseline-x4: calc($baseline * 4);
+$baseline-x5: calc($baseline * 5);
+$baseline-x8: calc($baseline * 8);
+$baseline-half: calc($baseline / 2);
+$baseline-quart: calc($baseline / 4);
+
+
+// size scaling
+$scale-factor: 1.3;
+$scale-factor-mobile: 1.2;
+
+
+// fonts
+$font-header: "Josefin Sans", sans-serif;
+$font-body: "Josefin Slab", monospace;
