@@ -10,5 +10,14 @@
 ## Clone repo
 
 ```
-Some code
+git clone https://github.com/lohengrin1337/mvc-report
+
+```
+
+## Install dependencies
+
+```
+composer install
+npm install
+
 ```
