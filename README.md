@@ -52,4 +52,4 @@ npm run server
 
 ## Browse
 
-Click the link: `http://localhost:8888/` or copy and paste it to your browser.
+Click the link [homepage of web app](http://localhost:8888/), or copy and paste `http://localhost:8888/` to your browser.
