@@ -20,18 +20,33 @@ Feel free to clone the repo.
 Author: Olof Jönsson
   
 
-## Clone repo
+## Clone
 
 ```
 git clone https://github.com/lohengrin1337/mvc-report
 
 ```
 
-## Install dependencies
+## Install
 
 ```
 composer install
 
 npm install
+```
+
+## Build
 
 ```
+npm run build
+```
+
+## Run app
+
+```
+npm run server
+```
+
+## Browse
+
+Click the link: `http://localhost:8888/` or copy and paste it to your browser.
