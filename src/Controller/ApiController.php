@@ -12,10 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ApiController extends AbstractController
 {
-    /**
-     * @var array $quotes
-     */
-    private static $quotes = [
+    private const QUOTES = [
         "&quot;The trouble with having an open mind, of course,"
         . "is that people will insist on coming along and trying to put things in it.&quot;"
         . " - Terry Pratchett",
@@ -31,29 +28,23 @@ class ApiController extends AbstractController
         . " - Carl Sandburg"
     ];
 
+    private array $data;
+
+    private JSONResponse $response;
 
 
 
-    /**
-     * @var array $data
-     * @var JSONResponse $response
-     */
-    public $data;
-    public $response;
-
-
-
-    /**
-     * constructor
-     */
-    public function __construct()
-    {
-        $this->data = [
-            "quote" => "",
-            "date" => null,
-            "timestamp" => null
-        ];
-    }
+    // /**
+    //  * constructor
+    //  */
+    // public function __construct()
+    // {
+    //     $this->data = [
+    //         "quote" => "",
+    //         "date" => null,
+    //         "timestamp" => null
+    //     ];
+    // }
 
 
 
@@ -64,10 +55,10 @@ class ApiController extends AbstractController
      * 
      * @return void
      */
-    private function updateQuote()
+    private function updateQuote(): void
     {
         $i = random_int(0, 4);
-        $quote = ApiController::$quotes[$i];
+        $quote = self::QUOTES[$i];
 
         $this->data["quote"] = $quote;
     }
@@ -81,7 +72,7 @@ class ApiController extends AbstractController
      * 
      * @return void
      */
-    private function updateTime()
+    private function updateTime(): void
     {
         $timestamp = time();
         $date = date("l jS \of F Y", $timestamp);
@@ -99,7 +90,7 @@ class ApiController extends AbstractController
      * 
      * @return void
      */
-    private function setResponse()
+    private function setResponse(): void
     {
         $response = new JsonResponse($this->data);
         $response->setEncodingOptions(
@@ -111,6 +102,9 @@ class ApiController extends AbstractController
 
 
 
+    /**
+     * route shows a random quote
+     */
     #[Route("api/quote", name: "quote")]
     public function quote(): JsonResponse
     {
