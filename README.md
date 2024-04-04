@@ -15,8 +15,11 @@
 
 ## About
 This is a personal me- and report page for the MVC course at BTH.
+
 It is a web app built with Symfony framework.
+
 Feel free to clone the repo.
+
 Author: Olof Jönsson
   
 
