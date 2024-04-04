@@ -30,6 +30,7 @@ Author: Olof Jönsson
 2. php is installed
 3. composer is installed
 4. npm is installed
+5. git is installed
 
 
 ## Clone
