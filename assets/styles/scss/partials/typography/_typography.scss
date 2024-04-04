@@ -27,7 +27,6 @@
         font-weight: 300;
         color: var.$color-nav-links;
         text-transform: lowercase;
-
     }
 }
 
@@ -47,13 +46,15 @@
     color: var.$color-body;
 }
 
+.text-container {
+    max-width: 700px;
+}
+
 p {
     font-size: 1rem;
     font-weight: 400;
     margin: 0;
     margin-bottom: var.$baseline;
-
-    max-width: 700px;
 }
 
 a {
@@ -73,30 +74,28 @@ h2 {
     font-size: calc(1rem * math.pow(var.$scale-factor, 3));
 }
 
-h3 {
+h3,
+.header-lg {
     @extend %headers;
     margin-bottom: var.$baseline;
     font-size: calc(1rem * math.pow(var.$scale-factor, 2));
     font-weight: 200;
 }
 
-h4 {
-    @extend %headers;
-    font-size: calc(1rem * var.$scale-factor);
-    font-weight: 200;
-}
-
-.header-lg {
-    @extend %headers;
-    font-size: calc(1rem * math.pow(var.$scale-factor, 2));
-    font-weight: 200;
-}
-
+h4,
 .header-m {
     @extend %headers;
     font-size: calc(1rem * var.$scale-factor);
     font-weight: 200;
 }
+
+
+p + h1,
+p + h2,
+p + h3 {
+    margin-top: var.$baseline-x2;
+}
+
 
 .header-sm {
     @extend %headers;

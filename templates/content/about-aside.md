@@ -1,4 +1,4 @@
-### Länkar
+<h2 class="header-lg">Länkar</h2>
 
 [Kursens repo på GitHub](https://github.com/dbwebb-se/mvc)
 

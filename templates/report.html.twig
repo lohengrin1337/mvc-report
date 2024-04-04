@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <main class="main">
+    <main class="main text-container">
         <article>
             <h1>{{pageTitle}}</h1>
 
@@ -42,7 +42,7 @@
         </article>
     </main>
 
-    <div class="aside">
+    <div class="aside aside-top">
         {{ include('content/report/aside.md')|markdown_to_html }}
     </div>
 {% endblock %}

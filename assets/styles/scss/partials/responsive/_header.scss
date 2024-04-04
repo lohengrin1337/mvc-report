@@ -3,7 +3,17 @@
 @use "../variables" as var;
 
 @media (max-width: 900px) {
-    .nav a {
-        padding: 0 var.$baseline-half;
+    .nav {
+        ul {
+            gap: var.$baseline-half;
+        }
+
+        li a {
+            padding: 0;
+        }
+
+        a {
+            padding: 0 var.$baseline-half;
+        }
     }
 }

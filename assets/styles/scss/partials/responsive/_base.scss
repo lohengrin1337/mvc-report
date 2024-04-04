@@ -10,3 +10,30 @@
         padding: var.$baseline-half var.$baseline;
     }
 }
+
+
+@media (max-width: 1150px) {
+    .aside-bottom {
+        max-width: 700px;
+        margin: 0 auto;
+        margin-top: var.$baseline-x2;
+    }
+
+    .aside-top {
+        max-width: 700px;
+        margin: 0 auto;
+        margin-bottom: var.$baseline;
+        order: -1; // move to top of page
+
+        h2 {
+            display: none;
+        }
+
+        ul {
+            display: flex;
+            flex-flow: row wrap;
+            gap: var.$baseline;
+        }
+
+    }
+}
