@@ -1,2 +1,9 @@
+Grundkunskaper i objektorietering fick jag genom kursen objektorienterad python förra året. Jag tränade även på att använda klasser i webbapp-kursen förra året, och i databas-kursen nu i vår. Jag gillar att jobba med objektorientering som paradigm. Det ger koden en tydligare mening, och skapar en bra struktur med tydliga avgränsningar.
 
-Redovisningstext...
+En klass i php skapas genom en klassdefinition `class MyClassName {}`. Klassen kan stå för sig själv, eller ärva egenskaper från en *förälderklass* `class MyClassName extends ParentClass {}`. Klassens *scope* ramas in av definitionens *måsvingar*, vilket fungerar som en inkapsling av koden. En klassdefinition fungerar som en mall för objektinstanser av klassen `$objectInstance = new MyClassName();`. Klassen kan ha variabler (*properties*) med olika egenskaper som *public*, *private* eller *protected*. Värdet på variablerna kan vara olika för olika instanser vid olika tidpunkt; man kan säga att en instans är i ett visst tillstånd (*state*). En klass kan också ha metoder (funktioner), som ger klassen olika egenskaper. De publika metoderna kan fungera som ett slags API, samtidigt som privata metoder kan skyddas.
+
+Jag upplever symfonyramverket som används för `me/report` som kraftfullt och smidigt. Det har gått snabbt att bekanta sig med strukturen, eftersom vi har jobbet med några olika ramverk tidigare. Jag gillar twig som template-språk, och jag har även valt att ta in markdown för att underlätta texthanteringen. Strukturen med `base.html.twig` är smidigare än motsvarande system i andra ramverk vi jobbat med tycker jag.
+
+I *PHP The Right Way* var avsnitten om felhantering och säkerhet särskilt intressanta, och jag lär mig gärna mer om dem. Jag kollade in den inbyggda funtionen `filter_input()`, som verkar vara väldigt användbar.
+
+Veckans TIL var att lära mig hur jag kan klona mitt eget gitrepo.
