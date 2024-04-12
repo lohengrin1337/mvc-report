@@ -6,8 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
-
 /**
  * controller with routes for regular pages
  */
@@ -61,7 +59,7 @@ class MainController extends AbstractController
     /**
      * get credits for current lucky image from relevant folder,
      * and update data["luckyCredits"]
-     * 
+     *
      * @return void
      */
     private function updateLuckyCredits()

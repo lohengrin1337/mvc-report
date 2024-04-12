@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 /**
  * controller class for api routes
  */
@@ -52,7 +51,7 @@ class ApiController extends AbstractController
     /**
      * get random quote from array of quotes,
      * and update data["quote"]
-     * 
+     *
      * @return void
      */
     private function updateQuote(): void
@@ -69,7 +68,7 @@ class ApiController extends AbstractController
     /**
      * get current timestamp and date,
      * and update data["date"] and data["timestamp"]
-     * 
+     *
      * @return void
      */
     private function updateTime(): void
@@ -87,7 +86,7 @@ class ApiController extends AbstractController
     /**
      * set new JSONResponse with current data,
      * and update $this->response
-     * 
+     *
      * @return void
      */
     private function setResponse(): void
