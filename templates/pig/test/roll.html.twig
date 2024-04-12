@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <h1>{{ pageTitle }}</h1>
+
+        <p class="header-lg">Du kastade {{ diceStrings|length }} tärningar:</p>
+
+        <ul>
+            {% for diceString in diceStrings %}
+                <li class="dice-graphic">{{ diceString }}</li>
+            {% endfor %}
+        </ul>
+
+        <p>
+            Prova att kasta
+            <a href="{{ path("test_roll_multiple_dice", {num: 5}) }}">5</a>
+            eller
+            <a href="{{ path("test_roll_multiple_dice", {num: 10}) }}">10</a> tärningar!
+        </p>
+    </main>
+{% endblock %}

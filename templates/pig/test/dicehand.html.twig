@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <h1>{{ pageTitle }}</h1>
+
+        {# {{ dump(dicehand) }} #}
+        {# <h2 class="header-lg">Du kastade {{ attribute(dicehand, 'getDiceCount') }} tärningar:</h2> #}
+
+
+        <h2 class="header-lg">Du kastade {{ diceCount }} tärningar:</h2>
+
+        <ul>
+            {% for strVal in diceStringValues %}
+                <li class="dice-graphic">{{ strVal }}</li>
+            {% endfor %}
+        </ul>
+
+        <p class="header-lg">Summa: {{ diceSum }}</p>
+        <p class="header-lg">Snitt: {{ diceAvg }}</p>
+        <p class="header-lg">
+            Prova att kasta
+            <a href="{{ path("test_dicehand", {num: 5}) }}">5</a>
+            eller
+            <a href="{{ path("test_dicehand", {num: 10}) }}">10</a> tärningar!
+        </p>
+    </main>
+{% endblock %}

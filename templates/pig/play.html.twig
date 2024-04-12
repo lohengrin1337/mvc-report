@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <h1>{{ pageTitle }}</h1>
+
+        <p class="header-m">Du spelar med {{ diceAmount }} tärningar</p>
+        <p class="header-m">Runda: {{ roundSum }}</p>
+        <p class="header-m">Total: {{ totalSum }}</p>
+
+        <p class="">Kasta tärningarna, eller spara poäng...</p>
+
+        <form class="form" method="post" action="">
+            <div class="btn-container">
+                <input
+                    class="button"
+                    type="submit"
+                    name="roll"
+                    value="Kasta"
+                    onClick="this.form.action='{{ path('pig_roll') }}';"
+                >
+                <input class="button"
+                    type="submit"
+                    name="save"
+                    value="Spara"
+                    onClick="this.form.action='{{ path('pig_save') }}';"
+                >
+                <input
+                    class="button"
+                    type="submit"
+                    name="restart"
+                    value="Börja om"
+                    onClick="this.form.action='{{ path('pig_init_get') }}'; this.form.method='get';"
+                >
+            </div>
+        </form>
+
+    </main>
+{% endblock %}

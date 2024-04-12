@@ -29,7 +29,8 @@
 
 .btn-container {
     display: flex;
-    flex-direction: column;
-    justify-content: start;
+    // flex-direction: column;
+    // justify-content: space-evenly;
+    gap: var.$baseline;
     margin-bottom: var.$baseline;
 }

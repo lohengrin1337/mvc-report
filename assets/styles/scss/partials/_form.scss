@@ -1,4 +1,5 @@
 @use "variables" as var;
+@use "typography/typography";
 
 .form {
     display: flex;
@@ -10,8 +11,10 @@
     margin-bottom: var.$baseline;
 
     label {
+        @extend %headers;
         display: block;
         margin-bottom: var.$baseline-quart;
+        font-weight: 300;
     }
 
     input {
