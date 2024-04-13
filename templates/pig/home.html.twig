@@ -11,5 +11,13 @@
                 grunderna i spelet på Wikipedia
             </a>.
         </p>
+
+        <ul>
+            <li><a href="{{ path('pig_start') }}">Landing page</li>
+            <li><a href="{{ path('test_roll_dice') }}">Roll one dice</li>
+            <li><a href="{{ path('test_roll_multiple_dice', {num: 5}) }}">Roll many dice</li>
+            <li><a href="{{ path('test_dicehand', {num: 5}) }}">Roll dicehand</li>
+            <li><a href="{{ path('pig_init_get') }}">Game Pig Start</li>
+        </ul>
     </main>
 {% endblock %}
