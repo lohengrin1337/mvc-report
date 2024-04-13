@@ -42,6 +42,10 @@ class DiceGraphic extends Dice
      */
     public function getAsString(): string
     {
+        if (!$this->value) {
+            return "";
+        }
+
         return self::GRAPHIC[$this->value - 1];
     }
 }

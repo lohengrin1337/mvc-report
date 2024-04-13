@@ -17,11 +17,11 @@ class DiceHand
 
 
     /**
-     * Add a dice of class 'Dice' to hand
+     * Add a die of class 'Dice' to hand
      */
-    public function add(Dice $dice): void
+    public function add(Dice $die): void
     {
-        $this->hand[] = $dice;
+        $this->hand[] = $die;
     }
 
 
@@ -31,8 +31,8 @@ class DiceHand
      */
     public function roll(): void
     {
-        foreach ($this->hand as $dice) {
-            $dice->roll();
+        foreach ($this->hand as $die) {
+            $die->roll();
         }
     }
 
@@ -59,8 +59,8 @@ class DiceHand
     {
         $values = [];
 
-        foreach ($this->hand as $dice) {
-            $values[] = $dice->getValue();
+        foreach ($this->hand as $die) {
+            $values[] = $die->getValue();
         }
 
         return $values;
@@ -77,8 +77,8 @@ class DiceHand
     {
         $values = [];
 
-        foreach ($this->hand as $dice) {
-            $values[] = $dice->getAsString();
+        foreach ($this->hand as $die) {
+            $values[] = $die->getAsString();
         }
 
         return $values;
@@ -118,5 +118,17 @@ class DiceHand
         $avg = $sum / $count;
 
         return round($avg, 1);
+    }
+
+
+
+    /**
+     * Reset all dice - values = null
+     */
+    public function reset(): void
+    {
+        foreach ($this->hand as $die) {
+            $die->reset();
+        }
     }
 }

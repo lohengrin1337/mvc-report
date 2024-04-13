@@ -4,7 +4,8 @@
     <main class="main text-container">
         <h1>{{ pageTitle }}</h1>
 
-        <p class="header-m">Du spelar med {{ diceAmount }} tärningar</p>
+        <p class="header-m">Tärningar: {{ diceCount }}
+        </p>
         <p class="header-m">Runda: {{ roundSum }}</p>
         <p class="header-m">Total: {{ totalSum }}</p>
 
@@ -34,6 +35,14 @@
                 >
             </div>
         </form>
+
+        <div class="dice-graphic">
+            {% for value in diceValues %}
+                <span>{{ value }}</span>
+            {% endfor %}
+        </div>
+
+        {{ include('flash.html.twig') }}
 
     </main>
 {% endblock %}

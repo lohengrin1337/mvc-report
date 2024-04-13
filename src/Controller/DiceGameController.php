@@ -16,7 +16,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class DiceGameController extends AbstractController
 {
     /**
-     * @var array $data
+     * $var int FAIL_VALUE - the value you don't want to roll in 'pig'
+     */
+    public const FAIL_VALUE = 1;
+
+
+
+    /**
+     * @var array $data - data for templates
      */
     private array $data = [];
 
@@ -139,10 +146,9 @@ class DiceGameController extends AbstractController
             $hand->add(new DiceGraphic);
         }
 
-        $hand->roll();
+        // $hand->roll();
 
         $session->set("pig_dicehand", $hand);
-        $session->set("pig_dice_amount", $diceAmount);
         $session->set("pig_round", 0);
         $session->set("pig_total", 0);
 
@@ -155,33 +161,76 @@ class DiceGameController extends AbstractController
     public function play(SessionInterface $session): Response
     {
         $this->data["pageTitle"] = "Kasta Gris [PLAY]";
-        $this->data["diceAmount"] = $session->get("pig_dice_amount");
+
+        $dicehand = $session->get("pig_dicehand");
+
+        $this->data["diceCount"] = $dicehand->getDiceCount();
+        $this->data["diceValues"] = $dicehand->getStringValues();
         $this->data["roundSum"] = $session->get("pig_round");
         $this->data["totalSum"] = $session->get("pig_total");
 
         return $this->render("pig/play.html.twig", $this->data);
-
     }
 
 
 
     #[Route("/game/pig/roll", name: "pig_roll", methods: ["POST"])]
-    public function roll(): Response
+    public function roll(SessionInterface $session): Response
     {
-        // deal with roll data
+        $dicehand = $session->get("pig_dicehand");
+        $dicehand->roll();
+        $diceValues = $dicehand->getValues();
 
-        return $this->render("pig/play.html.twig", $this->data);
+        if (in_array(self::FAIL_VALUE, $diceValues)) {
+            $session->set("pig_round", 0);
 
+            // flash message
+            $this->addFlash(
+                'warning',
+                'Du slog en 1:a, och förlorar därmed rundans poäng!'
+            );
+        } else {
+            $currentRoundSum = $session->get("pig_round");
+            $diceSum = $dicehand->getSum();
+            $session->set("pig_round", $currentRoundSum + $diceSum);
+        }
+
+        $session->set("pig_dicehand", $dicehand);
+
+        return $this->redirectToRoute("pig_play");
     }
 
 
 
     #[Route("/game/pig/save", name: "pig_save", methods: ["POST"])]
-    public function save(): Response
+    public function save(SessionInterface $session): Response
     {
-        // deal with save data
+        // save new total score
+        $session->set(
+            "pig_total",
+            $session->get("pig_total") +
+            $session->get("pig_round")
+        );
 
-        return $this->render("pig/play.html.twig", $this->data);
+        // zero round score
+        $session->set("pig_round", 0);
 
+
+        // $roundSum = $session->get("pig_round");
+        // $totalSum = $session->get("pig_total");
+        // $session->set("pig_total", $totalSum + $roundSum);
+
+        // reset dicehand
+        $dicehand = $session->get("pig_dicehand");
+        $dicehand->reset();
+        $session->set("pig_dicehand", $dicehand);
+
+        // flash message
+        $this->addFlash(
+            'notice',
+            'Rundan sparades till totalen!'
+        );
+
+        return $this->redirectToRoute("pig_play");
     }
 }
