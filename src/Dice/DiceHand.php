@@ -2,8 +2,6 @@
 
 namespace App\Dice;
 
-
-
 /**
  * Dicehand class
  */
@@ -40,7 +38,7 @@ class DiceHand
 
     /**
      * Get number of dice
-     * 
+     *
      * @return int - the count
      */
     public function getDiceCount(): int
@@ -52,7 +50,7 @@ class DiceHand
 
     /**
      * Get the dice values
-     * 
+     *
      * @return array - the values
      */
     public function getValues(): array
@@ -70,7 +68,7 @@ class DiceHand
 
     /**
      * Get the dice values as strings
-     * 
+     *
      * @return array - the string values
      */
     public function getStringValues(): array
@@ -88,7 +86,7 @@ class DiceHand
 
     /**
      * Get the sum of current dice values
-     * 
+     *
      * @return int - the sum
      */
     public function getSum(): int
@@ -102,7 +100,7 @@ class DiceHand
 
     /**
      * Get the average of current dice values
-     * 
+     *
      * @return float - the average
      */
     public function getAvg(): float

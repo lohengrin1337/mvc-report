@@ -2,8 +2,6 @@
 
 namespace App\Dice;
 
-
-
 /**
  * DiceGraphicts class
  * Dice with graphic representation
@@ -37,7 +35,7 @@ class DiceGraphic extends Dice
 
     /**
      * Get a graphic representation of current value
-     * 
+     *
      * @return string the graphic
      */
     public function getAsString(): string

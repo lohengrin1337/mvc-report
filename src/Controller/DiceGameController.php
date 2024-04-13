@@ -11,8 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-
-
 class DiceGameController extends AbstractController
 {
     /**
@@ -57,7 +55,6 @@ class DiceGameController extends AbstractController
     {
         $this->data["pageTitle"] = "Kasta Gris - Testa tärning";
 
-        // $die = new Dice();
         $die = new DiceGraphic();
         $this->data["dice"][] = $die->roll();
         $this->data["diceStrings"][] = $die->getAsString();
@@ -76,7 +73,6 @@ class DiceGameController extends AbstractController
             throw new \Exception("Max antal tärningar är 99!");
         }
 
-        // $die = new Dice();
         $die = new DiceGraphic();
         $this->data["dice"] = [];
         $this->data["diceStrings"] = [];
@@ -103,9 +99,9 @@ class DiceGameController extends AbstractController
         $hand = new DiceHand();
         for ($i = 0; $i < $num; $i++) {
             if ($i % 2 === 1) {
-                $hand->add(new DiceGraphic);
+                $hand->add(new DiceGraphic());
             } else {
-                $hand->add(new Dice);
+                $hand->add(new Dice());
             }
         }
 
@@ -115,8 +111,6 @@ class DiceGameController extends AbstractController
         $this->data["diceStringValues"] = $hand->getStringValues();
         $this->data["diceSum"] = $hand->getSum();
         $this->data["diceAvg"] = $hand->getAvg();
-
-        // $this->data["dicehand"] = $hand;
 
         return $this->render("pig/test/dicehand.html.twig", $this->data);
     }
@@ -137,16 +131,13 @@ class DiceGameController extends AbstractController
     public function initCallback(
         Request $request,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $diceAmount = $request->request->get("num_dice");
 
         $hand = new DiceHand();
         for ($i = 0; $i < $diceAmount; $i++) {
-            $hand->add(new DiceGraphic);
+            $hand->add(new DiceGraphic());
         }
-
-        // $hand->roll();
 
         $session->set("pig_dicehand", $hand);
         $session->set("pig_round", 0);
@@ -214,11 +205,6 @@ class DiceGameController extends AbstractController
 
         // zero round score
         $session->set("pig_round", 0);
-
-
-        // $roundSum = $session->get("pig_round");
-        // $totalSum = $session->get("pig_total");
-        // $session->set("pig_total", $totalSum + $roundSum);
 
         // reset dicehand
         $dicehand = $session->get("pig_dicehand");

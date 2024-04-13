@@ -24,7 +24,7 @@ class Dice
 
     /**
      * Constructor
-     * 
+     *
      * @param int $sides number of sides
      */
     public function __construct(int $sides = self::SIDES_DEFAULT)
@@ -41,7 +41,7 @@ class Dice
 
     /**
      * Roll the die
-     * 
+     *
      * @return int the value
      */
     public function roll(): int
@@ -54,7 +54,7 @@ class Dice
 
     /**
      * Get current die value
-     * 
+     *
      * @return int the value
      */
     public function getValue(): int
@@ -66,7 +66,7 @@ class Dice
 
     /**
      * Get current die value as string in square brackets "[$value]"
-     * 
+     *
      * @return string the value as string
      */
     public function getAsString(): string
