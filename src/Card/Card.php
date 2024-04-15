@@ -16,7 +16,6 @@ class Card
         "spades",
         "diamonds",
         "clubs",
-        "joker",
     ];
 
     /**
@@ -36,7 +35,6 @@ class Card
         12,
         13,
         14,
-        0,
     ];
 
     /**
@@ -47,7 +45,6 @@ class Card
         "spades" => "♠",
         "diamonds" => "♦",
         "clubs" => "♣",
-        "joker" => "🃟",
         11 => "J",
         12 => "K",
         13 => "Q",
@@ -150,3 +147,5 @@ class Card
         return "[{$suitRepr}{$rankRepr}]";
     }
 }
+
+// "joker" => "🃟",
