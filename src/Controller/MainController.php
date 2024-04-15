@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-// use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -128,5 +130,45 @@ class MainController extends AbstractController
         $this->data["pageTitle"] = "API";
 
         return $this->render("main/api.html.twig", $this->data);
+    }
+
+
+
+    #[Route('/session', name: "session", methods: ["GET"])]
+    public function session(SessionInterface $session): Response
+    {
+        $this->data["pageTitle"] = "Session";
+
+        // get all session data
+        $this->data["session"] = $session->all();
+
+        return $this->render("main/session.html.twig", $this->data);
+    }
+
+
+
+    #[Route('/session/delete', name: "session_delete", methods: ["POST"])]
+    public function sessionDelete(
+        Request $request,
+        SessionInterface $session
+        ): Response
+    {
+        if ($request->request->get("session_delete") === "true") {
+            // destroy session and set data["session"] to null
+            $session->invalidate();
+            $this->data["session"] = null;
+
+            $this->addFlash(
+                'notice',
+                'Sessionen har raderats!'
+            );
+        } else {
+            $this->addFlash(
+                'warning',
+                'Ett okänt fel inträffade när sessionen skulle raderas!'
+            );
+        }
+
+        return $this->redirectToRoute("session");
     }
 }

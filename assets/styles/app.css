@@ -617,6 +617,7 @@ picture {
 
 .button {
   display: block;
+  width: fit-content;
   padding: 0.7rem 1.4rem;
   border: 1px solid #A17317;
   border-radius: 3px;
@@ -640,6 +641,16 @@ picture {
   background-color: #785000;
   color: #fff;
   cursor: pointer;
+}
+
+.btn-delete {
+  border: none;
+  background-color: #C72E2E;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background-color: #A11717;
 }
 
 .btn-container {
@@ -670,6 +681,10 @@ picture {
 
 .flash-warning:before {
   content: "⚠";
+}
+
+.container {
+  padding-bottom: 1.4rem;
 }
 
 @media (max-width: 900px) {

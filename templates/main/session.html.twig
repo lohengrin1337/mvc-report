@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <h1>{{pageTitle}}</h1>
+
+        <h2>Aktuell sessionsdata:</h2>
+
+        <div class="container">
+            {{ dump(session) }}
+        </div>
+
+        <form method="post" action="{{ path('session_delete') }}">
+            <div class="container">
+                <button class="button btn-delete" type="submit" name="session_delete" value="true">Radera Sessionen</button>
+            </div>
+        </form>
+
+        {{ include('flash.html.twig') }}
+
+    </main>
+{% endblock %}

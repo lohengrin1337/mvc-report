@@ -2,6 +2,7 @@
 
 .button {
     display: block;
+    width: fit-content;
     padding: var.$baseline-half var.$baseline;
     border: 1px solid var.$border-regular;
     border-radius: 3px;
@@ -25,6 +26,17 @@
     background-color: var.$bg-color-hover;
     color: var.$color-hover;
     cursor: pointer;
+}
+
+
+.btn-delete {
+    border: none;
+    background-color: var.$bg-color-button-del;
+    color: var.$color-btn-del;
+}
+
+.btn-delete:hover {
+    background-color: var.$bg-color-button-del-hover
 }
 
 .btn-container {
