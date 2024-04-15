@@ -2,9 +2,9 @@
 
 {% block body %}
     <main class="main text-container">
-        {{ include('content/about.md')|markdown_to_html }}
+        {{ include('main/content/about.md')|markdown_to_html }}
     </main>
     <div class="aside aside-bottom">
-        {{ include('content/about-aside.md')|markdown_to_html }}
+        {{ include('main/content/about-aside.md')|markdown_to_html }}
     </div>
 {% endblock %}
