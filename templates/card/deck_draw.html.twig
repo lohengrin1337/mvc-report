@@ -4,17 +4,37 @@
     <main class="main text-container">
         <h1>{{ pageTitle }}</h1>
 
-        {% if cardDraw %}
-            <div class="cards">
-                {% for card in cardDraw %}
+        {% if hand %}
+            <div class="container">
+                {% for card in hand %}
                     <span class="card">{{ card }}</span>
                 {% endfor %}
             </div>
-
-            <p>{{ deckCount }} kort kvar i leken.</p>
+            <div class="container">
+                <p class="header-m">{{ deckCount }} kort kvar i leken.</p>
+            </div>
         {% else %}
-            <p>Kortleken är tom. Gå till <a href="{{ path('card_start') }}">start</a> för att skapa en ny.</p>
+        <div class="container">
+            <p class="header-m">Kortleken är tom. Gå till
+                <a href="{{ path('card_start') }}">
+                    start
+                </a>för att skapa en ny.
+            </p>
+        </div>
         {% endif %}
+
+        <div class="container">
+            <p class="header-m">
+                Prova att
+                <a href="{{ path('card_deck_draw_num', {'number': 10}) }}">
+                    dra 10 kort
+                </a>
+                eller att dra
+                <a href="{{ path('card_deck_draw_players', {'players': 2, 'cards': 5}) }}">
+                    5 kort till två spelare
+                </a>
+            </p>
+        </div>
 
         {{ include('flash.html.twig') }}
     </main>
