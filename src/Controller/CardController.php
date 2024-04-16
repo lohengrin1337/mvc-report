@@ -45,7 +45,7 @@ class CardController extends AbstractController
         $this->data["pageTitle"] = "Kortlek";
 
         // init a new deck of cards, and save to session
-        $session["card_deck"] = new CardDeck();
+        $session->set("card_deck", new CardDeck());
 
         return $this->render("card/start.html.twig", $this->data);
     }
@@ -57,7 +57,7 @@ class CardController extends AbstractController
     {
         $this->data["pageTitle"] = "Visa Kortlek";
 
-        $deck = $session["card_deck"];
+        $deck = $session->get("card_deck");
 
         $this->data["allCards"] = $deck->getAsString();
 
@@ -71,7 +71,7 @@ class CardController extends AbstractController
     {
         $this->data["pageTitle"] = "Visa blandad Kortlek";
 
-        $deck = $session["card_deck"];
+        $deck = $session->get("card_deck");
         $deck->shuffle();
 
         $this->data["allCards"] = $deck->getAsString();
@@ -86,12 +86,15 @@ class CardController extends AbstractController
     {
         $this->data["pageTitle"] = "Dra kort";
 
-        $deck = $session["card_deck"];
+        $deck = $session->get("card_deck");
 
-        $this->data["cardDraw"] = $deck->draw();
+        $cardDraw = $deck->draw();
+        $stringRepresentation = [$cardDraw[0]->getAsString()];
+
+        $this->data["cardDraw"] = $stringRepresentation;
         $this->data["deckCount"] = $deck->getCount();
 
-        $session["card_deck"] = $deck;
+        $session->set("card_deck", $deck);
 
         return $this->render("card/deck_draw.html.twig", $this->data);
     }
