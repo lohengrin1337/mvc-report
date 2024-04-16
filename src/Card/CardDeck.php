@@ -76,6 +76,27 @@ class CardDeck
 
 
     /**
+     * Sort the deck of cards
+     */
+    public function sort(): void
+    {
+        // sort by ranks ascending (2-14)
+        usort($this->cards, function($a, $b) {
+            return $a->getRank() - $b->getRank();
+        });
+
+        // sort suits (♥, ♠, ♦, ♣)
+        usort($this->cards, function($a, $b) {
+            $suitOrder = $a::VALID_SUITS; // array with the suits in right order
+            $orderA = array_search($a->getSuit(), $suitOrder); // index 0-3
+            $orderB = array_search($b->getSuit(), $suitOrder); // index 0-3
+            return $orderA - $orderB;
+        });
+    }
+
+
+
+    /**
      * Get count of remaining cards
      * 
      * @return int - the count
