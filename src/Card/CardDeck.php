@@ -76,6 +76,18 @@ class CardDeck
 
 
     /**
+     * Get count of remaining cards
+     * 
+     * @return int - the count
+     */
+    public function getCount(): int
+    {
+        return count($this->cards);
+    }
+
+
+
+    /**
      * Get representation of all cards
      * 
      * @return array - array of strings
