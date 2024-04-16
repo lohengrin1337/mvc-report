@@ -16,4 +16,8 @@
             <p>Kortleken är tom. Gå till <a href="{{ path('card_start') }}">start</a> för att skapa en ny.</p>
         {% endif %}
     </main>
+
+    <div class="aside aside-top">
+        {{ include('card/_nav.html.twig') }}
+    </div>
 {% endblock %}

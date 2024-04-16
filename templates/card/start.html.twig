@@ -4,11 +4,9 @@
     <main class="main text-container">
         <h1>{{ pageTitle }}</h1>
 
-        <ul>
-            <li><a href="{{ path('card_start') }}">Start</a></li>
-            <li><a href="{{ path('card_deck') }}">Kortlek</li>
-            <li><a href="{{ path('card_deck_shuffle') }}">Blandad Kortlek</li>
-            <li><a href="{{ path('card_deck_draw') }}">Dra kort</li>
-        </ul>
     </main>
+
+    <div class="aside aside-top">
+        {{ include('card/_nav.html.twig') }}
+    </div>
 {% endblock %}

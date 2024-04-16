@@ -740,6 +740,9 @@ picture {
   }
 }
 @media (max-width: 1150px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
   .aside-bottom {
     max-width: 700px;
     margin: 0 auto;
