@@ -39,6 +39,28 @@ class CardController extends AbstractController
 
 
 
+    /**
+     * Draw a number of cards from deck
+     * Get string representation of the cards
+     * Get deck count
+     * set data["cardDraw"] and data["deckCount"]
+     * 
+     * @param CardDeck $deck - a CardDeck instance
+     * @param int $num - a number of cards to draw
+     */
+    private function drawCards(CardDeck $deck, int $num = 1): void
+    {
+        $cardDraw = $deck->draw($num);
+        $stringRepresentation = [];
+        foreach ($cardDraw as $card) {
+            $stringRepresentation[] = $card->getAsString();
+        }
+        $this->data["cardDraw"] = $stringRepresentation;
+        $this->data["deckCount"] = $deck->getCount();
+    }
+
+
+
     #[Route("/card", name: "card_start", methods: ["GET"])]
     public function start(SessionInterface $session): Response
     {
@@ -89,14 +111,51 @@ class CardController extends AbstractController
     #[Route("/card/deck/draw", name: "card_deck_draw", methods: ["GET"])]
     public function deckDraw(SessionInterface $session): Response
     {
-        $this->data["pageTitle"] = "Dra kort";
+        $this->data["pageTitle"] = "Dra ett kort";
 
         $deck = $session->get("card_deck") ?? null;
         if ($deck) {
-            $cardDraw = $deck->draw();
-            $stringRepresentation = [$cardDraw[0]->getAsString()];
-            $this->data["cardDraw"] = $stringRepresentation;
-            $this->data["deckCount"] = $deck->getCount();
+            $num = 1;
+            // modify $num to fit deck count if neccessary
+            if (!($num <= $deck->getCount())) {
+                $num = $deck->getCount();
+                $this->data["pageTitle"] = "Dra {$num} kort";
+                $this->addFlash(
+                    'warning',
+                    "Det fanns {$num} kort kvar i leken!"
+                );
+            }
+
+            $this->drawCards($deck, $num);
+            $session->set("card_deck", $deck);
+        }
+
+        return $this->render("card/deck_draw.html.twig", $this->data);
+    }
+
+
+
+    #[Route("/card/deck/draw/{num<\d+>}", name: "card_deck_draw_num", methods: ["GET"])]
+    public function deckDrawNum(
+        int $num,
+        SessionInterface $session
+        ): Response
+    {
+        $this->data["pageTitle"] = "Dra {$num} kort";
+
+        $deck = $session->get("card_deck") ?? null;
+        if ($deck) {
+            // modify $num to fit deck count if neccessary
+            if (!($num <= $deck->getCount())) {
+                $num = $deck->getCount();
+                $this->data["pageTitle"] = "Dra {$num} kort";
+                $this->addFlash(
+                    'warning',
+                    "Det fanns {$num} kort kvar i leken!"
+                );
+            }
+
+            $this->drawCards($deck, $num);
             $session->set("card_deck", $deck);
         }
 
