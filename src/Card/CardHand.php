@@ -9,20 +9,39 @@ namespace App\Card;
 class CardHand
 {
     /**
-     * @var array $hand - an array with Card objects
+     * @var array $cards - an array with Card objects
      */
-    private array $hand;
+    private array $cards = [];
+
 
 
 
     /**
-     * Add a card to hand
+     * Draw a card from deck, and add to hand
      * 
-     * @param Card $card - a playing card
+     * @param CardDeck $deck - a deck of playing card
+     * @param int $num - number of cards to draw
      */
-    public function add(Card $card): void
+    public function draw(CardDeck $deck, int $num = 1): void
     {
-        $this->hand[] = $card;
+        for ($i = 0; $i < $num; $i++) {
+            $card = $deck->draw();
+            if ($card) {
+                $this->cards[] = $card;
+            }
+        }
+    }
+
+
+
+    /**
+     * Get the amount of cards in hand
+     * 
+     * @return int - the count
+     */
+    public function cardCount(): int
+    {
+        return count($this->cards);
     }
 
 
@@ -35,7 +54,7 @@ class CardHand
     public function getAsString(): array
     {
         $stringRepresentation = [];
-        foreach ($this->hand as $card) {
+        foreach ($this->cards as $card) {
             $stringRepresentation[] = $card->getAsString();
         }
 
