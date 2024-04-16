@@ -8,6 +8,12 @@
 
         <ul>
             <li class="header-sm"><a href="{{ path('quote') }}">Dagens citat</a></li>
+            <li class="header-sm"><a href="{{ path('api_deck') }}">Sorterad kortlek</a></li>
+            <li class="header-sm">
+                <form method="post" action="{{ path('api_deck_shuffle') }}">
+                    <input type="submit" value="Blandad kortlek">
+                </form>
+            </li>
         </ul>
     </main>
 {% endblock %}
