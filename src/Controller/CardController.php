@@ -151,8 +151,8 @@ class CardController extends AbstractController
 
 
 
-    #[Route("/card/deck/draw/{players<\d+>}/{cards<\d+>}", name: "card_deck_draw_players", methods: ["GET"])]
-    public function deckDrawPlayers(
+    #[Route("/card/deck/deal/{players<\d+>}/{cards<\d+>}", name: "card_deck_deal", methods: ["GET"])]
+    public function deckDeal(
         int $players,
         int $cards,
         SessionInterface $session
@@ -170,6 +170,6 @@ class CardController extends AbstractController
             $session->set("card_deck", $deck);
         }
 
-        return $this->render("card/deck_draw_players.html.twig", $this->data);
+        return $this->render("card/deck_deal.html.twig", $this->data);
     }
 }

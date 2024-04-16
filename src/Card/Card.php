@@ -136,7 +136,7 @@ class Card
     {
         $suitRepr = self::DEF_REPR[$this->suit];
 
-        if (in_array($this->rank, self::DEF_REPR)) {
+        if (array_key_exists($this->rank, self::DEF_REPR)) {
             $rankRepr = self::DEF_REPR[$this->rank];
         } elseif ($this->rank === 0) {
             $rankRepr = "";
