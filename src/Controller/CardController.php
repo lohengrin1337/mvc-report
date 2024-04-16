@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Card\CardDeck;
+use App\Card\CardHand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,38 +35,35 @@ class CardController extends AbstractController
             "cardDraw" => [],
             "allCards" => [],
             "deckCount" => [],
+            "players" => [],
         ];
     }
 
 
 
     /**
-     * Modify $num to fit deck count if neccessary
-     * Draw a number of cards from deck
-     * Get string representation of the cards
-     * Get deck count
-     * set data["cardDraw"] and data["deckCount"]
+     * Set flash if $num is greater than card count of deck
+     * Draw a number of cards from deck to hand
+     * Set string representation of the hand to data["cardDraw"]
+     * Set card count of deck to data["deckCount"]
      * 
      * @param CardDeck $deck - a CardDeck instance
+     * @param CardHand $hand - a CardHand instance
      * @param int $num - a number of cards to draw
      */
-    private function drawCards(CardDeck $deck, int $num = 1): void
+    private function drawCards(CardDeck $deck, CardHand $hand, int $num = 1): void
     {
-        if (!($num <= $deck->getCount())) {
-            $num = $deck->getCount();
+        $deckCount = $deck->getCount();
+        if ($num > $deckCount) {
             $this->addFlash(
                 'warning',
-                "Det fanns {$num} kort kvar i leken!"
+                "Det fanns {$deckCount} kort kvar i leken!"
             );
         }
 
-        $cardDraw = $deck->draw($num);
-        $stringRepresentation = [];
-        foreach ($cardDraw as $card) {
-            $stringRepresentation[] = $card->getAsString();
-        }
+        $hand->draw($deck, $num);
 
-        $this->data["cardDraw"] = $stringRepresentation;
+        $this->data["hand"] = $hand->getAsString();
         $this->data["deckCount"] = $deck->getCount();
     }
 
@@ -125,7 +123,7 @@ class CardController extends AbstractController
 
         $deck = $session->get("card_deck") ?? null;
         if ($deck) {
-            $this->drawCards($deck);
+            $this->drawCards($deck, new CardHand());
             $session->set("card_deck", $deck);
         }
 
@@ -134,20 +132,44 @@ class CardController extends AbstractController
 
 
 
-    #[Route("/card/deck/draw/{num<\d+>}", name: "card_deck_draw_num", methods: ["GET"])]
+    #[Route("/card/deck/draw/{number<\d+>}", name: "card_deck_draw_num", methods: ["GET"])]
     public function deckDrawNum(
-        int $num,
+        int $number,
         SessionInterface $session
         ): Response
     {
-        $this->data["pageTitle"] = "Dra {$num} kort";
+        $this->data["pageTitle"] = "Dra {$number} kort";
 
         $deck = $session->get("card_deck") ?? null;
         if ($deck) {
-            $this->drawCards($deck, $num);
+            $this->drawCards($deck, new CardHand(), $number);
             $session->set("card_deck", $deck);
         }
 
         return $this->render("card/deck_draw.html.twig", $this->data);
+    }
+
+
+
+    #[Route("/card/deck/draw/{players<\d+>}/{cards<\d+>}", name: "card_deck_draw_players", methods: ["GET"])]
+    public function deckDrawPlayers(
+        int $players,
+        int $cards,
+        SessionInterface $session
+        ): Response
+    {
+        $this->data["pageTitle"] = "Dra {$cards} kort till {$players} spelare";
+
+        $deck = $session->get("card_deck") ?? null;
+        if ($deck) {
+            for ($i = 1; $i <= $players; $i++) {
+                $hand = new CardHand();
+                $this->drawCards($deck, $hand, $cards);
+                $this->data["players"]["Spelare {$i}"] = $hand->getAsString();
+            }
+            $session->set("card_deck", $deck);
+        }
+
+        return $this->render("card/deck_draw_players.html.twig", $this->data);
     }
 }
