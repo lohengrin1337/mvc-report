@@ -57,9 +57,12 @@ class CardController extends AbstractController
     {
         $this->data["pageTitle"] = "Visa Kortlek";
 
-        $deck = $session->get("card_deck");
-
-        $this->data["allCards"] = $deck->getAsString();
+        $deck = $session->get("card_deck") ?? null;
+        if ($deck) {
+            $deck->sort();
+            $session->set("card_deck", $deck);
+            $this->data["allCards"] = $deck->getAsString();
+        }
 
         return $this->render("card/deck.html.twig", $this->data);
     }
@@ -71,10 +74,12 @@ class CardController extends AbstractController
     {
         $this->data["pageTitle"] = "Visa blandad Kortlek";
 
-        $deck = $session->get("card_deck");
-        $deck->shuffle();
-
-        $this->data["allCards"] = $deck->getAsString();
+        $deck = $session->get("card_deck") ?? null;
+        if ($deck) {
+            $deck->shuffle();
+            $session->set("card_deck", $deck);
+            $this->data["allCards"] = $deck->getAsString();
+        }
 
         return $this->render("card/deck_shuffle.html.twig", $this->data);
     }
@@ -86,15 +91,14 @@ class CardController extends AbstractController
     {
         $this->data["pageTitle"] = "Dra kort";
 
-        $deck = $session->get("card_deck");
-
-        $cardDraw = $deck->draw();
-        $stringRepresentation = [$cardDraw[0]->getAsString()];
-
-        $this->data["cardDraw"] = $stringRepresentation;
-        $this->data["deckCount"] = $deck->getCount();
-
-        $session->set("card_deck", $deck);
+        $deck = $session->get("card_deck") ?? null;
+        if ($deck) {
+            $cardDraw = $deck->draw();
+            $stringRepresentation = [$cardDraw[0]->getAsString()];
+            $this->data["cardDraw"] = $stringRepresentation;
+            $this->data["deckCount"] = $deck->getCount();
+            $session->set("card_deck", $deck);
+        }
 
         return $this->render("card/deck_draw.html.twig", $this->data);
     }

@@ -4,11 +4,14 @@
     <main class="main text-container">
         <h1>{{ pageTitle }}</h1>
 
-        <div class="cards">
-            {% for card in allCards %}
-                <span class="card">{{ card }}</span>
-            {% endfor %}
-        </div>
-
+        {% if allCards %}
+            <div class="cards">
+                {% for card in allCards %}
+                    <span class="card">{{ card }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Kortleken är tom. Gå till <a href="{{ path('card_start') }}">start</a> för att skapa en ny.</p>
+        {% endif %}
     </main>
 {% endblock %}

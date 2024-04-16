@@ -4,13 +4,16 @@
     <main class="main text-container">
         <h1>{{ pageTitle }}</h1>
 
-        <div class="cards">
-            {% for card in cardDraw %}
-                <span class="card">{{ card }}</span>
-            {% endfor %}
-        </div>
+        {% if cardDraw %}
+            <div class="cards">
+                {% for card in cardDraw %}
+                    <span class="card">{{ card }}</span>
+                {% endfor %}
+            </div>
 
-        <p>{{ deckCount }} kort kvar i leken.</p>
-
+            <p>{{ deckCount }} kort kvar i leken.</p>
+        {% else %}
+            <p>Kortleken är tom. Gå till <a href="{{ path('card_start') }}">start</a> för att skapa en ny.</p>
+        {% endif %}
     </main>
 {% endblock %}
