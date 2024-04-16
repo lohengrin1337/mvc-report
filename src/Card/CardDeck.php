@@ -48,19 +48,13 @@ class CardDeck
 
 
     /**
-     * Draw top cards of the deck
+     * Draw a card from top of deck, if not empty
      *
-     * @param int $num - number of cards to draw
-     * @return array - array of Card objects
+     * @return ?Card - a Card object or null
      */
-    public function draw($num = 1): array
+    public function draw(): ?Card
     {
-        $cardDraw = [];
-        for ($i = 0; $i < $num; $i++) {
-            $cardDraw[] = array_pop($this->cards);
-        }
-
-        return $cardDraw;
+        return array_pop($this->cards);
     }
 
 
