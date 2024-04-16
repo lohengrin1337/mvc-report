@@ -48,16 +48,45 @@ class CardDeck
 
 
     /**
-     * Draw the top card of the deck
+     * Draw top cards of the deck
      *
-     * @return Card
+     * @param int $num - number of cards to draw
+     * @return array - array of Card objects
      */
-    public function draw(): Card
+    public function draw($num = 1): array
     {
-        return array_pop($this->cards);
+        $cardDraw = [];
+        for ($i = 0; $i < $num; $i++) {
+            $cardDraw[] = array_pop($this->cards);
+        }
+
+        return $cardDraw;
     }
 
 
 
-    
+    /**
+     * Shuffle the deck of cards
+     */
+    public function shuffle(): void
+    {
+        shuffle($this->cards);
+    }
+
+
+
+    /**
+     * Get representation of all cards
+     * 
+     * @return array - array of strings
+     */
+    public function getAsString(): array
+    {
+        $stringRepresentation = [];
+        foreach ($this->cards as $card) {
+            $stringRepresentation[] = $card->getAsString();
+        }
+
+        return $stringRepresentation;
+    }
 }
