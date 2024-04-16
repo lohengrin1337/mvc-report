@@ -40,6 +40,7 @@ class CardController extends AbstractController
 
 
     /**
+     * Modify $num to fit deck count if neccessary
      * Draw a number of cards from deck
      * Get string representation of the cards
      * Get deck count
@@ -50,11 +51,20 @@ class CardController extends AbstractController
      */
     private function drawCards(CardDeck $deck, int $num = 1): void
     {
+        if (!($num <= $deck->getCount())) {
+            $num = $deck->getCount();
+            $this->addFlash(
+                'warning',
+                "Det fanns {$num} kort kvar i leken!"
+            );
+        }
+
         $cardDraw = $deck->draw($num);
         $stringRepresentation = [];
         foreach ($cardDraw as $card) {
             $stringRepresentation[] = $card->getAsString();
         }
+
         $this->data["cardDraw"] = $stringRepresentation;
         $this->data["deckCount"] = $deck->getCount();
     }
@@ -115,18 +125,7 @@ class CardController extends AbstractController
 
         $deck = $session->get("card_deck") ?? null;
         if ($deck) {
-            $num = 1;
-            // modify $num to fit deck count if neccessary
-            if (!($num <= $deck->getCount())) {
-                $num = $deck->getCount();
-                $this->data["pageTitle"] = "Dra {$num} kort";
-                $this->addFlash(
-                    'warning',
-                    "Det fanns {$num} kort kvar i leken!"
-                );
-            }
-
-            $this->drawCards($deck, $num);
+            $this->drawCards($deck);
             $session->set("card_deck", $deck);
         }
 
@@ -145,16 +144,6 @@ class CardController extends AbstractController
 
         $deck = $session->get("card_deck") ?? null;
         if ($deck) {
-            // modify $num to fit deck count if neccessary
-            if (!($num <= $deck->getCount())) {
-                $num = $deck->getCount();
-                $this->data["pageTitle"] = "Dra {$num} kort";
-                $this->addFlash(
-                    'warning',
-                    "Det fanns {$num} kort kvar i leken!"
-                );
-            }
-
             $this->drawCards($deck, $num);
             $session->set("card_deck", $deck);
         }
