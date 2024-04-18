@@ -2,8 +2,6 @@
 
 namespace App\Card;
 
-use App\Card\Card;
-
 
 /**
  * Class for deck of playing cards
@@ -17,18 +15,61 @@ class CardDeck
 
 
 
+    // /**
+    //  * Constructor
+    //  * Add 52 uniqe cards to the deck
+    //  */
+    // public function __construct()
+    // {
+    //     $suits = Card::VALID_SUITS;
+    //     $ranks = Card::VALID_RANKS;
+
+    //     foreach ($suits as $suit) {
+    //         foreach ($ranks as $rank) {
+    //             $this->add(new Card($suit, $rank));
+    //         }
+    //     }
+    // }
+
+
+
+    public static function getSuits(): array
+    {
+        return [
+            "hearts",
+            "spades",
+            "diamonds",
+            "clubs",
+        ];
+    }
+
+
+
+    public static function getRanks(): array
+    {
+        return array_merge(range(1, 13));
+    }
+
+
+
     /**
      * Constructor
      * Add 52 uniqe cards to the deck
+     * 
+     * @param string $cardClass - a valid cardClass that implements CardInterface
      */
-    public function __construct()
+    public function __construct(string $cardClass = Card::class)
     {
-        $suits = Card::VALID_SUITS;
-        $ranks = Card::VALID_RANKS;
+        $suits = self::getSuits();
+        $ranks = self::getRanks();
+
+        // var_dump($suits);
+        // var_dump($ranks);
+        // var_dump((new $cardClass("hearts", 6))->getAsString());
 
         foreach ($suits as $suit) {
             foreach ($ranks as $rank) {
-                $this->add(new Card($suit, $rank));
+                $this->add(new $cardClass($suit, $rank));
             }
         }
     }
@@ -38,9 +79,9 @@ class CardDeck
     /**
      * Add a card to the deck
      * 
-     * @param Card $card
+     * @param CardInterface $card - with CardInterface implementation
      */
-    private function add(Card $card): void
+    private function add(CardInterface $card): void
     {
         $this->cards[] = $card;
     }
