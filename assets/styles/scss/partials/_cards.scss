@@ -1,0 +1,13 @@
+@use "variables" as var;
+
+.cards {
+    display: flex;
+    flex-flow: row wrap;
+    gap: var.$baseline;
+    margin-bottom: var.$baseline-x2;
+}
+
+.card {
+    font-size: 100px;
+    margin-bottom: -40px;
+}
