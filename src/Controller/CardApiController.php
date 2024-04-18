@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Card\CardDeck;
 use App\Card\CardHand;
+use App\Card\Card;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,7 +46,7 @@ class CardApiController extends AbstractController
     {
         $deck = $session->get("deck") ?? null;
         if (!$deck) {
-            $deck = new CardDeck;
+            $deck = new CardDeck(Card::class);
         }
 
         $deck->sort();
@@ -62,7 +63,7 @@ class CardApiController extends AbstractController
     {
         $deck = $session->get("deck") ?? null;
         if (!$deck) {
-            $deck = new CardDeck;
+            $deck = new CardDeck(Card::class);
         }
 
         $deck->shuffle();
@@ -88,7 +89,7 @@ class CardApiController extends AbstractController
 
         $deck = $session->get("deck") ?? null;
         if (!$deck) {
-            $deck = new CardDeck;
+            $deck = new CardDeck(Card::class);
         }
 
         $hand = new CardHand();
@@ -123,7 +124,7 @@ class CardApiController extends AbstractController
         }
         $deck = $session->get("deck") ?? null;
         if (!$deck) {
-            $deck = new CardDeck;
+            $deck = new CardDeck(Card::class);
         }
 
         $data = [];
@@ -150,7 +151,7 @@ class CardApiController extends AbstractController
     // {
     //     $deck = $session->get("deck") ?? null;
     //     if (!$deck) {
-    //         $deck = new CardDeck;
+    //         $deck = new CardDeck(Card::class);
     //     }
 
     //     $hand = new CardHand();
