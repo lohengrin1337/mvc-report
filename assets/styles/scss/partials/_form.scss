@@ -1,6 +1,13 @@
 @use "variables" as var;
 @use "typography/typography";
 
+%label {
+    @extend %headers;
+    display: block;
+    margin-bottom: var.$baseline-quart;
+    font-weight: 300;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -11,10 +18,11 @@
     margin-bottom: var.$baseline;
 
     label {
-        @extend %headers;
-        display: block;
-        margin-bottom: var.$baseline-quart;
-        font-weight: 300;
+        // @extend %headers;
+        // display: block;
+        // margin-bottom: var.$baseline-quart;
+        // font-weight: 300;
+        @extend %label;
     }
 
     input {
@@ -48,4 +56,20 @@
     textarea:focus {
         outline: 2px solid var.$border-regular;
     }
+}
+
+.input-small {
+    width: 100px;
+    padding: var.$baseline-half;
+    border: 1px solid var.$border-regular;
+    border-radius: 3px;
+    font-family: inherit;
+    background-color: transparent;
+    color: inherit;
+    margin-bottom: var.$baseline;
+}
+
+.label-small {
+    @extend %label;
+    margin: 0;
 }

@@ -2,18 +2,84 @@
 
 {% block body %}
     <main class="main text-container">
-        <h1>{{ pageTitle }}</h1>
+        <h1>API:ER</h1>
 
-        <h2 class="header-m">Följande API:er finns tillgängliga:</h2>
+        <a class="button btn-api" href="{{ path('quote') }}">Dagens citat</a>
+        <a class="button btn-api" href="{{ path('api_deck') }}">Sorterad kortlek</a>
 
-        <ul>
-            <li class="header-sm"><a href="{{ path('quote') }}">Dagens citat</a></li>
-            <li class="header-sm"><a href="{{ path('api_deck') }}">Sorterad kortlek</a></li>
-            <li class="header-sm">
-                <form method="post" action="{{ path('api_deck_shuffle') }}">
-                    <input type="submit" value="Blandad kortlek">
-                </form>
-            </li>
-        </ul>
+        <form method="post" action="">
+            <button
+                class="button btn-api"
+                type="submit"
+                name="shuffle"
+                value="true"
+                onClick="this.form.action='{{ path('api_deck_shuffle') }}';"
+            >Blandad kortlek</button>
+
+            <button
+                class="button btn-api"
+                type="submit"
+                name="number"
+                value="1"
+                onClick="this.form.action='{{ path('api_deck_draw') }}';"
+            >Dra kort</button>
+        </form>
+
+        <form method="post" action="">
+            <div class="container-flex">
+                <button
+                    class="button btn-api"
+                    type="submit"
+                    onClick="this.form.action='{{ path('api_deck_draw') }}';"
+                >Dra flera kort</button>
+                <div>
+                    <label class="label-small" for="draw_num">kort</label>
+                    <input
+                        class="input-small"
+                        type="number"
+                        name="number"
+                        id="draw_num"
+                        min="1"
+                        max="52"
+                        step="1"
+                        value="5"
+                    >
+                </div>
+            </div>
+
+            <div class="container-flex">
+                <button
+                    class="button btn-api"
+                    type="submit"
+                    onClick="this.form.action='{{ path('api_deck_deal') }}';"
+                >Dela ut kort</button>
+                <div>
+                    <label class="label-small" for="players">spelare</label>
+                    <input
+                        class="input-small"
+                        type="number"
+                        name="players"
+                        id="players"
+                        min="1"
+                        max="10"
+                        step="1"
+                        value="2"
+                    >
+                </div>
+                <div>
+                    <label class="label-small" for="deal_num">kort</label>
+                    <input
+                        class="input-small"
+                        type="number"
+                        name="cards"
+                        id="deal_num"
+                        min="1"
+                        max="52"
+                        step="1"
+                        value="5"
+                    >
+                </div>
+        </div>
+        </form>
     </main>
 {% endblock %}
