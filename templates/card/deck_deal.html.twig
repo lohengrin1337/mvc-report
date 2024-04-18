@@ -1,16 +1,16 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <main class="main text-container">
+    <main class="main">
         <h1>{{ pageTitle }}</h1>
 
         {% if players %}
             {% for player, hand in players %}
-                <div class="container">
+                <div class="cards">
                     <h2 class="header-m">{{ player }}</h2>
                     <div class="cards">
                         {% for card in hand %}
-                            <span class="card">{{ card }}</span>
+                            <span class="card">{{ card|raw }}</span>
                         {% endfor %}
                     </div>
                 </div>

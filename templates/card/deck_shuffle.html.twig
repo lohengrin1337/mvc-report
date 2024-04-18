@@ -1,13 +1,13 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <main class="main text-container">
+    <main class="main">
         <h1>{{ pageTitle }}</h1>
 
         {% if allCards %}
             <div class="cards">
                 {% for card in allCards %}
-                    <span class="card">{{ card }}</span>
+                    <span class="card">{{ card|raw }}</span>
                 {% endfor %}
             </div>
         {% else %}
