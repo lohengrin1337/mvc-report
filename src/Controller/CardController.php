@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Card\CardDeck;
 use App\Card\CardHand;
+use App\Card\CardGraphic;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -75,7 +76,7 @@ class CardController extends AbstractController
         $this->data["pageTitle"] = "Kortlek";
 
         // init a new deck of cards, and save to session
-        $session->set("card_deck", new CardDeck());
+        $session->set("card_deck", new CardDeck(CardGraphic::class));
 
         return $this->render("card/start.html.twig", $this->data);
     }
