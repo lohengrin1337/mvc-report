@@ -6,7 +6,7 @@ namespace App\Card;
 /**
  * Class for playing cards
  */
-class Card
+class Card implements CardInterface
 {
     /**
      * @var array VALID_SUITS - the accepted categories
@@ -22,6 +22,7 @@ class Card
      * @var array VALID_RANKS - the accepted values. (0 for joker)
      */
     public const VALID_RANKS = [
+        1,
         2,
         3,
         4,
@@ -34,7 +35,6 @@ class Card
         11,
         12,
         13,
-        14,
     ];
 
     /**
@@ -48,26 +48,28 @@ class Card
         11 => "J",
         12 => "K",
         13 => "Q",
-        14 => "A"
+        1 => "A"
     ];
 
 
 
-    // /**
-    //  * Validate suite and rank arguments
-    //  * 
-    //  * @return bool - true if valid, else false
-    //  */
-    // public static function validSuiteAndRank(string $suit, int $rank): bool
-    // {
-    //     if (!in_array($suit, self::VALID_SUITS)) {
-    //         throw new \InvalidArgumentException("Invalid suit provided!");
-    //     }
-        
-    //     if (!in_array($rank, self::VALID_RANKS)) {
-    //         throw new \InvalidArgumentException("Invalid rank provided!");
-    //     }
-    // }
+    /**
+     * Validate suite and rank arguments
+     * 
+     * @throws InvalidArgumentException - if one not valid
+     * @return bool - true if both valid
+     */
+    public static function validateSuiteAndRank(string $suit, int $rank): bool
+    {
+        if (!in_array($suit, self::VALID_SUITS)) {
+            throw new \InvalidArgumentException("Invalid suit provided!");
+        }
+        if (!in_array($rank, self::VALID_RANKS)) {
+            throw new \InvalidArgumentException("Invalid rank provided!");
+        }
+
+        return true;
+    }
 
 
 
@@ -91,16 +93,45 @@ class Card
      */
     public function __construct(string $suit, int $rank)
     {
-        if (!in_array($suit, self::VALID_SUITS)) {
-            throw new \InvalidArgumentException("Invalid suit provided!");
-        }
-        if (!in_array($rank, self::VALID_RANKS)) {
-            throw new \InvalidArgumentException("Invalid rank provided!");
-        }
+        // $validSuits = $this->getValidSuits();
+        // $validRanks = $this->getValidRanks();
+
+        // if (!in_array($suit, $validSuits)) {
+        //     throw new \InvalidArgumentException("Invalid suit provided!");
+        // }
+        // if (!in_array($rank, $validRanks)) {
+        //     throw new \InvalidArgumentException("Invalid rank provided!");
+        // }
+
+        self::validateSuiteAndRank($suit, $rank);
 
         $this->suit = $suit;
         $this->rank = $rank;
     }
+
+
+    // /**
+    //  * Get array of valid suits
+    //  * 
+    //  * @return array - the suits
+    //  */
+    // public static function getValidSuits(): array
+    // {
+    //     return Card::VALID_SUITS;
+    // }
+
+
+
+    // /**
+    //  * Get array of valid ranks
+    //  * 
+    //  * @return array - the ranks
+    //  */
+    // public static function getValidRanks(): array
+    // {
+    //     return Card::VALID_RANKS;
+    // }
+
 
 
     /**
