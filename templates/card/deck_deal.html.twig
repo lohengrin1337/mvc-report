@@ -17,7 +17,16 @@
             {% endfor %}
             <p class="header-m">{{ deckCount }} kort kvar i leken.</p>
         {% else %}
-            <p class="header-m">Kortleken är tom. Gå till <a href="{{ path('card_start') }}">start</a> för att skapa en ny.</p>
+            <p class="header-m">Kortleken är tom. Gå till <a href="{{ path('card_deck_shuffle') }}">blanda kortlek</a> för att skapa en ny.</p>
+        {% endif %}
+        {% if deckCount == 0 %}
+            <div class="container">
+                <p class="header-m">Gå till
+                    <a href="{{ path('card_deck_shuffle') }}">
+                        balanda kortlek
+                    </a>för att skapa en ny.
+                </p>
+            </div>
         {% endif %}
 
         {{ include('flash.html.twig') }}

@@ -75,8 +75,13 @@ class CardController extends AbstractController
     {
         $this->data["pageTitle"] = "Kortlek";
 
-        // init a new deck of cards, and save to session
-        $session->set("card_deck", new CardDeck(CardGraphic::class));
+        // check for deck in session, and create new (and shuffle) if neccessary
+        $deck = $session->get("card_deck") ?? null;
+        if (!$deck) {
+            $deck = new CardDeck(CardGraphic::class);
+            $deck->shuffle();
+            $session->set("card_deck", $deck);
+        }
 
         return $this->render("card/start.html.twig", $this->data);
     }
@@ -89,11 +94,13 @@ class CardController extends AbstractController
         $this->data["pageTitle"] = "Visa Kortlek";
 
         $deck = $session->get("card_deck") ?? null;
-        if ($deck) {
-            $deck->sort();
-            $session->set("card_deck", $deck);
-            $this->data["allCards"] = $deck->getAsString();
+        if (!$deck) {
+            return $this->redirectToRoute("card_start");
         }
+
+        $deck->sort();
+        $session->set("card_deck", $deck);
+        $this->data["allCards"] = $deck->getAsString();
 
         return $this->render("card/deck.html.twig", $this->data);
     }
@@ -105,12 +112,17 @@ class CardController extends AbstractController
     {
         $this->data["pageTitle"] = "Visa blandad Kortlek";
 
-        $deck = $session->get("card_deck") ?? null;
-        if ($deck) {
-            $deck->shuffle();
-            $session->set("card_deck", $deck);
-            $this->data["allCards"] = $deck->getAsString();
-        }
+        // $deck = $session->get("card_deck") ?? null;
+        // if ($deck) {
+        //     $deck->shuffle();
+        //     $session->set("card_deck", $deck);
+        //     $this->data["allCards"] = $deck->getAsString();
+        // }
+
+        $deck = new CardDeck(CardGraphic::class);
+        $deck->shuffle();
+        $session->set("card_deck", $deck);
+        $this->data["allCards"] = $deck->getAsString();
 
         return $this->render("card/deck_shuffle.html.twig", $this->data);
     }
@@ -123,11 +135,12 @@ class CardController extends AbstractController
         $this->data["pageTitle"] = "Dra ett kort";
 
         $deck = $session->get("card_deck") ?? null;
-        if ($deck) {
-            $this->drawCards($deck, new CardHand());
-            $session->set("card_deck", $deck);
+        if (!$deck) {
+            return $this->redirectToRoute("card_start");
         }
 
+        $this->drawCards($deck, new CardHand());
+        $session->set("card_deck", $deck);
         return $this->render("card/deck_draw.html.twig", $this->data);
     }
 
@@ -142,11 +155,12 @@ class CardController extends AbstractController
         $this->data["pageTitle"] = "Dra {$number} kort";
 
         $deck = $session->get("card_deck") ?? null;
-        if ($deck) {
-            $this->drawCards($deck, new CardHand(), $number);
-            $session->set("card_deck", $deck);
+        if (!$deck) {
+            return $this->redirectToRoute("card_start");
         }
 
+        $this->drawCards($deck, new CardHand(), $number);
+        $session->set("card_deck", $deck);
         return $this->render("card/deck_draw.html.twig", $this->data);
     }
 
@@ -162,14 +176,16 @@ class CardController extends AbstractController
         $this->data["pageTitle"] = "Dra {$cards} kort till {$players} spelare";
 
         $deck = $session->get("card_deck") ?? null;
-        if ($deck) {
-            for ($i = 1; $i <= $players; $i++) {
-                $hand = new CardHand();
-                $this->drawCards($deck, $hand, $cards);
-                $this->data["players"]["Spelare {$i}"] = $hand->getAsString();
-            }
-            $session->set("card_deck", $deck);
+        if (!$deck) {
+            return $this->redirectToRoute("card_start");
         }
+
+        for ($i = 1; $i <= $players; $i++) {
+            $hand = new CardHand();
+            $this->drawCards($deck, $hand, $cards);
+            $this->data["players"]["Spelare {$i}"] = $hand->getAsString();
+        }
+        $session->set("card_deck", $deck);
 
         return $this->render("card/deck_deal.html.twig", $this->data);
     }
