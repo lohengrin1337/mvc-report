@@ -33,7 +33,7 @@ class CardDeck
 
 
 
-    public static function getSuits(): array
+    public static function allSuits(): array
     {
         return [
             "hearts",
@@ -45,7 +45,7 @@ class CardDeck
 
 
 
-    public static function getRanks(): array
+    public static function allRanks(): array
     {
         return array_merge(range(1, 13));
     }
@@ -60,8 +60,8 @@ class CardDeck
      */
     public function __construct(string $cardClass = Card::class)
     {
-        $suits = self::getSuits();
-        $ranks = self::getRanks();
+        $suits = self::allSuits();
+        $ranks = self::allRanks();
 
         // var_dump($suits);
         // var_dump($ranks);
@@ -81,7 +81,7 @@ class CardDeck
      * 
      * @param CardInterface $card - with CardInterface implementation
      */
-    private function add(CardInterface $card): void
+    protected function add(CardInterface $card): void
     {
         $this->cards[] = $card;
     }
@@ -91,9 +91,9 @@ class CardDeck
     /**
      * Draw a card from top of deck, if not empty
      *
-     * @return ?Card - a Card object or null
+     * @return ?CardInterface - a Card object or null
      */
-    public function draw(): ?Card
+    public function draw(): ?CardInterface
     {
         return array_pop($this->cards);
     }
