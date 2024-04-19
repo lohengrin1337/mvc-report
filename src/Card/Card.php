@@ -54,12 +54,21 @@ class Card implements CardInterface
 
 
     /**
+     * @var string $suit - category (♥, ♠, ♦, ♣, plus joker)
+     * @var int $rank - value (2 - 14, plus 0)
+     */
+    protected string $suit;
+    protected int $rank;
+
+
+
+    /**
      * Validate suite and rank arguments
      * 
      * @throws InvalidArgumentException - if one not valid
      * @return bool - true if both valid
      */
-    public static function validateSuiteAndRank(string $suit, int $rank): bool
+    protected static function validateSuiteAndRank(string $suit, int $rank): bool
     {
         if (!in_array($suit, self::VALID_SUITS)) {
             throw new \InvalidArgumentException("Invalid suit provided!");
@@ -70,15 +79,6 @@ class Card implements CardInterface
 
         return true;
     }
-
-
-
-    /**
-     * @var string $suit - category (♥, ♠, ♦, ♣, plus joker)
-     * @var int $rank - value (2 - 14, plus 0)
-     */
-    protected string $suit;
-    protected int $rank;
 
 
 
