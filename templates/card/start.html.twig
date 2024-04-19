@@ -4,6 +4,12 @@
     <main class="main text-container">
         <h1>{{ pageTitle }}</h1>
 
+        {{ include('card/content/start.md')|markdown_to_html }}
+
+        <a href="{{ asset('img/UML-mvc-kmom02.png') }}">
+            <img src="{{ asset('img/UML-mvc-kmom02.png') }}" alt="UML klassdiagram">
+        </a>
+
     </main>
 
     <div class="aside aside-top">
