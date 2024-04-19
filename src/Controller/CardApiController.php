@@ -44,13 +44,14 @@ class CardApiController extends AbstractController
     #[Route("/api/deck", name: "api_deck", methods: ["GET"])]
     public function apiDeck(SessionInterface $session): JsonResponse
     {
-        $deck = $session->get("deck") ?? null;
-        if (!$deck) {
-            $deck = new CardDeck(Card::class);
-        }
+        // $deck = $session->get("deck") ?? null;
+        // if (!$deck) {
+        //     $deck = new CardDeck(Card::class);
+        // }
+        $deck = new CardDeck(Card::class);
 
         $deck->sort();
-        $session->set("deck", $deck);
+        $session->set("card_deck", $deck);
         $this->setResponse($deck->getAsString());
 
         return $this->response;
@@ -61,13 +62,14 @@ class CardApiController extends AbstractController
     #[Route("/api/deck/shuffle", name: "api_deck_shuffle", methods: ["POST"])]
     public function apiDeckShuffle(SessionInterface $session): JsonResponse
     {
-        $deck = $session->get("deck") ?? null;
-        if (!$deck) {
-            $deck = new CardDeck(Card::class);
-        }
+        // $deck = $session->get("deck") ?? null;
+        // if (!$deck) {
+        //     $deck = new CardDeck(Card::class);
+        // }
+        $deck = new CardDeck(Card::class);
 
         $deck->shuffle();
-        $session->set("deck", $deck);
+        $session->set("card_deck", $deck);
         $this->setResponse($deck->getAsString());
 
         return $this->response;
@@ -87,14 +89,14 @@ class CardApiController extends AbstractController
         //     throw new \Exception("Antal kort saknades i request (POST) '/api/deck/draw'");
         // }
 
-        $deck = $session->get("deck") ?? null;
+        $deck = $session->get("card_deck") ?? null;
         if (!$deck) {
             $deck = new CardDeck(Card::class);
         }
 
         $hand = new CardHand();
         $hand->draw($deck, $number);
-        $session->set("deck", $deck);
+        $session->set("card_deck", $deck);
 
         $data = [
             "hand" => $hand->getAsString(),
@@ -134,7 +136,7 @@ class CardApiController extends AbstractController
             $data["Player {$i}"] = $hand->getAsString();
         }
         $data["deckCount"] = $deck->getCount();
-        $session->set("deck", $deck);
+        $session->set("card_deck", $deck);
 
         $this->setResponse($data);
 
@@ -156,7 +158,7 @@ class CardApiController extends AbstractController
 
     //     $hand = new CardHand();
     //     $hand->draw($deck, $number);
-    //     $session->set("deck", $deck);
+    //     $session->set("card_deck", $deck);
 
     //     $data = [
     //         "hand" => $hand->getAsString(),
