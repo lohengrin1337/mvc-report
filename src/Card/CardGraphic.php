@@ -2,13 +2,11 @@
 
 namespace App\Card;
 
-
 /**
  * Class for playing cards with utf-8 representation
  */
 class CardGraphic extends Card
 {
-
     /**
      * @var string UTF8_START - start of UTF8 string, same for all cards
      * @var array UTF8_MID - middle of UTF8 string, depending on card suit
@@ -32,7 +30,7 @@ class CardGraphic extends Card
 
     /**
      * Get card represented as UTF8 card
-     * 
+     *
      * @return string - representation (&#x1f0de)
      */
     public function getAsString(): string

@@ -2,7 +2,6 @@
 
 namespace App\Card;
 
-
 /**
  * Class for deck of playing cards
  */
@@ -55,7 +54,7 @@ class CardDeck
     /**
      * Constructor
      * Add 52 uniqe cards to the deck
-     * 
+     *
      * @param string $cardClass - a valid cardClass that implements CardInterface
      */
     public function __construct(string $cardClass = Card::class)
@@ -78,7 +77,7 @@ class CardDeck
 
     /**
      * Add a card to the deck
-     * 
+     *
      * @param CardInterface $card - with CardInterface implementation
      */
     protected function add(CardInterface $card): void
@@ -116,12 +115,12 @@ class CardDeck
     public function sort(): void
     {
         // sort by ranks ascending (2-14)
-        usort($this->cards, function($a, $b) {
+        usort($this->cards, function ($a, $b) {
             return $a->getRank() - $b->getRank();
         });
 
         // sort suits (♥, ♠, ♦, ♣)
-        usort($this->cards, function($a, $b) {
+        usort($this->cards, function ($a, $b) {
             $suitOrder = $a::VALID_SUITS; // array with the suits in right order
             $orderA = array_search($a->getSuit(), $suitOrder); // index 0-3
             $orderB = array_search($b->getSuit(), $suitOrder); // index 0-3
@@ -133,7 +132,7 @@ class CardDeck
 
     /**
      * Get count of remaining cards
-     * 
+     *
      * @return int - the count
      */
     public function getCount(): int
@@ -145,7 +144,7 @@ class CardDeck
 
     /**
      * Get representation of all cards
-     * 
+     *
      * @return array - array of strings
      */
     public function getAsString(): array

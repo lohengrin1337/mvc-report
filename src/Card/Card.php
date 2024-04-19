@@ -2,7 +2,6 @@
 
 namespace App\Card;
 
-
 /**
  * Class for playing cards
  */
@@ -64,7 +63,7 @@ class Card implements CardInterface
 
     /**
      * Validate suite and rank arguments
-     * 
+     *
      * @throws InvalidArgumentException - if one not valid
      * @return bool - true if both valid
      */
@@ -85,10 +84,10 @@ class Card implements CardInterface
     /**
      * Constructor
      * Assign valid suit and rank to card
-     * 
+     *
      * @var string $suit - category (♥, ♠, ♦, ♣, plus joker)
      * @var int $rank - value (2 - 14, plus 0)
-     * 
+     *
      * @throws InvalidArgumentException - if invalid args
      */
     public function __construct(string $suit, int $rank)
@@ -112,7 +111,7 @@ class Card implements CardInterface
 
     // /**
     //  * Get array of valid suits
-    //  * 
+    //  *
     //  * @return array - the suits
     //  */
     // public static function getValidSuits(): array
@@ -124,7 +123,7 @@ class Card implements CardInterface
 
     // /**
     //  * Get array of valid ranks
-    //  * 
+    //  *
     //  * @return array - the ranks
     //  */
     // public static function getValidRanks(): array
@@ -136,7 +135,7 @@ class Card implements CardInterface
 
     /**
      * Get suit (♥, ♠, ♦, ♣, or joker)
-     * 
+     *
      * @return string - the suit
      */
     public function getSuit(): string
@@ -148,7 +147,7 @@ class Card implements CardInterface
 
     /**
      * Get rank (2 - 14, or 0)
-     * 
+     *
      * @return int - the rank
      */
     public function getRank(): int
@@ -160,7 +159,7 @@ class Card implements CardInterface
 
     /**
      * Get card represented as string
-     * 
+     *
      * @return string - representation [♥5]
      */
     public function getAsString(): string

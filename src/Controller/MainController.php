@@ -151,8 +151,7 @@ class MainController extends AbstractController
     public function sessionDelete(
         Request $request,
         SessionInterface $session
-        ): Response
-    {
+    ): Response {
         if ($request->request->get("session_delete") === "true") {
             // destroy session and set data["session"] to null
             $session->invalidate();

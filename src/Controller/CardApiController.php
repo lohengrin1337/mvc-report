@@ -81,8 +81,7 @@ class CardApiController extends AbstractController
     public function apiDeckDraw(
         Request $request,
         SessionInterface $session
-        ): JsonResponse
-    {
+    ): JsonResponse {
         $number = $request->request->get("number") ?? 1;
         // $number = $request->request->get("number") ?? null;
         // if (!$number) {
@@ -114,8 +113,7 @@ class CardApiController extends AbstractController
     public function apiDeckDeal(
         Request $request,
         SessionInterface $session
-        ): JsonResponse
-    {
+    ): JsonResponse {
         $players = $request->request->get("players") ?? null;
         if (!$players) {
             throw new \Exception("Antal spelare saknades i request (POST) '/api/deck/deal'");

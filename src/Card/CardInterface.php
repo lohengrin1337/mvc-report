@@ -2,7 +2,6 @@
 
 namespace App\Card;
 
-
 /**
  * Card interface
  */

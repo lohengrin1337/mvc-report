@@ -11,8 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-
-
 /**
  * Controller class with routes for card assignment
  */
@@ -47,7 +45,7 @@ class CardController extends AbstractController
      * Draw a number of cards from deck to hand
      * Set string representation of the hand to data["cardDraw"]
      * Set card count of deck to data["deckCount"]
-     * 
+     *
      * @param CardDeck $deck - a CardDeck instance
      * @param CardHand $hand - a CardHand instance
      * @param int $num - a number of cards to draw
@@ -150,8 +148,7 @@ class CardController extends AbstractController
     public function deckDrawNum(
         int $number,
         SessionInterface $session
-        ): Response
-    {
+    ): Response {
         $this->data["pageTitle"] = "Dra {$number} kort";
 
         $deck = $session->get("card_deck") ?? null;
@@ -171,8 +168,7 @@ class CardController extends AbstractController
         int $players,
         int $cards,
         SessionInterface $session
-        ): Response
-    {
+    ): Response {
         $this->data["pageTitle"] = "Dra {$cards} kort till {$players} spelare";
 
         $deck = $session->get("card_deck") ?? null;
