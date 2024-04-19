@@ -395,7 +395,7 @@ body {
   flex: 1 0 auto;
   padding: 2.8rem;
   display: flex;
-  flex-wrap: wrap;
+  gap: 2.8rem;
 }
 
 .main {
@@ -779,17 +779,22 @@ picture {
 @media (max-width: 1150px) {
   .content-wrapper {
     flex-direction: column;
+    gap: 1.4rem;
+  }
+  .main {
+    flex: 1 0 auto;
   }
   .aside-bottom {
+    flex: 0 0 auto;
     max-width: 700px;
     margin: 0 auto;
-    margin-top: 2.8rem;
   }
   .aside-top {
-    max-width: 700px;
-    margin: 0 auto;
-    margin-bottom: 1.4rem;
+    flex: 0 0 auto;
+    max-width: 100%;
     order: -1;
+    display: flex;
+    justify-content: right;
   }
   .aside-top h2 {
     display: none;

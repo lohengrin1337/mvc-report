@@ -28,7 +28,8 @@ body {
     flex: 1 0 auto;
     padding: var.$baseline-x2;
     display: flex;
-    flex-wrap: wrap;
+    gap: var.$baseline-x2;
+    // flex-wrap: wrap;
     // gap: var.$baseline-x2;
 }
 
