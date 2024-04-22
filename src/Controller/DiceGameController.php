@@ -22,7 +22,7 @@ class DiceGameController extends AbstractController
 
 
     /**
-     * @var array $data - data for templates
+     * @var array<string,mixed> $data - data for templates
      */
     private array $data = [];
 
@@ -204,7 +204,7 @@ class DiceGameController extends AbstractController
         // zero round score
         $session->set("pig_round", 0);
 
-        // reset dicehand
+        /** @var DiceHand $dicehand */
         $dicehand = $session->get("pig_dicehand");
         $dicehand->reset();
         $session->set("pig_dicehand", $dicehand);

@@ -28,7 +28,7 @@ class CardApiController extends AbstractController
      * Set new JsonResponse with data
      * Update $this->response
      *
-     * @param array $data - data to put in the JsonResponse
+     * @param array<string,mixed> $data - data to put in the JsonResponse
      */
     private function setResponse(array $data): void
     {
@@ -95,7 +95,7 @@ class CardApiController extends AbstractController
         }
 
         $hand = new CardHand();
-        $hand->draw($deck, $number);
+        $hand->draw($deck, (int) $number);
         $session->set("card_deck", $deck);
 
         $data = [
@@ -131,7 +131,7 @@ class CardApiController extends AbstractController
         $data = [];
         for ($i = 1; $i <= $players; $i++) {
             $hand = new CardHand();
-            $hand->draw($deck, $cards);
+            $hand->draw($deck, (int) $cards);
             $data["Player {$i}"] = $hand->getAsString();
         }
         $data["deckCount"] = $deck->getCount();

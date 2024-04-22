@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CardController extends AbstractController
 {
     /**
-     * @var array $data - template data
+     * @var array<string,mixed> $data - template data
      */
     private $data;
 

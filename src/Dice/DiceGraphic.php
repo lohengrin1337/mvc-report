@@ -9,7 +9,7 @@ namespace App\Dice;
 class DiceGraphic extends Dice
 {
     /**
-     * @var array GRAPHIC - a graphic representation of a 6 sided die
+     * @var string[] GRAPHIC - a graphic representation of a 6 sided die
      */
     private const GRAPHIC = [
         '⚀',

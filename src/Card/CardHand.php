@@ -8,7 +8,7 @@ namespace App\Card;
 class CardHand
 {
     /**
-     * @var array $cards - an array with Card objects
+     * @var CardInterface[] $cards - an array with Card objects
      */
     private array $cards = [];
 
@@ -48,7 +48,7 @@ class CardHand
     /**
      * Get all cards in hand as array of string representations
      *
-     * @return array - the strings in array
+     * @return string[] - the strings in array
      */
     public function getAsString(): array
     {

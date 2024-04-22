@@ -55,9 +55,9 @@ class Dice
     /**
      * Get current die value
      *
-     * @return int the value
+     * @return ?int the value
      */
-    public function getValue(): int
+    public function getValue(): ?int
     {
         return $this->value;
     }

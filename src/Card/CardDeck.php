@@ -2,13 +2,15 @@
 
 namespace App\Card;
 
+use \InvalidArgumentException as InvalidArgEx;
+
 /**
  * Class for deck of playing cards
  */
 class CardDeck
 {
     /**
-     * @var array $cards - the Card classes
+     * @var CardInterface[] $cards - the Card classes
      */
     protected array $cards;
 
@@ -32,6 +34,11 @@ class CardDeck
 
 
 
+    /**
+     * Get all valid suits
+     * 
+     * @return string[] - the suits
+     */
     public static function allSuits(): array
     {
         return [
@@ -44,6 +51,11 @@ class CardDeck
 
 
 
+    /**
+     * Get all valid ranks
+     * 
+     * @return int[] - the ranks
+     */
     public static function allRanks(): array
     {
         return array_merge(range(1, 13));
@@ -59,6 +71,10 @@ class CardDeck
      */
     public function __construct(string $cardClass = Card::class)
     {
+        if (!is_a($cardClass, CardInterface::class, true)) {
+            throw new InvalidArgEx("$cardClass must implement CardInterface");
+        }
+
         $suits = self::allSuits();
         $ranks = self::allRanks();
 
@@ -121,10 +137,12 @@ class CardDeck
 
         // sort suits (♥, ♠, ♦, ♣)
         usort($this->cards, function ($cardA, $cardB) {
-            $suitOrder = $cardA::VALID_SUITS; // array with the suits in right order
+            $suitOrder = self::allSuits(); // array with the suits in right order
             $orderA = array_search($cardA->getSuit(), $suitOrder); // index 0-3
             $orderB = array_search($cardB->getSuit(), $suitOrder); // index 0-3
-            return $orderA - $orderB;
+
+            // typecasting to make phpstan happy (array_search should not be returning false) 
+            return (int) $orderA - (int) $orderB;
         });
     }
 
@@ -145,7 +163,7 @@ class CardDeck
     /**
      * Get representation of all cards
      *
-     * @return array - array of strings
+     * @return string[] - array of strings
      */
     public function getAsString(): array
     {

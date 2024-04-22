@@ -11,6 +11,9 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ApiController extends AbstractController
 {
+    /**
+     * @var string[]
+     */
     private const QUOTES = [
         "&quot;The trouble with having an open mind, of course,"
         . "is that people will insist on coming along and trying to put things in it.&quot;"
@@ -27,6 +30,9 @@ class ApiController extends AbstractController
         . " - Carl Sandburg"
     ];
 
+    /**
+     * @var array<string,mixed>
+     */
     private array $data;
 
     private JSONResponse $response;

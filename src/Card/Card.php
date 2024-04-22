@@ -10,7 +10,7 @@ use \InvalidArgumentException as InvalidArgEx;
 class Card implements CardInterface
 {
     /**
-     * @var array VALID_SUITS - the accepted categories
+     * @var string[] VALID_SUITS - the accepted categories
      */
     public const VALID_SUITS = [
         "hearts",
@@ -20,7 +20,7 @@ class Card implements CardInterface
     ];
 
     /**
-     * @var array VALID_RANKS - the accepted values. (0 for joker)
+     * @var int[] VALID_RANKS - the accepted values. (0 for joker)
      */
     public const VALID_RANKS = [
         1,
@@ -39,7 +39,7 @@ class Card implements CardInterface
     ];
 
     /**
-     * @var array DEF_REPR - default representation
+     * @var array<string|int,string> DEF_REPR - default representation
      */
     public const DEF_REPR = [
         "hearts" => "♥",
@@ -66,7 +66,7 @@ class Card implements CardInterface
     /**
      * Validate suite and rank arguments
      *
-     * @throws InvalidArgumentException - if one not valid
+     * @throws InvalidArgEx - if one not valid
      * @return bool - true if both valid
      */
     protected static function validateSuiteAndRank(string $suit, int $rank): bool
@@ -87,10 +87,8 @@ class Card implements CardInterface
      * Constructor
      * Assign valid suit and rank to card
      *
-     * @var string $suit - category (♥, ♠, ♦, ♣, plus joker)
-     * @var int $rank - value (2 - 14, plus 0)
-     *
-     * @throws InvalidArgumentException - if invalid args
+     * @param string $suit - category (♥, ♠, ♦, ♣, plus joker)
+     * @param int $rank - value (2 - 14, plus 0)
      */
     public function __construct(string $suit, int $rank)
     {

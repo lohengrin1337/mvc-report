@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     * @var array $data
+     * @var array<string,mixed> $data
      */
     public $data;
 
@@ -40,7 +40,7 @@ class MainController extends AbstractController
      *
      * @return void
      */
-    private function updateLuckyNum()
+    private function updateLuckyNum(): void
     {
         session_name("oljn22");
         session_start();
@@ -65,8 +65,9 @@ class MainController extends AbstractController
      *
      * @return void
      */
-    private function updateLuckyCredits()
+    private function updateLuckyCredits(): void
     {
+        /** @var int $num */
         $num = $this->data["luckyNum"];
         $filePath = "img/lucky/{$num}/credits.txt";
         $fileContent = "";
@@ -82,7 +83,7 @@ class MainController extends AbstractController
 
 
     #[Route('/', name: "home")]
-    public function home()
+    public function home(): Response
     {
         $this->data["pageTitle"] = "Hem";
 
@@ -92,7 +93,7 @@ class MainController extends AbstractController
 
 
     #[Route('/about', name: "about")]
-    public function about()
+    public function about(): Response
     {
         $this->data["pageTitle"] = "Om";
 
@@ -102,7 +103,7 @@ class MainController extends AbstractController
 
 
     #[Route('/report', name: "report")]
-    public function report()
+    public function report(): Response
     {
         $this->data["pageTitle"] = "Redovisning";
 
@@ -112,7 +113,7 @@ class MainController extends AbstractController
 
 
     #[Route('/lucky', name: "lucky")]
-    public function lucky()
+    public function lucky(): Response
     {
         $this->data["pageTitle"] = "Lyckobild";
 
@@ -126,7 +127,7 @@ class MainController extends AbstractController
 
 
     #[Route('/api', name: "api")]
-    public function api()
+    public function api(): Response
     {
         $this->data["pageTitle"] = "API";
 

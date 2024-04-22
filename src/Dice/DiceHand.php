@@ -8,7 +8,7 @@ namespace App\Dice;
 class DiceHand
 {
     /**
-     * @var array $hand - a dice hand
+     * @var Dice[] $hand - a dice hand
      */
     private array $hand = [];
 
@@ -51,7 +51,7 @@ class DiceHand
     /**
      * Get the dice values
      *
-     * @return array - the values
+     * @return array<?int> - the values
      */
     public function getValues(): array
     {
@@ -69,7 +69,7 @@ class DiceHand
     /**
      * Get the dice values as strings
      *
-     * @return array - the string values
+     * @return string[] - the string values
      */
     public function getStringValues(): array
     {
