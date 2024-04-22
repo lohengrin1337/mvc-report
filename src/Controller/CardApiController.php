@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Card\CardDeck;
 use App\Card\CardHand;
 use App\Card\Card;
-use \Exception;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

@@ -2,7 +2,7 @@
 
 namespace App\Card;
 
-use \InvalidArgumentException as InvalidArgEx;
+use InvalidArgumentException as InvalidArgEx;
 
 /**
  * Class for deck of playing cards
@@ -36,7 +36,7 @@ class CardDeck
 
     /**
      * Get all valid suits
-     * 
+     *
      * @return string[] - the suits
      */
     public static function allSuits(): array
@@ -53,7 +53,7 @@ class CardDeck
 
     /**
      * Get all valid ranks
-     * 
+     *
      * @return int[] - the ranks
      */
     public static function allRanks(): array
@@ -141,7 +141,7 @@ class CardDeck
             $orderA = array_search($cardA->getSuit(), $suitOrder); // index 0-3
             $orderB = array_search($cardB->getSuit(), $suitOrder); // index 0-3
 
-            // typecasting to make phpstan happy (array_search should not be returning false) 
+            // typecasting to make phpstan happy (array_search should not be returning false)
             return (int) $orderA - (int) $orderB;
         });
     }

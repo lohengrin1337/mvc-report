@@ -2,7 +2,7 @@
 
 namespace App\Card;
 
-use \InvalidArgumentException as InvalidArgEx;
+use InvalidArgumentException as InvalidArgEx;
 
 /**
  * Class for playing cards

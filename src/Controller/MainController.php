@@ -155,13 +155,13 @@ class MainController extends AbstractController
         SessionInterface $session
     ): Response {
         // Verify session delete form is submitted
-        $sessionDelete = $request->request->get("session_delete") === "true"?: false;
+        $sessionDelete = $request->request->get("session_delete") === "true" ?: false;
         if (!$sessionDelete) {
             $this->addFlash(
                 'warning',
                 'Ett okänt fel inträffade när sessionen skulle raderas!'
             );
-    
+
             return $this->redirectToRoute("session");
         }
 
