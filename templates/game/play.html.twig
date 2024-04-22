@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <h1>{{ pageTitle }}</h1>
+
+
+        <form method="post" action="{{ path('game_init') }}">
+            <button
+                class="button btn-api"
+                type="submit"
+                name="restart"
+                value="true"
+            >Starta om spel</button>
+        </form>
+    </main>
+
+    <div class="aside aside-top">
+        {{ include('game/_nav.html.twig') }}
+    </div>
+{% endblock %}
