@@ -45,15 +45,16 @@ class MainController extends AbstractController
         session_name("oljn22");
         session_start();
 
-        if (!isset($_SESSION["lucky_num"])) {
-            // set random int 0-4
-            $_SESSION["lucky_num"] = random_int(0, 4);
-        } else {
-            // continue loop 0-4
-            $_SESSION["lucky_num"] = ($_SESSION["lucky_num"] + 1) % 5;
+        $luckyNum = $_SESSION["lucky_num"] ?? null;
+        if (!$luckyNum) {
+            $luckyNum = random_int(0, 4);
         }
 
-        $this->data["luckyNum"] = $_SESSION["lucky_num"];
+        // loop numbers 0-4
+        $luckyNum = ($luckyNum + 1) % 5;
+
+        $_SESSION["lucky_num"] = $luckyNum;
+        $this->data["luckyNum"] = $luckyNum;
     }
 
 
@@ -152,21 +153,25 @@ class MainController extends AbstractController
         Request $request,
         SessionInterface $session
     ): Response {
-        if ($request->request->get("session_delete") === "true") {
-            // destroy session and set data["session"] to null
-            $session->invalidate();
-            $this->data["session"] = null;
-
-            $this->addFlash(
-                'notice',
-                'Sessionen har raderats!'
-            );
-        } else {
+        // Verify session delete form is submitted
+        $sessionDelete = $request->request->get("session_delete") === "true"?: false;
+        if (!$sessionDelete) {
             $this->addFlash(
                 'warning',
                 'Ett okänt fel inträffade när sessionen skulle raderas!'
             );
+    
+            return $this->redirectToRoute("session");
         }
+
+        // destroy session and set data["session"] to null
+        $session->invalidate();
+        $this->data["session"] = null;
+
+        $this->addFlash(
+            'notice',
+            'Sessionen har raderats!'
+        );
 
         return $this->redirectToRoute("session");
     }

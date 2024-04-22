@@ -18,6 +18,10 @@
     <rule ref="rulesets/cleancode.xml" />
     <rule ref="rulesets/codesize.xml" />
     <rule ref="rulesets/controversial.xml"/>
+        <properties>
+            <property name="exceptions" value="$_SESSION" />
+        </properties>
+    </rule>
 
     <rule ref="rulesets/naming.xml" />
     <rule ref="rulesets/naming.xml/ShortVariable">

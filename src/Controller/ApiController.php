@@ -56,8 +56,8 @@ class ApiController extends AbstractController
      */
     private function updateQuote(): void
     {
-        $i = random_int(0, 4);
-        $quote = self::QUOTES[$i];
+        $index = random_int(0, 4);
+        $quote = self::QUOTES[$index];
 
         $this->data["quote"] = $quote;
     }

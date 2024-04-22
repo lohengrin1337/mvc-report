@@ -2,6 +2,8 @@
 
 namespace App\Card;
 
+use \InvalidArgumentException as InvalidArgEx;
+
 /**
  * Class for playing cards
  */
@@ -70,10 +72,10 @@ class Card implements CardInterface
     protected static function validateSuiteAndRank(string $suit, int $rank): bool
     {
         if (!in_array($suit, self::VALID_SUITS)) {
-            throw new \InvalidArgumentException("Invalid suit provided!");
+            throw new InvalidArgEx("Invalid suit provided!");
         }
         if (!in_array($rank, self::VALID_RANKS)) {
-            throw new \InvalidArgumentException("Invalid rank provided!");
+            throw new InvalidArgEx("Invalid rank provided!");
         }
 
         return true;
@@ -166,12 +168,9 @@ class Card implements CardInterface
     {
         $suitRepr = self::DEF_REPR[$this->suit];
 
+        $rankRepr = (string) $this->rank;
         if (array_key_exists($this->rank, self::DEF_REPR)) {
             $rankRepr = self::DEF_REPR[$this->rank];
-        } elseif ($this->rank === 0) {
-            $rankRepr = "";
-        } else {
-            $rankRepr = (string) $this->rank;
         }
 
         return "[{$suitRepr}{$rankRepr}]";

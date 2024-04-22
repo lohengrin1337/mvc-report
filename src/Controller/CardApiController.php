@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Card\CardDeck;
 use App\Card\CardHand;
 use App\Card\Card;
+use \Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -85,7 +86,7 @@ class CardApiController extends AbstractController
         $number = $request->request->get("number") ?? 1;
         // $number = $request->request->get("number") ?? null;
         // if (!$number) {
-        //     throw new \Exception("Antal kort saknades i request (POST) '/api/deck/draw'");
+        //     throw new Exception("Antal kort saknades i request (POST) '/api/deck/draw'");
         // }
 
         $deck = $session->get("card_deck") ?? null;
@@ -116,11 +117,11 @@ class CardApiController extends AbstractController
     ): JsonResponse {
         $players = $request->request->get("players") ?? null;
         if (!$players) {
-            throw new \Exception("Antal spelare saknades i request (POST) '/api/deck/deal'");
+            throw new Exception("Antal spelare saknades i request (POST) '/api/deck/deal'");
         }
         $cards = $request->request->get("cards") ?? null;
         if (!$cards) {
-            throw new \Exception("Antal kort saknades i request (POST) '/api/deck/deal'");
+            throw new Exception("Antal kort saknades i request (POST) '/api/deck/deal'");
         }
         $deck = $session->get("deck") ?? null;
         if (!$deck) {

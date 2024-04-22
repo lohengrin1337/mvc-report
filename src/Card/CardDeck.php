@@ -115,15 +115,15 @@ class CardDeck
     public function sort(): void
     {
         // sort by ranks ascending (2-14)
-        usort($this->cards, function ($a, $b) {
-            return $a->getRank() - $b->getRank();
+        usort($this->cards, function ($cardA, $cardB) {
+            return $cardA->getRank() - $cardB->getRank();
         });
 
         // sort suits (♥, ♠, ♦, ♣)
-        usort($this->cards, function ($a, $b) {
-            $suitOrder = $a::VALID_SUITS; // array with the suits in right order
-            $orderA = array_search($a->getSuit(), $suitOrder); // index 0-3
-            $orderB = array_search($b->getSuit(), $suitOrder); // index 0-3
+        usort($this->cards, function ($cardA, $cardB) {
+            $suitOrder = $cardA::VALID_SUITS; // array with the suits in right order
+            $orderA = array_search($cardA->getSuit(), $suitOrder); // index 0-3
+            $orderB = array_search($cardB->getSuit(), $suitOrder); // index 0-3
             return $orderA - $orderB;
         });
     }

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Dice\Dice;
 use App\Dice\DiceGraphic;
 use App\Dice\DiceHand;
+use \Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -70,7 +71,7 @@ class DiceGameController extends AbstractController
         $this->data["pageTitle"] = "Kasta Gris - Testa tärning";
 
         if ($num > 99) {
-            throw new \Exception("Max antal tärningar är 99!");
+            throw new Exception("Max antal tärningar är 99!");
         }
 
         $die = new DiceGraphic();
@@ -93,16 +94,13 @@ class DiceGameController extends AbstractController
         $this->data["pageTitle"] = "Kasta Gris - Testa tärningshand";
 
         if ($num > 99) {
-            throw new \Exception("Max antal tärningar är 99!");
+            throw new Exception("Max antal tärningar är 99!");
         }
 
         $hand = new DiceHand();
         for ($i = 0; $i < $num; $i++) {
-            if ($i % 2 === 1) {
-                $hand->add(new DiceGraphic());
-            } else {
-                $hand->add(new Dice());
-            }
+            // Add DiceGraphic when $i is odd, Dice when $i is even
+            $hand->add($i % 2 === 1 ? new DiceGraphic() : new Dice());
         }
 
         $hand->roll();
@@ -171,22 +169,22 @@ class DiceGameController extends AbstractController
         $dicehand = $session->get("pig_dicehand");
         $dicehand->roll();
         $diceValues = $dicehand->getValues();
+        $session->set("pig_dicehand", $dicehand);
 
         if (in_array(self::FAIL_VALUE, $diceValues)) {
             $session->set("pig_round", 0);
 
-            // flash message
             $this->addFlash(
                 'warning',
                 'Du slog en 1:a, och förlorar därmed rundans poäng!'
             );
-        } else {
-            $currentRoundSum = $session->get("pig_round");
-            $diceSum = $dicehand->getSum();
-            $session->set("pig_round", $currentRoundSum + $diceSum);
+
+            return $this->redirectToRoute("pig_play");
         }
 
-        $session->set("pig_dicehand", $dicehand);
+        $currentRoundSum = $session->get("pig_round");
+        $diceSum = $dicehand->getSum();
+        $session->set("pig_round", $currentRoundSum + $diceSum);
 
         return $this->redirectToRoute("pig_play");
     }

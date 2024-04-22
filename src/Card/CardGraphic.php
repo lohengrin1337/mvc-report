@@ -39,12 +39,9 @@ class CardGraphic extends Card
 
         $utf8Mid = self::UTF8_MID[$this->suit];
 
+        $utf8End = (string) $this->rank;
         if (array_key_exists($this->rank, self::UTF8_END)) {
             $utf8End = self::UTF8_END[$this->rank];
-        } elseif ($this->rank === 0) {
-            $utf8End = "";
-        } else {
-            $utf8End = (string) $this->rank;
         }
 
         return $utf8Start . $utf8Mid . $utf8End;
