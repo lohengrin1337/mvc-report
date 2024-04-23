@@ -5,7 +5,7 @@ INIT Game
 
 WHILE Player doesnt stop
     Player draws 1 card from deck
-    SHOW card
+    SHOW cards
     SHOW SUM of hand
     SHOW deck count
     IF SUM > 21 THEN
@@ -15,7 +15,7 @@ END WHILE
 
 WHILE Bank doesnt stop
     Bank draws 1 card from deck
-    SHOW card
+    SHOW cards
     SHOW SUM of hand
     SHOW deck count
     IF SUM > 21 THEN

@@ -1,15 +1,23 @@
 @use "variables" as var;
 
 .cards {
+    width: 100%;
     display: flex;
     flex-flow: row wrap;
     gap: var.$baseline;
-    margin-bottom: var.$baseline-x2;
+    // margin-bottom: var.$baseline-x2;
+    margin-bottom: var.$baseline;
+    // padding: var.$baseline;
+
+    .right {
+        margin-left: auto;
+    }
 }
 
 .card {
     font-size: 100px;
-    margin-bottom: -40px;
+    // margin-bottom: -40px;
+    margin-bottom: -20px;
 }
 
 

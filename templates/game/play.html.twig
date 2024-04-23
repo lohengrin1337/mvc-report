@@ -1,13 +1,50 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <main class="main text-container">
+    <main class="main">
         <h1>{{ pageTitle }}</h1>
 
+        <div class="container-game-board-21">
+            <div class="cards">
+                {% for card in playerHand %}
+                <span class="card">{{ card|raw }}</span>
+                {% endfor %}
+
+                <span class="header-m right">summa: {{ playerSum }}</span>
+            </div>
+
+            <div class="container-game-middle">
+                <form method="post" action="{{ path('game_draw') }}">
+                    <button
+                        class="button"
+                        type="submit"
+                        name="draw"
+                        value="true"
+                    >Dra kort</button>
+                </form>
+
+                <span class="card">{{ cardBack|raw }}</span>
+
+                <form method="post" action="{{ path('game_stop') }}">
+                    <button
+                        class="button"
+                        type="submit"
+                        name="stop"
+                        value="true"
+                    >Stanna</button>
+                </form>
+            </div>
+
+            <div class="cards">
+                {% for card in bankHand %}
+                <span class="card">{{ card|raw }}</span>
+                {% endfor %}
+            </div>
+        </div>
 
         <form method="post" action="{{ path('game_init') }}">
             <button
-                class="button btn-api"
+                class="button"
                 type="submit"
                 name="restart"
                 value="true"
