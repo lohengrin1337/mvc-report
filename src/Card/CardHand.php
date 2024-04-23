@@ -46,6 +46,23 @@ class CardHand
 
 
     /**
+     * Get sum of ranks for cards
+     * 
+     * @return int - the sum
+     */
+    public function rankSum(): int
+    {
+        $sum = 0;
+        foreach ($this->cards as $card) {
+            $sum += $card->getRank();
+        }
+
+        return $sum;
+    }
+
+
+
+    /**
      * Get all cards in hand as array of string representations
      *
      * @return string[] - the strings in array
