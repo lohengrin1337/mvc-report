@@ -65,6 +65,8 @@ class CardDeck
             foreach (self::allRanks() as $rank) {
                 $this->add(new $cardClass($suit, $rank));
             }
+
+        $this->shuffle();
         }
     }
 
