@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <h1>{{ pageTitle }}</h1>
+
+        {{ include('game/content/doc.md')|markdown_to_html }}
+
+    </main>
+
+    <div class="aside aside-top">
+        {{ include('game/_nav.html.twig') }}
+    </div>
+{% endblock %}

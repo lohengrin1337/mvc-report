@@ -67,4 +67,14 @@ class GameController extends AbstractController
 
         return $this->render("game/play.html.twig", $this->data);
     }
+
+
+
+    #[Route("/game/doc", name: "game_doc", methods: ["GET"])]
+    public function gameDoc(): Response
+    {
+        $this->data["pageTitle"] = "Dokumentation";
+
+        return $this->render("game/doc.html.twig", $this->data);
+    }
 }
