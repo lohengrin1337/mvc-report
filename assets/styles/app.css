@@ -451,18 +451,18 @@ pre code {
   margin: 0;
 }
 
-.site-header .site-title {
-  font-size: 2.8561rem;
-  font-weight: 700;
-  text-transform: lowercase;
-}
-.site-header .nav a {
+.aside li, .site-header .nav a {
   font-size: 1.69rem;
   font-weight: 300;
   color: #C7942E;
   text-transform: lowercase;
 }
 
+.site-header .site-title {
+  font-size: 2.8561rem;
+  font-weight: 700;
+  text-transform: lowercase;
+}
 .footer {
   text-transform: lowercase;
 }
@@ -475,6 +475,10 @@ pre code {
   line-height: 1.4;
   letter-spacing: 0.08em;
   color: #fff;
+}
+
+.aside li {
+  font-size: 1.3rem;
 }
 
 .text-container {
@@ -543,6 +547,10 @@ ul {
 li {
   list-style: none;
   margin-bottom: 0.7rem;
+}
+
+.margin-b {
+  margin-bottom: 1.4rem;
 }
 
 .img {
@@ -724,6 +732,13 @@ picture {
   gap: 1.4rem;
 }
 
+.container-frame {
+  padding: 1.4rem;
+  border: 1px solid #A17317;
+  border-radius: 5px;
+  margin-bottom: 1.4rem;
+}
+
 @media (max-width: 900px) {
   .nav ul {
     gap: 0.7rem;
@@ -789,6 +804,9 @@ picture {
     max-width: 700px;
     margin: 0 auto;
   }
+  .aside-bottom li {
+    margin: 0;
+  }
   .aside-top {
     flex: 0 0 auto;
     max-width: 100%;
@@ -804,6 +822,9 @@ picture {
     flex-flow: row wrap;
     gap: 1.4rem;
   }
+  .aside-top li {
+    margin: 0;
+  }
 }
 @media (max-width: 900px) {
   .header .site-title {
@@ -813,6 +834,9 @@ picture {
     font-size: 1.44rem;
   }
   .footer * {
+    font-size: 1.2rem;
+  }
+  .aside li {
     font-size: 1.2rem;
   }
   h1 {

@@ -26,6 +26,10 @@
         flex: 0 0 auto;
         max-width: 700px;
         margin: 0 auto;
+
+        li {
+            margin: 0;
+        }
         // margin-top: var.$baseline-x2;
     }
 
@@ -47,6 +51,10 @@
             display: flex;
             flex-flow: row wrap;
             gap: var.$baseline;
+        }
+
+        li {
+            margin: 0;
         }
 
     }

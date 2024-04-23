@@ -1,5 +1,4 @@
 <h2 class="header-lg">Länkar</h2>
 
-[Kursens repo på GitHub](https://github.com/dbwebb-se/mvc)
-
-[Mitt eget repo på GitHub](https://github.com/lohengrin1337/mvc-report)
+- [GitHub - dbwebb-mvc](https://github.com/dbwebb-se/mvc)
+- [GitHub - denna sida](https://github.com/lohengrin1337/mvc-report)

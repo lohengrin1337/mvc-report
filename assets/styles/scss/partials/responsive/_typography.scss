@@ -18,6 +18,10 @@
         }
     }
 
+    .aside li {
+        font-size: calc(1rem * math.pow(var.$scale-factor-mobile, 1));
+    }
+
     h1 {
         font-size: calc(1rem * math.pow(var.$scale-factor-mobile, 4));
     }
