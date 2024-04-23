@@ -62,7 +62,7 @@ class GameController extends AbstractController
     {
         // init the game...
         // save to session
-        
+
         $game = new CardGame21(
             new CardDeck(CardGraphic::class),   // deck
             new CardHand(),                     // player hand
@@ -79,7 +79,7 @@ class GameController extends AbstractController
     #[Route("/game/play", name: "game_play", methods: ["GET"])]
     public function gamePlay(SessionInterface $session): Response
     {
-        $this->data["pageTitle"] = "Kortspelet 21 [SPELET RULLAR]";
+        $this->data["pageTitle"] = "Kortspelet 21 [SPEL PÅGÅR]";
 
         // get game from session if exists, else init
         $game = $session->get("game") ?? null;
@@ -87,25 +87,28 @@ class GameController extends AbstractController
             return $this->redirectToRoute("game_init"); // working??
         }
 
-        // var_dump($game);
+        $this->data = array_merge($this->data, $game->getState());
 
-        $this->data["cardBack"] = "&#x1f0a0";
-        $this->data["deckCount"] = 50;
-        $this->data["playerHand"] = ["&#x1f0b5", "&#x1f0b6"];
-        $this->data["bankHand"] = [];
-        $this->data["playerSum"] = 11;
-        $this->data["bankSum"] = 0;
-        // $this->data[""] = ;
+        if ($this->data["gameOver"]) {
+            $this->data["pageTitle"] = "Kortspelet 21 [SPEL AVSLUTAT]";
 
+            return $this->render("game/game_over.html.twig", $this->data);
+        }
         return $this->render("game/play.html.twig", $this->data);
     }
 
 
 
     #[Route("/game/play/draw", name: "game_draw", methods: ["POST"])]
-    public function gameDraw(): Response
+    public function gameDraw(SessionInterface $session): Response
     {
-        // Manage player draws a card
+        $game = $session->get("game") ?? null;
+        if (!$game) {
+            return $this->redirectToRoute("game_init");
+        }
+
+        $game->draw();
+        $session->set("game", $game);
 
         return $this->redirectToRoute("game_play");
     }
@@ -113,11 +116,18 @@ class GameController extends AbstractController
 
 
     #[Route("/game/play/stop", name: "game_stop", methods: ["POST"])]
-    public function gameStop(): Response
+    public function gameStop(SessionInterface $session): Response
     {
         // Manage player stops and saves hand
         // Manage bank plays
         // Manage end of game
+        $game = $session->get("game") ?? null;
+        if (!$game) {
+            return $this->redirectToRoute("game_init");
+        }
+
+        $game->playBank();
+        $session->set("game", $game);
 
         return $this->redirectToRoute("game_play"); // game_end template??
     }
