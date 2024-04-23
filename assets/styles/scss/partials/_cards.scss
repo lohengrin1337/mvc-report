@@ -2,22 +2,33 @@
 
 .cards {
     width: 100%;
+    min-height: 140px;
     display: flex;
     flex-flow: row wrap;
     gap: var.$baseline;
-    // margin-bottom: var.$baseline-x2;
     margin-bottom: var.$baseline;
-    // padding: var.$baseline;
-
-    .right {
-        margin-left: auto;
-    }
+    padding: var.$baseline-half;
+    border: 1px solid var.$border-black;
+    border-radius: 5px;
 }
 
 .card {
     font-size: 100px;
     // margin-bottom: -40px;
     margin-bottom: -20px;
+    position: relative;
+}
+
+.deck-count {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var.$color-yellow;
+    background-color: var.$bg-dark;
+    font-weight: 300;
+    border-radius: 50%;
+    padding: var.$baseline-quart;
 }
 
 
