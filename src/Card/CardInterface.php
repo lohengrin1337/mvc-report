@@ -25,4 +25,11 @@ interface CardInterface
      * @return string - representation
      */
     public function getAsString(): string;
+
+
+
+    /**
+     * @return string - representation of a card back
+     */
+    public static function getCardBack(): string;
 }

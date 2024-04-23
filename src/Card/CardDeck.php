@@ -11,26 +11,10 @@ class CardDeck
 {
     /**
      * @var CardInterface[] $cards - the Card classes
+     * @var string cardBack - Backside of a playing card
      */
     protected array $cards;
-
-
-
-    // /**
-    //  * Constructor
-    //  * Add 52 uniqe cards to the deck
-    //  */
-    // public function __construct()
-    // {
-    //     $suits = Card::VALID_SUITS;
-    //     $ranks = Card::VALID_RANKS;
-
-    //     foreach ($suits as $suit) {
-    //         foreach ($ranks as $rank) {
-    //             $this->add(new Card($suit, $rank));
-    //         }
-    //     }
-    // }
+    private string $cardBack;
 
 
 
@@ -69,24 +53,31 @@ class CardDeck
      *
      * @param string $cardClass - a valid cardClass that implements CardInterface
      */
-    public function __construct(string $cardClass = Card::class)
+    public function __construct(string $cardClass)
     {
         if (!is_a($cardClass, CardInterface::class, true)) {
             throw new InvalidArgEx("$cardClass must implement CardInterface");
         }
 
-        $suits = self::allSuits();
-        $ranks = self::allRanks();
+        $this->cardBack = $cardClass::getCardBack();
 
-        // var_dump($suits);
-        // var_dump($ranks);
-        // var_dump((new $cardClass("hearts", 6))->getAsString());
-
-        foreach ($suits as $suit) {
-            foreach ($ranks as $rank) {
+        foreach (self::allSuits() as $suit) {
+            foreach (self::allRanks() as $rank) {
                 $this->add(new $cardClass($suit, $rank));
             }
         }
+    }
+
+
+
+    /**
+     * Get card back
+     * 
+     * @return string - The backside of a card
+     */
+    public function getCardBack(): string
+    {
+        return $this->cardBack;
     }
 
 

@@ -52,14 +52,24 @@ class Card implements CardInterface
         1 => "A"
     ];
 
-
-
     /**
      * @var string $suit - category (♥, ♠, ♦, ♣, plus joker)
      * @var int $rank - value (2 - 14, plus 0)
      */
     protected string $suit;
     protected int $rank;
+
+
+
+    /**
+     * Get card back
+     *
+     * @return string - Backside of a playing card
+     */
+    public static function getCardBack(): string
+    {
+        return "[*]";
+    }
 
 
 

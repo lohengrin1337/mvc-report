@@ -29,6 +29,18 @@ class CardGraphic extends Card
 
 
     /**
+     * Get card back
+     *
+     * @return string - Backside of a playing card (utf-8 version)
+     */
+    public static function getCardBack(): string
+    {
+        return "&#x1f0a0";
+    }
+
+
+
+    /**
      * Get card represented as UTF8 card
      *
      * @return string - representation (&#x1f0de)
