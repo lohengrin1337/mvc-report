@@ -18,29 +18,7 @@
             </div>
 
             <div class="container-game-middle">
-                <form method="post" action="{{ path('game_draw') }}">
-                    <button
-                        class="button"
-                        type="submit"
-                        name="draw"
-                        value="true"
-                    >Dra kort</button>
-                </form>
-
-                <span class="card">
-                    {{ cardBack|raw }}
-                    <span class="header-m deck-count">{{ deckCount }}</span>
-                </span>
-                
-
-                <form method="post" action="{{ path('game_stop') }}">
-                    <button
-                        class="button"
-                        type="submit"
-                        name="stop"
-                        value="true"
-                    >Stanna</button>
-                </form>
+                <span class="header-m">VINNARE: {{ winner }}</span>
             </div>
 
             <div>
