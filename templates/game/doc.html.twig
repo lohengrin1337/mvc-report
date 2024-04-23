@@ -4,8 +4,20 @@
     <main class="main text-container">
         <h1>{{ pageTitle }}</h1>
 
-        {{ include('game/content/doc.md')|markdown_to_html }}
+        <div class="container margin-b-x2">
+            <h2>Flödesschema</h2>
+            <a href="{{ asset('img/uml/UML-flow-mvc-kmom03.svg') }}">
+                <img class="img" src="{{ asset('img/uml/UML-flow-mvc-kmom03.svg') }}" alt="UML klassdiagram">
+            </a>
+        </div>
 
+        <div class="container margin-b-x2">
+            {{ include('game/content/pseudocode.md')|markdown_to_html }}
+        </div>
+
+        <div class="container margin-b-x2">
+            {{ include('game/content/classes.md')|markdown_to_html }}
+        </div>
     </main>
 
     <div class="aside aside-top">
