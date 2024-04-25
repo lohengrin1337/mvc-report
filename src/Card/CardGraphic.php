@@ -23,7 +23,8 @@ class CardGraphic extends Card
         10 => "a",
         11 => "b",
         12 => "d",
-        13 => "e"
+        13 => "e",
+        14 => "1",
     ];
 
 
