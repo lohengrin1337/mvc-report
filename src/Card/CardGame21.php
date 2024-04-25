@@ -22,12 +22,14 @@ class CardGame21
      * @var CardDeck $deck - a deck of cards
      * @var CardHand $player - a cardhand for player
      * @var CardHand $bank - a cardhand for bank
+     * @var bool $lastCardIsAce - true if last drawn card is ace
      * @var bool $gameOver - default is false
      * @var ?string $winner - default is null
      */
     private CardDeck $deck;
     private CardHand $player;
     private CardHand $bank;
+    private bool $lastCardIsAce;
     private bool $gameOver;
     private ?string $winner;
 
@@ -36,13 +38,14 @@ class CardGame21
     /**
      * Constructor
      * Add deck, player hand and bank hand
-     * Set $gameOver to false
+     * Set $gameOver to false, lastCardIsAce to false and winner to null
      */
     public function __construct(CardDeck $deck, CardHand $player, CardHand $bank)
     {
         $this->deck = $deck;
         $this->player = $player;
         $this->bank = $bank;
+        $this->lastCardIsAce = false;
         $this->gameOver = false;
         $this->winner = null;
     }
@@ -62,6 +65,7 @@ class CardGame21
             "playerSum" => $this->player->rankSum(),
             "bankHand" => $this->bank->getAsString(),
             "bankSum" => $this->bank->rankSum(),
+            "lastCardIsAce" => $this->lastCardIsAce,
             "gameOver" => $this->gameOver,
             "winner" => $this->winner
         ];
@@ -77,26 +81,7 @@ class CardGame21
     {
         $this->player->draw($this->deck);
         $this->checkSum();
-    }
-
-
-
-
-    /**
-     * Bank plays until full or done
-     */
-    public function playBank(): void
-    {
-        while ($this->bank->rankSum() < self::BANK_STRATEGY_NUM) {
-            $this->bank->draw($this->deck);
-
-            // If bank exceeds MAX_SUM, player wins
-            if (!$this->checkSum()) {
-                return;
-            }
-        }
-
-        $this->endGame();
+        $this->setLastCardIsAce($this->player);
     }
 
 
@@ -121,6 +106,106 @@ class CardGame21
             return false;
         }
 
+        return true;
+    }
+
+
+
+    /**
+     * Check if last drawn card is an ace
+     * Set lastCardIsAce property
+     */
+    private function setLastCardIsAce(CardHand $hand): void
+    {
+        $this->lastCardIsAce = false; // initial value
+        $card = $hand->getLastCard();
+        if (!$card) {
+            return;
+        }
+
+        $rank = $card->getRank();
+        if ($rank === 1 || $rank === 14) {
+            $this->lastCardIsAce = true;
+        }
+    }
+
+
+
+    /**
+     * Set rank of players last card (ace)
+     * 
+     * @param int $aceRank - (1 or 14)
+     * @return bool - true if successful, else false
+     */
+    public function setAceRank($aceRank): bool
+    {
+        if (!$this->lastCardIsAce) {
+            return false;
+        }
+
+        $this->player->setLastCardRank($aceRank);
+        $this->checkSum();
+        $this->lastCardIsAce = false;
+        return true;
+    }
+
+
+
+    /**
+     * Bank plays until full or done
+     */
+    public function playBank(): void
+    {
+        while ($this->bank->rankSum() < self::BANK_STRATEGY_NUM) {
+            $this->bank->draw($this->deck);
+
+            // If bank exceeds MAX_SUM, player wins
+            if (!$this->checkSum()) {
+                return;
+            }
+
+            // choose values of ace
+            $this->setLastCardIsAce($this->bank);
+            if ($this->lastCardIsAce) {
+                $this->chooseAceRank();
+            }
+        }
+
+        $this->endGame();
+    }
+
+
+
+    /**
+     * Bank makes decision on ace rank (1 or 14)
+     * Set ace rank to 1 if new sum with ace = 14 would exceed MAX_SUM
+     */
+    private function chooseAceRank(): void
+    {
+        if ($this->bank->rankSum() + 13 > self::MAX_SUM) {
+            $this->setBankAceRank(1);
+            return;
+        }
+
+        $this->setBankAceRank(14);
+    }
+
+
+
+    /**
+     * Set rank of banks last card (ace)
+     * 
+     * @param int $aceRank - (1 or 14)
+     * @return bool - true if successful, else false
+     */
+    private function setBankAceRank($aceRank): bool
+    {
+        if (!$this->lastCardIsAce) {
+            return false;
+        }
+
+        $this->bank->setLastCardRank($aceRank);
+        $this->lastCardIsAce = false;
         return true;
     }
 
