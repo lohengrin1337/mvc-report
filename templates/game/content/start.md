@@ -1,5 +1,5 @@
 <p class="header-m margin-b">
-    Spelets går ut på att med två eller flera kort försöka uppnå det sammanlagda värdet 21,
+    Spelet går ut på att med två eller flera kort försöka uppnå det sammanlagda värdet 21,
     eller komma så nära som möjligt utan att överskrida 21.
 </p>
 
@@ -8,8 +8,8 @@
 En spelrunda kan se ut så här när en spelare spelar mot banken:
 </p>
 
-- Spelaren tar ett kort. Kortet visas.
-- Spelaren kan bestämma att stanna eller ta ytterligare ett kort.
+- Spelaren drar ett kort.
+- Spelaren kan bestämma att stanna eller dra ytterligare ett kort.
 - Om spelaren får över 21 vinner banken.
 - När spelaren stannar så är det bankens tur.
 - Banken är inte medveten om spelarens korthand.

@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main">
+        <h1>{{ pageTitle }}</h1>
+
+        <div class="container-game-board-21">
+            <div>
+                <span class="header-m">Spelare</span>
+                <span class="header-m right">summa: {{ playerSum }}</span>
+            </div>
+
+            
+            <div class="cards">
+                {% for card in playerHand %}
+                <span class="card">{{ card|raw }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="container-game-middle">
+                <form method="post" action="{{ path('game_set_ace') }}">
+                    <button
+                        class="button"
+                        type="submit"
+                        name="ace"
+                        value="1"
+                    >Ess = 1</button>
+                </form>
+
+                <span class="card">
+                    {{ cardBack|raw }}
+                    <span class="header-m deck-count">{{ deckCount }}</span>
+                </span>
+                
+
+                <form method="post" action="{{ path('game_set_ace') }}">
+                    <button
+                        class="button"
+                        type="submit"
+                        name="ace"
+                        value="14"
+                    >Ess = 14</button>
+                </form>
+            </div>
+
+            <div>
+                <span class="header-m">Bank</span>
+                <span class="header-m right">summa: {{ bankSum }}</span>
+            </div>
+
+            <div class="cards">
+                {% for card in bankHand %}
+                <span class="card">{{ card|raw }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <form method="post" action="{{ path('game_init') }}">
+            <button
+                class="button"
+                type="submit"
+                name="restart"
+                value="true"
+            >Starta om spel</button>
+        </form>
+    </main>
+
+    <div class="aside aside-top">
+        {{ include('game/_nav.html.twig') }}
+    </div>
+{% endblock %}
