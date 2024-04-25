@@ -60,9 +60,6 @@ class GameController extends AbstractController
     #[Route("/game/init", name: "game_init", methods: ["GET", "POST"])] // fine ??
     public function gameInit(SessionInterface $session): Response
     {
-        // init the game...
-        // save to session
-
         $game = new CardGame21(
             new CardDeck(CardGraphic::class),   // deck
             new CardHand(),                     // player hand
@@ -87,13 +84,20 @@ class GameController extends AbstractController
             return $this->redirectToRoute("game_init"); // working??
         }
 
+        // get the state of the game
         $this->data = array_merge($this->data, $game->getState());
 
         if ($this->data["gameOver"]) {
             $this->data["pageTitle"] = "Kortspelet 21 [SPEL AVSLUTAT]";
-
             return $this->render("game/game_over.html.twig", $this->data);
         }
+
+        if ($this->data["lastCardIsAce"]) {
+            $this->data["pageTitle"] = "Kortspelet 21 [VÄLJ VÄRDE PÅ ESS]";
+            $this->data["playerSum"] -= 1; // ace rank is 1 by default
+            return $this->render("game/ace.html.twig", $this->data);
+        }
+
         return $this->render("game/play.html.twig", $this->data);
     }
 
@@ -118,9 +122,6 @@ class GameController extends AbstractController
     #[Route("/game/play/stop", name: "game_stop", methods: ["POST"])]
     public function gameStop(SessionInterface $session): Response
     {
-        // Manage player stops and saves hand
-        // Manage bank plays
-        // Manage end of game
         $game = $session->get("game") ?? null;
         if (!$game) {
             return $this->redirectToRoute("game_init");
@@ -129,6 +130,26 @@ class GameController extends AbstractController
         $game->playBank();
         $session->set("game", $game);
 
-        return $this->redirectToRoute("game_play"); // game_end template??
+        return $this->redirectToRoute("game_play");
+    }
+
+
+
+    #[Route("/game/play/ace", name: "game_set_ace", methods: ["POST"])]
+    public function gameSetAce(
+        Request $request,
+        SessionInterface $session
+    ): Response
+    {
+        $aceRank = $request->request->get("ace") ?? null;
+        $game = $session->get("game") ?? null;
+        if (!$game || !$aceRank) {
+            return $this->redirectToRoute("game_init");
+        }
+
+        $game->setAceRank((int) $aceRank);
+        $session->set("game", $game);
+
+        return $this->redirectToRoute("game_play");
     }
 }
