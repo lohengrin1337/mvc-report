@@ -133,7 +133,7 @@ class CardGame21
 
     /**
      * Set rank of players last card (ace)
-     * 
+     *
      * @param int $aceRank - (1 or 14)
      * @return bool - true if successful, else false
      */
@@ -194,7 +194,7 @@ class CardGame21
 
     /**
      * Set rank of banks last card (ace)
-     * 
+     *
      * @param int $aceRank - (1 or 14)
      * @return bool - true if successful, else false
      */

@@ -139,8 +139,7 @@ class GameController extends AbstractController
     public function gameSetAce(
         Request $request,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $aceRank = $request->request->get("ace") ?? null;
         $game = $session->get("game") ?? null;
         if (!$game || !$aceRank) {

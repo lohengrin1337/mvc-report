@@ -35,7 +35,7 @@ class CardHand
 
     /**
      * Get the last card from hand
-     * 
+     *
      * @return CardInterface|null
      */
     public function getLastCard(): ?CardInterface
@@ -47,7 +47,7 @@ class CardHand
 
     /**
      * Set rank of last card
-     * 
+     *
      * @param int $rank
      * @return bool - true if successful, else false
      */
@@ -76,7 +76,7 @@ class CardHand
 
     /**
      * Get sum of ranks for cards
-     * 
+     *
      * @return int - the sum
      */
     public function rankSum(): int

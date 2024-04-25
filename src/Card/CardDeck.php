@@ -66,7 +66,7 @@ class CardDeck
                 $this->add(new $cardClass($suit, $rank));
             }
 
-        $this->shuffle();
+            $this->shuffle();
         }
     }
 
@@ -74,7 +74,7 @@ class CardDeck
 
     /**
      * Get card back
-     * 
+     *
      * @return string - The backside of a card
      */
     public function getCardBack(): string
