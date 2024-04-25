@@ -11,6 +11,8 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ApiController extends AbstractController
 {
+    use JsonResponseTrait;
+
     /**
      * @var string[]
      */
@@ -29,28 +31,6 @@ class ApiController extends AbstractController
         "&quot;I'm an idealist. I don't know where I'm going, but I'm on my way.&quot;"
         . " - Carl Sandburg"
     ];
-
-    /**
-     * @var array<string,mixed>
-     */
-    private array $data;
-
-    private JSONResponse $response;
-
-
-
-    // /**
-    //  * constructor
-    //  */
-    // public function __construct()
-    // {
-    //     $this->data = [
-    //         "quote" => "",
-    //         "date" => null,
-    //         "timestamp" => null
-    //     ];
-    // }
-
 
 
 
@@ -88,25 +68,6 @@ class ApiController extends AbstractController
 
 
 
-
-    /**
-     * set new JSONResponse with current data,
-     * and update $this->response
-     *
-     * @return void
-     */
-    private function setResponse(): void
-    {
-        $response = new JsonResponse($this->data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-
-        $this->response = $response;
-    }
-
-
-
     /**
      * route shows a random quote
      */
@@ -115,7 +76,7 @@ class ApiController extends AbstractController
     {
         $this->updateQuote();
         $this->updateTime();
-        $this->setResponse();
+        $this->setResponse($this->data);
 
         return $this->response;
     }
