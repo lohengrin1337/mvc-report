@@ -36,6 +36,7 @@ class Card implements CardInterface
         11,
         12,
         13,
+        14,
     ];
 
     /**
@@ -49,6 +50,7 @@ class Card implements CardInterface
         11 => "J",
         12 => "K",
         13 => "Q",
+        14 => "A",
         1 => "A"
     ];
 
@@ -73,19 +75,52 @@ class Card implements CardInterface
 
 
 
+    // /**
+    //  * Validate suite and rank arguments
+    //  *
+    //  * @throws InvalidArgEx - if one not valid
+    //  * @return bool - true if both valid
+    //  */
+    // protected static function validateSuiteAndRank(string $suit, int $rank): bool
+    // {
+    //     if (!in_array($suit, self::VALID_SUITS)) {
+    //         throw new InvalidArgEx("Invalid suit provided!");
+    //     }
+    //     if (!in_array($rank, self::VALID_RANKS)) {
+    //         throw new InvalidArgEx("Invalid rank provided!");
+    //     }
+
+    //     return true;
+    // }
+
+
+
     /**
-     * Validate suite and rank arguments
+     * Validate suit argument
      *
-     * @throws InvalidArgEx - if one not valid
-     * @return bool - true if both valid
+     * @param string $suit
+     * @return bool - true if valid, else false
      */
-    protected static function validateSuiteAndRank(string $suit, int $rank): bool
+    protected static function suitIsValid(string $suit): bool
     {
         if (!in_array($suit, self::VALID_SUITS)) {
-            throw new InvalidArgEx("Invalid suit provided!");
+            return false;
         }
+
+        return true;
+    }
+
+
+    /**
+     * Validate rank argument
+     *
+     * @param int $rank
+     * @return bool - true if valid, else false
+     */
+    protected static function rankIsValid(int $rank): bool
+    {
         if (!in_array($rank, self::VALID_RANKS)) {
-            throw new InvalidArgEx("Invalid rank provided!");
+            return false;
         }
 
         return true;
@@ -99,6 +134,7 @@ class Card implements CardInterface
      *
      * @param string $suit - category (♥, ♠, ♦, ♣, plus joker)
      * @param int $rank - value (2 - 14, plus 0)
+     * @throws InvalidArgEx - if one arg not valid
      */
     public function __construct(string $suit, int $rank)
     {
@@ -112,7 +148,14 @@ class Card implements CardInterface
         //     throw new \InvalidArgumentException("Invalid rank provided!");
         // }
 
-        self::validateSuiteAndRank($suit, $rank);
+        // self::validateSuiteAndRank($suit, $rank);
+
+        if (!self::suitIsValid($suit)) {
+            throw new InvalidArgEx("Invalid suit provided!");
+        }
+        if (!self::rankIsValid($rank)) {
+            throw new InvalidArgEx("Invalid rank provided!");
+        }
 
         $this->suit = $suit;
         $this->rank = $rank;
@@ -163,6 +206,24 @@ class Card implements CardInterface
     public function getRank(): int
     {
         return $this->rank;
+    }
+
+
+
+    /**
+     * Set rank (1 - 14)
+     *
+     * @param int - the rank
+     * @return bool - true if successful, else false
+     */
+    public function setRank(int $rank): bool
+    {
+        if (!self::rankIsValid($rank)) {
+            return false;
+        }
+
+        $this->rank = $rank;
+        return true;
     }
 
 
