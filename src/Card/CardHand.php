@@ -34,6 +34,35 @@ class CardHand
 
 
     /**
+     * Get the last card from hand
+     * 
+     * @return CardInterface|null
+     */
+    public function getLastCard(): ?CardInterface
+    {
+        return end($this->cards) ?: null;
+    }
+
+
+
+    /**
+     * Set rank of last card
+     * 
+     * @param int $rank
+     * @return bool - true if successful, else false
+     */
+    public function setLastCardRank(int $rank): bool
+    {
+        if (!$this->getLastCard()) {
+            return false;
+        }
+
+        return end($this->cards)->setRank($rank);
+    }
+
+
+
+    /**
      * Get the amount of cards in hand
      *
      * @return int - the count
