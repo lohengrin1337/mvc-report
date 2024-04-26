@@ -213,7 +213,7 @@ class Card implements CardInterface
     /**
      * Set rank (1 - 14)
      *
-     * @param int - the rank
+     * @param int $rank
      * @return bool - true if successful, else false
      */
     public function setRank(int $rank): bool
