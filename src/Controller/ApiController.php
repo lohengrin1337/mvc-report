@@ -35,6 +35,23 @@ class ApiController extends AbstractController
 
 
     /**
+     * @var array<string,mixed> $data
+     */
+    private array $data;
+
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->data = [];
+    }
+
+
+
+    /**
      * get random quote from array of quotes,
      * and update data["quote"]
      *
