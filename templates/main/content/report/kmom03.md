@@ -1,1 +1,7 @@
-Redovisningstext...
+Det var nyttigt att träna på att modellera en problemlösning. Jag upplevde att flödesschemat fungerade bra som en karta för problemet som helhet, och det var lätt att komma tillbaka till den efterhand. Pseudokoden för spellogiken hade jag mindre nytta av, men däremot var det bra att skriva pseudokod i form av kommentarer i de olika metoderna, för att planera det ungefärliga innehållet i respektive metod. Oftast känns det som att det inte skulle behövas planering/problemlösning, men när man väl kör fast inser man att det underlättar att ha en karta/ram att kolla på.
+
+Jag valde att göra kortspelet 21 utan några fördjupningar. Målet var att få så bra struktur och snygg kod som möjligt. Den mesta koden som löser spellogiken ligger i `CardGame21`. Jag behövde uppdatera de andra kort-klassernas publika metoder efterhand för att `CardGame21` skulle kunna använda dem på ett bra sätt. Det var lite klurigt att hitta en bra lösning på att ess kan vara 1 eller 14. Jag valde att låta essets *rank* vara 1 som default, och gjorde det möligt att ändra dess värde med `Card::setRank()`. En annan lösning kunde varit att ändra hur `CardGame21` tolkar värdet på ett ett-kort. Jag är inte helt nöjd med kedjan av anrop som blir för att kolla om ett kort är ess, och sedan ändra dess rank. Det känns som att det finns förbättringspotetial där. Jag är nöjd med det visuella resultatet, och controllerns *tunna* kod.
+
+Jag tycker fortsatt det fungerar bra med Symfony. Flödet är enkelt, och felhanteringen är väldigt bra, vilket gör att jag sällan fastnar länge med små buggar.
+
+Veckans viktigaste lärdomar är att få ner komlexiteten i varje funktion/metod, dvs att sträva efter hög *cohesion* och låg *cyclomatic complexity*.
