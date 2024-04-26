@@ -20,6 +20,13 @@ interface CardInterface
     public function getRank(): int;
 
 
+    /**
+     * @param int $rank
+     * @return bool
+     */
+    public function setRank(int $rank): bool;
+
+
 
     /**
      * @return string - representation
