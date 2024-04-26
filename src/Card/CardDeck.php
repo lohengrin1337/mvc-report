@@ -11,9 +11,12 @@ class CardDeck
 {
     /**
      * @var CardInterface[] $cards - the Card classes
-     * @var string cardBack - Backside of a playing card
      */
     protected array $cards;
+
+    /**
+     * @var string cardBack - Backside of a playing card
+     */
     private string $cardBack;
 
 
