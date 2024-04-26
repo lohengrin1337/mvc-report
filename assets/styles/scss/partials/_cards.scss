@@ -14,9 +14,13 @@
 
 .card {
     font-size: 100px;
-    // margin-bottom: -40px;
     margin-bottom: -20px;
     position: relative;
+
+    // &[class*="f0b"],
+    // &[class*="f0c"] {
+    //     color: red;
+    // }
 }
 
 .deck-count {
@@ -32,6 +36,7 @@
 }
 
 
+// SVG CARDS
 // *[class^="pcard-"],
 // *[class*=" pcard-"] {
 //   display: inline-block;
