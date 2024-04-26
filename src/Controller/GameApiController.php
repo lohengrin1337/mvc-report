@@ -24,7 +24,8 @@ class GameApiController extends AbstractController
     {
         $game = $session->get("game") ?? null;
         if (!$game) {
-            return $this->redirectToRoute("api");
+            $this->setResponse(["Error" => "No game in session"]);
+            return $this->response;
         }
 
         $gameState = $game->getState();
