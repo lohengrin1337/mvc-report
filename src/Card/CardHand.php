@@ -53,11 +53,12 @@ class CardHand
      */
     public function setLastCardRank(int $rank): bool
     {
-        if (!$this->getLastCard()) {
+        $lastCard = end($this->cards);
+        if (!$lastCard) {
             return false;
         }
 
-        return end($this->cards)->setRank($rank);
+        return $lastCard->setRank($rank);
     }
 
 
