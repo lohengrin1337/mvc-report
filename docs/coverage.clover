@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1714227705">
-  <project timestamp="1714227705">
+<coverage generated="1714237303">
+  <project timestamp="1714237303">
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="14" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
@@ -185,33 +185,33 @@
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/CardHand.php">
       <class name="App\Card\CardHand" namespace="global">
-        <metrics complexity="12" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="0" elements="24" coveredelements="0"/>
+        <metrics complexity="12" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="24" coveredelements="24"/>
       </class>
-      <line num="24" type="method" name="draw" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="41" type="method" name="getLastCard" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="43" type="stmt" count="0"/>
-      <line num="54" type="method" name="setLastCardRank" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="56" type="stmt" count="0"/>
-      <line num="57" type="stmt" count="0"/>
-      <line num="58" type="stmt" count="0"/>
-      <line num="61" type="stmt" count="0"/>
-      <line num="71" type="method" name="cardCount" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="73" type="stmt" count="0"/>
-      <line num="83" type="method" name="rankSum" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="85" type="stmt" count="0"/>
-      <line num="86" type="stmt" count="0"/>
-      <line num="87" type="stmt" count="0"/>
-      <line num="90" type="stmt" count="0"/>
-      <line num="100" type="method" name="getAsString" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="102" type="stmt" count="0"/>
-      <line num="103" type="stmt" count="0"/>
-      <line num="104" type="stmt" count="0"/>
-      <line num="107" type="stmt" count="0"/>
-      <metrics loc="110" ncloc="72" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="0" elements="24" coveredelements="0"/>
+      <line num="24" type="method" name="draw" visibility="public" complexity="3" crap="3" count="3"/>
+      <line num="26" type="stmt" count="3"/>
+      <line num="27" type="stmt" count="3"/>
+      <line num="28" type="stmt" count="3"/>
+      <line num="29" type="stmt" count="3"/>
+      <line num="41" type="method" name="getLastCard" visibility="public" complexity="2" crap="2" count="2"/>
+      <line num="43" type="stmt" count="2"/>
+      <line num="54" type="method" name="setLastCardRank" visibility="public" complexity="2" crap="2" count="2"/>
+      <line num="56" type="stmt" count="2"/>
+      <line num="57" type="stmt" count="2"/>
+      <line num="58" type="stmt" count="1"/>
+      <line num="61" type="stmt" count="1"/>
+      <line num="71" type="method" name="cardCount" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="73" type="stmt" count="3"/>
+      <line num="83" type="method" name="rankSum" visibility="public" complexity="2" crap="2" count="2"/>
+      <line num="85" type="stmt" count="2"/>
+      <line num="86" type="stmt" count="2"/>
+      <line num="87" type="stmt" count="2"/>
+      <line num="90" type="stmt" count="2"/>
+      <line num="100" type="method" name="getAsString" visibility="public" complexity="2" crap="2" count="2"/>
+      <line num="102" type="stmt" count="2"/>
+      <line num="103" type="stmt" count="2"/>
+      <line num="104" type="stmt" count="2"/>
+      <line num="107" type="stmt" count="2"/>
+      <metrics loc="110" ncloc="72" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="24" coveredelements="24"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/CardInterface.php">
       <metrics loc="43" ncloc="24" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
@@ -730,6 +730,6 @@
       </class>
       <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="19" loc="2422" ncloc="1779" classes="17" methods="100" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="518" coveredstatements="35" elements="618" coveredelements="46"/>
+    <metrics files="19" loc="2422" ncloc="1779" classes="17" methods="100" coveredmethods="17" conditionals="0" coveredconditionals="0" statements="518" coveredstatements="53" elements="618" coveredelements="70"/>
   </project>
 </coverage>
