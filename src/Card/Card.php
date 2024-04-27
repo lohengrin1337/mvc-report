@@ -48,8 +48,8 @@ class Card implements CardInterface
         "diamonds" => "♦",
         "clubs" => "♣",
         11 => "J",
-        12 => "K",
-        13 => "Q",
+        12 => "Q",
+        13 => "K",
         14 => "A",
         1 => "A"
     ];
