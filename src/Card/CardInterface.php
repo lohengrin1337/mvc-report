@@ -8,6 +8,14 @@ namespace App\Card;
 interface CardInterface
 {
     /**
+     * @param string $suit
+     * @param int $rank
+     */
+    public function __construct(string $suit, int $rank);
+
+
+
+    /**
      * @return string - the suit
      */
     public function getSuit(): string;
