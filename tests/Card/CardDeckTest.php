@@ -9,9 +9,9 @@ use PHPUnit\Framework\TestCase;
  */
 class CardDeckTest extends TestCase
 {
-    protected CardDeck $deck;
+    private CardDeck $deck;
 
-    protected function setUp(): void
+    private function setUp(): void
     {
         // deck of CardGraphic cards
         $this->deck = new CardDeck(CardGraphic::class);

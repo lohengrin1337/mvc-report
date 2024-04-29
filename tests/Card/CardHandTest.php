@@ -9,11 +9,11 @@ use PHPUnit\Framework\TestCase;
  */
 class CardHandTest extends TestCase
 {
-    protected CardHand $hand;
+    private CardHand $hand;
 
-    protected CardDeck $deckStub; // top card = ♥7
+    private CardDeck $deckStub; // top card = ♥7
 
-    protected function setUp(): void
+    private function setUp(): void
     {
         $this->hand = new CardHand();   // empty hand
 

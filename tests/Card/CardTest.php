@@ -9,9 +9,9 @@ use PHPUnit\Framework\TestCase;
  */
 class CardTest extends TestCase
 {
-    protected Card $card;
+    private Card $card;
 
-    protected function setUp(): void
+    private function setUp(): void
     {
         $this->card = new Card("spades", 10); // 10 of spades
     }

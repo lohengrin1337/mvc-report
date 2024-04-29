@@ -9,9 +9,9 @@ use PHPUnit\Framework\TestCase;
  */
 class CardGraphicTest extends TestCase
 {
-    protected CardGraphic $card;
+    private CardGraphic $card;
 
-    protected function setUp(): void
+    private function setUp(): void
     {
         $this->card = new CardGraphic("diamonds", 3); // 3 of diamonds
     }
