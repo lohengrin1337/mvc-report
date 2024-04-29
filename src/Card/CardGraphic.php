@@ -1,6 +1,6 @@
 <?php
 
-namespace Oljn\Card;
+namespace App\Card;
 
 /**
  * Class for playing cards with utf-8 representation

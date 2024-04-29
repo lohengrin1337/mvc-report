@@ -1,10 +1,10 @@
 <?php
 
-namespace Oljn\Controller;
+namespace App\Controller;
 
-use Oljn\Card\CardDeck;
-use Oljn\Card\CardHand;
-use Oljn\Card\Card;
+use App\Card\CardDeck;
+use App\Card\CardHand;
+use App\Card\Card;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

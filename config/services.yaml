@@ -16,9 +16,6 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/Dice/'
-            - '../src/Card/'
-            - '../src/Controller/'
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'

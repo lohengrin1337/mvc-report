@@ -1,6 +1,6 @@
 <?php
 
-namespace Oljn\Dice;
+namespace App\Dice;
 
 class Dice
 {

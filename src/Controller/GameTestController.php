@@ -1,11 +1,11 @@
 <?php
 
-namespace Oljn\Controller;
+namespace App\Controller;
 
-use Oljn\Card\CardDeck;
-use Oljn\Card\CardGame21;
-use Oljn\Card\CardHand;
-use Oljn\Card\CardGraphic;
+use App\Card\CardDeck;
+use App\Card\CardGame21;
+use App\Card\CardHand;
+use App\Card\CardGraphic;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
