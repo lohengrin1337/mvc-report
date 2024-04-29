@@ -38,8 +38,8 @@ class CardGame21Test extends TestCase
 
         $this->gameWithDeckStub = new CardGame21(
             $this->deckStub,
-            new CardHand,
-            new CardHand
+            new CardHand(),
+            new CardHand()
         );
     }
 
@@ -94,7 +94,7 @@ class CardGame21Test extends TestCase
 
         // assert deckCount is 51
         $this->assertEquals(51, $gameState["deckCount"]);
-        
+
         // assert playerHand is not empty
         $this->assertNotEmpty($gameState["playerHand"]);
 
@@ -306,13 +306,13 @@ class CardGame21Test extends TestCase
 
         $gameWithDeckStub = new CardGame21(
             $deckStub,
-            new CardHand,
-            new CardHand
+            new CardHand(),
+            new CardHand()
         );
 
-        
+
         $gameWithDeckStub->playBank();
-        
+
         $gameState = $gameWithDeckStub->getState();
 
         // assert sum is 28 and count is 2

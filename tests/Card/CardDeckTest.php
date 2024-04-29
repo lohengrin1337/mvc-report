@@ -48,13 +48,13 @@ class CardDeckTest extends TestCase
 
 
     /**
-     * Get cards as string[], and assert count 52, and 
+     * Get cards as string[], and assert count 52, and
      */
     public function testGetAsString()
     {
         $res = $this->deck->getAsString();
         $this->assertCount(52, $res);
-        $this->assertContainsOnly ("string", $res);
+        $this->assertContainsOnly("string", $res);
     }
 
 

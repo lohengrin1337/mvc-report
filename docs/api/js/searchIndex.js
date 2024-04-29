@@ -311,6 +311,11 @@ Search.appendIndex(
             "summary": "Card\u0020interface",
             "url": "classes/App-Card-CardInterface.html"
         },                {
+            "fqsen": "\\App\\Card\\CardInterface\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Card-CardInterface.html#method___construct"
+        },                {
             "fqsen": "\\App\\Card\\CardInterface\u003A\u003AgetSuit\u0028\u0029",
             "name": "getSuit",
             "summary": "",
