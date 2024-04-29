@@ -11,7 +11,7 @@ class CardDeckTest extends TestCase
 {
     private CardDeck $deck;
 
-    private function setUp(): void
+    protected function setUp(): void
     {
         // deck of CardGraphic cards
         $this->deck = new CardDeck(CardGraphic::class);

@@ -11,7 +11,7 @@ class CardTest extends TestCase
 {
     private Card $card;
 
-    private function setUp(): void
+    protected function setUp(): void
     {
         $this->card = new Card("spades", 10); // 10 of spades
     }

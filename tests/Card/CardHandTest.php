@@ -13,7 +13,7 @@ class CardHandTest extends TestCase
 
     private CardDeck $deckStub; // top card = ♥7
 
-    private function setUp(): void
+    protected function setUp(): void
     {
         $this->hand = new CardHand();   // empty hand
 

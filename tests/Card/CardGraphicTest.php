@@ -11,7 +11,7 @@ class CardGraphicTest extends TestCase
 {
     private CardGraphic $card;
 
-    private function setUp(): void
+    protected function setUp(): void
     {
         $this->card = new CardGraphic("diamonds", 3); // 3 of diamonds
     }
