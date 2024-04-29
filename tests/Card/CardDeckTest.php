@@ -27,7 +27,7 @@ class CardDeckTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties.
      */
-    public function testCreateCardDeck()
+    public function testCreateCardDeck(): void
     {
         $this->assertInstanceOf(CardDeck::class, $this->deck);
         $this->assertIsString($this->deck->getCardBack());
@@ -39,7 +39,7 @@ class CardDeckTest extends TestCase
     /**
      * Construct object with invalid arg, expect exception
      */
-    public function testCreateCardDeckInvalid()
+    public function testCreateCardDeckInvalid(): void
     {
         $this->expectException("InvalidArgumentException");
         $deck = new CardDeck("NotACardInterface::class");
@@ -50,7 +50,7 @@ class CardDeckTest extends TestCase
     /**
      * Get cards as string[], and assert count 52, and
      */
-    public function testGetAsString()
+    public function testGetAsString(): void
     {
         $res = $this->deck->getAsString();
         $this->assertCount(52, $res);
@@ -64,7 +64,7 @@ class CardDeckTest extends TestCase
      * and two shuffled decks are not equal,
      * but two sorted decks are equal
      */
-    public function testSortAndShuffle()
+    public function testSortAndShuffle(): void
     {
         $this->deck->shuffle();
         $shuffled1 = $this->deck->getAsString();
@@ -85,10 +85,12 @@ class CardDeckTest extends TestCase
     /**
      * Sort deck, and draw. assert card is 13 of clubs
      */
-    public function testDrawWhenSorted()
+    public function testDrawWhenSorted(): void
     {
         $this->deck->sort();
         $res = $this->deck->draw();
+
+        $this->assertNotNull($res); // for safety
         $this->assertEquals("clubs", $res->getSuit());
         $this->assertEquals(13, $res->getRank());
     }

@@ -34,7 +34,7 @@ class CardHandTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties.
      */
-    public function testCreateCardHand()
+    public function testCreateCardHand(): void
     {
         $this->assertInstanceOf(CardHand::class, $this->hand);
         $this->assertEquals(0, $this->hand->cardCount());
@@ -45,7 +45,7 @@ class CardHandTest extends TestCase
     /**
      * Draw 1 card (stub) from deck (stub), and verify get-methods
      */
-    public function testDrawOneFromDeck()
+    public function testDrawOneFromDeck(): void
     {
         $this->hand->draw($this->deckStub);
         $this->assertEquals(1, $this->hand->cardCount());
@@ -59,7 +59,7 @@ class CardHandTest extends TestCase
     /**
      * Draw 3 cards (stub) from deck (stub), and verify get-methods
      */
-    public function testDrawThreeFromDeck()
+    public function testDrawThreeFromDeck(): void
     {
         $this->hand->draw($this->deckStub, 3);
         $this->assertEquals(3, $this->hand->cardCount());
@@ -73,7 +73,7 @@ class CardHandTest extends TestCase
     /**
      * Draw 1 card (stub) from deck (stub), set rank, and verify sum
      */
-    public function testSetLastCardRankExisting()
+    public function testSetLastCardRankExisting(): void
     {
         $this->hand->draw($this->deckStub);
         $this->assertTrue($this->hand->setLastCardRank(10));
@@ -84,7 +84,7 @@ class CardHandTest extends TestCase
     /**
      * Try to set last card with empty hand
      */
-    public function testSetLastCardRankEmpty()
+    public function testSetLastCardRankEmpty(): void
     {
         $this->assertFalse($this->hand->setLastCardRank(10));
     }

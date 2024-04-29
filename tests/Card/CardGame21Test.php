@@ -113,7 +113,7 @@ class CardGame21Test extends TestCase
     public function testPlayerLoosesAt24(): void
     {
         // set card stub to return the rank of a 8
-        $this->cardStub->method('getRank')->willReturn(8);
+        $this->cardStub->method('getRank')->willReturn(8); // @phpstan-ignore-line
 
         // player draws 3 cards (8 x 3 = 24);
         $this->gameWithDeckStub->draw();
@@ -141,8 +141,8 @@ class CardGame21Test extends TestCase
     public function testSetAceRankValid(): void
     {
         // set card stub to return the rank of an ace
-        $this->cardStub->method('getRank')->willReturn(1);
-        $this->cardStub->method('setRank')->willReturn(true);
+        $this->cardStub->method('getRank')->willReturn(1); // @phpstan-ignore-line
+        $this->cardStub->method('setRank')->willReturn(true); // @phpstan-ignore-line
 
         // draw the ace
         $this->gameWithDeckStub->draw();
@@ -160,8 +160,8 @@ class CardGame21Test extends TestCase
     public function testSetAceRankInvalid(): void
     {
         // set card stub to return the rank of a 7
-        $this->cardStub->method('getRank')->willReturn(7);
-        $this->cardStub->method('setRank')->willReturn(true);
+        $this->cardStub->method('getRank')->willReturn(7); // @phpstan-ignore-line
+        $this->cardStub->method('setRank')->willReturn(true); // @phpstan-ignore-line
 
         // draw the 7
         $this->gameWithDeckStub->draw();
@@ -179,7 +179,7 @@ class CardGame21Test extends TestCase
     public function testBankWinsAt21(): void
     {
         // set card stub to return the rank of a 7
-        $this->cardStub->method('getRank')->willReturn(7);
+        $this->cardStub->method('getRank')->willReturn(7); // @phpstan-ignore-line
 
         // player stops at one card (7);
         $this->gameWithDeckStub->draw();
@@ -208,7 +208,7 @@ class CardGame21Test extends TestCase
     public function testBankWinsAt18(): void
     {
         // set card stub to return the rank of a 9
-        $this->cardStub->method('getRank')->willReturn(9);
+        $this->cardStub->method('getRank')->willReturn(9); // @phpstan-ignore-line
 
         // player stops at two cards (18);
         $this->gameWithDeckStub->draw();
@@ -238,7 +238,7 @@ class CardGame21Test extends TestCase
     public function testBankLoosesAt24(): void
     {
         // set card stub to return the rank of a 8
-        $this->cardStub->method('getRank')->willReturn(8);
+        $this->cardStub->method('getRank')->willReturn(8); // @phpstan-ignore-line
 
         // player stops at one card (8);
         $this->gameWithDeckStub->draw();
@@ -269,7 +269,7 @@ class CardGame21Test extends TestCase
     public function testPlayerWinsAt21(): void
     {
         // set card stub to return the rank of a 3
-        $this->cardStub->method('getRank')->willReturn(3);
+        $this->cardStub->method('getRank')->willReturn(3); // @phpstan-ignore-line
 
         // player draws 7 cards (3 x 7 = 21);
         for ($i = 0; $i < 7; $i++) {

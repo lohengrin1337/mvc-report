@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1714405637">
-  <project timestamp="1714405637">
+<coverage generated="1714406948">
+  <project timestamp="1714406948">
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="14" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
@@ -35,7 +35,7 @@
       <line num="238" type="stmt" count="4"/>
       <line num="240" type="stmt" count="4"/>
       <line num="241" type="stmt" count="4"/>
-      <line num="242" type="stmt" count="3"/>
+      <line num="242" type="stmt" count="2"/>
       <line num="245" type="stmt" count="4"/>
       <metrics loc="250" ncloc="144" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
     </file>
@@ -131,7 +131,7 @@
       <line num="123" type="stmt" count="0"/>
       <line num="126" type="stmt" count="9"/>
       <line num="127" type="stmt" count="9"/>
-      <line num="128" type="stmt" count="3"/>
+      <line num="128" type="stmt" count="2"/>
       <line num="140" type="method" name="setAceRank" visibility="public" complexity="2" crap="2" count="2"/>
       <line num="142" type="stmt" count="2"/>
       <line num="143" type="stmt" count="1"/>

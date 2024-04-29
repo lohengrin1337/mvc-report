@@ -22,7 +22,7 @@ class CardTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties.
      */
-    public function testCreateCardValidArgs()
+    public function testCreateCardValidArgs(): void
     {
         $card = new Card("hearts", 5); // 5 of hearts
 
@@ -37,7 +37,7 @@ class CardTest extends TestCase
      * Construct object and verify that the object cannot be created
      * with invalid arg $suit
      */
-    public function testCreateCardInvalidSuit()
+    public function testCreateCardInvalidSuit(): void
     {
         $this->expectException("InvalidArgumentException");
         $card = new Card("invalid", 5); // 5 of invalid
@@ -49,7 +49,7 @@ class CardTest extends TestCase
      * Construct object and verify that the object cannot be created
      * with invalid arg $rank
      */
-    public function testCreateCardInvalidRanks()
+    public function testCreateCardInvalidRanks(): void
     {
         $this->expectException("InvalidArgumentException");
         $card = new Card("hearts", 15); // 15 of hearts
@@ -60,7 +60,7 @@ class CardTest extends TestCase
     /**
      * Get cardback and assert correct
      */
-    public function testCorrectCardBack()
+    public function testCorrectCardBack(): void
     {
         $res = $this->card->getCardBack();
         $this->assertEquals("[*]", $res);
@@ -71,7 +71,7 @@ class CardTest extends TestCase
     /**
      * Set valid rank, assert true, and assert new rank
      */
-    public function testSetValidRank()
+    public function testSetValidRank(): void
     {
         $this->assertTrue($this->card->setRank(14)); // rank of ace
         $res = $this->card->getRank();
@@ -83,7 +83,7 @@ class CardTest extends TestCase
     /**
      * Set invalid rank, assert false, check rank is 10
      */
-    public function testSetInvalidRank()
+    public function testSetInvalidRank(): void
     {
         $this->assertFalse($this->card->setRank(17)); // invalid
         $res = $this->card->getRank();
@@ -95,7 +95,7 @@ class CardTest extends TestCase
     /**
      * Get string repr. of reg. rank (10) and assert correct
      */
-    public function testCorrectStringDigit()
+    public function testCorrectStringDigit(): void
     {
         $res = $this->card->getAsString();
         $this->assertEquals("[♠10]", $res);
@@ -106,7 +106,7 @@ class CardTest extends TestCase
     /**
      * Get string repr. face card and assert correct
      */
-    public function testCorrectStringFace()
+    public function testCorrectStringFace(): void
     {
         $this->card->setRank(12); // queen
         $res = $this->card->getAsString();

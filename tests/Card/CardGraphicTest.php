@@ -21,7 +21,7 @@ class CardGraphicTest extends TestCase
     /**
      * Get cardback and assert correct
      */
-    public function testCorrectCardBack()
+    public function testCorrectCardBack(): void
     {
         $res = $this->card->getCardBack();
         $this->assertEquals("&#x1f0a0", $res);
@@ -32,7 +32,7 @@ class CardGraphicTest extends TestCase
     /**
      * Get string repr. of reg. rank (3) and assert correct
      */
-    public function testCorrectStringDigit()
+    public function testCorrectStringDigit(): void
     {
         $res = $this->card->getAsString();
         $this->assertEquals("&#x1f0c3", $res);
@@ -43,7 +43,7 @@ class CardGraphicTest extends TestCase
     /**
      * Get string repr. face card and assert correct
      */
-    public function testCorrectStringFace()
+    public function testCorrectStringFace(): void
     {
         $this->card->setRank(14); // ace
         $res = $this->card->getAsString();
