@@ -164,7 +164,7 @@ class CardGame21
                 return;
             }
 
-            // choose values of ace
+            // choose values of ace if last card is ace
             $this->setLastCardIsAce($this->bank);
             if ($this->lastCardIsAce) {
                 $this->chooseAceRank();

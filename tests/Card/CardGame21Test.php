@@ -48,7 +48,7 @@ class CardGame21Test extends TestCase
     /**
      * Create game and assert instance and properties
      */
-    public function testCreateCardGame21()
+    public function testCreateCardGame21(): void
     {
         $this->assertInstanceOf(CardGame21::class, $this->game);
     }
@@ -58,7 +58,7 @@ class CardGame21Test extends TestCase
     /**
      * Get state and assert is array
      */
-    public function testInitialState()
+    public function testInitialState(): void
     {
         $gameState = $this->game->getState();
 
@@ -84,7 +84,7 @@ class CardGame21Test extends TestCase
     /**
      * Let player draw a card, and check state variables
      */
-    public function testPlayerDrawsCard()
+    public function testPlayerDrawsCard(): void
     {
         // player draws 1 card
         $this->game->draw();
@@ -110,7 +110,7 @@ class CardGame21Test extends TestCase
     /**
      * Let player draw 3 cards (rank 8), and assert state variables
      */
-    public function testPlayerLoosesAt24()
+    public function testPlayerLoosesAt24(): void
     {
         // set card stub to return the rank of a 8
         $this->cardStub->method('getRank')->willReturn(8);
@@ -138,7 +138,7 @@ class CardGame21Test extends TestCase
     /**
      * Set ace rank when last card is ace
      */
-    public function testSetAceRankValid()
+    public function testSetAceRankValid(): void
     {
         // set card stub to return the rank of an ace
         $this->cardStub->method('getRank')->willReturn(1);
@@ -157,7 +157,7 @@ class CardGame21Test extends TestCase
     /**
      * Set ace rank when last card is not ace
      */
-    public function testSetAceRankInvalid()
+    public function testSetAceRankInvalid(): void
     {
         // set card stub to return the rank of a 7
         $this->cardStub->method('getRank')->willReturn(7);
@@ -176,7 +176,7 @@ class CardGame21Test extends TestCase
     /**
      * Play bank with cardStub (rank 7), and assert results
      */
-    public function testBankWinsAt21()
+    public function testBankWinsAt21(): void
     {
         // set card stub to return the rank of a 7
         $this->cardStub->method('getRank')->willReturn(7);
@@ -205,7 +205,7 @@ class CardGame21Test extends TestCase
     /**
      * Play bank with cardStub (rank 9), and assert results
      */
-    public function testBankWinsAt18()
+    public function testBankWinsAt18(): void
     {
         // set card stub to return the rank of a 9
         $this->cardStub->method('getRank')->willReturn(9);
@@ -235,7 +235,7 @@ class CardGame21Test extends TestCase
     /**
      * Play bank with cardStub (rank 8), and assert results
      */
-    public function testBankLoosesAt24()
+    public function testBankLoosesAt24(): void
     {
         // set card stub to return the rank of a 8
         $this->cardStub->method('getRank')->willReturn(8);
@@ -257,5 +257,66 @@ class CardGame21Test extends TestCase
 
         // assert winner is player
         $this->assertEquals("spelare", $gameState["winner"]);
+    }
+
+
+    /**
+     * Let player and bank draw cards (rank 3).
+     * Player draws 7 = 21
+     * Bank draws 6 = 18
+     * Assert state variables
+     */
+    public function testPlayerWinsAt21(): void
+    {
+        // set card stub to return the rank of a 3
+        $this->cardStub->method('getRank')->willReturn(3);
+
+        // player draws 7 cards (3 x 7 = 21);
+        for ($i = 0; $i < 7; $i++) {
+            $this->gameWithDeckStub->draw();
+        }
+
+        // bank stops at 3 x 6 = 18
+        $this->gameWithDeckStub->playBank();
+
+        // get game state
+        $gameState = $this->gameWithDeckStub->getState();
+
+        // assert playerSum is 21 an bankSum is 18
+        $this->assertEquals(21, $gameState["playerSum"]);
+        $this->assertEquals(18, $gameState["bankSum"]);
+
+        // assert gameOver is true
+        $this->assertTrue($gameState["gameOver"]);
+
+        // assert winner is player
+        $this->assertEquals("spelare", $gameState["winner"]);
+    }
+
+
+
+    /**
+     * Bank draws aces, and sets the first to 14
+     */
+    public function testBankChooseAceRank14(): void
+    {
+        // deckStub will return the same instance of Card on multiple draw()
+        $deckStub = $this->createStub(CardDeck::class);
+        $deckStub->method("draw")->willReturn(new Card("hearts", 1));
+
+        $gameWithDeckStub = new CardGame21(
+            $deckStub,
+            new CardHand,
+            new CardHand
+        );
+
+        
+        $gameWithDeckStub->playBank();
+        
+        $gameState = $gameWithDeckStub->getState();
+
+        // assert sum is 28 and count is 2
+        $this->assertEquals(28, $gameState["bankSum"]);
+        $this->assertCount(2, $gameState["bankHand"]);
     }
 }
