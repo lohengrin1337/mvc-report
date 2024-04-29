@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace Oljn\Controller;
 
-use App\Dice\Dice;
-use App\Dice\DiceGraphic;
-use App\Dice\DiceHand;
+use Oljn\Dice\Dice;
+use Oljn\Dice\DiceGraphic;
+use Oljn\Dice\DiceHand;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Card;
+namespace Oljn\Card;
 
 /**
  * Class for hand of playing cards

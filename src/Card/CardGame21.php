@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Card;
+namespace Oljn\Card;
 
 // use InvalidArgumentException as InvalidArgEx;
 

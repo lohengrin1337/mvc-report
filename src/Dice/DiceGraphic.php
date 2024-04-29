@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dice;
+namespace Oljn\Dice;
 
 /**
  * DiceGraphicts class
