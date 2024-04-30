@@ -9,22 +9,28 @@ use PHPUnit\Framework\TestCase;
  */
 class CardGame21Test extends TestCase
 {
+    /**
+     * @var CardGame21 $game - a regular game
+     */
     private CardGame21 $game;
 
+    /**
+     * @var CardGame21 $gameWithDeckStub - a game with a mocked deck
+     */
     private CardGame21 $gameWithDeckStub;
 
-    private CardDeck $deckStub;
-
+    /**
+     * @var CardInterface $cardStub - a mocked card
+     */
     private CardInterface $cardStub;
 
 
-    // private CardDeck $deckStub;
 
-    // private CardHand $handStub;
-
+    /**
+     * Set up a regular game, and a game with mocked deck and card
+     */
     protected function setUp(): void
     {
-        // regular game
         $this->game = new CardGame21(
             new CardDeck(Card::class),
             new CardHand(),
@@ -33,11 +39,11 @@ class CardGame21Test extends TestCase
 
         $this->cardStub = $this->createStub(CardInterface::class);
 
-        $this->deckStub = $this->createStub(CardDeck::class);
-        $this->deckStub->method('draw')->willReturn($this->cardStub);
+        $deckStub = $this->createStub(CardDeck::class);
+        $deckStub->method('draw')->willReturn($this->cardStub);
 
         $this->gameWithDeckStub = new CardGame21(
-            $this->deckStub,
+            $deckStub,
             new CardHand(),
             new CardHand()
         );
@@ -296,13 +302,15 @@ class CardGame21Test extends TestCase
 
 
     /**
-     * Bank draws aces, and sets the first to 14
+     * Bank draws aces, and sets the first to 14, preceeding to 1
      */
-    public function testBankChooseAceRank14(): void
+    public function testBankChooseAceRanks(): void
     {
-        // deckStub will return the same instance of Card on multiple draw()
+        // deckStub will return instance if Card (ace of hearts) when draw() is called
         $deckStub = $this->createStub(CardDeck::class);
-        $deckStub->method("draw")->willReturn(new Card("hearts", 1));
+        $deckStub->method("draw")->willReturnCallback(function () {
+            return new Card("hearts", 1);
+        });
 
         $gameWithDeckStub = new CardGame21(
             $deckStub,
@@ -310,13 +318,12 @@ class CardGame21Test extends TestCase
             new CardHand()
         );
 
-
         $gameWithDeckStub->playBank();
 
         $gameState = $gameWithDeckStub->getState();
 
-        // assert sum is 28 and count is 2
-        $this->assertEquals(28, $gameState["bankSum"]);
-        $this->assertCount(2, $gameState["bankHand"]);
+        // assert sum is 17 and count is 4
+        $this->assertEquals(17, $gameState["bankSum"]);
+        $this->assertCount(4, $gameState["bankHand"]);
     }
 }
