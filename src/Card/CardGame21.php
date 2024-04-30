@@ -200,12 +200,7 @@ class CardGame21
      */
     private function setBankAceRank($aceRank): bool
     {
-        if (!$this->lastCardIsAce) {
-            return false;
-        }
-
         $this->bank->setLastCardRank($aceRank);
-        $this->lastCardIsAce = false;
         return true;
     }
 
