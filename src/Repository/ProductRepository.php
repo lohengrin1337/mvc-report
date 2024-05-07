@@ -20,7 +20,7 @@ class ProductRepository extends ServiceEntityRepository
 
     /**
      * Get all products with a minimum value of $value
-     * 
+     *
      * @param int $value - the min val
      * @return Product[] Returns an array of Product objects
      */
@@ -39,9 +39,9 @@ class ProductRepository extends ServiceEntityRepository
 
     /**
      * Get all products with a minimum value of $value
-     * 
+     *
      * @param int $value - the min val
-     * @return [][] Returns a resultset
+     * @return array<array<string|int>> Returns a resultset
      */
     public function findByMinVal2($value): array
     {

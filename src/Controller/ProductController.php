@@ -57,8 +57,7 @@ class ProductController extends AbstractController
     public function showById(
         ProductRepository $productRepository,
         int $id
-    ): Response
-    {
+    ): Response {
         $product = $productRepository->find($id);
 
         return $this->json($product);
@@ -70,8 +69,7 @@ class ProductController extends AbstractController
     public function deleteById(
         ManagerRegistry $doctrine,
         int $id
-    ): Response
-    {
+    ): Response {
         $entityManager = $doctrine->getManager();
         $product = $entityManager->getRepository(Product::class)->find($id);
 
@@ -92,8 +90,7 @@ class ProductController extends AbstractController
         ManagerRegistry $doctrine,
         int $id,
         int $value
-    ): Response
-    {
+    ): Response {
         $entityManager = $doctrine->getManager();
         $product = $entityManager->getRepository(Product::class)->find($id);
 
@@ -129,8 +126,7 @@ class ProductController extends AbstractController
     public function viewMinVal(
         ProductRepository $productRepository,
         int $value
-    ): Response
-    {
+    ): Response {
         $products = $productRepository->findByMinVal($value);
 
         $data = [
@@ -148,8 +144,7 @@ class ProductController extends AbstractController
     public function view2MinVal(
         ProductRepository $productRepository,
         int $value
-    ): Response
-    {
+    ): Response {
         $products = $productRepository->findByMinVal2($value);
 
         $data = [
