@@ -14,11 +14,11 @@
                 </tr>
             </thead>
             <tbody>
-                {% for product in products %}
-                    <tr class="clickable" onclick="window.location.href='{{ path('single_book', {'id': product.getId}) }}'">
-                        <td>{{ product.getTitle|e }}</td>
-                        <td>{{ product.getAuthor|e }}</td>
-                        <td>{{ product.getIsbn|e }}</td>
+                {% for book in books %}
+                    <tr class="clickable" onclick="window.location.href='{{ path('single_book', {'id': book.getId}) }}'">
+                        <td>{{ book.getTitle|e }}</td>
+                        <td>{{ book.getAuthor|e }}</td>
+                        <td>{{ book.getIsbn|e }}</td>
                         {# <td>{{ product.getImage|e }}</td> #}
                     </tr>
                 {% endfor %}

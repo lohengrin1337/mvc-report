@@ -87,13 +87,13 @@ class LibraryController extends AbstractController
 
 
     #[Route('/library/books', name: 'all_books', methods: ["GET"])]
-    public function allBooks(BookRepository $productRepository): Response
+    public function allBooks(BookRepository $bookRepository): Response
     {
         $this->data["pageTitle"] = "Böcker";
 
-        $products = $productRepository->findAll();
+        $books = $bookRepository->findAll();
 
-        $this->data["products"] = $products;
+        $this->data["books"] = $books;
 
         return $this->render('library/all_books.html.twig', $this->data);
     }
@@ -101,9 +101,16 @@ class LibraryController extends AbstractController
 
 
     #[Route('/library/books/{id}', name: 'single_book', methods: ["GET"])]
-    public function singleBook(int $id): Response
+    public function singleBook(
+        int $id,
+        BookRepository $bookRepository
+    ): Response
     {
         $this->data["pageTitle"] = "Bok med id $id";
+
+        $book = $bookRepository->find($id);
+
+        $this->data["book"] = $book;
 
         return $this->render('library/single_book.html.twig', $this->data);
     }

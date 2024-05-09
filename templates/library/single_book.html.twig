@@ -2,9 +2,17 @@
 
 {% block body %}
     <main class="main text-container">
-        <h1>{{ pageTitle }}</h1>
+        <h1>{{ book.getTitle }}</h1>
 
+        <h2 class="header-m">{{ book.getauthor }}</h2>
+        <h2 class="header-m margin-b">{{ book.getIsbn }}</h2>
+        <div class="container">
+            <img class="img" src="{{ book.getImage }}" alt="Omslagsbild - {{ book.getTitle }}">
+        </div>
 
-
+        <div class="container-flex">
+            <a class="button" href="{{ path('edit_book_view', {'id': book.getId}) }}">Redigera</a>
+            <a class="button" href="{{ path('delete_book_view', {'id': book.getId}) }}">Radera</a>
+        </div>
     </main>
 {% endblock %}
