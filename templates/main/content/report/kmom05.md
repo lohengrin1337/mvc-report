@@ -1,2 +1,2 @@
+Övningen med Doctrine gick bra. Jag tyckte det var väldigt smidigt att jobba med *maker* för att skapa modell, vy och controller, och lika smidigt med migrering till databas, samt de olika sätten att prata med databasen via *entityManager* och *ProductRepository*. Jag fastnade i ett problem med `APP_ENV`, där jag inte lyckades få *student* att gälla på studentservern. Jag löste det med följande kod i `.env`: `APP_ENV=${APP_ENV:-dev}`, som sätter `APP_ENV` till `dev` om den inte redan är satt (vilket den är på stud-servern, men inte lokalt). Jag antar att jag kunde ha satt `APP_ENV` till `dev` i `.env.local` istället som alternativ.
 
-Redovisningstext...
