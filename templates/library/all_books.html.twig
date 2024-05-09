@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <h1>{{ pageTitle }}</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="header-sm">Titel</th>
+                    <th class="header-sm">Författare</th>
+                    <th class="header-sm">ISBN</th>
+                    {# <th class="header-sm">Omslag</th> #}
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr class="clickable" onclick="window.location.href='{{ path('single_book', {'id': product.getId}) }}'">
+                        <td>{{ product.getTitle|e }}</td>
+                        <td>{{ product.getAuthor|e }}</td>
+                        <td>{{ product.getIsbn|e }}</td>
+                        {# <td>{{ product.getImage|e }}</td> #}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </main>
+{% endblock %}
