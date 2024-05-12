@@ -2,7 +2,13 @@
 
 {% block body %}
     <main class="main text-container">
+        <div class="sub-nav">
+            {{ include('library/_nav.html.twig') }}
+        </div>
+
         <h1>{{ book.getTitle }}</h1>
+
+        {{ include('flash.html.twig') }}
 
         {% if book.getImage %}
             <figure class="book">

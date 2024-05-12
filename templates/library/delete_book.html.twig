@@ -2,10 +2,19 @@
 
 {% block body %}
     <main class="main text-container">
+        <div class="sub-nav">
+            {{ include('library/_nav.html.twig') }}
+        </div>
+
         <h1>{{ pageTitle }}</h1>
 
-        <h2 class="header-m">{{ book.getTitle }}</h2>
-        <h2 class="header-m">{{ book.getauthor }}</h2>
+        <h2 class="header-sm">Titel</h2>
+        <h2 class="header-m margin-b">{{ book.getTitle }}</h2>
+
+        <h2 class="header-sm">Författare</h2>
+        <h2 class="header-m margin-b">{{ book.getAuthor }}</h2>
+
+        <h2 class="header-sm">ISBN</h2>
         <h2 class="header-m margin-b">{{ book.getIsbn }}</h2>
 
         {{ include("library/forms/_delete.html.twig") }}

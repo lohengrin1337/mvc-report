@@ -32,6 +32,16 @@ class LibraryController extends AbstractController
 
 
 
+    private function handleMissingBook($id) {
+        $this->addFlash(
+            "warning",
+            "Ingen bok med id $id hittades!"
+        );
+        return $this->redirectToRoute('all_books');
+    }
+
+
+
     #[Route('/library', name: 'library_start', methods: ["GET"])]
     public function index(): Response
     {
@@ -69,6 +79,11 @@ class LibraryController extends AbstractController
         $entityManager->persist($book);
         $entityManager->flush();
 
+        $this->addFlash(
+            "notice",
+            "En ny bok har lagts till!"
+        );
+
         return $this->redirectToRoute("all_books");
     }
 
@@ -96,7 +111,7 @@ class LibraryController extends AbstractController
     {
         $book = $bookRepository->find($id);
         if (!$book) {
-            throw $this->createNotFoundException("Ingen bok med id $id hittades");
+            return $this->handleMissingBook($id);
         }
         
         $this->data["pageTitle"] = "Bok med id $id";
@@ -115,7 +130,7 @@ class LibraryController extends AbstractController
     {
         $book = $bookRepository->find($id);
         if (!$book) {
-            throw $this->createNotFoundException("Ingen bok med id $id hittades");
+            return $this->handleMissingBook($id);
         }
 
         $this->data["pageTitle"] = "Redigera bok med id $id";
@@ -134,16 +149,17 @@ class LibraryController extends AbstractController
     {
         $form = $request->request->all();
 
-        // var_dump($form);
-        // var_dump($form["id"]);
-
         $id = $form["id"] ?? null;
         if (!$id) {
-            throw $this->createNotFoundException("Formuläret för 'redigera bok' är inte giltigt");
+            $this->addFlash(
+                "warning",
+                "Formuläret för 'redigera bok' var inte giltigt!"
+            );
+            return $this->redirectToRoute('all_books');
         }
         $book = $entityManager->getRepository(Book::class)->find($id);
         if (!$book) {
-            throw $this->createNotFoundException("Ingen bok med id $id hittades");
+            return $this->handleMissingBook($id);
         }
 
         $book->setTitle($form["title"]);
@@ -152,6 +168,11 @@ class LibraryController extends AbstractController
         $book->setImage($form["image"]);
 
         $entityManager->flush();
+
+        $this->addFlash(
+            "notice",
+            "Boken har uppdaterats!"
+        );
 
         return $this->redirectToRoute('single_book', ['id' => $id]);
     }
@@ -167,10 +188,10 @@ class LibraryController extends AbstractController
     {
         $book = $bookRepository->find($id);
         if (!$book) {
-            throw $this->createNotFoundException("Ingen bok med id $id hittades");
+            return $this->handleMissingBook($id);
         }
 
-        $this->data["pageTitle"] = "Radera bok med id $id";
+        $this->data["pageTitle"] = "Radera bok";
         $this->data["book"] = $book;
 
         return $this->render('library/delete_book.html.twig', $this->data);
@@ -186,15 +207,25 @@ class LibraryController extends AbstractController
     {
         $id = $request->request->get("id") ?? null;
         if (!$id) {
-            throw $this->createNotFoundException("Formuläret för 'radera bok' är inte giltigt");
+            $this->addFlash(
+                "warning",
+                "Formuläret för 'radera bok' var inte giltigt!"
+            );
+            return $this->redirectToRoute('all_books');
         }
+
         $book = $entityManager->getRepository(Book::class)->find($id);
         if (!$book) {
-            throw $this->createNotFoundException("Ingen bok med id $id hittades");
+            return $this->handleMissingBook($id);
         }
 
         $entityManager->remove($book);
         $entityManager->flush();
+
+        $this->addFlash(
+            "notice",
+            "{$book->getTitle()} har raderats!"
+        );
 
         return $this->redirectToRoute('all_books');
     }

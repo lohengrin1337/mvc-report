@@ -2,6 +2,10 @@
 
 {% block body %}
     <main class="main text-container">
+        <div class="sub-nav">
+            {{ include('library/_nav.html.twig') }}
+        </div>
+
         <h1>{{ pageTitle }}</h1>
 
         {{ include("library/forms/_create.html.twig") }}
