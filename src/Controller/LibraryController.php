@@ -32,7 +32,8 @@ class LibraryController extends AbstractController
 
 
 
-    private function handleMissingBook($id) {
+    private function handleMissingBook($id)
+    {
         $this->addFlash(
             "warning",
             "Ingen bok med id $id hittades!"
@@ -66,8 +67,7 @@ class LibraryController extends AbstractController
     public function createBook(
         Request $request,
         EntityManagerInterface $entityManager
-    ): Response
-    {
+    ): Response {
         $form = $request->request->all();
 
         $book = new Book();
@@ -107,13 +107,12 @@ class LibraryController extends AbstractController
     public function singleBook(
         int $id,
         BookRepository $bookRepository
-    ): Response
-    {
+    ): Response {
         $book = $bookRepository->find($id);
         if (!$book) {
             return $this->handleMissingBook($id);
         }
-        
+
         $this->data["pageTitle"] = "Bok med id $id";
         $this->data["book"] = $book;
 
@@ -126,8 +125,7 @@ class LibraryController extends AbstractController
     public function editBookView(
         int $id,
         BookRepository $bookRepository
-    ): Response
-    {
+    ): Response {
         $book = $bookRepository->find($id);
         if (!$book) {
             return $this->handleMissingBook($id);
@@ -145,8 +143,7 @@ class LibraryController extends AbstractController
     public function editBook(
         Request $request,
         EntityManagerInterface $entityManager
-    ): Response
-    {
+    ): Response {
         $form = $request->request->all();
 
         $id = $form["id"] ?? null;
@@ -179,13 +176,12 @@ class LibraryController extends AbstractController
 
 
 
-    
+
     #[Route('/library/delete/{id}', name: 'delete_book_view', methods: ["GET"])]
     public function deleteBookView(
         int $id,
         BookRepository $bookRepository
-    ): Response
-    {
+    ): Response {
         $book = $bookRepository->find($id);
         if (!$book) {
             return $this->handleMissingBook($id);
@@ -203,8 +199,7 @@ class LibraryController extends AbstractController
     public function deleteBook(
         Request $request,
         EntityManagerInterface $entityManager
-    ): Response
-    {
+    ): Response {
         $id = $request->request->get("id") ?? null;
         if (!$id) {
             $this->addFlash(
@@ -247,4 +242,3 @@ class LibraryController extends AbstractController
 
 //     return $this->redirectToRoute("all_books");
 // }
-
