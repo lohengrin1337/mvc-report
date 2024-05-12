@@ -4,7 +4,11 @@
     <main class="main text-container">
         <h1>{{ pageTitle }}</h1>
 
+        <h2 class="header-m">{{ book.getTitle }}</h2>
+        <h2 class="header-m">{{ book.getauthor }}</h2>
+        <h2 class="header-m margin-b">{{ book.getIsbn }}</h2>
 
+        {{ include("library/forms/_delete.html.twig") }}
 
     </main>
 {% endblock %}
