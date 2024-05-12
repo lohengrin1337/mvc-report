@@ -584,6 +584,14 @@ picture {
   width: 100%;
 }
 
+.book {
+  float: left;
+  margin-right: 2.8rem;
+  margin-bottom: 1.4rem;
+  width: 100%;
+  max-width: 300px;
+}
+
 .dice-graphic {
   font-size: 40px;
 }
@@ -953,5 +961,10 @@ img {
     float: none;
     padding: 0;
     margin-bottom: 1.4rem;
+  }
+}
+@media (max-width: 750px) {
+  .book {
+    float: none;
   }
 }

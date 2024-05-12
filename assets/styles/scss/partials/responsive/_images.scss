@@ -12,3 +12,10 @@ img {
         margin-bottom: var.$baseline;
     }
 }
+
+
+@media (max-width: 750px) {
+    .book {
+        float: none;
+    }
+}

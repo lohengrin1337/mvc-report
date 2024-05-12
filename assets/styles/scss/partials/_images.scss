@@ -29,3 +29,11 @@ picture {
 .library-img {
     width: 100%;
 }
+
+.book {
+    float: left;
+    margin-right: var.$baseline-x2;
+    margin-bottom: var.$baseline;
+    width: 100%;
+    max-width: 300px;
+}
