@@ -1,0 +1,17 @@
+<form class="form" action="{{ path('edit_book') }}" method="post">
+    <input type="number" name="id" value="{{ book.getId }}" hidden>
+
+    <label for="title">Titel</label>
+    <input type="text" name="title" id="title" value="{{ book.getTitle }}">
+
+    <label for="author">Författare</label>
+    <input type="text" name="author" id="author" value="{{ book.getAuthor }}">
+
+    <label for="isbn">ISBN</label>
+    <input type="text" name="isbn" id="isbn" value="{{ book.getIsbn }}">
+
+    <label for="image">Bild</label>
+    <input type="text" name="image" id="image" value="{{ book.getImage }}">
+
+    <button type="submit" class="button">Spara</button>    
+</form>

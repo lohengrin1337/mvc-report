@@ -7,6 +7,7 @@ use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
 // use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -106,10 +107,12 @@ class LibraryController extends AbstractController
         BookRepository $bookRepository
     ): Response
     {
-        $this->data["pageTitle"] = "Bok med id $id";
-
         $book = $bookRepository->find($id);
-
+        if (!$book) {
+            throw $this->createNotFoundException("Ingen bok med id $id hittades");
+        }
+        
+        $this->data["pageTitle"] = "Bok med id $id";
         $this->data["book"] = $book;
 
         return $this->render('library/single_book.html.twig', $this->data);
@@ -118,9 +121,18 @@ class LibraryController extends AbstractController
 
 
     #[Route('/library/edit/{id}', name: 'edit_book_view', methods: ["GET"])]
-    public function editBookView(): Response
+    public function editBookView(
+        int $id,
+        BookRepository $bookRepository
+    ): Response
     {
+        $book = $bookRepository->find($id);
+        if (!$book) {
+            throw $this->createNotFoundException("Ingen bok med id $id hittades");
+        }
+
         $this->data["pageTitle"] = "Redigera bok med id $id";
+        $this->data["book"] = $book;
 
         return $this->render('library/edit_book.html.twig', $this->data);
     }
@@ -128,8 +140,31 @@ class LibraryController extends AbstractController
 
 
     #[Route('/library/edit', name: 'edit_book', methods: ["POST"])]
-    public function editBook(): Response
+    public function editBook(
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response
     {
+        $form = $request->request->all();
+
+        // var_dump($form);
+        // var_dump($form["id"]);
+
+        $id = $form["id"] ?? null;
+        if (!$id) {
+            throw $this->createNotFoundException("Formuläret för 'redigera bok' är inte giltigt");
+        }
+        $book = $entityManager->getRepository(Book::class)->find($id);
+        if (!$book) {
+            throw $this->createNotFoundException("Ingen bok med id $id hittades");
+        }
+
+        $book->setTitle($form["title"]);
+        $book->setAuthor($form["author"]);
+        $book->setIsbn($form["isbn"]);
+        $book->setImage($form["image"]);
+
+        $entityManager->flush();
 
         return $this->redirectToRoute('single_book', ['id' => $id]);
     }
@@ -138,9 +173,18 @@ class LibraryController extends AbstractController
 
     
     #[Route('/library/delete/{id}', name: 'delete_book_view', methods: ["GET"])]
-    public function deleteBookView(): Response
+    public function deleteBookView(
+        int $id,
+        BookRepository $bookRepository
+    ): Response
     {
+        $book = $bookRepository->find($id);
+        if (!$book) {
+            throw $this->createNotFoundException("Ingen bok med id $id hittades");
+        }
+
         $this->data["pageTitle"] = "Radera bok med id $id";
+        $this->data["book"] = $book;
 
         return $this->render('library/delete_book.html.twig', $this->data);
     }
@@ -148,8 +192,22 @@ class LibraryController extends AbstractController
 
 
     #[Route('/library/delete', name: 'delete_book', methods: ["POST"])]
-    public function deleteBook(): Response
+    public function deleteBook(
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response
     {
+        $id = $request->request->get("id") ?? null;
+        if (!$id) {
+            throw $this->createNotFoundException("Formuläret för 'radera bok' är inte giltigt");
+        }
+        $book = $entityManager->getRepository(Book::class)->find($id);
+        if (!$book) {
+            throw $this->createNotFoundException("Ingen bok med id $id hittades");
+        }
+
+        $entityManager->remove($book);
+        $entityManager->flush();
 
         return $this->redirectToRoute('all_books');
     }
