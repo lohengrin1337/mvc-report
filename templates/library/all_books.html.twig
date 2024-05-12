@@ -4,26 +4,29 @@
     <main class="main text-container">
         <h1>{{ pageTitle }}</h1>
 
-        <table>
-            <thead>
-                <tr>
-                    <th class="header-sm">Titel</th>
-                    <th class="header-sm">Författare</th>
-                    <th class="header-sm">ISBN</th>
-                    {# <th class="header-sm">Omslag</th> #}
-                </tr>
-            </thead>
-            <tbody>
-                {% for book in books %}
-                    <tr class="clickable" onclick="window.location.href='{{ path('single_book', {'id': book.getId}) }}'">
-                        <td>{{ book.getTitle|e }}</td>
-                        <td>{{ book.getAuthor|e }}</td>
-                        <td>{{ book.getIsbn|e }}</td>
-                        {# <td>{{ product.getImage|e }}</td> #}
+        {% if books|length > 0 %}
+            <table>
+                <thead>
+                    <tr>
+                        <th class="header-sm">Titel</th>
+                        <th class="header-sm">Författare</th>
+                        <th class="header-sm">ISBN</th>
+                        {# <th class="header-sm">Omslag</th> #}
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                        <tr class="clickable" onclick="window.location.href='{{ path('single_book', {'id': book.getId}) }}'">
+                            <td>{{ book.getTitle|e }}</td>
+                            <td>{{ book.getAuthor|e }}</td>
+                            <td>{{ book.getIsbn|e }}</td>
+                            {# <td>{{ product.getImage|e }}</td> #}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h2 class="header-m">Inga böcker att visa</h2>
+        {% endif %}
     </main>
 {% endblock %}

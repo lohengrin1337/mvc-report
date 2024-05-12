@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Book;
 use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
-// use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,30 +53,18 @@ class LibraryController extends AbstractController
 
 
     #[Route('/library/create', name: 'create_book', methods: ["POST"])]
-    public function createBook(EntityManagerInterface $entityManager): Response
+    public function createBook(
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response
     {
+        $form = $request->request->all();
+
         $book = new Book();
-        // $book->setIsbn();
-        // $book->setTitle();
-        // $book->setAuthor();
-        // $book->setImage();
-
-        $entityManager->persist($book);
-        $entityManager->flush();
-
-        return $this->redirectToRoute("all_books");
-    }
-
-
-    // TESTROUTE FOR CREATE BOOK
-    #[Route('/library/create/test', name: 'create_book_test', methods: ["GET"])]
-    public function createBookTest(EntityManagerInterface $entityManager): Response
-    {
-        $book = new Book();
-        $book->setIsbn("789-789-789-789");
-        $book->setTitle("En tredje boktitel");
-        $book->setAuthor("Förnamn Efternamn");
-        $book->setImage("En-bild-url");
+        $book->setTitle($form["title"]);
+        $book->setAuthor($form["author"]);
+        $book->setIsbn($form["isbn"]);
+        $book->setImage($form["image"]);
 
         $entityManager->persist($book);
         $entityManager->flush();
@@ -212,3 +199,21 @@ class LibraryController extends AbstractController
         return $this->redirectToRoute('all_books');
     }
 }
+
+
+// // TESTROUTE FOR CREATE BOOK
+// #[Route('/library/create/test', name: 'create_book_test', methods: ["GET"])]
+// public function createBookTest(EntityManagerInterface $entityManager): Response
+// {
+//     $book = new Book();
+//     $book->setIsbn("789-789-789-789");
+//     $book->setTitle("En tredje boktitel");
+//     $book->setAuthor("Förnamn Efternamn");
+//     $book->setImage("En-bild-url");
+
+//     $entityManager->persist($book);
+//     $entityManager->flush();
+
+//     return $this->redirectToRoute("all_books");
+// }
+

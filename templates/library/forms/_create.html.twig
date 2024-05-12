@@ -1,0 +1,15 @@
+<form class="form" action="{{ path('create_book') }}" method="post">
+    <label for="title">Titel</label>
+    <input type="text" name="title" id="title" maxlength="255" required>
+
+    <label for="author">Författare</label>
+    <input type="text" name="author" id="author" maxlength="100" required>
+
+    <label for="isbn">ISBN</label>
+    <input type="text" name="isbn" id="isbn" maxlength="100" required>
+
+    <label for="image">Bild</label>
+    <input type="text" name="image" id="image" maxlength="255">
+
+    <button type="submit" class="button">Spara</button>    
+</form>

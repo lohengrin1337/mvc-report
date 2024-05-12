@@ -2,16 +2,16 @@
     <input type="number" name="id" value="{{ book.getId }}" hidden>
 
     <label for="title">Titel</label>
-    <input type="text" name="title" id="title" value="{{ book.getTitle }}">
+    <input type="text" name="title" id="title" value="{{ book.getTitle }}" maxlength="255" required>
 
     <label for="author">Författare</label>
-    <input type="text" name="author" id="author" value="{{ book.getAuthor }}">
+    <input type="text" name="author" id="author" value="{{ book.getAuthor }}" maxlength="100" required>
 
     <label for="isbn">ISBN</label>
-    <input type="text" name="isbn" id="isbn" value="{{ book.getIsbn }}">
+    <input type="text" name="isbn" id="isbn" value="{{ book.getIsbn }}" maxlength="100" required>
 
     <label for="image">Bild</label>
-    <input type="text" name="image" id="image" value="{{ book.getImage }}">
+    <input type="text" name="image" id="image" value="{{ book.getImage }}" maxlength="255">
 
     <button type="submit" class="button">Spara</button>    
 </form>

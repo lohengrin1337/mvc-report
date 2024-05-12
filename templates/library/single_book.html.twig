@@ -4,11 +4,20 @@
     <main class="main text-container">
         <h1>{{ book.getTitle }}</h1>
 
-        <h2 class="header-m">{{ book.getauthor }}</h2>
+        {% if book.getImage %}
+            <figure class="book">
+                <img
+                    class="img"
+                    src="{{ asset('img/library/' ~ book.getImage) }}"
+                    alt="Omslagsbild för {{ book.getTitle }}"
+                >
+            </figure>
+        {% endif %}
+        <h2 class="header-sm">Författare</h2>
+        <h2 class="header-m margin-b">{{ book.getauthor }}</h2>
+        <h2 class="header-sm">ISBN</h2>
         <h2 class="header-m margin-b">{{ book.getIsbn }}</h2>
-        <div class="container">
-            <img class="img" src="{{ book.getImage }}" alt="Omslagsbild - {{ book.getTitle }}">
-        </div>
+
 
         <div class="container-flex">
             <a class="button" href="{{ path('edit_book_view', {'id': book.getId}) }}">Redigera</a>
