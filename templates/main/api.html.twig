@@ -82,5 +82,9 @@
                 </div>
         </div>
         </form>
+
+        <a class="button btn-api" href="{{ path('api_all_books') }}">Alla böcker</a>
+        <a class="button btn-api" href="{{ path('api_single_book', {'isbn': '9789113132969'}) }}">Bok med ISBN 9789113132969</a>
+        
     </main>
 {% endblock %}
