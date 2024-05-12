@@ -224,21 +224,58 @@ class LibraryController extends AbstractController
 
         return $this->redirectToRoute('all_books');
     }
+
+
+
+    #[Route('/library/reset', name: 'library_reset_view', methods: ["GET"])]
+    public function resetLibraryView(): Response
+    {
+        $this->data["pageTitle"] = "Återställ bibliotek";
+
+        return $this->render('library/library_reset.html.twig', $this->data);
+    }
+
+
+
+    #[Route('/library/reset', name: 'library_reset', methods: ["POST"])]
+    public function resetLibrary(
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response
+    {
+        $reset = $request->request->get("reset") ?? null;
+        if ($reset !== "true") {
+            $this->addFlash(
+                "warning",
+                "Formuläret för 'återställ bibliotek' var inte giltigt!"
+            );
+            return $this->redirectToRoute('all_books');
+        }
+
+        // Remove all existing books from the database
+        $books = $entityManager->getRepository(Book::class)->findAll();
+        foreach ($books as $book) {
+            $entityManager->remove($book);
+        }
+        $entityManager->flush();
+
+        // Add default books to the library
+        $jsonData = file_get_contents(__DIR__ . '/../../data/default-library.json');
+        $defaultBooks = json_decode($jsonData, true);
+       foreach ($defaultBooks as $b) {
+            $book = new Book();
+            $book->setTitle($b["title"]);
+            $book->setAuthor($b["author"]);
+            $book->setIsbn($b["isbn"]);
+            $book->setImage($b["image"]); 
+            $entityManager->persist($book);
+       }
+       $entityManager->flush();
+
+        $this->addFlash(
+            "notice",
+            "Biblioteket har återställts!"
+        );
+        return $this->redirectToRoute('all_books');
+    }
 }
-
-
-// // TESTROUTE FOR CREATE BOOK
-// #[Route('/library/create/test', name: 'create_book_test', methods: ["GET"])]
-// public function createBookTest(EntityManagerInterface $entityManager): Response
-// {
-//     $book = new Book();
-//     $book->setIsbn("789-789-789-789");
-//     $book->setTitle("En tredje boktitel");
-//     $book->setAuthor("Förnamn Efternamn");
-//     $book->setImage("En-bild-url");
-
-//     $entityManager->persist($book);
-//     $entityManager->flush();
-
-//     return $this->redirectToRoute("all_books");
-// }

@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Kafka på stranden",
+        "isbn": "9789113132969",
+        "author": "Haruki Murakami",
+        "image": "kafka-pa-stranden.jpg"
+    },
+    {
+        "title": "Dumskallarnas sammansvärjning",
+        "isbn": "9120065833",
+        "author": "John Kennedy Toole",
+        "image": "dumskallarnas-sammansvarjning.jpg"
+    },
+    {
+        "title": "Styr din plog över de dödas ben",
+        "isbn": "9789174298154",
+        "author": "Olga Tokarczuk",
+        "image": "styr-din-plog-over-de-dodas-ben.jpg"
+    }
+]

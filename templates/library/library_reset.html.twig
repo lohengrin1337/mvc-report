@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <div class="sub-nav">
+            {{ include('library/_nav.html.twig') }}
+        </div>
+
+        <h1>{{ pageTitle }}</h1>
+
+        <p class="header-sm margin-b">Vill du återställa biblioteket?</p>
+
+        {{ include("library/forms/_reset.html.twig") }}
+
+    </main>
+{% endblock %}
