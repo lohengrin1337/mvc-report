@@ -34,6 +34,29 @@
 }
 
 
+.sub-nav {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: right;
+
+    ul {
+        display: flex;
+        flex-flow: row wrap;
+        gap: var.$baseline;
+        margin-top: - var.$baseline;
+        margin-bottom: var.$baseline;
+    }
+
+    li {
+        margin: 0;
+    }
+}
+
+
 
 // nav in footer
 

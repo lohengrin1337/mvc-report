@@ -359,6 +359,25 @@ body {
   padding-right: 0;
 }
 
+.sub-nav {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: right;
+}
+.sub-nav ul {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1.4rem;
+  margin-top: -1.4rem;
+  margin-bottom: 1.4rem;
+}
+.sub-nav li {
+  margin: 0;
+}
+
 .footer {
   display: flex;
   justify-content: center;
@@ -451,6 +470,7 @@ pre code {
   margin: 0;
 }
 
+.sub-nav li,
 .aside li, .site-header .nav a {
   font-size: 1.69rem;
   font-weight: 300;
@@ -477,6 +497,7 @@ pre code {
   color: #fff;
 }
 
+.sub-nav li,
 .aside li {
   font-size: 1.3rem;
 }
@@ -762,12 +783,17 @@ tr.clickable:hover {
   margin-bottom: 1.4rem;
 }
 
+*[class^=flash-] {
+  padding: 0.7rem;
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+  border-radius: 5px;
+}
+
 .flash-notice {
-  padding: 0.5em;
   color: #004085;
   background-color: #cce5ff;
   border-color: #b8daff;
-  font-weight: 600;
 }
 
 .flash-notice:before {
@@ -775,11 +801,9 @@ tr.clickable:hover {
 }
 
 .flash-warning {
-  padding: 0.5em;
   color: #856404;
   background-color: #fff3cd;
   border-color: #ffeeba;
-  font-weight: 600;
 }
 
 .flash-warning:before {

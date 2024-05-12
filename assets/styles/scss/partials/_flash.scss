@@ -1,20 +1,25 @@
+@use "variables" as var;
+
+*[class^="flash-"]{
+    padding: var.$baseline-half;
+    font-weight: 600;
+    margin-bottom: var.$baseline;
+    border-radius: 5px;
+}
+
 .flash-notice {
-    padding: 0.5em;
     color: #004085;
     background-color: #cce5ff;
     border-color: #b8daff;
-    font-weight: 600;
 }
 .flash-notice:before {
     content: "ⓘ";
 }
 
 .flash-warning {
-    padding: 0.5em;
     color: #856404;
     background-color: #fff3cd;
     border-color: #ffeeba;
-    font-weight: 600;
 }
 .flash-warning:before {
     content: "⚠";

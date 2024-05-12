@@ -54,6 +54,7 @@
     color: var.$color-body;
 }
 
+.sub-nav li,
 .aside li {
     @extend %headers-nav;
     font-size: calc(1rem * math.pow(var.$scale-factor, 1));
