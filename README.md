@@ -1,5 +1,9 @@
 # Repo for report app - MVC course at BTH
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/lohengrin1337/mvc-report/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/lohengrin1337/mvc-report/?branch=main)
+[![Code Coverage](https://scrutinizer-ci.com/g/lohengrin1337/mvc-report/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/lohengrin1337/mvc-report/?branch=main)
+[![Build Status](https://scrutinizer-ci.com/g/lohengrin1337/mvc-report/badges/build.png?b=main)](https://scrutinizer-ci.com/g/lohengrin1337/mvc-report/build-status/main)
+
 ![An image of a laptop](.img/readme.jpg)
 
 <p>
