@@ -32,7 +32,10 @@ class LibraryController extends AbstractController
 
 
 
-    private function handleMissingBook($id)
+    /**
+     * Set flash and redirect to all books
+     */
+    private function handleMissingBook(int $id): Response
     {
         $this->addFlash(
             "warning",
@@ -209,9 +212,9 @@ class LibraryController extends AbstractController
             return $this->redirectToRoute('all_books');
         }
 
-        $book = $entityManager->getRepository(Book::class)->find($id);
+        $book = $entityManager->getRepository(Book::class)->find((int) $id);
         if (!$book) {
-            return $this->handleMissingBook($id);
+            return $this->handleMissingBook((int) $id);
         }
 
         $entityManager->remove($book);
@@ -241,8 +244,7 @@ class LibraryController extends AbstractController
     public function resetLibrary(
         Request $request,
         EntityManagerInterface $entityManager
-    ): Response
-    {
+    ): Response {
         $reset = $request->request->get("reset") ?? null;
         if ($reset !== "true") {
             $this->addFlash(
@@ -261,16 +263,24 @@ class LibraryController extends AbstractController
 
         // Add default books to the library
         $jsonData = file_get_contents(__DIR__ . '/../../data/default-library.json');
+        if (!$jsonData) {
+            $this->addFlash(
+                "warning",
+                "Återställning misslyckades eftersom 'default-library.json' saknas!"
+            );
+            return $this->redirectToRoute('all_books');
+        }
+
         $defaultBooks = json_decode($jsonData, true);
-       foreach ($defaultBooks as $b) {
+        foreach ($defaultBooks as $b) {
             $book = new Book();
             $book->setTitle($b["title"]);
             $book->setAuthor($b["author"]);
             $book->setIsbn($b["isbn"]);
-            $book->setImage($b["image"]); 
+            $book->setImage($b["image"]);
             $entityManager->persist($book);
-       }
-       $entityManager->flush();
+        }
+        $entityManager->flush();
 
         $this->addFlash(
             "notice",

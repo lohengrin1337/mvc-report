@@ -38,10 +38,9 @@ class LibraryApiController extends AbstractController
 
     #[Route("api/library/book/{isbn}", name: "api_single_book", methods: ["GET"])]
     public function apiSingleBook(
-        int $isbn,
+        string $isbn,
         BookRepository $bookRepository
-    ): JsonResponse
-    {
+    ): JsonResponse {
         $book = $bookRepository->getByIsbn($isbn);
         if (!$book) {
             $this->setResponse([]);

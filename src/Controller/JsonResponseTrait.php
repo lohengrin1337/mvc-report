@@ -17,7 +17,7 @@ trait JsonResponseTrait
      * Set new JsonResponse with data
      * Update $this->response
      *
-     * @param array<string,mixed> $data - data to put in the JsonResponse
+     * @param array<mixed> $data - data to put in the JsonResponse
      */
     private function setResponse(array $data): void
     {
