@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="33" assertions="79" errors="0" warnings="0" failures="0" skipped="0" time="0.125549">
+    <testsuite name="Project Test Suite" tests="33" assertions="79" errors="0" warnings="0" failures="0" skipped="0" time="0.125549">
+      <testsuite name="App\Card\CardDeckTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardDeckTest.php" tests="5" assertions="12" errors="0" warnings="0" failures="0" skipped="0" time="0.043223">
+        <testcase name="testCreateCardDeck" class="App\Card\CardDeckTest" classname="App.Card.CardDeckTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardDeckTest.php" line="30" assertions="3" time="0.014461"/>
+        <testcase name="testCreateCardDeckInvalid" class="App\Card\CardDeckTest" classname="App.Card.CardDeckTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardDeckTest.php" line="42" assertions="1" time="0.002033"/>
+        <testcase name="testGetAsString" class="App\Card\CardDeckTest" classname="App.Card.CardDeckTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardDeckTest.php" line="53" assertions="2" time="0.002322"/>
+        <testcase name="testSortAndShuffle" class="App\Card\CardDeckTest" classname="App.Card.CardDeckTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardDeckTest.php" line="67" assertions="3" time="0.018760"/>
+        <testcase name="testDrawWhenSorted" class="App\Card\CardDeckTest" classname="App.Card.CardDeckTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardDeckTest.php" line="88" assertions="3" time="0.005647"/>
+      </testsuite>
+      <testsuite name="App\Card\CardGame21Test" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGame21Test.php" tests="11" assertions="38" errors="0" warnings="0" failures="0" skipped="0" time="0.065599">
+        <testcase name="testCreateCardGame21" class="App\Card\CardGame21Test" classname="App.Card.CardGame21Test" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGame21Test.php" line="57" assertions="1" time="0.021456"/>
+        <testcase name="testInitialState" class="App\Card\CardGame21Test" classname="App.Card.CardGame21Test" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGame21Test.php" line="67" assertions="8" time="0.002327"/>
+        <testcase name="testPlayerDrawsCard" class="App\Card\CardGame21Test" classname="App.Card.CardGame21Test" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGame21Test.php" line="93" assertions="4" time="0.001958"/>
+        <testcase name="testPlayerLoosesAt24" class="App\Card\CardGame21Test" classname="App.Card.CardGame21Test" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGame21Test.php" line="119" assertions="3" time="0.003374"/>
+        <testcase name="testSetAceRankValid" class="App\Card\CardGame21Test" classname="App.Card.CardGame21Test" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGame21Test.php" line="147" assertions="2" time="0.002251"/>
+        <testcase name="testSetAceRankInvalid" class="App\Card\CardGame21Test" classname="App.Card.CardGame21Test" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGame21Test.php" line="166" assertions="2" time="0.001668"/>
+        <testcase name="testBankWinsAt21" class="App\Card\CardGame21Test" classname="App.Card.CardGame21Test" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGame21Test.php" line="185" assertions="4" time="0.002211"/>
+        <testcase name="testBankWinsAt18" class="App\Card\CardGame21Test" classname="App.Card.CardGame21Test" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGame21Test.php" line="214" assertions="4" time="0.006771"/>
+        <testcase name="testBankLoosesAt24" class="App\Card\CardGame21Test" classname="App.Card.CardGame21Test" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGame21Test.php" line="244" assertions="4" time="0.006554"/>
+        <testcase name="testPlayerWinsAt21" class="App\Card\CardGame21Test" classname="App.Card.CardGame21Test" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGame21Test.php" line="275" assertions="4" time="0.012686"/>
+        <testcase name="testBankChooseAceRanks" class="App\Card\CardGame21Test" classname="App.Card.CardGame21Test" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGame21Test.php" line="307" assertions="2" time="0.004343"/>
+      </testsuite>
+      <testsuite name="App\Card\CardGraphicTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.002998">
+        <testcase name="testCorrectCardBack" class="App\Card\CardGraphicTest" classname="App.Card.CardGraphicTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="24" assertions="1" time="0.000848"/>
+        <testcase name="testCorrectStringDigit" class="App\Card\CardGraphicTest" classname="App.Card.CardGraphicTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="35" assertions="1" time="0.001228"/>
+        <testcase name="testCorrectStringFace" class="App\Card\CardGraphicTest" classname="App.Card.CardGraphicTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="46" assertions="1" time="0.000921"/>
+      </testsuite>
+      <testsuite name="App\Card\CardHandTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" tests="5" assertions="12" errors="0" warnings="0" failures="0" skipped="0" time="0.008012">
+        <testcase name="testCreateCardHand" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="37" assertions="2" time="0.002154"/>
+        <testcase name="testDrawOneFromDeck" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="48" assertions="4" time="0.001491"/>
+        <testcase name="testDrawThreeFromDeck" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="62" assertions="4" time="0.001945"/>
+        <testcase name="testSetLastCardRankExisting" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="76" assertions="1" time="0.001259"/>
+        <testcase name="testSetLastCardRankEmpty" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="87" assertions="1" time="0.001163"/>
+      </testsuite>
+      <testsuite name="App\Card\CardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" tests="8" assertions="12" errors="0" warnings="0" failures="0" skipped="0" time="0.004262">
+        <testcase name="testCreateCardValidArgs" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="25" assertions="3" time="0.000533"/>
+        <testcase name="testCreateCardInvalidSuit" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="40" assertions="1" time="0.000576"/>
+        <testcase name="testCreateCardInvalidRanks" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="52" assertions="1" time="0.000547"/>
+        <testcase name="testCorrectCardBack" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="63" assertions="1" time="0.000577"/>
+        <testcase name="testSetValidRank" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="74" assertions="2" time="0.000480"/>
+        <testcase name="testSetInvalidRank" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="86" assertions="2" time="0.000507"/>
+        <testcase name="testCorrectStringDigit" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="98" assertions="1" time="0.000475"/>
+        <testcase name="testCorrectStringFace" class="App\Card\CardTest" classname="App.Card.CardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="109" assertions="1" time="0.000566"/>
+      </testsuite>
+      <testsuite name="App\Dice\DiceTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.001456">
+        <testcase name="testCreateDice" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="16" assertions="2" time="0.001456"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
