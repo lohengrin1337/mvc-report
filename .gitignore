@@ -39,4 +39,4 @@ yarn-error.log
 
 /config/secrets/
 
-/migrations/*
+/migrations/
