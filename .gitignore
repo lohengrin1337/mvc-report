@@ -38,4 +38,5 @@ yarn-error.log
 .phpdoc/
 
 /config/secrets/
-/migrations/*
+
+/migrations/
