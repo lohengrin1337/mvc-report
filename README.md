@@ -60,6 +60,12 @@ npm install
 npm run build
 ```
 
+## Create sqlite database
+
+```
+
+```
+
 
 ## Run app
 
