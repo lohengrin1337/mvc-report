@@ -48,6 +48,8 @@ git clone https://github.com/lohengrin1337/mvc-report
 ## Install
 
 ```
+cd mvc-report
+
 composer install
 
 npm install
@@ -63,7 +65,11 @@ npm run build
 ## Create sqlite database
 
 ```
+php bin/console doctrine:database:create
 
+php bin/console make:migration
+
+php bin/console doctrine:migrations:migrate
 ```
 
 
