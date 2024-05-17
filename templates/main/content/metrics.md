@@ -73,8 +73,7 @@ Några metoder har fått varningar på grund av logiska luckor. Till exempel lä
 
 
 ### Resultat
-hur ser metrics ut nu?
-hur gick det?
+Issues fixade
 
 
 
