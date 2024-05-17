@@ -42,7 +42,7 @@ class CardDeckTest extends TestCase
     public function testCreateCardDeckInvalid(): void
     {
         $this->expectException("InvalidArgumentException");
-        $deck = new CardDeck("NotACardInterface::class");
+        new CardDeck("NotACardInterface::class");
     }
 
 

@@ -40,7 +40,7 @@ class DiceGraphic extends Dice
      */
     public function getAsString(): string
     {
-        if (!$this->value) {
+        if ($this->value === null) {
             return "";
         }
 

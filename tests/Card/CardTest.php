@@ -40,7 +40,7 @@ class CardTest extends TestCase
     public function testCreateCardInvalidSuit(): void
     {
         $this->expectException("InvalidArgumentException");
-        $card = new Card("invalid", 5); // 5 of invalid
+        new Card("invalid", 5); // 5 of invalid
     }
 
 
@@ -52,7 +52,7 @@ class CardTest extends TestCase
     public function testCreateCardInvalidRanks(): void
     {
         $this->expectException("InvalidArgumentException");
-        $card = new Card("hearts", 15); // 15 of hearts
+        new Card("hearts", 15); // 15 of hearts
     }
 
 

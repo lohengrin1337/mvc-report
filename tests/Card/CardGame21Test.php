@@ -20,9 +20,9 @@ class CardGame21Test extends TestCase
     private CardGame21 $gameWithDeckStub;
 
     /**
-     * @var CardInterface $cardStub - a mocked card
+     * @var object $cardStub - a mocked card
      */
-    private CardInterface $cardStub;
+    private object $cardStub;
 
 
 

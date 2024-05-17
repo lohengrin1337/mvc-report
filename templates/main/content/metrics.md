@@ -61,6 +61,8 @@ Några metoder har fått varningar på grund av logiska luckor. Till exempel lä
 - `DiceHand::getSum()` (Bug, Best practice)
 - `CardDeckTest::testCreateCardDeckInvalid()` (Unused code)
 - `CardDeckTest::cardStub` (Documentaion, Bug)
+- `CardTest::testCreateCardInvalidSuit()` (Unused code)
+- `CardTest::testCreateCardInvalidRanks()` (Unused code)
 
 
 ### Kodtäckning

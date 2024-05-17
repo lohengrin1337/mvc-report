@@ -93,7 +93,7 @@ class DiceHand
     {
         $values = $this->getValues();
 
-        return array_sum($values);
+        return (int) array_sum($values);
     }
 
 
