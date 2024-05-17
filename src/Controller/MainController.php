@@ -176,4 +176,14 @@ class MainController extends AbstractController
 
         return $this->redirectToRoute("session");
     }
+
+
+
+    #[Route('/metrics', name: "metrics")]
+    public function metrics(): Response
+    {
+        $this->data["pageTitle"] = "Metrics analys";
+
+        return $this->render("main/metrics.html.twig", $this->data);
+    }
 }

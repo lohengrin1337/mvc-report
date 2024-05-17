@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <h1>{{ pageTitle }}</h1>
+
+        {{ include('main/content/metrics.md')|markdown_to_html }}
+    </main>
+{% endblock %}
