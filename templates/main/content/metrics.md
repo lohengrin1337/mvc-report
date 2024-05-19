@@ -78,7 +78,7 @@ Issues fixade
 
 Tester för Dice klara (100%)
 
-
+resetLibraryService klar
 
 
 ## Diskussion
