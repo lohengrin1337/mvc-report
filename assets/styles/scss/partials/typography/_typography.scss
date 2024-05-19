@@ -91,7 +91,8 @@ h2 {
 h3,
 .header-lg {
     @extend %headers;
-    margin-bottom: var.$baseline;
+    // margin-bottom: var.$baseline;
+    margin-bottom: 0;
     font-size: calc(1rem * math.pow(var.$scale-factor, 2));
     font-weight: 200;
 }
@@ -104,10 +105,16 @@ h4,
 }
 
 
-p + h1,
-p + h2,
-p + h3 {
+* + h2 {
+    margin-top: var.$baseline-x3;
+}
+
+* + h3 {
     margin-top: var.$baseline-x2;
+}
+
+h2 + h3 {
+    margin-top: 0;
 }
 
 

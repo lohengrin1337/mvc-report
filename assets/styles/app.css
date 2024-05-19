@@ -530,7 +530,7 @@ h2 {
 
 h3,
 .header-lg {
-  margin-bottom: 1.4rem;
+  margin-bottom: 0;
   font-size: 1.69rem;
   font-weight: 200;
 }
@@ -541,10 +541,16 @@ h4,
   font-weight: 200;
 }
 
-p + h1,
-p + h2,
-p + h3 {
+* + h2 {
+  margin-top: 4.2rem;
+}
+
+* + h3 {
   margin-top: 2.8rem;
+}
+
+h2 + h3 {
+  margin-top: 0;
 }
 
 .header-sm {
