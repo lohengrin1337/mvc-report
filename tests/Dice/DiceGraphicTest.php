@@ -66,6 +66,6 @@ class DiceGraphicTest extends TestCase
         ];
 
         $value = $this->die->roll();
-        $this->assertEquals($graphic[$value -1], $this->die->getAsString());
+        $this->assertEquals($graphic[$value - 1], $this->die->getAsString());
     }
 }

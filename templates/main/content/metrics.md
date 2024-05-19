@@ -67,6 +67,7 @@ Några metoder har fått varningar på grund av logiska luckor. Till exempel lä
 
 ### Kodtäckning
 - Tester för klasser i namespace `App\Dice`
+- Ta bort klasser jag inte vill testa
 
 ### Komplexitet
 - `LibraryController::resetLibrary()` - Flytta funktionalitet till en ny modellklass
@@ -74,6 +75,9 @@ Några metoder har fått varningar på grund av logiska luckor. Till exempel lä
 
 ### Resultat
 Issues fixade
+
+Tester för Dice klara (100%)
+
 
 
 

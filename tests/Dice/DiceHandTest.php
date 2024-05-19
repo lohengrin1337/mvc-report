@@ -11,7 +11,7 @@ class DiceHandTest extends TestCase
 {
     private DiceHand $diceHand;
 
-    private object $diceStub;
+    private Dice $diceStub;
 
     protected function setUp(): void
     {
@@ -71,7 +71,7 @@ class DiceHandTest extends TestCase
         $this->assertEquals(2, $res);
 
         $res = $this->diceHand->getSum();
-        $this->assertEquals(10,$res);
+        $this->assertEquals(10, $res);
 
         $res = $this->diceHand->getAvg();
         $this->assertEquals(5, $res);
@@ -97,6 +97,6 @@ class DiceHandTest extends TestCase
         $this->diceHand->reset();
 
         $res = $this->diceHand->getSum();
-        $this->assertEquals(0,$res);
+        $this->assertEquals(0, $res);
     }
 }

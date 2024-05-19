@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Book;
 use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Service\ResetLibraryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -243,7 +244,7 @@ class LibraryController extends AbstractController
     #[Route('/library/reset', name: 'library_reset', methods: ["POST"])]
     public function resetLibrary(
         Request $request,
-        EntityManagerInterface $entityManager
+        ResetLibraryService $rls
     ): Response {
         $reset = $request->request->get("reset") ?? null;
         if ($reset !== "true") {
@@ -254,33 +255,16 @@ class LibraryController extends AbstractController
             return $this->redirectToRoute('all_books');
         }
 
-        // Remove all existing books from the database
-        $books = $entityManager->getRepository(Book::class)->findAll();
-        foreach ($books as $book) {
-            $entityManager->remove($book);
-        }
-        $entityManager->flush();
-
         // Add default books to the library
-        $jsonData = file_get_contents(__DIR__ . '/../../data/default-library.json');
-        if (!$jsonData) {
+        $resetSuccess = $rls->resetLibrary();
+
+        if (!$resetSuccess) {
             $this->addFlash(
                 "warning",
-                "Återställning misslyckades eftersom 'default-library.json' saknas!"
+                "Återställning misslyckades!"
             );
             return $this->redirectToRoute('all_books');
         }
-
-        $defaultBooks = json_decode($jsonData, true);
-        foreach ($defaultBooks as $b) {
-            $book = new Book();
-            $book->setTitle($b["title"]);
-            $book->setAuthor($b["author"]);
-            $book->setIsbn($b["isbn"]);
-            $book->setImage($b["image"]);
-            $entityManager->persist($book);
-        }
-        $entityManager->flush();
 
         $this->addFlash(
             "notice",
