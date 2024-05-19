@@ -1,13 +1,5 @@
 ## Introduktion
 
-Codestyle
-Coverage
-Complexity
-Cohesion
-Coupling
-CRAP
-(Code smell)
-
 Denna artikeln är en dokumentation över processen att försöka förbättra min egen källkod för denna webbappen. Ugångspunkten är att titta på ett antal olika mätvärden och principer, som har något att säga om hur kvaliteten på koden ser ut.
 
 *Code style* är riktlinjer eller konventioner för hur ett programmeringspråk bör skrivas. Det kan exempelvis röra sig om hur *whitespace* och indentationer används, hur variabler namnges, eller hur kommentarer skrivs. Syftet är att göra koden mer läsbar, och lättare att underhålla. Jag använder mig av verktyget *PHP CS Fixer* för att enkelt hålla koden i trim enligt kodstandarden.
@@ -38,8 +30,6 @@ Den tydligaste signalen jag får från phpmetrics-rapporten är att mina control
     >
 </a>
 
-<!-- ![Controllers and coverage]({{ asset('img/metrics/phpmetrics-coverage.png') }}) -->
-
 
 ## Scrutinizer
 
@@ -57,6 +47,8 @@ Några metoder har fått varningar på grund av logiska luckor. Till exempel lä
 ## Förbättringar
 
 ### Issues
+Jag börjar med att korrigera *issues* för att koden ska följa *best practice* och för att undvika potentiella buggar.
+
 - `DiceGraphic::getAsString()` (Bug, Best practice)
 - `DiceHand::getSum()` (Bug, Best practice)
 - `CardDeckTest::testCreateCardDeckInvalid()` (Unused code)
@@ -66,19 +58,23 @@ Några metoder har fått varningar på grund av logiska luckor. Till exempel lä
 
 
 ### Kodtäckning
-- Tester för klasser i namespace `App\Dice`
-- Ta bort klasser jag inte vill testa
+Klasserna i namespace `App\Dice` saknar tester, och det känns som en rimlig åtgärd att säkra upp den koden.
+Jag skulle kunna försöka ge mig på att testa controllerklasserna, samt en nyskapad `App\Service\ResetLibraryService`, men jag väljer att inte ge mig på det.
+
 
 ### Komplexitet
-- `LibraryController::resetLibrary()` - Flytta funktionalitet till en ny modellklass
+Jag gör en *refactoring* av koden i `LibraryController::resetLibrary()` genom att flytta logik till en ny klass `ResetLibraryService`. På så sätt kan jag få ner komplexiteten i controller-klassen, och följer i högre grad *single responsisibility principle*, vilket ger högre *cohesion*.
 
 
 ### Resultat
-Issues fixade
+Alla issues i scrutinizer är åtgärdade, med undantag för en som jag anser är irrelevant.
 
-Tester för Dice klara (100%)
+Kodtäckningen har ökat från 21% till 25%. Jag är nöjd med det eftersom jag testat 99% av den kod jag vill testa.
 
-resetLibraryService klar
+
+Komplexiteten för `LibraryController` har sjunkit från 24 till 22 enligt scrutinizer, och från 15 till 13 enligt phpmetrics.
+Den nya klassen `ResetLibraryService` får ett högt CRAP-score eftersom den inte har någon kodtäckning. Detta gör att klassen får betyg B av scrutinizer, vilket sänker helhetsbetyget från 10 till 9.98. Jag anser att koden är bättre ändå, och jag kan/vill inte testa den nya klassen.
 
 
 ## Diskussion
+PHP metrics och scrutinizer kan vara bra verktyg för att förbättra sin kodkvalitet. Genom badges kan man kan man även ge en signal till användaren vad den kan förvänta sig. Om man regelbundet jobbar med att städa upp i sin kod blir det lättare att förebygga buggar, och se till att koden går att underhålla på sikt. Det främsta nackdelen är att det tar tid för stunden, och kan vara lite frustrerande. Ibland kan resultaten även vara lite missvisande.
