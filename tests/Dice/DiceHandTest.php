@@ -19,7 +19,10 @@ class DiceHandTest extends TestCase
 
         $this->diceStub = $this->createStub(Dice::class);
         $this->diceStub->method("getValue")->willReturn(5);
-        $this->diceStub->method("getAsString")->willReturn("[5]");
+        $this->diceStub->/** @scrutinizer ignore-call */ 
+                         method("getValue")->willReturn(5);
+        $this->diceStub->/** @scrutinizer ignore-call */ 
+                         method("getAsString")->willReturn("[5]");
     }
 
 
