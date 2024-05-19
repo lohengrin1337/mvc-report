@@ -112,16 +112,13 @@
                                 <section>
                                         <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/app.html">App</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app-controller.html">Controller</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app-service.html">Service</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    LibraryApiController
+    ResetLibraryService
 
-        <span class="phpdocumentor-element__extends">
-        extends <abbr title="\Symfony\Bundle\FrameworkBundle\Controller\AbstractController">AbstractController</abbr>
-    </span>
     
             <div class="phpdocumentor-element__package">
             in package
@@ -131,9 +128,6 @@
         </div>
     
     
-            <span class="phpdocumentor-element__extends">
-            Uses
-                            <a href="classes/App-Controller-JsonResponseTrait.html"><abbr title="\App\Controller\JsonResponseTrait">JsonResponseTrait</abbr></a>                    </span>
     </h2>
 
 <div class="phpdocumentor-label-line">
@@ -142,14 +136,13 @@
 </div>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/LibraryApiController.php"><a href="files/src-controller-libraryapicontroller.html"><abbr title="src/Controller/LibraryApiController.php">LibraryApiController.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Service/ResetLibraryService.php"><a href="files/src-service-resetlibraryservice.html"><abbr title="src/Service/ResetLibraryService.php">ResetLibraryService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">15</span>
+    <span class="phpdocumentor-element-found-in__line">8</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">controller class for api routes of library</p>
-
+        
 
 
 
@@ -157,7 +150,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="classes/App-Controller-LibraryApiController.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/App-Service-ResetLibraryService.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -167,47 +160,61 @@
 
 
 
+<h4 id="toc-constants">
+    Constants
+    <a href="classes/App-Service-ResetLibraryService.html#toc-constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/App-Service-ResetLibraryService.html#constant_DEFAULT_JSON_FILE">DEFAULT_JSON_FILE</a>
+    <span>
+        &nbsp;= &quot;default-library.json&quot;                            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/App-Service-ResetLibraryService.html#constant_PATH_TO_DATA">PATH_TO_DATA</a>
+    <span>
+        &nbsp;= __DIR__ . &quot;/../../data/&quot;                            </span>
+</dt>
+
+    </dl>
 
 
 <h4 id="toc-properties">
     Properties
-    <a href="classes/App-Controller-LibraryApiController.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/App-Service-ResetLibraryService.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/App-Controller-JsonResponseTrait.html#property_response">$response</a>
+    <a href="classes/App-Service-ResetLibraryService.html#property_entityManager">$entityManager</a>
     <span>
-                        &nbsp;: <abbr title="\Symfony\Component\HttpFoundation\JsonResponse">JsonResponse</abbr>            </span>
+                        &nbsp;: <abbr title="\Doctrine\ORM\EntityManagerInterface">EntityManagerInterface</abbr>            </span>
 </dt>
 
     </dl>
 
 <h4 id="toc-methods">
     Methods
-    <a href="classes/App-Controller-LibraryApiController.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/App-Service-ResetLibraryService.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-Controller-LibraryApiController.html#method_apiAllBooks">apiAllBooks()</a>
+    <a href="classes/App-Service-ResetLibraryService.html#method___construct">__construct()</a>
     <span>
-                                &nbsp;: <abbr title="\Symfony\Component\HttpFoundation\JsonResponse">JsonResponse</abbr>    </span>
+                                &nbsp;: mixed    </span>
 </dt>
+<dd>Constructor
+Add entitymanager</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-Controller-LibraryApiController.html#method_apiSingleBook">apiSingleBook()</a>
+    <a href="classes/App-Service-ResetLibraryService.html#method_resetLibrary">resetLibrary()</a>
     <span>
-                                &nbsp;: <abbr title="\Symfony\Component\HttpFoundation\JsonResponse">JsonResponse</abbr>    </span>
+                                &nbsp;: bool    </span>
 </dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/App-Controller-JsonResponseTrait.html#method_setResponse">setResponse()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-<dd>Set new JsonResponse with data
-Update $this-&gt;response</dd>
+<dd>Reset library (book table) to only contain titles from json-file</dd>
 
     </dl>
 
@@ -215,12 +222,79 @@ Update $this-&gt;response</dd>
 
 
         
+    <section class="phpdocumentor-constants">
+        <h3 class="phpdocumentor-elements__header" id="constants">
+            Constants
+            <a href="classes/App-Service-ResetLibraryService.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_DEFAULT_JSON_FILE">
+        DEFAULT_JSON_FILE
+        <a href="classes/App-Service-ResetLibraryService.html#constant_DEFAULT_JSON_FILE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Service/ResetLibraryService.php"><a href="files/src-service-resetlibraryservice.html"><abbr title="src/Service/ResetLibraryService.php">ResetLibraryService.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">18</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">DEFAULT_JSON_FILE</span>
+    = <span class="phpdocumentor-signature__default-value">&quot;default-library.json&quot;</span>
+</code>
+
+
+    
+        <section class="phpdocumentor-description"><p>DEFAULT_JSON_FILE</p>
+</section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_PATH_TO_DATA">
+        PATH_TO_DATA
+        <a href="classes/App-Service-ResetLibraryService.html#constant_PATH_TO_DATA" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Service/ResetLibraryService.php"><a href="files/src-service-resetlibraryservice.html"><abbr title="src/Service/ResetLibraryService.php">ResetLibraryService.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">13</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">PATH_TO_DATA</span>
+    = <span class="phpdocumentor-signature__default-value">__DIR__ . &quot;/../../data/&quot;</span>
+</code>
+
+
+    
+        <section class="phpdocumentor-description"><p>PATH_TO_DATA</p>
+</section>
+
+    
+
+</article>
+            </section>
 
         
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/App-Controller-LibraryApiController.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/App-Service-ResetLibraryService.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -230,25 +304,25 @@ Update $this-&gt;response</dd>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_response">
-        $response
-        <a href="classes/App-Controller-JsonResponseTrait.html#property_response" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_entityManager">
+        $entityManager
+        <a href="classes/App-Service-ResetLibraryService.html#property_entityManager" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/JsonResponseTrait.php"><a href="files/src-controller-jsonresponsetrait.html"><abbr title="src/Controller/JsonResponseTrait.php">JsonResponseTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Service/ResetLibraryService.php"><a href="files/src-service-resetlibraryservice.html"><abbr title="src/Service/ResetLibraryService.php">ResetLibraryService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type"><abbr title="\Symfony\Component\HttpFoundation\JsonResponse">JsonResponse</abbr></span>
-    <span class="phpdocumentor-signature__name">$response</span>
+        <span class="phpdocumentor-signature__type"><abbr title="\Doctrine\ORM\EntityManagerInterface">EntityManagerInterface</abbr></span>
+    <span class="phpdocumentor-signature__name">$entityManager</span>
     </code>
 
     
@@ -261,7 +335,7 @@ Update $this-&gt;response</dd>
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/App-Controller-LibraryApiController.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/App-Service-ResetLibraryService.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -270,22 +344,24 @@ Update $this-&gt;response</dd>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_apiAllBooks">
-        apiAllBooks()
-        <a href="classes/App-Controller-LibraryApiController.html#method_apiAllBooks" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method___construct">
+        __construct()
+        <a href="classes/App-Service-ResetLibraryService.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/LibraryApiController.php"><a href="files/src-controller-libraryapicontroller.html"><abbr title="src/Controller/LibraryApiController.php">LibraryApiController.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Service/ResetLibraryService.php"><a href="files/src-service-resetlibraryservice.html"><abbr title="src/Service/ResetLibraryService.php">ResetLibraryService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Constructor
+Add entitymanager</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">apiAllBooks</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Repository-BookRepository.html"><abbr title="\App\Repository\BookRepository">BookRepository</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bookRepository</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\JsonResponse">JsonResponse</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\ORM\EntityManagerInterface">EntityManagerInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$entityManager</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -293,8 +369,8 @@ Update $this-&gt;response</dd>
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$bookRepository</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Repository-BookRepository.html"><abbr title="\App\Repository\BookRepository">BookRepository</abbr></a></span>
+                <span class="phpdocumentor-signature__argument__name">$entityManager</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Doctrine\ORM\EntityManagerInterface">EntityManagerInterface</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
@@ -303,11 +379,7 @@ Update $this-&gt;response</dd>
 
     
 
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\JsonResponse">JsonResponse</abbr></span>
-            </section>
-
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -315,22 +387,23 @@ Update $this-&gt;response</dd>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_apiSingleBook">
-        apiSingleBook()
-        <a href="classes/App-Controller-LibraryApiController.html#method_apiSingleBook" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_resetLibrary">
+        resetLibrary()
+        <a href="classes/App-Service-ResetLibraryService.html#method_resetLibrary" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/LibraryApiController.php"><a href="files/src-controller-libraryapicontroller.html"><abbr title="src/Controller/LibraryApiController.php">LibraryApiController.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Service/ResetLibraryService.php"><a href="files/src-service-resetlibraryservice.html"><abbr title="src/Service/ResetLibraryService.php">ResetLibraryService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">39</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Reset library (book table) to only contain titles from json-file</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">apiSingleBook</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$isbn</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Repository-BookRepository.html"><abbr title="\App\Repository\BookRepository">BookRepository</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bookRepository</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\JsonResponse">JsonResponse</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">resetLibrary</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$fileName</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">self::DEFAULT_JSON_FILE</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -338,66 +411,12 @@ Update $this-&gt;response</dd>
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$isbn</span>
+                <span class="phpdocumentor-signature__argument__name">$fileName</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$bookRepository</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Repository-BookRepository.html"><abbr title="\App\Repository\BookRepository">BookRepository</abbr></a></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\JsonResponse">JsonResponse</abbr></span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_setResponse">
-        setResponse()
-        <a href="classes/App-Controller-JsonResponseTrait.html#method_setResponse" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/JsonResponseTrait.php"><a href="files/src-controller-jsonresponsetrait.html"><abbr title="src/Controller/JsonResponseTrait.php">JsonResponseTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">22</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Set new JsonResponse with data
-Update $this-&gt;response</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">setResponse</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$data</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
+                 = <span class="phpdocumentor-signature__argument__default-value">self::DEFAULT_JSON_FILE</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><ul>
-<li>data to put in the JsonResponse</li>
+<li>the name of a json file</li>
 </ul>
 </section>
 
@@ -406,7 +425,11 @@ Update $this-&gt;response</p>
 
     
 
-    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
 </article>
             </section>
 
@@ -414,7 +437,7 @@ Update $this-&gt;response</p>
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Controller/LibraryApiController.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Service/ResetLibraryService.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -513,24 +536,31 @@ Update $this-&gt;response</p>
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                            <li><a href="classes/App-Controller-LibraryApiController.html#toc-properties">Properties</a></li>
-                                                            <li><a href="classes/App-Controller-LibraryApiController.html#toc-methods">Methods</a></li>
+                                        <li><a href="classes/App-Service-ResetLibraryService.html#toc-constants">Constants</a></li>
+                                                            <li><a href="classes/App-Service-ResetLibraryService.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/App-Service-ResetLibraryService.html#toc-methods">Methods</a></li>
                                     </ul>
             </li>
+                            <li class="phpdocumentor-on-this-page-section__title">Constants</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/App-Service-ResetLibraryService.html#constant_DEFAULT_JSON_FILE">DEFAULT_JSON_FILE</a></li>
+                                                    <li><a href="classes/App-Service-ResetLibraryService.html#constant_PATH_TO_DATA">PATH_TO_DATA</a></li>
+                                            </ul>
+                </li>
             
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/App-Controller-JsonResponseTrait.html#property_response">$response<a href="classes/App-Controller-LibraryApiController.html"></li>
+                                                    <li><a href="classes/App-Service-ResetLibraryService.html#property_entityManager">$entityManager<a href="classes/App-Service-ResetLibraryService.html"></li>
                                             </ul>
                 </li>
             
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li><a href="classes/App-Controller-LibraryApiController.html#method_apiAllBooks">apiAllBooks()</a></li>
-                                            <li><a href="classes/App-Controller-LibraryApiController.html#method_apiSingleBook">apiSingleBook()</a></li>
-                                            <li><a href="classes/App-Controller-JsonResponseTrait.html#method_setResponse">setResponse()</a></li>
+                                            <li><a href="classes/App-Service-ResetLibraryService.html#method___construct">__construct()</a></li>
+                                            <li><a href="classes/App-Service-ResetLibraryService.html#method_resetLibrary">resetLibrary()</a></li>
                                     </ul>
             </li>
                     </ul>
@@ -550,7 +580,7 @@ Update $this-&gt;response</p>
     </section>
 </section>
         </div>
-        <a href="classes/App-Controller-LibraryApiController.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/App-Service-ResetLibraryService.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

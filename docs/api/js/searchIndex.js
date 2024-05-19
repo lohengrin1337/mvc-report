@@ -756,6 +756,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-MainController.html#method_sessionDelete"
         },                {
+            "fqsen": "\\App\\Controller\\MainController\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "",
+            "url": "classes/App-Controller-MainController.html#method_metrics"
+        },                {
             "fqsen": "\\App\\Controller\\MainController\u003A\u003A\u0024data",
             "name": "data",
             "summary": "",
@@ -1091,6 +1096,36 @@ Search.appendIndex(
             "summary": "Get\u0020all\u0020products\u0020with\u0020a\u0020minimum\u0020value\u0020of\u0020\u0024value",
             "url": "classes/App-Repository-ProductRepository.html#method_findByMinVal2"
         },                {
+            "fqsen": "\\App\\Service\\ResetLibraryService",
+            "name": "ResetLibraryService",
+            "summary": "",
+            "url": "classes/App-Service-ResetLibraryService.html"
+        },                {
+            "fqsen": "\\App\\Service\\ResetLibraryService\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructor\nAdd\u0020entitymanager",
+            "url": "classes/App-Service-ResetLibraryService.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Service\\ResetLibraryService\u003A\u003AresetLibrary\u0028\u0029",
+            "name": "resetLibrary",
+            "summary": "Reset\u0020library\u0020\u0028book\u0020table\u0029\u0020to\u0020only\u0020contain\u0020titles\u0020from\u0020json\u002Dfile",
+            "url": "classes/App-Service-ResetLibraryService.html#method_resetLibrary"
+        },                {
+            "fqsen": "\\App\\Service\\ResetLibraryService\u003A\u003APATH_TO_DATA",
+            "name": "PATH_TO_DATA",
+            "summary": "",
+            "url": "classes/App-Service-ResetLibraryService.html#constant_PATH_TO_DATA"
+        },                {
+            "fqsen": "\\App\\Service\\ResetLibraryService\u003A\u003ADEFAULT_JSON_FILE",
+            "name": "DEFAULT_JSON_FILE",
+            "summary": "",
+            "url": "classes/App-Service-ResetLibraryService.html#constant_DEFAULT_JSON_FILE"
+        },                {
+            "fqsen": "\\App\\Service\\ResetLibraryService\u003A\u003A\u0024entityManager",
+            "name": "entityManager",
+            "summary": "",
+            "url": "classes/App-Service-ResetLibraryService.html#property_entityManager"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -1125,5 +1160,10 @@ Search.appendIndex(
             "name": "Repository",
             "summary": "",
             "url": "namespaces/app-repository.html"
+        },                {
+            "fqsen": "\\App\\Service",
+            "name": "Service",
+            "summary": "",
+            "url": "namespaces/app-service.html"
         }            ]
 );
