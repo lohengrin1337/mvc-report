@@ -1,12 +1,17 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <main class="main text-container">
+    <main class="main">
         <div class="sub-nav">
             {{ include('proj/_nav.html.twig') }}
         </div>
 
         <h1>{{ pageTitle }}</h1>
+
+        <div class="gameview">
+            {{ include('proj/game/_gameboard.html.twig') }}
+            {{ include('proj/game/_deck_and_buttons.html.twig') }}
+        </div>
 
     </main>
 {% endblock %}

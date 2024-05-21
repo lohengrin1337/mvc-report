@@ -850,6 +850,24 @@ tr.clickable:hover {
   align-items: center;
 }
 
+.gameview {
+  display: flex;
+  gap: 2.8rem;
+}
+
+.gameboard {
+  display: flex;
+  flex-direction: column;
+}
+.gameboard .row {
+  display: flex;
+}
+.gameboard .slot {
+  width: 70px;
+  height: 100px;
+  border: 1px solid white;
+}
+
 @media (max-width: 900px) {
   .nav ul {
     gap: 0.7rem;

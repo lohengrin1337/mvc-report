@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Card\CardDeck;
+// use App\PokerSquares\PokerSquares;
+use App\Card\CardHand;
+use App\Card\CardGraphic;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 /**
@@ -97,7 +102,7 @@ class ProjectController extends AbstractController
     #[Route("/proj/game/singleplayer", name: "proj_singleplayer", methods: ["GET"])]
     public function singleplayer(): Response
     {
-        $this->data["pageTitle"] = "Poker Squares - Singleplayer";
+        $this->data["pageTitle"] = "Singleplayer";
         return $this->render("proj/game/singleplayer.html.twig", $this->data);
     }
 
@@ -106,7 +111,7 @@ class ProjectController extends AbstractController
     #[Route("/proj/game/multiplayer", name: "proj_multiplayer", methods: ["GET"])]
     public function multiplayer(): Response
     {
-        $this->data["pageTitle"] = "Poker Squares - Multiplayer";
+        $this->data["pageTitle"] = "Multiplayer";
         return $this->render("proj/game/multiplayer.html.twig", $this->data);
     }
 }

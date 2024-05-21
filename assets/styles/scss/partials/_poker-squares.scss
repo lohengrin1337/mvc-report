@@ -1,0 +1,22 @@
+@use "variables" as var;
+
+.gameview {
+    display: flex;
+    gap: var.$baseline-x2;
+}
+
+.gameboard {
+    display: flex;
+    flex-direction: column;
+
+    .row {
+        display: flex;
+    }
+
+    .slot {
+        width: 70px;
+        height: 100px;
+
+        border: 1px solid white;
+    }
+}
