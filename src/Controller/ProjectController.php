@@ -90,28 +90,73 @@ class ProjectController extends AbstractController
 
 
 
-    #[Route("/proj/game/init", name: "proj_game_init_view", methods: ["GET"])]
-    public function gameInitView(): Response
+    // #[Route("/proj/game/init", name: "proj_game_init_view", methods: ["GET"])]
+    // public function gameInitView(): Response
+    // {
+    //     $this->data["pageTitle"] = "Välj speltyp";
+    //     return $this->render("proj/game/init.html.twig", $this->data);
+    // }
+
+
+
+    #[Route("/proj/game/test-init", name: "proj_test_init", methods: ["GET"])]
+    public function testInit(SessionInterface $session): Response
     {
-        $this->data["pageTitle"] = "Välj speltyp";
-        return $this->render("proj/game/init.html.twig", $this->data);
+        $gameboard = []; // new Gameboard()
+        $deck = new CardDeck(CardGraphic::class);
+        $card = $deck->draw();
+        $session->set("gameboard", $gameboard);
+        $session->set("deck", $deck);
+        $session->set("card", $card);
+
+        return $this->redirectToRoute("proj_singleplayer");
     }
 
 
 
     #[Route("/proj/game/singleplayer", name: "proj_singleplayer", methods: ["GET"])]
-    public function singleplayer(): Response
+    public function singleplayer(SessionInterface $session): Response
     {
+        $gameboard = $session->get("gameboard");
+        $deck = $session->get("deck");
+        $card = $session->get("card");
+
         $this->data["pageTitle"] = "Singleplayer";
+        $this->data["cardBack"] = $deck->getCardBack();
+        $this->data["card"] = $card->getAsString();
+        $this->data["gameboard"] = $gameboard; // $gameboard->getState()
+
         return $this->render("proj/game/singleplayer.html.twig", $this->data);
     }
 
 
 
     #[Route("/proj/game/multiplayer", name: "proj_multiplayer", methods: ["GET"])]
-    public function multiplayer(): Response
+    public function multiplayer(SessionInterface $session): Response
     {
         $this->data["pageTitle"] = "Multiplayer";
         return $this->render("proj/game/multiplayer.html.twig", $this->data);
+    }
+
+
+
+    #[Route("/proj/game/place-card", name: "proj_place_card", methods: ["POST"])]
+    public function placeCard(
+        Request $request,
+        SessionInterface $session
+    ): Response {
+        $slotId = $request->request->get("slot_id");
+        $gameboard = $session->get("gameboard");
+        $deck = $session->get("deck");
+        $card = $session->get("card");
+
+        $gameboard[$slotId] = $card->getAsString(); // $gameboard->placeCard($card, slotId)
+
+        $card = $deck->draw();
+        $session->set("gameboard", $gameboard);
+        $session->set("deck", $deck);
+        $session->set("card", $card);
+
+        return $this->redirectToRoute("proj_singleplayer");
     }
 }
