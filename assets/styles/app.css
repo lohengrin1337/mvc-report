@@ -639,6 +639,8 @@ picture {
   font-size: 100px;
   margin-bottom: -20px;
   position: relative;
+  top: -5px;
+  left: 5px;
 }
 
 .deck-count {
@@ -863,9 +865,15 @@ tr.clickable:hover {
   display: flex;
 }
 .gameboard .slot {
-  width: 70px;
-  height: 100px;
+  width: 75px;
+  height: 110px;
   border: 1px solid white;
+}
+.gameboard .slot:hover {
+  cursor: default;
+}
+.gameboard .empty-slot:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {

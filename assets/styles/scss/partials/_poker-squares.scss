@@ -14,9 +14,17 @@
     }
 
     .slot {
-        width: 70px;
-        height: 100px;
+        width: 75px;
+        height: 110px;
 
         border: 1px solid white;
+    }
+
+    .slot:hover {
+        cursor: default;
+    }
+
+    .empty-slot:hover {
+        cursor: pointer;
     }
 }
