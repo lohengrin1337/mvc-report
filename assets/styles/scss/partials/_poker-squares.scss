@@ -2,7 +2,7 @@
 
 .gameview {
     display: flex;
-    gap: var.$baseline-x2;
+    gap: var.$baseline-x4;
 }
 
 .gameboard {
@@ -14,9 +14,8 @@
     }
 
     .slot {
-        width: 75px;
-        height: 110px;
-
+        width: 69px;
+        height: 100px;
         border: 1px solid white;
     }
 
@@ -26,5 +25,12 @@
 
     .empty-slot:hover {
         cursor: pointer;
+        background-color: var.$bg-color-hover;
     }
+}
+
+.deck-and-card {
+    display: flex;
+    flex-direction: column;
+    gap: var.$baseline;
 }

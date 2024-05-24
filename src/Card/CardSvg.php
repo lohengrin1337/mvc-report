@@ -16,6 +16,7 @@ class CardSvg extends Card
      * @var array<string> CLASS_MID - mid of class name
      */
     public const CLASS_MID = [
+        1 => "a",
         11 => "j",
         12 => "q",
         13 => "k",

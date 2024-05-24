@@ -4,9 +4,10 @@
             {% for col in range(1, 5) %}
                 {% set slot = row ~ col %}
                 {% if slot in gameboard|keys %}
-                    <div class="slot">
+                    <div class="slot {{ gameboard[slot] }}"></div>
+                    {# <div class="slot">
                         <span class="card">{{ gameboard[slot]|raw }}</span>
-                    </div>
+                    </div> #}
                 {% else %}
                     <div class="slot empty-slot" data-slot-id="{{ slot }}"></div>
                 {% endif %}

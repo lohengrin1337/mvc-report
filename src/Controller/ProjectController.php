@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Card\CardDeck;
 // use App\PokerSquares\PokerSquares;
 use App\Card\CardHand;
-use App\Card\CardGraphic;
+use App\Card\CardSvg;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -103,7 +103,7 @@ class ProjectController extends AbstractController
     public function testInit(SessionInterface $session): Response
     {
         $gameboard = []; // new Gameboard()
-        $deck = new CardDeck(CardGraphic::class);
+        $deck = new CardDeck(CardSvg::class);
         $card = $deck->draw();
         $session->set("gameboard", $gameboard);
         $session->set("deck", $deck);
