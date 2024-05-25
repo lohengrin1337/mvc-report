@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Card\CardDeck;
-// use App\PokerSquares\PokerSquares;
+use App\PokerSquares\Gameboard;
 use App\Card\CardHand;
 use App\Card\CardSvg;
 use Doctrine\ORM\EntityManagerInterface;
@@ -102,7 +102,7 @@ class ProjectController extends AbstractController
     #[Route("/proj/game/test-init", name: "proj_test_init", methods: ["GET"])]
     public function testInit(SessionInterface $session): Response
     {
-        $gameboard = []; // new Gameboard()
+        $gameboard = new Gameboard();
         $deck = new CardDeck(CardSvg::class);
         $card = $deck->draw();
         $session->set("gameboard", $gameboard);
@@ -124,7 +124,7 @@ class ProjectController extends AbstractController
         $this->data["pageTitle"] = "Singleplayer";
         $this->data["cardBack"] = $deck->getCardBack();
         $this->data["card"] = $card->getAsString();
-        $this->data["gameboard"] = $gameboard; // $gameboard->getState()
+        $this->data["gameboard"] = $gameboard->getAsString();
 
         return $this->render("proj/game/singleplayer.html.twig", $this->data);
     }
@@ -150,7 +150,7 @@ class ProjectController extends AbstractController
         $deck = $session->get("deck");
         $card = $session->get("card");
 
-        $gameboard[$slotId] = $card->getAsString(); // $gameboard->placeCard($card, slotId)
+        $gameboard->placeCard($slotId, $card);
 
         $card = $deck->draw();
         $session->set("gameboard", $gameboard);
