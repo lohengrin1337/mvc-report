@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.010581">
-    <testsuite name="Project Test Suite" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.010581">
-      <testsuite name="App\PokerSquares\GameboardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/PokerSquares/GameboardTest.php" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.010581">
-        <testcase name="testCreateGameboard" class="App\PokerSquares\GameboardTest" classname="App.PokerSquares.GameboardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/PokerSquares/GameboardTest.php" line="24" assertions="1" time="0.008500"/>
-        <testcase name="testBoardIsEmpty" class="App\PokerSquares\GameboardTest" classname="App.PokerSquares.GameboardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/PokerSquares/GameboardTest.php" line="34" assertions="2" time="0.002081"/>
+  <testsuite name="" tests="5" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.034570">
+    <testsuite name="Project Test Suite" tests="5" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.034570">
+      <testsuite name="App\PokerSquares\GameboardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/PokerSquares/GameboardTest.php" tests="5" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.034570">
+        <testcase name="testCreateGameboard" class="App\PokerSquares\GameboardTest" classname="App.PokerSquares.GameboardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/PokerSquares/GameboardTest.php" line="31" assertions="1" time="0.027485"/>
+        <testcase name="testBoardIsEmpty" class="App\PokerSquares\GameboardTest" classname="App.PokerSquares.GameboardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/PokerSquares/GameboardTest.php" line="41" assertions="2" time="0.002552"/>
+        <testcase name="testPlaceCardValidSlot" class="App\PokerSquares\GameboardTest" classname="App.PokerSquares.GameboardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/PokerSquares/GameboardTest.php" line="52" assertions="1" time="0.001727"/>
+        <testcase name="testPlaceCardInvalidSlot" class="App\PokerSquares\GameboardTest" classname="App.PokerSquares.GameboardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/PokerSquares/GameboardTest.php" line="64" assertions="1" time="0.002050"/>
+        <testcase name="testPlaceCardInvalidReuseSlot" class="App\PokerSquares\GameboardTest" classname="App.PokerSquares.GameboardTest" file="/home/lohengrin/dbwebb-kurser/mvc/me/report/tests/PokerSquares/GameboardTest.php" line="75" assertions="1" time="0.000756"/>
       </testsuite>
     </testsuite>
   </testsuite>

@@ -50,7 +50,7 @@ class Gameboard
      * 
      * @param string $slot - row and column as string ("11" means row 1 col 1)
      * @param CardInterface $card - a playing card
-     * @throws InvalidSlotException
+     * @throws InvalidSlotException - if slot is invalid
      * @return void
      */
     public function placeCard(string $slot, CardInterface $card): void

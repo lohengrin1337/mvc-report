@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1716561401">
-  <project timestamp="1716561401">
+<coverage generated="1716625663">
+  <project timestamp="1716625663">
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="14" methods="8" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="0" elements="32" coveredelements="0"/>
@@ -1083,29 +1083,29 @@
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/PokerSquares/Gameboard.php">
       <class name="App\PokerSquares\Gameboard" namespace="global">
-        <metrics complexity="9" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="11" elements="20" coveredelements="12"/>
+        <metrics complexity="9" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="20" coveredelements="20"/>
       </class>
-      <line num="24" type="method" name="__construct" visibility="public" complexity="3" crap="3" count="2"/>
-      <line num="26" type="stmt" count="2"/>
-      <line num="27" type="stmt" count="2"/>
-      <line num="28" type="stmt" count="2"/>
-      <line num="41" type="method" name="slotIsValid" visibility="private" complexity="2" crap="6" count="0"/>
-      <line num="43" type="stmt" count="0"/>
-      <line num="56" type="method" name="placeCard" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="58" type="stmt" count="0"/>
-      <line num="59" type="stmt" count="0"/>
-      <line num="62" type="stmt" count="0"/>
-      <line num="72" type="method" name="getAsString" visibility="public" complexity="2" crap="2.01" count="1"/>
-      <line num="74" type="stmt" count="1"/>
-      <line num="75" type="stmt" count="1"/>
-      <line num="76" type="stmt" count="1"/>
-      <line num="77" type="stmt" count="1"/>
-      <line num="78" type="stmt" count="1"/>
-      <line num="80" type="stmt" count="0"/>
-      <line num="81" type="stmt" count="1"/>
-      <line num="82" type="stmt" count="1"/>
-      <line num="83" type="stmt" count="1"/>
-      <metrics loc="85" ncloc="56" classes="1" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="11" elements="20" coveredelements="12"/>
+      <line num="24" type="method" name="__construct" visibility="public" complexity="3" crap="3" count="5"/>
+      <line num="26" type="stmt" count="5"/>
+      <line num="27" type="stmt" count="5"/>
+      <line num="28" type="stmt" count="5"/>
+      <line num="41" type="method" name="slotIsValid" visibility="private" complexity="2" crap="2" count="3"/>
+      <line num="43" type="stmt" count="3"/>
+      <line num="56" type="method" name="placeCard" visibility="public" complexity="2" crap="2" count="3"/>
+      <line num="58" type="stmt" count="3"/>
+      <line num="59" type="stmt" count="2"/>
+      <line num="62" type="stmt" count="2"/>
+      <line num="72" type="method" name="getAsString" visibility="public" complexity="2" crap="2" count="2"/>
+      <line num="74" type="stmt" count="2"/>
+      <line num="75" type="stmt" count="2"/>
+      <line num="76" type="stmt" count="2"/>
+      <line num="77" type="stmt" count="2"/>
+      <line num="78" type="stmt" count="2"/>
+      <line num="80" type="stmt" count="1"/>
+      <line num="81" type="stmt" count="2"/>
+      <line num="82" type="stmt" count="2"/>
+      <line num="83" type="stmt" count="2"/>
+      <metrics loc="85" ncloc="56" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="20" coveredelements="20"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Repository/BookRepository.php">
       <class name="App\Repository\BookRepository" namespace="global">
@@ -1173,6 +1173,6 @@
       <line num="75" type="stmt" count="0"/>
       <metrics loc="78" ncloc="55" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="0" elements="23" coveredelements="0"/>
     </file>
-    <metrics files="31" loc="3618" ncloc="2793" classes="28" methods="163" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="826" coveredstatements="11" elements="989" coveredelements="12"/>
+    <metrics files="31" loc="3618" ncloc="2793" classes="28" methods="163" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="826" coveredstatements="16" elements="989" coveredelements="20"/>
   </project>
 </coverage>

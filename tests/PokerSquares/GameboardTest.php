@@ -2,6 +2,8 @@
 
 namespace App\PokerSquares;
 
+use App\Card\CardInterface;
+use App\Exception\InvalidSlotException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -9,11 +11,16 @@ use PHPUnit\Framework\TestCase;
  */
 class GameboardTest extends TestCase
 {
-    private Gameboard $board;
+    private Gameboard $gb;
+
+    private CardInterface $cardStub;
 
     protected function setUp(): void
     {
-        $this->board = new Gameboard(); // empty board
+        $this->gb = new Gameboard(); // empty board
+
+        $this->cardStub = $this->createStub(CardInterface::class);
+        $this->cardStub->method("getAsString")->willReturn("svg-card-as");
     }
 
 
@@ -23,7 +30,7 @@ class GameboardTest extends TestCase
      */
     public function testCreateGameboard(): void
     {
-        $this->assertInstanceOf(Gameboard::class, $this->board);
+        $this->assertInstanceOf(Gameboard::class, $this->gb);
     }
 
 
@@ -33,7 +40,42 @@ class GameboardTest extends TestCase
      */
     public function testBoardIsEmpty(): void
     {
-        $this->assertCount(25, $this->board->getAsString());
-        $this->assertContainsOnly("null", $this->board->getAsString());
+        $this->assertCount(25, $this->gb->getAsString());
+        $this->assertContainsOnly("null", $this->gb->getAsString());
+    }
+
+
+
+    /**
+     * Place a card (stub = ace of spades) at row 2 col 3 - assert
+     */
+    public function testPlaceCardValidSlot(): void
+    {
+        $this->gb->placeCard("23", $this->cardStub);
+        $res = $this->gb->getAsString();
+        $this->assertEquals("svg-card-as", $res["23"]);
+    }
+
+
+
+    /**
+     * Place a card (stub = ace of spades) at row 7 col 1 - expectException
+     */
+    public function testPlaceCardInvalidSlot(): void
+    {
+        $this->expectException(InvalidSlotException::class);
+        $this->gb->placeCard("71", $this->cardStub);
+    }
+
+
+
+    /**
+     * Place two cards at same slot - expectException
+     */
+    public function testPlaceCardInvalidReuseSlot(): void
+    {
+        $this->gb->placeCard("23", $this->cardStub);
+        $this->expectException(InvalidSlotException::class);
+        $this->gb->placeCard("23", $this->cardStub);
     }
 }
