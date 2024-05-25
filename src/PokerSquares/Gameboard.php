@@ -29,22 +29,9 @@ class Gameboard
             }
         }
     }
-
-
-
-    /**
-     * Validate slot exists, and value is null (no card yet)
-     * 
-     * @param string $slot
-     * @return bool
-     */
-    private function slotIsValid(string $slot): bool
-    {
-        return array_key_exists($slot, $this->board) && is_null($this->board[$slot]);
-    }
-
-
-
+    
+    
+    
     /**
      * Place a card on the board
      * 
@@ -58,7 +45,7 @@ class Gameboard
         if (!$this->slotIsValid($slot)) {
             throw new InvalidSlotException("'$slot' is not a valid slot on the gameboard!");
         }
-
+        
         $this->board[$slot] = $card;
     }
 
@@ -81,5 +68,30 @@ class Gameboard
             },
             $this->board
         );
+    }
+
+
+
+    /**
+     * Validate slot exists, and value is null (no card yet)
+     * 
+     * @param string $slot
+     * @return bool
+     */
+    private function slotIsValid(string $slot): bool
+    {
+        return array_key_exists($slot, $this->board) && is_null($this->board[$slot]);
+    }
+
+
+
+    /**
+     * Check if all 25 slots are filled
+     * 
+     * @return bool - true if board is full
+     */
+    public function boardIsFull(): bool
+    {
+        return !in_array(null, $this->board, true);
     }
 }

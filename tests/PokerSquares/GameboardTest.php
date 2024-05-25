@@ -78,4 +78,20 @@ class GameboardTest extends TestCase
         $this->expectException(InvalidSlotException::class);
         $this->gb->placeCard("23", $this->cardStub);
     }
+
+
+
+    /**
+     * Place 25 cards and assert board is full
+     */
+    public function testBordIsFull(): void
+    {
+        for ($i = 1; $i <= 5; $i++) {
+            for ($j = 1; $j <= 5; $j++) {
+                $this->gb->placeCard("$i$j", $this->cardStub);
+            }
+        }
+
+        $this->assertTrue($this->gb->boardIsFull());
+    }
 }

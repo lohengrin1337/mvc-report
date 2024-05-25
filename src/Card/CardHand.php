@@ -12,9 +12,6 @@ class CardHand
      */
     private array $cards = [];
 
-
-
-
     /**
      * Draw a card from deck, and add to hand
      *
