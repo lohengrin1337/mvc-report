@@ -19,7 +19,7 @@ class OnePair implements PokerRuleInterface
      */
     public function __construct()
     {
-        $this->setName("one pair");
+        $this->setName("one-pair");
         $this->amount = 2;
     }
 }

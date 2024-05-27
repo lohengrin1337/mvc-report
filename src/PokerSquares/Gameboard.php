@@ -19,7 +19,7 @@ class Gameboard
 
     /**
      * Constructor
-     * Populate board with 25 empty slots
+     * Populate board with 25 empty slots (key "34" means row3 col4)
      */
     public function __construct()
     {
@@ -94,42 +94,6 @@ class Gameboard
     {
         return !in_array(null, $this->board, true);
     }
-
-
-
-    // /**
-    //  * Get all poker hands (5 rows and 5 columns)
-    //  * 
-    //  * @return array<array<Cards>>
-    //  */
-    // public function getAllHands(): array
-    // {
-    //     $hands = [];
-
-    //     // get 5 rows
-    //     for ($i=1; $i <= 5; $i++) {
-    //         $hand = [];
-    //         foreach ($this->board as $slot => $card) {
-    //             if (str_starts_with($slot, (string) $i)) {
-    //                 $hand[] = $card;
-    //             }
-    //         $hands["row$i"] = $hand;
-    //         }
-    //     }
-
-    //     // get 5 columns
-    //     for ($i=1; $i <= 5; $i++) {
-    //         $hand = [];
-    //         foreach ($this->board as $slot => $card) {
-    //             if (str_ends_with($slot, (string) $i)) {
-    //                 $hand[] = $card;
-    //             }
-    //         $hands["col$i"] = $hand;
-    //         }
-    //     }
-
-    //     return $hands;
-    // }
 
 
 
