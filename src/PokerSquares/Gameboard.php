@@ -94,4 +94,79 @@ class Gameboard
     {
         return !in_array(null, $this->board, true);
     }
+
+
+
+    // /**
+    //  * Get all poker hands (5 rows and 5 columns)
+    //  * 
+    //  * @return array<array<Cards>>
+    //  */
+    // public function getAllHands(): array
+    // {
+    //     $hands = [];
+
+    //     // get 5 rows
+    //     for ($i=1; $i <= 5; $i++) {
+    //         $hand = [];
+    //         foreach ($this->board as $slot => $card) {
+    //             if (str_starts_with($slot, (string) $i)) {
+    //                 $hand[] = $card;
+    //             }
+    //         $hands["row$i"] = $hand;
+    //         }
+    //     }
+
+    //     // get 5 columns
+    //     for ($i=1; $i <= 5; $i++) {
+    //         $hand = [];
+    //         foreach ($this->board as $slot => $card) {
+    //             if (str_ends_with($slot, (string) $i)) {
+    //                 $hand[] = $card;
+    //             }
+    //         $hands["col$i"] = $hand;
+    //         }
+    //     }
+
+    //     return $hands;
+    // }
+
+
+
+    /**
+     * Get all 10 poker hands (5 rows and 5 columns)
+     * 
+     * @return array<array<CardInterface|null>>
+     */
+    public function getAllHands(): array
+    {
+        // map hands to slots
+        $handsToSlots = [
+            "row1" => ["11", "12", "13", "14", "15"],
+            "row2" => ["21", "22", "23", "24", "25"],
+            "row3" => ["31", "32", "33", "34", "35"],
+            "row4" => ["41", "42", "43", "44", "45"],
+            "row5" => ["51", "52", "53", "54", "55"],
+            "col1" => ["11", "21", "31", "41", "51"],
+            "col2" => ["12", "22", "32", "42", "52"],
+            "col3" => ["13", "23", "33", "43", "53"],
+            "col4" => ["14", "24", "34", "44", "54"],
+            "col5" => ["15", "25", "35", "45", "55"],
+        ];
+
+        // fill $hands with content of board slots (CardInterface|null)
+        $hands = array_map(
+            function($slots)
+            {
+                $hand = [];
+                foreach ($slots as $slot) {
+                    $hand[] = $this->board[$slot];
+                }
+                return $hand;
+            },
+            $handsToSlots
+        );
+
+        return $hands;
+    }
 }

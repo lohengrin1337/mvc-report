@@ -1,18 +1,18 @@
 <?php
 
-namespace App\PokerSquares;
+namespace App\Trait;
 
 trait Nameable
 {
     /**
-     * @var string $name - name of rule
+     * @var string $name
      */
     private string $name = "";
 
 
 
     /**
-     * Get name of rule
+     * Get name
      *
      * @return string - the name
      */
@@ -24,7 +24,7 @@ trait Nameable
 
 
     /**
-     * Set name of rule
+     * Set name
      *
      * @param string - a name
      * @return void

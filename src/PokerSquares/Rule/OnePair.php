@@ -1,6 +1,8 @@
 <?php
 
-namespace App\PokerSquares;
+namespace App\PokerSquares\Rule;
+
+use App\Trait\Nameable;
 
 /**
  * Class for one pair rule - poker hand

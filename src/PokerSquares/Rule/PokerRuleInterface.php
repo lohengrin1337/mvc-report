@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PokerSquares;
+namespace App\PokerSquares\Rule;
 
 use App\Card\CardInterface;
 
