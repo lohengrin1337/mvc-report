@@ -11,16 +11,24 @@ use PHPUnit\Framework\TestCase;
  */
 class GameboardTest extends TestCase
 {
-    private Gameboard $gb;
+    private Gameboard $gbEmpty;  // empty gameboard
+
+    private Gameboard $gbFull;  // full gameboard (card stubs)
 
     private CardInterface $cardStub;
 
     protected function setUp(): void
     {
-        $this->gb = new Gameboard(); // empty board
+        $this->gbEmpty = new Gameboard();
 
         $this->cardStub = $this->createStub(CardInterface::class);
         $this->cardStub->method("getAsString")->willReturn("svg-card-as");
+        $this->gbFull = new Gameboard();
+        for ($i = 1; $i <= 5; $i++) {
+            for ($j = 1; $j <= 5; $j++) {
+                $this->gbFull->placeCard("$i$j", $this->cardStub);
+            }
+        }
     }
 
 
@@ -30,7 +38,7 @@ class GameboardTest extends TestCase
      */
     public function testCreateGameboard(): void
     {
-        $this->assertInstanceOf(Gameboard::class, $this->gb);
+        $this->assertInstanceOf(Gameboard::class, $this->gbEmpty);
     }
 
 
@@ -40,8 +48,8 @@ class GameboardTest extends TestCase
      */
     public function testBoardIsEmpty(): void
     {
-        $this->assertCount(25, $this->gb->getAsString());
-        $this->assertContainsOnly("null", $this->gb->getAsString());
+        $this->assertCount(25, $this->gbEmpty->getAsString());
+        $this->assertContainsOnly("null", $this->gbEmpty->getAsString());
     }
 
 
@@ -51,8 +59,8 @@ class GameboardTest extends TestCase
      */
     public function testPlaceCardValidSlot(): void
     {
-        $this->gb->placeCard("23", $this->cardStub);
-        $res = $this->gb->getAsString();
+        $this->gbEmpty->placeCard("23", $this->cardStub);
+        $res = $this->gbEmpty->getAsString();
         $this->assertEquals("svg-card-as", $res["23"]);
     }
 
@@ -64,7 +72,7 @@ class GameboardTest extends TestCase
     public function testPlaceCardInvalidSlot(): void
     {
         $this->expectException(InvalidSlotException::class);
-        $this->gb->placeCard("71", $this->cardStub);
+        $this->gbEmpty->placeCard("71", $this->cardStub);
     }
 
 
@@ -74,9 +82,9 @@ class GameboardTest extends TestCase
      */
     public function testPlaceCardInvalidReuseSlot(): void
     {
-        $this->gb->placeCard("23", $this->cardStub);
+        $this->gbEmpty->placeCard("23", $this->cardStub);
         $this->expectException(InvalidSlotException::class);
-        $this->gb->placeCard("23", $this->cardStub);
+        $this->gbEmpty->placeCard("23", $this->cardStub);
     }
 
 
@@ -86,12 +94,34 @@ class GameboardTest extends TestCase
      */
     public function testBordIsFull(): void
     {
-        for ($i = 1; $i <= 5; $i++) {
-            for ($j = 1; $j <= 5; $j++) {
-                $this->gb->placeCard("$i$j", $this->cardStub);
-            }
-        }
+        $this->assertTrue($this->gbFull->boardIsFull());
+    }
 
-        $this->assertTrue($this->gb->boardIsFull());
+
+
+    /**
+     * Get all hands of full board, assert array and CardInterface instance
+     */
+    public function testgetAllHandsFull(): void
+    {
+        $res = $this->gbFull->getAllHands();
+        $this->assertIsArray($res);
+
+        $card = $res["row1"][0];
+        $this->assertInstanceOf(CardInterface::class, $card);
+    }
+
+
+
+    /**
+     * Get all hands of empty board, assert array and null
+     */
+    public function testgetAllHandsEmpty(): void
+    {
+        $res = $this->gbEmpty->getAllHands();
+        $this->assertIsArray($res);
+
+        $card = $res["row1"][0];
+        $this->assertNull($card);
     }
 }

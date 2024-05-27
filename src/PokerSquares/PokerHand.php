@@ -7,7 +7,7 @@ use InvalidArgumentException;
 
 
 /**
- * Class for poker hand of poker squares game
+ * Class for poker hand (row or column) of poker squares game
  */
 class PokerHand
 {
