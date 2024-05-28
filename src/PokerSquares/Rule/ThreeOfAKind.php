@@ -5,9 +5,9 @@ namespace App\PokerSquares\Rule;
 use App\Trait\Nameable;
 
 /**
- * Class for one pair rule
+ * Class for three of a kind rule
  */
-class HighCard implements PokerRuleInterface
+class ThreeOfAKind implements PokerRuleInterface
 {
     use Nameable;
     use OfAKindTrait;
@@ -15,11 +15,11 @@ class HighCard implements PokerRuleInterface
     /**
      * Constructor
      * Set name of rule
-     * Set amount to 1 (of a kind)
+     * Set amount to 3 (of a kind)
      */
     public function __construct()
     {
-        $this->setName("high-card");
-        $this->amount = 1;
+        $this->setName("three-of-a-kind");
+        $this->amount = 3;
     }
 }
