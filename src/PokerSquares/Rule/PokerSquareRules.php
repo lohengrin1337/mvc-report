@@ -44,8 +44,8 @@ class PokerSquareRules implements RuleCollectionInterface
             if ($rule->checkHand($hand)) {
                 return $rule->getName();
             }
-
-            return "";  // occurs if hand is empty
         }
+
+        return "";  // occurs if hand is empty
     }
 }
