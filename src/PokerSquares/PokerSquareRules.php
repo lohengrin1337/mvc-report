@@ -1,6 +1,17 @@
 <?php
 
-namespace App\PokerSquares\Rule;
+namespace App\PokerSquares;
+
+use App\PokerSquares\Rule\RoyalFlush;
+use App\PokerSquares\Rule\StraightFlush;
+use App\PokerSquares\Rule\FourOfAKind;
+use App\PokerSquares\Rule\FullHouse;
+use App\PokerSquares\Rule\Flush;
+use App\PokerSquares\Rule\Straight;
+use App\PokerSquares\Rule\ThreeOfAKind;
+use App\PokerSquares\Rule\TwoPairs;
+use App\PokerSquares\Rule\OnePair;
+use App\PokerSquares\Rule\HighCard;
 
 /**
  * Class holding a set of Poker Square rules
@@ -35,13 +46,16 @@ class PokerSquareRules implements RuleCollectionInterface
     /**
      * Use rules to assess highest met rule, or none
      *
-     * @param CardInterface[] $hand
+     * @param array<CardInterface|null> $hand
      * @return string - rule name of best matching rule
      */
     public function assessHand(array $hand): string
     {
+        // get the actual cards from hand (no null values)
+        $cards = array_filter($hand);
+
         foreach ($this->rules as $rule) {
-            if ($rule->checkHand($hand)) {
+            if ($rule->checkHand($cards)) {
                 return $rule->getName();
             }
         }

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\PokerSquares\Rule;
+namespace App\PokerSquares;
 
 use App\Card\CardInterface;
 
 interface RuleCollectionInterface
 {
     /**
-     * @param CardInterface[] $hand
+     * @param array<CardInterface|null> $hand
      * @return string - rule name of best matching rule
      */
     public function assessHand(array $hand): string;

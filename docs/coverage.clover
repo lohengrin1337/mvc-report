@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1717065700">
-  <project timestamp="1717065700">
+<coverage generated="1717066793">
+  <project timestamp="1717066793">
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="14" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
@@ -1167,6 +1167,31 @@
       <line num="67" type="stmt" count="1"/>
       <metrics loc="70" ncloc="44" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="10" coveredelements="10"/>
     </file>
+    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/PokerSquares/PokerSquareRules.php">
+      <class name="App\PokerSquares\PokerSquareRules" namespace="global">
+        <metrics complexity="4" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="19" coveredelements="19"/>
+      </class>
+      <line num="29" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
+      <line num="31" type="stmt" count="8"/>
+      <line num="32" type="stmt" count="8"/>
+      <line num="33" type="stmt" count="8"/>
+      <line num="34" type="stmt" count="8"/>
+      <line num="35" type="stmt" count="8"/>
+      <line num="36" type="stmt" count="8"/>
+      <line num="37" type="stmt" count="8"/>
+      <line num="38" type="stmt" count="8"/>
+      <line num="39" type="stmt" count="8"/>
+      <line num="40" type="stmt" count="8"/>
+      <line num="41" type="stmt" count="8"/>
+      <line num="42" type="stmt" count="8"/>
+      <line num="52" type="method" name="assessHand" visibility="public" complexity="3" crap="3" count="7"/>
+      <line num="55" type="stmt" count="7"/>
+      <line num="57" type="stmt" count="7"/>
+      <line num="58" type="stmt" count="7"/>
+      <line num="59" type="stmt" count="6"/>
+      <line num="63" type="stmt" count="1"/>
+      <metrics loc="65" ncloc="48" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="19" coveredelements="19"/>
+    </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/PokerSquares/PokerSquaresGame.php">
       <class name="App\PokerSquares\PokerSquaresGame" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="7" coveredelements="0"/>
@@ -1276,30 +1301,6 @@
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/PokerSquares/Rule/PokerRuleInterface.php">
       <metrics loc="28" ncloc="14" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/PokerSquares/Rule/PokerSquareRules.php">
-      <class name="App\PokerSquares\Rule\PokerSquareRules" namespace="global">
-        <metrics complexity="4" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="18" coveredelements="18"/>
-      </class>
-      <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-      <line num="20" type="stmt" count="8"/>
-      <line num="21" type="stmt" count="8"/>
-      <line num="22" type="stmt" count="8"/>
-      <line num="23" type="stmt" count="8"/>
-      <line num="24" type="stmt" count="8"/>
-      <line num="25" type="stmt" count="8"/>
-      <line num="26" type="stmt" count="8"/>
-      <line num="27" type="stmt" count="8"/>
-      <line num="28" type="stmt" count="8"/>
-      <line num="29" type="stmt" count="8"/>
-      <line num="30" type="stmt" count="8"/>
-      <line num="31" type="stmt" count="8"/>
-      <line num="41" type="method" name="assessHand" visibility="public" complexity="3" crap="3" count="7"/>
-      <line num="43" type="stmt" count="7"/>
-      <line num="44" type="stmt" count="7"/>
-      <line num="45" type="stmt" count="6"/>
-      <line num="49" type="stmt" count="1"/>
-      <metrics loc="51" ncloc="35" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="18" coveredelements="18"/>
-    </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/PokerSquares/Rule/RankMappingTrait.php">
       <class name="App\PokerSquares\Rule\RankMappingTrait" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
@@ -1326,9 +1327,6 @@
       <line num="38" type="method" name="checkHand" visibility="public" complexity="2" crap="2" count="10"/>
       <line num="40" type="stmt" count="10"/>
       <metrics loc="42" ncloc="26" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/PokerSquares/Rule/RuleCollectionInterface.php">
-      <metrics loc="14" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/PokerSquares/Rule/Straight.php">
       <class name="App\PokerSquares\Rule\Straight" namespace="global">
@@ -1388,6 +1386,9 @@
       <line num="47" type="stmt" count="1"/>
       <line num="50" type="stmt" count="5"/>
       <metrics loc="52" ncloc="37" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
+    </file>
+    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/PokerSquares/RuleCollectionInterface.php">
+      <metrics loc="14" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/PokerSquares/Score.php">
       <class name="App\PokerSquares\Score" namespace="global">
@@ -1495,6 +1496,6 @@
       <line num="34" type="stmt" count="41"/>
       <metrics loc="36" ncloc="22" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
-    <metrics files="55" loc="4716" ncloc="3496" classes="49" methods="202" coveredmethods="89" conditionals="0" coveredconditionals="0" statements="974" coveredstatements="319" elements="1176" coveredelements="408"/>
+    <metrics files="55" loc="4730" ncloc="3509" classes="49" methods="202" coveredmethods="89" conditionals="0" coveredconditionals="0" statements="975" coveredstatements="320" elements="1177" coveredelements="409"/>
   </project>
 </coverage>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PokerSquares\Rule;
+namespace App\PokerSquares;
 
 use App\Card\CardInterface;
 use PHPUnit\Framework\TestCase;
@@ -159,7 +159,6 @@ class PokerSquareRulesTest extends TestCase
         $this->cardStubs[3]->method("getSuit")->willReturn("cloves");
         $this->cardStubs[4]->method("getSuit")->willReturn("diamonds");
 
-
         $res = $this->pokerSquareRules->assessHand($this->cardStubs);
         $this->assertEquals("high-card", $res);
     }
@@ -172,11 +171,11 @@ class PokerSquareRulesTest extends TestCase
     public function testAssessEmptyHand(): void
     {
         $this->cardStubs = [
-            // null,
-            // null,
-            // null,
-            // null,
-            // null,
+            null,
+            null,
+            null,
+            null,
+            null,
         ];
 
         $res = $this->pokerSquareRules->assessHand($this->cardStubs);
