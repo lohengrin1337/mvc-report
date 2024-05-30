@@ -5,7 +5,7 @@ namespace App\PokerSquares\Rule;
 use App\Trait\Nameable;
 
 /**
- * Class for one pair rule
+ * Class for high card rule
  */
 class HighCard implements PokerRuleInterface
 {
