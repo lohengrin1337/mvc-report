@@ -18,6 +18,14 @@ class PokerSquareRules implements RuleCollectionInterface
     public function __construct()
     {
         $this->rules = [
+            new RoyalFlush(),
+            new StraightFlush(),
+            new FourOfAKind(),
+            new FullHouse(),
+            new Flush(),
+            new Straight(),
+            new ThreeOfAKind(),
+            new TwoPairs(),
             new OnePair(),
             new HighCard(),
         ];

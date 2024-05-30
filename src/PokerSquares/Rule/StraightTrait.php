@@ -29,13 +29,16 @@ trait StraightTrait
      * Check if there is at least 5 cards in sequence (ranks)
      * 
      * @param CardInterface[] $cards
+     * @param int[] $straights - straights to match
      * @return bool
      */
-    private function isAStraight(array $cards): bool
-    {
+    private function isAStraight(
+        array $cards,
+        array $straights = self::VALID_STRAIGHTS
+    ): bool {
         $ranks = $this->getRanks($cards);
 
-        foreach ($self::VALID_STRAIGHTS as $straight) {
+        foreach ($straights as $straight) {
             if (!array_diff($straight, $ranks)) {
                 return true;
             }
