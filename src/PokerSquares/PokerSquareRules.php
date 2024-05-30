@@ -28,6 +28,7 @@ class PokerSquareRules implements RuleCollectionInterface
      */
     public function __construct()
     {
+        // add rules in order from highest to lowest
         $this->rules = [
             new RoyalFlush(),
             new StraightFlush(),

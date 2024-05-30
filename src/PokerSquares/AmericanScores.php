@@ -29,13 +29,15 @@ class AmericanScores implements ScoreMappingInterface
 
 
     /**
+     * Get points for a fullfilled rule
+     * 
      * @param string $rule - name of a rule that is fullfilled
      * @throws InvalidArgumentException - if rule name is invalid
      * @return int - points
      */
     public function getScore(string $rule): int
     {
-        if (!array_key_exists(self::SCORE_MAP[$rule])) {
+        if (!array_key_exists($rule, self::SCORE_MAP)) {
             throw new InvalidArgumentException("Invalid rule name!");
         }
 
