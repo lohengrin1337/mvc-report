@@ -20,7 +20,6 @@ class FlushTest extends TestCase
 
         for ($i=0; $i < 5; $i++) { 
             $cardStub = $this->createStub(CardInterface::class);
-            $cardStub->method("getSuit")->willReturn("hearts");
             $this->cardStubs[] = $cardStub;
         }
     }
@@ -38,10 +37,14 @@ class FlushTest extends TestCase
 
 
     /**
-     * Check a hand of card stubs is a valid flush
+     * Check a hand of card stubs is a valid flush (5 hearts)
      */
     public function testCheckHandValid(): void
     {
+        foreach ($this->cardStubs as $cardStub) {
+            $cardStub->method("getSuit")->willReturn("hearts");
+        }
+
         $res = $this->flushRule->checkHand($this->cardStubs);
         $this->assertTrue($res);
     }
@@ -49,12 +52,14 @@ class FlushTest extends TestCase
 
 
     /**
-     * Check a hand of card stubs is NOT a valid flush
+     * Check a hand of card stubs is NOT a valid flush (4 hearts and 1 spades)
      */
     public function testCheckHandInvalid(): void
     {
-        // change one of the stubs
-        $this->cardStubs[0]->method("getSuit")->willReturn("diamonds");
+        for ($i=0; $i < 4; $i++) { 
+            $this->cardStubs[$i]->method("getSuit")->willReturn("hearts");
+        }
+        $this->cardStubs[4]->method("getSuit")->willReturn("spades");
 
         $res = $this->flushRule->checkHand($this->cardStubs);
         $this->assertFalse($res);
