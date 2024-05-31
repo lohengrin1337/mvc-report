@@ -100,6 +100,21 @@ class CardDeck
 
 
     /**
+     * Peak at the top card of the deck (get the string representation)
+     * 
+     * @return string
+     */
+    public function peak(): string
+    {
+        if (!end($this->cards)) {
+            return "";
+        }
+        return end($this->cards)->getAsString();
+    }
+
+
+
+    /**
      * Draw a card from top of deck, if not empty
      *
      * @return ?CardInterface - a Card object or null

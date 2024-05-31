@@ -94,4 +94,18 @@ class CardDeckTest extends TestCase
         $this->assertEquals("clubs", $res->getSuit());
         $this->assertEquals(13, $res->getRank());
     }
+
+
+
+    /**
+     * peak the top card (king of clubs)
+     */
+    public function testPeakSorted(): void
+    {
+        $deck = new CardDeck(CardSvg::class);
+        $deck->sort();
+        $res = $deck->peak();
+
+        $this->assertEquals("svg-card-kc", $res);
+    }
 }
