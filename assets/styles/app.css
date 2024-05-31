@@ -1074,6 +1074,7 @@ tr.clickable:hover {
 .gameview {
   display: flex;
   gap: 5.6rem;
+  margin-bottom: 5.6rem;
 }
 
 .gameboard {
@@ -1082,8 +1083,10 @@ tr.clickable:hover {
 }
 .gameboard .row {
   display: flex;
+  position: relative;
 }
 .gameboard .slot {
+  position: relative;
   width: 69px;
   height: 100px;
   border: 1px solid white;
@@ -1094,6 +1097,17 @@ tr.clickable:hover {
 .gameboard .empty-slot:hover {
   cursor: pointer;
   background-color: #785000;
+}
+.gameboard *[class*=hand-score] {
+  position: relative;
+}
+.gameboard .hand-score-row {
+  left: 1.4rem;
+  top: 40%;
+}
+.gameboard .hand-score-col {
+  left: 40%;
+  top: 120%;
 }
 
 .deck-and-card {

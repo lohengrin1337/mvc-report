@@ -3,6 +3,7 @@
 .gameview {
     display: flex;
     gap: var.$baseline-x4;
+    margin-bottom: var.$baseline-x4;
 }
 
 .gameboard {
@@ -11,9 +12,11 @@
 
     .row {
         display: flex;
+        position: relative;
     }
 
     .slot {
+        position: relative;
         width: 69px;
         height: 100px;
         border: 1px solid white;
@@ -26,6 +29,20 @@
     .empty-slot:hover {
         cursor: pointer;
         background-color: var.$bg-color-hover;
+    }
+
+    *[class*="hand-score"] {
+        position: relative;
+    }
+
+    .hand-score-row {
+        left: var.$baseline;
+        top: 40%;
+    }
+
+    .hand-score-col {
+        left: 40%;
+        top: 120%;
     }
 }
 
