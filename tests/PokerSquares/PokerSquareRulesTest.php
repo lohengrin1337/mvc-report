@@ -179,6 +179,6 @@ class PokerSquareRulesTest extends TestCase
         ];
 
         $res = $this->pokerSquareRules->assessHand($this->cardStubs);
-        $this->assertEmpty($res);
+        $this->assertEquals("no-cards", $res);
     }
 }

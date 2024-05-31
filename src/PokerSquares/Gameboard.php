@@ -56,7 +56,7 @@ class Gameboard
      * 
      * @return array<string>
      */
-    public function getAsString(): array
+    public function getBoardView(): array
     {
         return array_map(
             function($card)

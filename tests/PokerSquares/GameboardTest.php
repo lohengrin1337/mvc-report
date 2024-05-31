@@ -48,8 +48,8 @@ class GameboardTest extends TestCase
      */
     public function testBoardIsEmpty(): void
     {
-        $this->assertCount(25, $this->gbEmpty->getAsString());
-        $this->assertContainsOnly("null", $this->gbEmpty->getAsString());
+        $this->assertCount(25, $this->gbEmpty->getBoardView());
+        $this->assertContainsOnly("null", $this->gbEmpty->getBoardView());
     }
 
 
@@ -60,7 +60,7 @@ class GameboardTest extends TestCase
     public function testPlaceCardValidSlot(): void
     {
         $this->gbEmpty->placeCard("23", $this->cardStub);
-        $res = $this->gbEmpty->getAsString();
+        $res = $this->gbEmpty->getBoardView();
         $this->assertEquals("svg-card-as", $res["23"]);
     }
 
