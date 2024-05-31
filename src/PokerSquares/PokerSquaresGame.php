@@ -3,11 +3,14 @@
 namespace App\PokerSquares;
 
 use App\Card\CardDeck;
-use App\PokerSquares\Rule\PokerRuleInterface;
-use App\PokerSquares\Rule\RuleCollectionInterface;
 
 /**
  * Game engine for Poker Squares
+ * 
+ * API:
+ * 1. Draw a card
+ * 2. Place a card
+ * 3. Calculate points
  */
 class PokerSquaresGame
 {
@@ -22,17 +25,17 @@ class PokerSquaresGame
     private ScoreMappingInterface $scoreMapper;
 
     /**
-     * @var Score $score
+     * @var Score $score - holds the score for each hand
      */
     private Score $score;
 
     /**
-     * @var GameBoard $gameboard
+     * @var GameBoard $gameboard - represents the 5x5 gameboard
      */
     private GameBoard $gameboard;
 
     /**
-     * @var Player $players
+     * @var Player $player
      */
     private Player $player;
 
@@ -60,12 +63,12 @@ class PokerSquaresGame
         Player $player,
         CardDeck $deck
     ){
-        $this->$rules = $rules;
-        $this->$scoreMapper = $scoreMapper;
-        $this->$score = $score;
-        $this->$gameboard = $gameboard;
-        $this->$player = $player;
-        $this->$deck = $deck;
+        $this->rules = $rules;
+        $this->scoreMapper = $scoreMapper;
+        $this->score = $score;
+        $this->gameboard = $gameboard;
+        $this->player = $player;
+        $this->deck = $deck;
     }
 
 
