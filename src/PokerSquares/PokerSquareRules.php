@@ -61,6 +61,6 @@ class PokerSquareRules implements RuleCollectionInterface
             }
         }
 
-        return "";  // occurs if hand is empty
+        return "no-cards";  // occurs if hand is empty
     }
 }

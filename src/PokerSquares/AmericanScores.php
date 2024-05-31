@@ -24,6 +24,7 @@ class AmericanScores implements ScoreMappingInterface
         "two-pairs" => 5,
         "one-pair" => 2,
         "high-card" => 0,
+        "no-cards" => 0,
     ];
 
 
