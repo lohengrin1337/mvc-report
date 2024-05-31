@@ -3,9 +3,13 @@
 namespace App\Controller;
 
 use App\Card\CardDeck;
-use App\PokerSquares\Gameboard;
-use App\Card\CardHand;
 use App\Card\CardSvg;
+use App\PokerSquares\AmericanScores;
+use App\PokerSquares\Gameboard;
+use App\PokerSquares\Player;
+use App\PokerSquares\PokerSquareRules;
+use App\PokerSquares\PokerSquaresGame;
+use App\PokerSquares\Score;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -102,12 +106,24 @@ class ProjectController extends AbstractController
     #[Route("/proj/game/test-init", name: "proj_test_init", methods: ["GET"])]
     public function testInit(SessionInterface $session): Response
     {
-        $gameboard = new Gameboard();
-        $deck = new CardDeck(CardSvg::class);
-        $card = $deck->draw();
-        $session->set("gameboard", $gameboard);
-        $session->set("deck", $deck);
-        $session->set("card", $card);
+        $game = new PokerSquaresGame(
+            new PokerSquareRules(),
+            new AmericanScores(),
+            new Score(),
+            new Gameboard(),
+            new Player("Test Player"),
+            new CardDeck(CardSvg::class)
+        );
+
+        $session->set("game", $game);
+
+
+        // $gameboard = new Gameboard();
+        // $deck = new CardDeck(CardSvg::class);
+        // $card = $deck->draw();
+        // $session->set("gameboard", $gameboard);
+        // $session->set("deck", $deck);
+        // $session->set("card", $card);
 
         return $this->redirectToRoute("proj_singleplayer");
     }
@@ -117,14 +133,9 @@ class ProjectController extends AbstractController
     #[Route("/proj/game/singleplayer", name: "proj_singleplayer", methods: ["GET"])]
     public function singleplayer(SessionInterface $session): Response
     {
-        $gameboard = $session->get("gameboard");
-        $deck = $session->get("deck");
-        $card = $session->get("card");
-
         $this->data["pageTitle"] = "Singleplayer";
-        $this->data["cardBack"] = $deck->getCardBack();
-        $this->data["card"] = $card->getAsString();
-        $this->data["gameboard"] = $gameboard->getAsString();
+        $game = $session->get("game");
+        $this->data = array_merge($this->data, $game->getState());
 
         return $this->render("proj/game/singleplayer.html.twig", $this->data);
     }
@@ -146,16 +157,13 @@ class ProjectController extends AbstractController
         SessionInterface $session
     ): Response {
         $slotId = $request->request->get("slot_id");
-        $gameboard = $session->get("gameboard");
-        $deck = $session->get("deck");
-        $card = $session->get("card");
+        $game =$session->get("game");
+        $game->process($slotId);
+        $session->set("game", $game);
 
-        $gameboard->placeCard($slotId, $card);
-
-        $card = $deck->draw();
-        $session->set("gameboard", $gameboard);
-        $session->set("deck", $deck);
-        $session->set("card", $card);
+        if ($game->gameIsOver()) {
+            // return $this->redirectToRoute("");
+        }
 
         return $this->redirectToRoute("proj_singleplayer");
     }
