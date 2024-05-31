@@ -73,5 +73,63 @@ class PokerSquaresGame
 
 
 
+    /**
+     * Get current state of the game
+     * 
+     * @return array<mixed>
+     */
+    public function getState(): array
+    {
+        return [
+            "player" => $this->player->getName(),
+            "cardBack" => $this->deck->getCardBack(),
+            "card" => $this->deck->peak(),
+            "board" => $this->gameboard->getBoardView(),
+            "handScores" => $this->score->getDetails(),
+            "totalScore" => $this->score->getTotal(),
+        ];
+    }
 
+
+
+    /**
+     * Check if game is over
+     * 
+     * @return bool
+     */
+    public function gameIsOver(): bool
+    {
+        return $this->gameboard->boardIsFull();
+    }
+
+
+
+    /**
+     * Process new card placement and calculate scores
+     * 
+     * @param string $slot - a valid card slot
+     * @return void
+     */
+    public function process(string $slot): void
+    {
+        $this->gameboard->placeCard($slot, $this->deck->draw());
+        $this->calcScores();
+    }
+
+
+
+    /**
+     * Calculate and set scores for each hand of the current gameboard
+     * 
+     * @return void
+     */
+    private function calcScores(): void
+    {
+        $hands = $this->gameboard->getAllHands();
+        foreach ($hands as $handName => $hand) {
+            $ruleName = $this->rules->assessHand($hand);        // get name of highest poker hand
+            $points = $this->scoreMapper->getScore($ruleName);  // get points for matching rule
+            $this->score->setHandScore($handName, $points);
+        }
+    }
 }

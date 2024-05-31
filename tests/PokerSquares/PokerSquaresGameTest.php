@@ -26,6 +26,8 @@ class PokerSquaresGameTest extends TestCase
             $cardStub->method("getSuit")->willReturn("hearts");
             return $cardStub;
         });
+        $deckStub->method("getCardBack")->willReturn("svg-card-back");
+        $deckStub->method("peak")->willReturn("svg-card-5h");
 
         $this->game = new PokerSquaresGame(
             new PokerSquareRules(),
@@ -47,4 +49,43 @@ class PokerSquaresGameTest extends TestCase
         $this->assertInstanceOf(PokerSquaresGame::class, $this->game);
     }
 
+
+
+    /**
+     * Verify initial state
+     */
+    public function testInitialState(): void
+    {
+        $state = $this->game->getState();
+
+        $this->assertEquals("Anonymous", $state["player"]);
+        $this->assertEquals("svg-card-back", $state["cardBack"]);
+        $this->assertEquals("svg-card-5h", $state["card"]);
+        $this->assertIsArray($state["board"]);
+        $this->assertIsArray($state["handScores"]);
+        $this->assertEquals(0, $state["totalScore"]);
+
+        $this->assertFalse($this->game->gameIsOver());
+    }
+
+
+
+    /**
+     * Place three cards in row 1 (three of a kind = 10p),
+     * and two cards in col5 (two of a kind = 2p),
+     * and verify score
+     */
+    public function testProcess(): void
+    {
+        $this->game->process("11");
+        $this->game->process("12");
+        $this->game->process("13");
+        $this->game->process("45");
+        $this->game->process("55");
+
+        $state = $this->game->getState();
+        $this->assertEquals(10, $state["handScores"]["row1"]);
+        $this->assertEquals(2, $state["handScores"]["col5"]);
+        $this->assertEquals(12, $state["totalScore"]);
+    }
 }
