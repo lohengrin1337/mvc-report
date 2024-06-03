@@ -86,6 +86,9 @@
         "phpdoc": "tools/phpdoc/phpdoc --config=tools/phpdoc/phpdoc.xml",
         "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
         "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=tools/phpmetrics/phpmetrics.json",
+        "make-entity": "php bin/console make:entity",
+        "make-migration": "php bin/console make:migration",
+        "migrate": "php bin/console doctrine:migrations:migrate",
         "lint": [
             "@csfix",
             "@phpmd",
