@@ -16,6 +16,22 @@ class RoundRepository extends ServiceEntityRepository
         parent::__construct($registry, Round::class);
     }
 
+
+
+    /**
+     * @return Round[] Returns an array of Round objects
+     */
+    public function getTopTenRounds(): array
+    {
+        return $this->createQueryBuilder('r')
+            ->join('r.score', 's')
+            ->orderBy('s.total', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Round[] Returns an array of Round objects
 //     */
