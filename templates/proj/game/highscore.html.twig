@@ -8,5 +8,31 @@
 
         <h1>{{ pageTitle }}</h1>
 
+        {{ include('flash.html.twig') }}
+
+        {# {% if rounds|length > 0 %}
+            <table>
+                <thead>
+                    <tr>
+                        <th class="header-sm">Spelare</th>
+                        <th class="header-sm">Poäng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for round in rounds %}
+                        <tr class="clickable" onclick="window.location.href='{{ path('single_book', {'id': book.getId}) }}'">
+                        <tr class="clickable">
+                            <td>{{ round.player|e }}</td>
+                            <td>{{ round.score|e }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h2 class="header-m">Topplistan är tom...</h2>
+        {% endif %} #}
+
+        {{ dump(rounds) }}
+
     </main>
 {% endblock %}
