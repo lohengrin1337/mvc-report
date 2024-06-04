@@ -26,11 +26,41 @@ class Round
     #[ORM\JoinColumn(nullable: false)]
     private ?Score $score = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $duration = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $start = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $finish = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $duration = null;
+
+    /**
+     * Set player, board, score and time
+     * 
+     * @param Player $player
+     * @param Board $board
+     * @param Score $score
+     * @param \DateTimeInterface $start
+     * @param \DateTimeInterface $finish
+     * @param \DateTimeInterface $duration
+     * @return void
+     */
+    public function setRoundData(
+        Player $player,
+        Board $board,
+        Score $score,
+        \DateTimeInterface $start,
+        \DateTimeInterface $finish,
+        \DateTimeInterface $duration,
+    ): void {
+        $this->setPlayer($player);
+        $this->setBoard($board);
+        $this->setScore($score);
+        $this->setStart($start);
+        $this->setFinish($finish);
+        $this->setDuration($duration);
+    }
 
     public function getId(): ?int
     {
@@ -72,6 +102,30 @@ class Round
 
         return $this;
     }
+    
+    public function getStart(): ?\DateTimeInterface
+    {
+        return $this->start;
+    }
+
+    public function setStart(\DateTimeInterface $start): static
+    {
+        $this->start = $start;
+
+        return $this;
+    }
+        
+    public function getFinish(): ?\DateTimeInterface
+    {
+        return $this->finish;
+    }
+
+    public function setFinish(\DateTimeInterface $finish): static
+    {
+        $this->finish = $finish;
+
+        return $this;
+    }
 
     public function getDuration(): ?\DateTimeInterface
     {
@@ -81,18 +135,6 @@ class Round
     public function setDuration(\DateTimeInterface $duration): static
     {
         $this->duration = $duration;
-
-        return $this;
-    }
-
-    public function getFinish(): ?\DateTimeInterface
-    {
-        return $this->finish;
-    }
-
-    public function setFinish(\DateTimeInterface $finish): static
-    {
-        $this->finish = $finish;
 
         return $this;
     }
