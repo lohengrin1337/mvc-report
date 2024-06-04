@@ -3,6 +3,8 @@
 namespace App\PokerSquares;
 
 use App\Card\CardDeck;
+use App\Entity\Player;
+use App\Entity\Score;
 
 /**
  * Game engine for Poker Squares
@@ -14,6 +16,11 @@ use App\Card\CardDeck;
  */
 class PokerSquaresGame
 {
+    /**
+     * @var string DEFAULT_TIME_ZONE
+     */
+    public const DEFAULT_TIME_ZONE = "Europe/Stockholm";
+
     /**
      * @var RuleCollectionInterface $rules - set of rules
      */
@@ -43,6 +50,16 @@ class PokerSquaresGame
      * @var CardDeck $deck
      */
     private CardDeck $deck;
+
+    /**
+     * @var \DateTimeInterface|null $start - time of start
+     */
+    private ?\DateTimeInterface $start = null;
+
+    /**
+     * @var \DateTimeInterface|null $finish - time of finish
+     */
+    private ?\DateTimeInterface $finish = null;
 
     /**
      * Constructor
@@ -85,8 +102,27 @@ class PokerSquaresGame
             "cardBack" => $this->deck->getCardBack(),
             "card" => $this->deck->peak(),
             "board" => $this->gameboard->getBoardView(),
-            "handScores" => $this->score->getDetails(),
+            "handScores" => $this->score->getHands(),
             "totalScore" => $this->score->getTotal(),
+        ];
+    }
+
+
+
+    /**
+     * Get player, board and score to fill Round entity
+     * 
+     * @return array<mixed>
+     */
+    public function getRoundData(): array
+    {
+        return [
+            "player" => $this->player,
+            "board" => $this->gameboard->exportAsEntity(),
+            "score" => $this->score,
+            "start" => $this->start,
+            "finish" => $this->finish,
+            "duration" => $this->getDuration(),
         ];
     }
 
@@ -105,7 +141,7 @@ class PokerSquaresGame
 
 
     /**
-     * Process new card placement and calculate scores
+     * Process new card placement, set start/finish time, and calculate scores
      * 
      * @param string $slot - a valid card slot
      * @return void
@@ -113,6 +149,7 @@ class PokerSquaresGame
     public function process(string $slot): void
     {
         $this->gameboard->placeCard($slot, $this->deck->draw());
+        $this->setStartAndFinish();
         $this->calcScores();
     }
 
@@ -131,5 +168,59 @@ class PokerSquaresGame
             $points = $this->scoreMapper->getScore($ruleName);  // get points for matching rule
             $this->score->setHandScore($handName, $points);
         }
+    }
+
+
+
+    /**
+     * Set time for start and finish (when first/last card is placed)
+     * 
+     * @return void
+     */
+    private function setStartAndFinish(): void
+    {
+        if ($this->gameboard->boardHasOneCard()) {
+            $this->start = $this->getDateTime();
+        }
+        if ($this->gameboard->boardIsFull()) {
+            $this->finish = $this->getDateTime();
+        }
+    }
+
+
+
+    /**
+     * Get current DateTime
+     * 
+     * @return \DateTimeInterface
+     */
+    private function getDateTime(): \DateTimeInterface
+    {
+        return new \DateTime('now', new \DateTimeZone(self::DEFAULT_TIME_ZONE));
+    }
+
+
+
+    /**
+     * Calculate duration from start to finish (or now if not finished)
+     * 
+     * @return \DateTimeInterface
+     */
+    public function getDuration(): \DateTimeInterface
+    {
+        $start = $this->start;
+        $finish = $this->finish;
+
+        if (!$start) {
+            return (new \DateTime())->setTime(0, 0, 0);
+        }
+        if (!$finish) {
+            $finish = $this->getDateTime();
+        }
+
+        $interval = $start->diff($finish);
+        $duration = (new \DateTime())->setTime($interval->h, $interval->i, $interval->s);
+
+        return $duration;
     }
 }
