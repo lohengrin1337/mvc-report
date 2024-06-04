@@ -10,16 +10,21 @@ use InvalidArgumentException;
 class Score
 {
     /**
-     * @var array $score - score of the 10 hands
+     * @var array $hands - score of the 10 hands
      */
-    private array $score;
+    private array $hands;
+
+    /**
+     * @var int $total - total score
+     */
+    private int $total;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->score = [
+        $this->hands = [
             "row1" => 0,
             "row2" => 0,
             "row3" => 0,
@@ -31,6 +36,8 @@ class Score
             "col4" => 0,
             "col5" => 0,
         ];
+
+        $this->total = 0;
     }
 
 
@@ -42,19 +49,19 @@ class Score
      */
     public function getTotal(): int
     {
-        return (int) array_sum($this->score);
+        return $this->total;
     }
 
 
 
     /**
-     * Get details on score for each hand
+     * Get score for each hand
      * 
      * @return array
      */
-    public function getDetails(): array
+    public function getHands(): array
     {
-        return $this->score;
+        return $this->hands;
     }
 
 
@@ -68,10 +75,23 @@ class Score
      */
     public function setHandScore(string $handName, int $points): void
     {
-        if (!array_key_exists($handName, $this->score)) {
+        if (!array_key_exists($handName, $this->hands)) {
             throw new InvalidArgumentException("Invalid hand name!");
         }
 
-        $this->score[$handName] = $points;
+        $this->hands[$handName] = $points;
+        $this->updateTotal();
+    }
+
+
+
+    /**
+     * Update total score
+     * 
+     * @return void
+     */
+    private function updateTotal(): void
+    {
+        $this->total = (int) array_sum($this->hands);
     }
 }
