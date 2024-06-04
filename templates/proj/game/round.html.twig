@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main">
+        <div class="sub-nav">
+            {{ include('proj/_nav.html.twig') }}
+        </div>
+
+        <h1>{{ pageTitle }}</h1>
+        <h2 class="header-m margin-b">{{ player }}</h2>
+
+        <div class="gameview">
+            {{ include('proj/game/_gameboard.html.twig') }}
+            <div>
+                <div class="header-sm">Summa: {{ totalScore }}</div>
+                <div class="header-sm">Starttid: {{ start }}</div>
+                <div class="header-sm">Sluttid: {{ finish }}</div>
+                <div class="header-sm">Tid: {{ duration }}</div>
+            </div>
+        </div>
+
+    </main>
+{% endblock %}

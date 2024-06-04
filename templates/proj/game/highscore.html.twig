@@ -10,29 +10,30 @@
 
         {{ include('flash.html.twig') }}
 
-        {# {% if rounds|length > 0 %}
+        {% if rounds|length > 0 %}
             <table>
                 <thead>
                     <tr>
                         <th class="header-sm">Spelare</th>
                         <th class="header-sm">Poäng</th>
+                        <th class="header-sm">Tid</th>
+                        <th class="header-sm">round id</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for round in rounds %}
-                        <tr class="clickable" onclick="window.location.href='{{ path('single_book', {'id': book.getId}) }}'">
-                        <tr class="clickable">
-                            <td>{{ round.player|e }}</td>
-                            <td>{{ round.score|e }}</td>
+                        <tr class="clickable" onclick="window.location.href='{{ path('proj_round', {'id': round['roundId']}) }}'">
+                            <td>{{ round["player"]|e }}</td>
+                            <td>{{ round["score"]|e }}</td>
+                            <td>{{ round["duration"]|e}}</td>
+                            <td>{{ round["roundId"]|e }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
         {% else %}
             <h2 class="header-m">Topplistan är tom...</h2>
-        {% endif %} #}
-
-        {{ dump(rounds) }}
+        {% endif %}
 
     </main>
 {% endblock %}

@@ -96,14 +96,58 @@ class ProjectController extends AbstractController
     {
         $this->data["pageTitle"] = "Topplista";
 
-        $rounds = $roundRepository->findAll();
+        $rounds = $roundRepository->getTopTenRounds();
 
         $this->data["rounds"] = [];
         foreach ($rounds as $round) {
-            $this->data["rounds"][] = $round;
+            $player = $round->getPlayer();
+            $board = $round->getBoard();
+            $score = $round->getScore();
+            $this->data["rounds"][] = [
+                "player" => $player->getName(),
+                "score" => $score->getTotal(),
+                "duration" => $round->getDuration()->format('i:s'),
+                "roundId" => $round->getId(),
+            ];
         }
 
         return $this->render("proj/game/highscore.html.twig", $this->data);
+    }
+
+
+
+    #[Route("/proj/game/round/{id}", name: "proj_round", methods: ["GET"])]
+    public function round(
+        int $id,
+        RoundRepository $roundRepository
+    ): Response {
+        $this->data["pageTitle"] = "Runda med id $id";
+
+        $round = $roundRepository->find($id) ?? null;
+        if (!$round) {
+            $this->addFlash("warning", "Det finns ingen runda med id '$id'!");
+            return $this->redirectToRoute("proj_highscore");
+        }
+
+        $player = $round->getPlayer();
+        $board = $round->getBoard();
+        $score = $round->getScore();
+
+        $this->data = array_merge(
+            $this->data,
+            [
+                "player" => $player->getName(),
+                "board" => $board->getData(),
+                "handScores" => $score->getHands(),
+                "totalScore" => $score->getTotal(),
+                "start" => $round->getStart()->format("Y-m-d H:i:s"),
+                "finish" => $round->getFinish()->format("Y-m-d H:i:s"),
+                "duration" => $round->getDuration()->format("i:s"),
+            ]
+        );
+
+
+        return $this->render("proj/game/round.html.twig", $this->data);
     }
 
 
@@ -143,7 +187,6 @@ class ProjectController extends AbstractController
             $player,
             new CardDeck(CardSvg::class)
         );
-
 
         // FILL GAMEBOARD FOR TESTING
         $gb = new GameBoard();
