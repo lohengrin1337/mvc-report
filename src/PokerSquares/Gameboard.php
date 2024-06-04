@@ -3,6 +3,7 @@
 namespace App\PokerSquares;
 
 use App\Card\CardInterface;
+use App\Entity\Board as BoardEntity;
 use App\Exception\InvalidSlotException;
 
 /**
@@ -73,6 +74,20 @@ class Gameboard
 
 
     /**
+     * Export board as Board entity
+     * 
+     * @return BoardEntity
+     */
+    public function exportAsEntity(): BoardEntity
+    {
+        $board = new BoardEntity();
+        $board->setData($this->getBoardView());
+        return $board;
+    }
+
+
+
+    /**
      * Validate slot exists, and value is null (no card yet)
      * 
      * @param string $slot
@@ -81,6 +96,22 @@ class Gameboard
     private function slotIsValid(string $slot): bool
     {
         return array_key_exists($slot, $this->board) && is_null($this->board[$slot]);
+    }
+
+
+
+    /**
+     * Check if only 1 slot is filled
+     * 
+     * @return bool - true if only one card is placed on the board
+     */
+    public function boardHasOneCard(): bool
+    {
+        $nullCount = array_reduce($this->board, function($carry, $card) {
+            return $carry + (is_null($card) ? 1 : 0);
+        }, 0);
+
+        return $nullCount === 24;
     }
 
 
