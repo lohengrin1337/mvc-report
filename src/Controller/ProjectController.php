@@ -4,12 +4,18 @@ namespace App\Controller;
 
 use App\Card\CardDeck;
 use App\Card\CardSvg;
+use App\Entity\Board;
+use App\Entity\Player;
+use App\Entity\Round;
+use App\Entity\Score;
 use App\PokerSquares\AmericanScores;
 use App\PokerSquares\Gameboard;
-use App\PokerSquares\Player;
 use App\PokerSquares\PokerSquareRules;
 use App\PokerSquares\PokerSquaresGame;
-use App\PokerSquares\Score;
+use App\Repository\BoardRepository;
+use App\Repository\PlayerRepository;
+use App\Repository\RoundRepository;
+use App\Repository\ScoreRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -86,44 +92,68 @@ class ProjectController extends AbstractController
 
 
     #[Route("/proj/game/highscore", name: "proj_highscore", methods: ["GET"])]
-    public function highscore(): Response
+    public function highscore(RoundRepository $roundRepository): Response
     {
         $this->data["pageTitle"] = "Topplista";
+
+        $rounds = $roundRepository->findAll();
+
+        $this->data["rounds"] = [];
+        foreach ($rounds as $round) {
+            $this->data["rounds"][] = $round;
+        }
+
         return $this->render("proj/game/highscore.html.twig", $this->data);
     }
 
 
 
-    // #[Route("/proj/game/init", name: "proj_game_init_view", methods: ["GET"])]
-    // public function gameInitView(): Response
-    // {
-    //     $this->data["pageTitle"] = "Välj speltyp";
-    //     return $this->render("proj/game/init.html.twig", $this->data);
-    // }
-
-
-
-    #[Route("/proj/game/test-init", name: "proj_test_init", methods: ["GET"])]
-    public function testInit(SessionInterface $session): Response
+    #[Route("/proj/game/init", name: "proj_game_init_view", methods: ["GET"])]
+    public function gameInitView(): Response
     {
+        $this->data["pageTitle"] = "Hantera spelare";
+        return $this->render("proj/game/init.html.twig", $this->data);
+    }
+
+
+
+    #[Route("/proj/game/init", name: "proj_game_init", methods: ["POST"])]
+    public function gameInit(
+        Request $request,
+        PlayerRepository $playerRepository,
+        EntityManagerInterface $entityManager,
+        SessionInterface $session
+    ): Response {
+        $playerName = $request->request->get("player");
+
+        // check if the player already exists
+        $player = $playerRepository->findOneBy(['name' => $playerName]);
+        if (!$player) {
+            $player = new Player();
+            $player->setName($playerName);
+            $entityManager->persist($player);
+            $entityManager->flush();
+        }
+
         $game = new PokerSquaresGame(
             new PokerSquareRules(),
             new AmericanScores(),
             new Score(),
             new Gameboard(),
-            new Player("Test Player"),
+            $player,
             new CardDeck(CardSvg::class)
         );
 
+
+        // FILL GAMEBOARD FOR TESTING
+        $gb = new GameBoard();
+        $slots = array_keys($gb->getBoardView());
+        for ($i=0; $i < 24; $i++) { 
+            $game->process($slots[$i]);
+        }
+
+
         $session->set("game", $game);
-
-
-        // $gameboard = new Gameboard();
-        // $deck = new CardDeck(CardSvg::class);
-        // $card = $deck->draw();
-        // $session->set("gameboard", $gameboard);
-        // $session->set("deck", $deck);
-        // $session->set("card", $card);
 
         return $this->redirectToRoute("proj_singleplayer");
     }
@@ -136,6 +166,11 @@ class ProjectController extends AbstractController
         $this->data["pageTitle"] = "Singleplayer";
         $game = $session->get("game");
         $this->data = array_merge($this->data, $game->getState());
+
+        if ($game->gameIsOver()) {
+            $this->data["pageTitle"] = "Bra jobbat {$this->data['player']}!";
+            return $this->render("proj/game/end_of_game.html.twig", $this->data);
+        }
 
         return $this->render("proj/game/singleplayer.html.twig", $this->data);
     }
@@ -157,14 +192,44 @@ class ProjectController extends AbstractController
         SessionInterface $session
     ): Response {
         $slotId = $request->request->get("slot_id");
-        $game =$session->get("game");
+        $game = $session->get("game");
         $game->process($slotId);
         $session->set("game", $game);
 
-        if ($game->gameIsOver()) {
-            // return $this->redirectToRoute("");
-        }
-
         return $this->redirectToRoute("proj_singleplayer");
+    }
+
+
+
+    #[Route("/proj/game/save", name: "proj_game_save", methods: ["POST"])]
+    public function saveGame(
+        SessionInterface $session,
+        PlayerRepository $playerRepository,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $game = $session->get("game");
+        $roundData = $game->getRoundData();
+
+        // Player entity has been detached from entity manager,
+        // and needs to be fetched again
+        $playerId = $roundData["player"]->getId();
+        $player = $playerRepository->find($playerId);
+
+        $round = new Round();
+        $round->setRoundData(
+            $player,
+            $roundData["board"],
+            $roundData["score"],
+            $roundData["start"],
+            $roundData["finish"],
+            $roundData["duration"]
+        );
+
+        $entityManager->persist($round);
+        $entityManager->flush();
+
+        $this->addFlash("notice", "Din runda sparades!");
+
+        return $this->redirectToRoute("proj_highscore");
     }
 }
