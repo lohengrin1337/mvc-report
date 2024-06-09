@@ -25,7 +25,8 @@
         @extend %label;
     }
 
-    input {
+    input,
+    select {
         width: 100%;
         padding: var.$baseline-half;
         border: 1px solid var.$border-regular;
@@ -47,6 +48,14 @@
         color: inherit;
         margin-bottom: var.$baseline;
     }
+
+    option {
+        background-color: var.$bg-color-option;
+        border: 1px solid var.$border-regular;
+        color: var.$color-body;
+        font-family: inherit;
+    }
+
 
     .button {
         width: fit-content;

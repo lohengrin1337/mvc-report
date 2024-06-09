@@ -889,7 +889,8 @@ picture {
   margin: 0;
   margin-bottom: 1.4rem;
 }
-.form input {
+.form input,
+.form select {
   width: 100%;
   padding: 0.7rem;
   border: 1px solid #A17317;
@@ -909,6 +910,12 @@ picture {
   background-color: transparent;
   color: inherit;
   margin-bottom: 1.4rem;
+}
+.form option {
+  background-color: #0d100d;
+  border: 1px solid #A17317;
+  color: #fff;
+  font-family: inherit;
 }
 .form .button {
   width: fit-content;
