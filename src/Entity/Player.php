@@ -21,7 +21,7 @@ class Player
     /**
      * @var Collection<int, Round>
      */
-    #[ORM\OneToMany(targetEntity: Round::class, mappedBy: 'player')]
+    #[ORM\OneToMany(targetEntity: Round::class, mappedBy: 'player', cascade: ['remove'])]
     private Collection $rounds;
 
     public function __construct()
