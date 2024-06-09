@@ -122,7 +122,7 @@ class Round
 
     public function setFinish(\DateTimeInterface $finish): static
     {
-        $this->finish = $finish;
+        $this->finish = $finish; 
 
         return $this;
     }

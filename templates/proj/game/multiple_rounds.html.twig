@@ -17,23 +17,22 @@
                         <th class="header-sm">Spelare</th>
                         <th class="header-sm">Poäng</th>
                         <th class="header-sm">Tid</th>
-                        <th class="header-sm">round id</th>
+                        <th class="header-sm">Datum</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for round in rounds %}
-                        <tr class="clickable" onclick="window.location.href='{{ path('proj_show_round', {'id': round.roundId}) }}'">
-                            <td>{{ round.player }}</td>
-                            <td>{{ round.score }}</td>
-                            <td>{{ round.duration }}</td>
-                            <td>{{ round.roundId }}</td>
+                        <tr class="clickable" onclick="window.location.href='{{ path('proj_show_round', {'id': round.id}) }}'">
+                            <td>{{ round.player.name }}</td>
+                            <td>{{ round.score.total }}</td>
+                            <td>{{ round.duration|date("i:s") }}</td>
+                            <td>{{ round.finish|date("Y-m-d H:i", localTimeZone) }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
         {% else %}
-            <h2 class="header-m">Topplistan är tom...</h2>
+            <h2 class="header-m margin-b">Inga rundor att visa...</h2>
         {% endif %}
-
     </main>
 {% endblock %}

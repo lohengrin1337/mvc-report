@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <div class="sub-nav">
+            {{ include('proj/_nav.html.twig') }}
+        </div>
+
+        <h1>{{ pageTitle }}</h1>
+
+        {{ include('flash.html.twig') }}
+
+        {% if players|length > 0 %}
+            <table>
+                <thead>
+                    <tr>
+                        <th class="header-sm">Namn</th>
+                        <th class="header-sm">Typ</th>
+                        <th class="header-sm">Antal rundor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in players %}
+                        <tr class="clickable" onclick="window.location.href='{{ path('proj_show_player', {'id': player.id}) }}'">
+                            <td>{{ player.name }}</td>
+                            {# <td>{{ player.type }}</td> #}
+                            <td>typ</td>
+                            <td>{{ player.rounds|length }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h2 class="header-m margin-b">Inga spelare att visa...</h2>
+        {% endif %}
+
+        <a href="{{ path('proj_create_player') }}" class="button margin-b">Skapa ny spelare</a>
+
+    </main>
+{% endblock %}

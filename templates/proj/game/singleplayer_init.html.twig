@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <div class="sub-nav">
+            {{ include('proj/_nav.html.twig') }}
+        </div>
+
+        <h1>{{ pageTitle }}</h1>
+
+        {{ include('flash.html.twig') }}
+
+        {{ form(playerSelectForm) }}
+
+        {{ form(playerForm) }}
+
+    </main>
+{% endblock %}

@@ -19,7 +19,8 @@ class PokerSquaresGame
     /**
      * @var string DEFAULT_TIME_ZONE
      */
-    public const DEFAULT_TIME_ZONE = "Europe/Stockholm";
+    // public const DEFAULT_TIME_ZONE = "Europe/Stockholm";
+    public const DEFAULT_TIME_ZONE = "UTC";
 
     /**
      * @var RuleCollectionInterface $rules - set of rules
@@ -197,6 +198,7 @@ class PokerSquaresGame
     private function getDateTime(): \DateTimeInterface
     {
         return new \DateTime('now', new \DateTimeZone(self::DEFAULT_TIME_ZONE));
+        // return new \DateTime('now');
     }
 
 

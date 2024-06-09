@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <div class="sub-nav">
+            {{ include('proj/_nav.html.twig') }}
+        </div>
+
+        <h1>{{ pageTitle }}</h1>
+
+        {{ include('flash.html.twig') }}
+
+        <h2 class="header-m margin-b">Id: {{ round.id }}</h2>
+        <div class="header-m margin-b">Spelare: {{ round.player.name }}</div>
+        <div class="header-m margin-b">Summa: {{ round.score.total }} poäng</div>
+        <div class="header-m margin-b">Starttid: {{ round.start|date("Y-m-d H:i", localTimeZone) }}</div>
+        <div class="header-m margin-b">Sluttid: {{ round.finish|date("Y-m-d H:i", localTimeZone) }}</div>
+        <div class="header-m margin-b">Tid: {{ round.duration|date("i:s") }}</div>
+
+        {{ form(form) }}
+
+    </main>
+{% endblock %}

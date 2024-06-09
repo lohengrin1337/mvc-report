@@ -8,6 +8,9 @@ use App\Entity\Board;
 use App\Entity\Player;
 use App\Entity\Round;
 use App\Entity\Score;
+use App\Form\ConfirmDeleteType;
+use App\Form\PlayerSelectType;
+use App\Form\PlayerType;
 use App\PokerSquares\AmericanScores;
 use App\PokerSquares\Gameboard;
 use App\PokerSquares\PokerSquareRules;
@@ -16,6 +19,7 @@ use App\Repository\BoardRepository;
 use App\Repository\PlayerRepository;
 use App\Repository\RoundRepository;
 use App\Repository\ScoreRepository;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,6 +44,7 @@ class ProjectController extends AbstractController
     {
         $this->data = [
             "siteTitle" => "MVC",
+            "localTimeZone" => "Europe/Stockholm",
             "pageTitle" => "",
         ];
     }
@@ -94,30 +99,43 @@ class ProjectController extends AbstractController
     #[Route("/proj/game/highscore", name: "proj_highscore", methods: ["GET"])]
     public function highscore(RoundRepository $roundRepository): Response
     {
+        $rounds = $roundRepository->getTopRounds(10);
         $this->data["pageTitle"] = "Topplista";
+        $this->data["rounds"] = $rounds;
 
-        $rounds = $roundRepository->getTopTenRounds();
+        return $this->render("proj/game/multiple_rounds.html.twig", $this->data);
 
-        $this->data["rounds"] = [];
-        foreach ($rounds as $round) {
-            $player = $round->getPlayer();
-            $board = $round->getBoard();
-            $score = $round->getScore();
-            $this->data["rounds"][] = [
-                "player" => $player->getName(),
-                "score" => $score->getTotal(),
-                "duration" => $round->getDuration()->format('i:s'),
-                "roundId" => $round->getId(),
-            ];
-        }
-
-        return $this->render("proj/game/highscore.html.twig", $this->data);
+        // $this->data["rounds"] = [];
+        // foreach ($rounds as $round) {
+        //     $player = $round->getPlayer();
+        //     $board = $round->getBoard();
+        //     $score = $round->getScore();
+        //     $this->data["rounds"][] = [
+        //         "player" => $player->getName(),
+        //         "score" => $score->getTotal(),
+        //         "duration" => $round->getDuration()->format('i:s'),
+        //         "roundId" => $round->getId(),
+        //     ];
+        // }
     }
 
 
 
-    #[Route("/proj/game/round/{id}", name: "proj_round", methods: ["GET"])]
-    public function round(
+    #[Route("/proj/game/round", name: "proj_show_rounds", methods: ["GET"])]
+    public function showRounds(RoundRepository $roundRepository): Response
+    {
+        $rounds = $roundRepository->getLatestRounds();
+
+        $this->data["pageTitle"] = "Rundor";
+        $this->data["rounds"] = $rounds;
+
+        return $this->render("proj/game/multiple_rounds.html.twig", $this->data);
+    }
+
+
+
+    #[Route("/proj/game/round/{id}", name: "proj_show_round", requirements: ["id" => "\d+"], methods: ["GET"])]
+    public function showRound(
         int $id,
         RoundRepository $roundRepository
     ): Response {
@@ -126,85 +144,355 @@ class ProjectController extends AbstractController
         $round = $roundRepository->find($id) ?? null;
         if (!$round) {
             $this->addFlash("warning", "Det finns ingen runda med id '$id'!");
-            return $this->redirectToRoute("proj_highscore");
+            return $this->redirectToRoute("proj_show_rounds");
         }
 
-        $player = $round->getPlayer();
-        $board = $round->getBoard();
-        $score = $round->getScore();
+        $this->data["round"] = $round;
+        $this->data["board"] = $round->getBoard()->getData();
+        $this->data["handScores"] = $round->getScore()->getHands();
 
-        $this->data = array_merge(
-            $this->data,
+        return $this->render("proj/game/single_round.html.twig", $this->data);
+    }
+
+
+
+    #[Route("/proj/game/round/delete/{id}", name: "proj_delete_round", requirements: ["id" => "\d+"], methods: ["GET", "POST"])]
+    public function deleteRound(
+        int $id,
+        roundRepository $roundRepository,
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $round = $roundRepository->find($id) ?? null;
+        if (!$round) {
+            $this->addFlash("warning", "Det finns ingen runda med id '$id'!");
+            return $this->redirectToRoute("proj_show_rounds");
+        }
+
+        $form = $this->createForm(ConfirmDeleteType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $entityManager->remove($round);
+                $entityManager->flush();
+                $this->addFlash(
+                    "notice",
+                    "Runda med id '$id' har tagits bort!"
+                );
+                return $this->redirectToRoute("proj_show_rounds");
+            } catch (Exception $e) {
+                $this->addFlash("warning", $e->getMessage());
+                return $this->redirectToRoute("proj_delete_round", ['id' => $id]);
+            }
+        }
+
+        $this->data["pageTitle"] = "Ta bort runda";
+        $this->data["round"] = $round;
+        $this->data["form"] = $form;
+
+        return $this->render('proj/game/delete_round.html.twig', $this->data);
+    }
+
+
+
+    #[Route("/proj/game/player", name: "proj_show_players", methods: ["GET"])]
+    public function showPlayers(PlayerRepository $playerRepository): Response
+    {
+        $players = $playerRepository->getAllSortedByName();
+
+        $this->data["pageTitle"] = "Spelare";
+        $this->data["players"] = $players;
+
+        return $this->render("proj/game/all_players.html.twig", $this->data);
+    }
+
+
+
+    #[Route("/proj/game/player/{id}", name: "proj_show_player", requirements: ["id" => "\d+"], methods: ["GET"])]
+    public function showPlayer(
+        int $id,
+        PlayerRepository $playerRepository
+    ): Response {
+        $player = $playerRepository->find($id) ?? null;
+        if (!$player) {
+            $this->addFlash("warning", "Det finns ingen spelare med id '$id'!");
+            return $this->redirectToRoute("proj_show_players");
+        }
+
+        $this->data["pageTitle"] = "Spelarprofil";
+        $this->data["player"] = $player;
+
+        return $this->render("proj/game/single_player.html.twig", $this->data);
+    }
+
+
+
+    #[Route("/proj/game/player/{id}/rounds", name: "proj_show_player_rounds", requirements: ["id" => "\d+"], methods: ["GET"])]
+    public function showPlayerRounds(
+        int $id,
+        PlayerRepository $playerRepository
+    ): Response {
+        $player = $playerRepository->find($id) ?? null;
+        if (!$player) {
+            $this->addFlash("warning", "Det finns ingen spelare med id '$playerId'!");
+            return $this->redirectToRoute("proj_show_players");
+        }
+
+        $rounds = $player->getRounds();
+        $this->data["pageTitle"] = "{$player->getName()}s Rundor";
+        $this->data["rounds"] = $rounds;
+        return $this->render("proj/game/multiple_rounds.html.twig", $this->data);
+    }
+
+
+
+
+    #[Route("/proj/game/player/create", name: "proj_create_player", methods: ["GET", "POST"])]
+    public function createPlayer(
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $form = $this->createForm(PlayerType::class, new Player());
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $player = $form->getData();
+                $entityManager->persist($player);
+                $entityManager->flush();
+                $this->addFlash("notice", "Spelaren '{$player->getName()}' har lagts till!");
+                return $this->redirectToRoute("proj_show_players");
+            } catch (UniqueConstraintViolationException $e) {
+                $this->addFlash("warning", "Det finns redan en spelare med namn '{$player->getName()}'!");
+                return $this->redirectToRoute("proj_create_player");
+            } catch (Exception $e) {
+                $this->addFlash("warning", $e->getMessage());
+                return $this->redirectToRoute("proj_create_player");
+            }
+        }
+
+        $this->data["pageTitle"] = "Skapa ny spelare";
+        $this->data["form"] = $form;
+
+        return $this->render('proj/game/create_player.html.twig', $this->data);
+    }
+
+
+
+    #[Route("/proj/game/player/edit/{id}", name: "proj_edit_player", requirements: ["id" => "\d+"], methods: ["GET", "POST"])]
+    public function editPlayer(
+        int $id,
+        PlayerRepository $playerRepository,
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $player = $playerRepository->find($id) ?? null;
+        if (!$player) {
+            $this->addFlash("warning", "Det finns ingen spelare med id '$id'!");
+            return $this->redirectToRoute("proj_show_players");
+        }
+
+        $form = $this->createForm(
+            PlayerType::class,
+            $player,
             [
-                "player" => $player->getName(),
-                "board" => $board->getData(),
-                "handScores" => $score->getHands(),
-                "totalScore" => $score->getTotal(),
-                "start" => $round->getStart()->format("Y-m-d H:i:s"),
-                "finish" => $round->getFinish()->format("Y-m-d H:i:s"),
-                "duration" => $round->getDuration()->format("i:s"),
+                "name_label" => "Namn:",
+                "submit_label" => "Spara",
             ]
         );
 
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $player = $form->getData();
+                $entityManager->flush();
+                $this->addFlash("notice", "Ändringarna är sparade!");
+                return $this->redirectToRoute("proj_show_player", ['id' => $id]);
+            } catch (UniqueConstraintViolationException $e) {
+                $this->addFlash("warning", "Det finns en annan spelare med namnet '{$player->getName()}'!");
+                return $this->redirectToRoute("proj_edit_player", ['id' => $id]);
+            } catch (Exception $e) {
+                $this->addFlash("warning", $e->getMessage());
+                return $this->redirectToRoute("proj_edit_player", ['id' => $id]);
+            }
+        }
 
-        return $this->render("proj/game/round.html.twig", $this->data);
+        $this->data["pageTitle"] = "Redigera spelare";
+        $this->data["form"] = $form;
+
+        return $this->render('proj/game/edit_player.html.twig', $this->data);
     }
 
 
 
-    #[Route("/proj/game/init", name: "proj_game_init_view", methods: ["GET"])]
-    public function gameInitView(): Response
-    {
-        $this->data["pageTitle"] = "Hantera spelare";
-        return $this->render("proj/game/init.html.twig", $this->data);
+    #[Route("/proj/game/player/delete/{id}", name: "proj_delete_player", requirements: ["id" => "\d+"], methods: ["GET", "POST"])]
+    public function deletePlayer(
+        int $id,
+        PlayerRepository $playerRepository,
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $player = $playerRepository->find($id) ?? null;
+        if (!$player) {
+            $this->addFlash("warning", "Det finns ingen spelare med id '$id'!");
+            return $this->redirectToRoute("proj_show_players");
+        }
+
+        $form = $this->createForm(ConfirmDeleteType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $playerName = $player->getName();
+                $roundCount = count($player->getRounds());
+                $entityManager->remove($player);
+                $entityManager->flush();
+                $this->addFlash(
+                    "notice",
+                    "Spelaren '$playerName' samt relaterade rundor ($roundCount) har tagits bort!"
+                );
+                return $this->redirectToRoute("proj_show_players");
+            } catch (Exception $e) {
+                $this->addFlash("warning", $e->getMessage());
+                return $this->redirectToRoute("proj_delete_player", ['id' => $id]);
+            }
+        }
+
+        $this->data["pageTitle"] = "Ta bort spelare";
+        $this->data["player"] = $player;
+        $this->data["form"] = $form;
+
+        return $this->render('proj/game/delete_player.html.twig', $this->data);
     }
 
 
 
-    #[Route("/proj/game/init", name: "proj_game_init", methods: ["POST"])]
-    public function gameInit(
+    #[Route("/proj/game/singleplayer/init", name: "proj_singleplayer_init", methods: ["GET", "POST"])]
+    public function singleplayerInit(
         Request $request,
         PlayerRepository $playerRepository,
         EntityManagerInterface $entityManager,
         SessionInterface $session
     ): Response {
-        $playerName = $request->request->get("player");
+        $player = null;
 
-        // check if the player already exists
-        $player = $playerRepository->findOneBy(['name' => $playerName]);
-        if (!$player) {
-            $player = new Player();
-            $player->setName($playerName);
-            $entityManager->persist($player);
-            $entityManager->flush();
+        $playerSelectForm = $this->createForm(PlayerSelectType::class, null, ["submit_label" => "Starta spelet"]);
+        $playerSelectForm->handleRequest($request);
+        if ($playerSelectForm->isSubmitted() && $playerSelectForm->isValid()) {
+            $data = $playerSelectForm->getData();
+            $player = $data["player"] ?? null;
         }
 
-        $game = new PokerSquaresGame(
-            new PokerSquareRules(),
-            new AmericanScores(),
-            new Score(),
-            new Gameboard(),
-            $player,
-            new CardDeck(CardSvg::class)
+        $playerForm = $this->createForm(
+            PlayerType::class,
+            new Player(),
+            [
+                "name_label" => "Lägg till ny spelare:",
+                "submit_label" => "Spara",
+            ]
         );
-
-        // FILL GAMEBOARD FOR TESTING
-        $gb = new GameBoard();
-        $slots = array_keys($gb->getBoardView());
-        for ($i=0; $i < 24; $i++) { 
-            $game->process($slots[$i]);
+        $playerForm->handleRequest($request);
+        if ($playerForm->isSubmitted() && $playerForm->isValid()) {
+            try {
+                $player = $playerForm->getData();
+                $entityManager->persist($player);
+                $entityManager->flush();
+                $this->addFlash("notice", "Spelaren '{$player->getName()}' har lagts till!");
+            } catch (UniqueConstraintViolationException $e) {
+                $this->addFlash("warning", "Det finns redan en spelare med namn '{$player->getName()}'!");
+                // return $this->redirectToRoute("proj_singleplayer_init");
+            } catch (Exception $e) {
+                $this->addFlash("warning", $e->getMessage());
+                // return $this->redirectToRoute("proj_singleplayer_init");
+            } finally {
+                return $this->redirectToRoute("proj_singleplayer_init");
+            }
         }
 
-
-        $session->set("game", $game);
-
-        return $this->redirectToRoute("proj_singleplayer");
+        if ($player) {
+            $game = new PokerSquaresGame(
+                new PokerSquareRules(),
+                new AmericanScores(),
+                new Score(),
+                new Gameboard(),
+                $player,
+                new CardDeck(CardSvg::class)
+            );
+    
+            // FILL GAMEBOARD (24 cards) FOR TESTING
+            $gb = new GameBoard();
+            $slots = array_keys($gb->getBoardView());
+            for ($i=0; $i < 24; $i++) { 
+                $game->process($slots[$i]);
+            }
+    
+            $session->set("game", $game);
+    
+            return $this->redirectToRoute("proj_singleplayer_play");
+        }
+    
+        $this->data["pageTitle"] = "Välj spelare";
+        $this->data["playerSelectForm"] = $playerSelectForm;
+        $this->data["playerForm"] = $playerForm;
+        return $this->render("proj/game/singleplayer_init.html.twig", $this->data);
     }
 
 
 
-    #[Route("/proj/game/singleplayer", name: "proj_singleplayer", methods: ["GET"])]
-    public function singleplayer(SessionInterface $session): Response
+    // #[Route("/proj/game/init", name: "proj_game_init_view", methods: ["GET"])]
+    // public function gameInitView(): Response
+    // {
+    //     $this->data["pageTitle"] = "Hantera spelare";
+    //     return $this->render("proj/game/init.html.twig", $this->data);
+    // }
+
+
+
+    // #[Route("/proj/game/init", name: "proj_game_init", methods: ["POST"])]
+    // public function gameInit(
+    //     Request $request,
+    //     PlayerRepository $playerRepository,
+    //     EntityManagerInterface $entityManager,
+    //     SessionInterface $session
+    // ): Response {
+    //     $playerName = $request->request->get("player");
+
+    //     // check if the player already exists
+    //     $player = $playerRepository->findOneBy(['name' => $playerName]);
+    //     if (!$player) {
+    //         $player = new Player();
+    //         $player->setName($playerName);
+    //         $entityManager->persist($player);
+    //         $entityManager->flush();
+    //     }
+
+    //     $game = new PokerSquaresGame(
+    //         new PokerSquareRules(),
+    //         new AmericanScores(),
+    //         new Score(),
+    //         new Gameboard(),
+    //         $player,
+    //         new CardDeck(CardSvg::class)
+    //     );
+
+    //     // FILL GAMEBOARD FOR TESTING
+    //     $gb = new GameBoard();
+    //     $slots = array_keys($gb->getBoardView());
+    //     for ($i=0; $i < 24; $i++) { 
+    //         $game->process($slots[$i]);
+    //     }
+
+
+    //     $session->set("game", $game);
+
+    //     return $this->redirectToRoute("proj_singleplayer");
+    // }
+
+
+
+    #[Route("/proj/game/singleplayer/play", name: "proj_singleplayer_play", methods: ["GET"])]
+    public function singleplayerPlay(SessionInterface $session): Response
     {
         $this->data["pageTitle"] = "Singleplayer";
         $game = $session->get("game");
@@ -239,7 +527,7 @@ class ProjectController extends AbstractController
         $game->process($slotId);
         $session->set("game", $game);
 
-        return $this->redirectToRoute("proj_singleplayer");
+        return $this->redirectToRoute("proj_singleplayer_play");
     }
 
 
