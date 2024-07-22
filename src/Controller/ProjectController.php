@@ -9,6 +9,7 @@ use App\Entity\Player;
 use App\Entity\Round;
 use App\Entity\Score;
 use App\Form\ConfirmDeleteType;
+use App\Form\ConfirmType;
 use App\Form\PlayerSelectType;
 use App\Form\PlayerType;
 use App\PokerSquares\AmericanScores;
@@ -401,10 +402,8 @@ class ProjectController extends AbstractController
                 $this->addFlash("notice", "Spelaren '{$player->getName()}' har lagts till!");
             } catch (UniqueConstraintViolationException $e) {
                 $this->addFlash("warning", "Det finns redan en spelare med namn '{$player->getName()}'!");
-                // return $this->redirectToRoute("proj_singleplayer_init");
             } catch (Exception $e) {
                 $this->addFlash("warning", $e->getMessage());
-                // return $this->redirectToRoute("proj_singleplayer_init");
             } finally {
                 return $this->redirectToRoute("proj_singleplayer_init");
             }
@@ -513,6 +512,112 @@ class ProjectController extends AbstractController
     {
         $this->data["pageTitle"] = "Multiplayer";
         return $this->render("proj/game/multiplayer.html.twig", $this->data);
+    }
+
+
+
+    #[Route("/proj/game/multiplayer/init", name: "proj_multiplayer_init", methods: ["GET", "POST"])]
+    public function multiplayerInit(
+        Request $request,
+        PlayerRepository $playerRepository,
+        EntityManagerInterface $entityManager,
+        SessionInterface $session
+    ): Response {
+        $players = $session->get("players") ?? [];
+
+        $playerSelectForm = $this->createForm(PlayerSelectType::class, null, ["submit_label" => "Lägg till"]);
+        $playerSelectForm->handleRequest($request);
+        if ($playerSelectForm->isSubmitted() && $playerSelectForm->isValid()) {
+            $data = $playerSelectForm->getData();
+            $players[] = $data["player"];
+            $session->set("players", $players);
+        }
+
+        $playerDeselectForm = $this->createForm(ConfirmType::class, ["label" => "Ta bort valda spelare"]);
+        if ($playerDeselectForm->isSubmitted() && $playerDeselectForm->isValid()) {
+            $players = [];
+            $session->set("players", []);
+        }
+
+        $playerForm = $this->createForm(
+            PlayerType::class,
+            new Player(),
+            [
+                "name_label" => "Lägg till ny spelare:",
+                "submit_label" => "Spara",
+            ]
+        );
+        $playerForm->handleRequest($request);
+        if ($playerForm->isSubmitted() && $playerForm->isValid()) {
+            try {
+                $player = $playerForm->getData();
+                $entityManager->persist($player);
+                $entityManager->flush();
+                $this->addFlash("notice", "Spelaren '{$player->getName()}' har lagts till!");
+            } catch (UniqueConstraintViolationException $e) {
+                $this->addFlash("warning", "Det finns redan en spelare med namn '{$player->getName()}'!");
+            } catch (Exception $e) {
+                $this->addFlash("warning", $e->getMessage());
+            } finally {
+                return $this->redirectToRoute("proj_multiplayer_init");
+            }
+        }
+
+        $startForm = $this->createForm(ConfirmType::class);
+        if ($startForm->isSubmitted() && $startForm->isValid()) {
+            if (count($players) < 2) {
+                $this->addFlash("warning", "Det behövs minst 2 spelare för multiplayer!");
+                return $this->redirectToRoute("proj_multiplayer_init");
+            }
+
+            $games = [];
+            $deck = new CardDeck(CardSvg::class); // same deck for all players
+            foreach ($players as $player) {
+                $game = new PokerSquaresGame(
+                    new PokerSquareRules(),
+                    new AmericanScores(),
+                    new Score(),
+                    new Gameboard(),
+                    $player,
+                    $deck
+                );
+
+                $games[] = $game;
+            }
+
+            $session->set("games", $games);
+    
+            return $this->redirectToRoute("proj_multiplayer_play");
+        }
+
+        $this->data["pageTitle"] = "Välj spelare";
+        $this->data["playerSelectForm"] = $playerSelectForm;
+        $this->data["playerDeselectForm"] = $playerDeselectForm;
+        $this->data["playerForm"] = $playerForm;
+        $this->data["startForm"] = $startForm;
+        return $this->render("proj/game/multiplayer_init.html.twig", $this->data);
+    }
+
+
+
+    #[Route("/proj/game/multiplayer/play", name: "proj_multiplayer_play", methods: ["GET"])]
+    public function multiplayerPlay(SessionInterface $session): Response
+    {
+        $this->data["pageTitle"] = "Multiplayer";
+        $games = $session->get("games");
+
+        foreach ($games as $game) {
+            if ($game->gameisOver()) {
+                continue;
+            }
+
+            $session->set("game", $game);
+            $this->data = array_merge($this->data, $game->getState());
+            return $this->render("proj/game/multiplayer.html.twig", $this->data);
+        }
+
+        $this->data["pageTitle"] = "Bra jobbat!";
+        return $this->render("proj/game/end_of_game.html.twig", $this->data);
     }
 
 
