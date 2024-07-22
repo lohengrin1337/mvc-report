@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <div class="sub-nav">
+            {{ include('proj/_nav.html.twig') }}
+        </div>
+
+        <h1>{{ pageTitle }}</h1>
+
+        {{ include('flash.html.twig') }}
+
+        {{ form(playerSelectForm) }}
+
+        {% for player in players %}
+            <div class="player">{{ player.name }}</div>
+        {% endfor %}
+
+        {% if players|length > 1 %}
+            
+        {% endif %}
+
+        {{ form(playerForm) }}
+
+    </main>
+{% endblock %}
