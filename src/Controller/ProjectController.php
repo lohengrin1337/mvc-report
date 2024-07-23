@@ -14,6 +14,7 @@ use App\Form\PlayerSelectType;
 use App\Form\PlayerType;
 use App\PokerSquares\AmericanScores;
 use App\PokerSquares\Gameboard;
+use App\PokerSquares\GameManager;
 use App\PokerSquares\PokerSquareRules;
 use App\PokerSquares\PokerSquaresGame;
 use App\Repository\BoardRepository;
@@ -516,29 +517,13 @@ class ProjectController extends AbstractController
 
 
 
-    #[Route("/proj/game/multiplayer/init", name: "proj_multiplayer_init", methods: ["GET", "POST"])]
-    public function multiplayerInit(
+    #[Route("/proj/game/init", name: "proj_game_init", methods: ["GET", "POST"])]
+    public function gameInit(
         Request $request,
         PlayerRepository $playerRepository,
         EntityManagerInterface $entityManager,
         SessionInterface $session
     ): Response {
-        $players = $session->get("players") ?? [];
-
-        $playerSelectForm = $this->createForm(PlayerSelectType::class, null, ["submit_label" => "Lägg till"]);
-        $playerSelectForm->handleRequest($request);
-        if ($playerSelectForm->isSubmitted() && $playerSelectForm->isValid()) {
-            $data = $playerSelectForm->getData();
-            $players[] = $data["player"];
-            $session->set("players", $players);
-        }
-
-        $playerDeselectForm = $this->createForm(ConfirmType::class, ["label" => "Ta bort valda spelare"]);
-        if ($playerDeselectForm->isSubmitted() && $playerDeselectForm->isValid()) {
-            $players = [];
-            $session->set("players", []);
-        }
-
         $playerForm = $this->createForm(
             PlayerType::class,
             new Player(),
@@ -559,17 +544,38 @@ class ProjectController extends AbstractController
             } catch (Exception $e) {
                 $this->addFlash("warning", $e->getMessage());
             } finally {
-                return $this->redirectToRoute("proj_multiplayer_init");
+                return $this->redirectToRoute("proj_game_init");
             }
         }
 
-        $startForm = $this->createForm(ConfirmType::class);
-        if ($startForm->isSubmitted() && $startForm->isValid()) {
-            if (count($players) < 2) {
-                $this->addFlash("warning", "Det behövs minst 2 spelare för multiplayer!");
-                return $this->redirectToRoute("proj_multiplayer_init");
-            }
+        $players = $session->get("players") ?? [];
+        $playerSelectForm = $this->createForm(PlayerSelectType::class, null, ["submit_label" => "Lägg till"]);
+        $playerSelectForm->handleRequest($request);
+        if ($playerSelectForm->isSubmitted() && $playerSelectForm->isValid()) {
+            $data = $playerSelectForm->getData();
+            $players[] = $data["player"];
+            $session->set("players", $players);
+        }
 
+
+        $playerDeselectBtn = $this->createForm(
+            ConfirmDeleteType::class,
+            null,
+            [
+                "label" => "Ta bort valda spelare",
+                "btn-attr" => ["class" => "button margin-b"],
+            ]
+        );
+        $playerDeselectBtn->handleRequest($request);
+        if ($playerDeselectBtn->isSubmitted() && $playerDeselectBtn->isValid()) {
+            $players = [];
+            $session->set("players", $players);
+        }
+
+
+        $startBtn = $this->createForm(ConfirmType::class, null, ["label" => "Starta spelet"]);
+        $startBtn->handleRequest($request);
+        if ($startBtn->isSubmitted() && $startBtn->isValid()) {
             $games = [];
             $deck = new CardDeck(CardSvg::class); // same deck for all players
             foreach ($players as $player) {
@@ -585,39 +591,52 @@ class ProjectController extends AbstractController
                 $games[] = $game;
             }
 
-            $session->set("games", $games);
+            $gameManager = new GameManager($games);
+            $session->set("gameManager", $gameManager);
     
-            return $this->redirectToRoute("proj_multiplayer_play");
+            return $this->redirectToRoute("proj_game_play");
         }
 
         $this->data["pageTitle"] = "Välj spelare";
-        $this->data["playerSelectForm"] = $playerSelectForm;
-        $this->data["playerDeselectForm"] = $playerDeselectForm;
         $this->data["playerForm"] = $playerForm;
-        $this->data["startForm"] = $startForm;
-        return $this->render("proj/game/multiplayer_init.html.twig", $this->data);
+        $this->data["playerSelectForm"] = $playerSelectForm;
+        $this->data["players"] = $players;
+        $this->data["playerDeselectBtn"] = $playerDeselectBtn;
+        $this->data["startBtn"] = $startBtn;
+        return $this->render("proj/game/game_setup.html.twig", $this->data);
     }
 
 
 
-    #[Route("/proj/game/multiplayer/play", name: "proj_multiplayer_play", methods: ["GET"])]
-    public function multiplayerPlay(SessionInterface $session): Response
+    #[Route("/proj/game/play", name: "proj_game_play", methods: ["GET"])]
+    public function gamePlay(SessionInterface $session): Response
     {
-        $this->data["pageTitle"] = "Multiplayer";
-        $games = $session->get("games");
-
-        foreach ($games as $game) {
-            if ($game->gameisOver()) {
-                continue;
-            }
-
-            $session->set("game", $game);
-            $this->data = array_merge($this->data, $game->getState());
-            return $this->render("proj/game/multiplayer.html.twig", $this->data);
+        $gameManager = $session->get("gameManager") ?? null;
+        if (!$gameManager) {
+            $this->addFlash("warning", "Speldata saknades!");
+            $this->redirectToRoute("proj_game_init");
         }
 
-        $this->data["pageTitle"] = "Bra jobbat!";
-        return $this->render("proj/game/end_of_game.html.twig", $this->data);
+        $game = $gameManager->getCurrentGame();
+        $this->data["pageTitle"] = "Pokersquares";
+        $this->data = array_merge($this->data, $game->getState());
+        return $this->render("proj/game/gameplay.html.twig", $this->data);
+
+
+        
+        // foreach ($games as $game) {
+        //     if ($game->gameisOver()) {
+        //         continue;
+        //     }
+            
+        //     $session->set("game", $game);
+        //     $this->data["pageTitle"] = "Pokersquares";
+        //     $this->data = array_merge($this->data, $game->getState());
+        //     return $this->render("proj/game/multiplayer.html.twig", $this->data);
+        // }
+
+        // $this->data["pageTitle"] = "Bra jobbat!";
+        // return $this->render("proj/game/end_of_game.html.twig", $this->data);
     }
 
 
