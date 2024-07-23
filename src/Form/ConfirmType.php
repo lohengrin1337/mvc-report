@@ -15,16 +15,16 @@ class ConfirmType extends AbstractType
             "confirm",
             SubmitType::class,
             [
-                "label" => "Starta spelet",
+                "label" => $options["label"],
                 "attr" => ["class" => "button"]
             ]
         );
     }
 
-    // public function configureOptions(OptionsResolver $resolver): void
-    // {
-    //     $resolver->setDefaults([
-    //         "attr" => ["class" => "form"],
-    //     ]);
-    // }
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            "label" => "Bekräfta",
+        ]);
+    }
 }

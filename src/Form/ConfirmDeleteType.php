@@ -15,16 +15,18 @@ class ConfirmDeleteType extends AbstractType
             "confirm",
             SubmitType::class,
             [
-                "label" => "Radera",
-                "attr" => ["class" => "button btn-delete"]
+                "label" => $options["label"],
+                "attr" => $options["btn-attr"],
+                // "attr" => ["class" => "button"],
             ]
         );
     }
 
-    // public function configureOptions(OptionsResolver $resolver): void
-    // {
-    //     $resolver->setDefaults([
-    //         "attr" => ["class" => "form"],
-    //     ]);
-    // }
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            "label" => "Radera",
+            "btn-attr" => ["class" => "button btn-delete"],
+        ]);
+    }
 }

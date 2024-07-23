@@ -21,7 +21,8 @@ class PlayerType extends AbstractType
                 TextType::class,
                 [
                     'label' => $options['name_label'],
-                    'constraints' => new Length(['min' => 3])
+                    'constraints' => new Length(['min' => 3]),
+                    'attr' => ['placeholder' => 'Ange ett spelarnamn'],
                 ]
             )
             ->add(
@@ -29,7 +30,7 @@ class PlayerType extends AbstractType
                 SubmitType::class,
                 [
                     'label' => $options['submit_label'],
-                    'attr' => ['class' => 'button']
+                    'attr' => ['class' => 'button'],
                 ]
             )
         ;
