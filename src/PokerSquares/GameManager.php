@@ -35,18 +35,62 @@ class GameManager
 
 
     /**
-     * Get first unfinished game
+     * Get the current (first unfinished) game
      * 
-     * @return PokerSquaresGame
+     * @return PokerSquaresGame|null
      */
-    public function getCurrentGame(): PokerSquaresGame
+    private function getCurrentGame(): PokerSquaresGame|null
     {
         foreach ($this->games as $game) {
             if ($game->gameisOver()) {
                 continue;
             }
-            
             return $game;
+        }
+        return null;
+    }
+
+
+
+    /**
+     * Check if all games are finished
+     * 
+     * @return bool
+     */
+    public function allGamesAreOver(): bool
+    {
+        return !$this->getCurrentGame();
+    }
+
+
+
+    /**
+     * Get state of current game (first unfinished game)
+     * 
+     * @return array<mixed>|null
+     */
+    public function getCurrentGameState(): array|null
+    {
+        $game = $this->getCurrentGame();
+        if ($game) {
+            return $game->getState();
+        }
+        return null;
+    }
+
+
+
+    /**
+     * Process card placement, time, and scores for current game
+     * 
+     * @param string $slot - a valid card slot
+     * @return void
+     */
+    public function processCurrent(string $slot): void
+    {
+        $game = $this->getCurrentGame();
+        if ($game) {
+            $game->process($slot);
         }
     }
 }
