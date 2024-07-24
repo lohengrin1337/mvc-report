@@ -26,10 +26,10 @@ class Round
     #[ORM\JoinColumn(nullable: false)]
     private ?Score $score = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, unique: true)]
     private ?\DateTimeInterface $start = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, unique: true)]
     private ?\DateTimeInterface $finish = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
