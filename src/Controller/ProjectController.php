@@ -577,7 +577,7 @@ class ProjectController extends AbstractController
         $startBtn->handleRequest($request);
         if ($startBtn->isSubmitted() && $startBtn->isValid()) {
             $games = [];
-            $deck = new CardDeck(CardSvg::class); // same deck for all players
+            $deck = new CardDeck(CardSvg::class);
             foreach ($players as $player) {
                 $game = new PokerSquaresGame(
                     new PokerSquareRules(),
@@ -585,7 +585,7 @@ class ProjectController extends AbstractController
                     new Score(),
                     new Gameboard(),
                     $player,
-                    $deck
+                    clone $deck     // same deck for all players, but unique instances
                 );
 
                 $games[] = $game;
@@ -617,9 +617,12 @@ class ProjectController extends AbstractController
             $this->redirectToRoute("proj_game_init");
         }
 
-        $game = $gameManager->getCurrentGame();
+        if ($gameManager->allGamesAreOver()) {
+            var_dump("gameover");
+        }
+
         $this->data["pageTitle"] = "Pokersquares";
-        $this->data = array_merge($this->data, $game->getState());
+        $this->data = array_merge($this->data, $gameManager->getCurrentGameState());
         return $this->render("proj/game/gameplay.html.twig", $this->data);
 
 
@@ -641,18 +644,33 @@ class ProjectController extends AbstractController
 
 
 
-    #[Route("/proj/game/place-card", name: "proj_place_card", methods: ["POST"])]
+        #[Route("/proj/game/place-card", name: "proj_place_card", methods: ["POST"])]
     public function placeCard(
         Request $request,
         SessionInterface $session
     ): Response {
         $slotId = $request->request->get("slot_id");
-        $game = $session->get("game");
-        $game->process($slotId);
-        $session->set("game", $game);
+        $gameManager = $session->get("gameManager");
+        $gameManager->processCurrent($slotId);
+        $session->set("gameManager", $gameManager);
 
-        return $this->redirectToRoute("proj_singleplayer_play");
+        return $this->redirectToRoute("proj_game_play");
     }
+
+
+
+    // #[Route("/proj/game/place-card", name: "proj_place_card", methods: ["POST"])]
+    // public function placeCard(
+    //     Request $request,
+    //     SessionInterface $session
+    // ): Response {
+    //     $slotId = $request->request->get("slot_id");
+    //     $game = $session->get("game");
+    //     $game->process($slotId);
+    //     $session->set("game", $game);
+
+    //     return $this->redirectToRoute("proj_singleplayer_play");
+    // }
 
 
 
