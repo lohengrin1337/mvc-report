@@ -35,6 +35,19 @@ class GameManager
 
 
     /**
+     * Get game by index
+     * 
+     * @param int $index
+     * @return PokerSquaresGame|null
+     */
+    public function getGameByIndex($index): PokerSquaresGame|null
+    {
+        return $this->games[$index];
+    }
+
+
+
+    /**
      * Get the current (first unfinished) game
      * 
      * @return PokerSquaresGame|null
@@ -76,6 +89,22 @@ class GameManager
             return $game->getState();
         }
         return null;
+    }
+
+
+
+    /**
+     * Get state of all games
+     * 
+     * @return array<array<mixed>>|null
+     */
+    public function getAllGameStates(): array|null
+    {
+        $gameStates = [];
+        foreach ($this->games as $game) {
+            $gameStates[] = $game->getState();
+        }
+        return $gameStates;
     }
 
 

@@ -149,9 +149,15 @@ class ProjectController extends AbstractController
             return $this->redirectToRoute("proj_show_rounds");
         }
 
-        $this->data["round"] = $round;
-        $this->data["board"] = $round->getBoard()->getData();
-        $this->data["handScores"] = $round->getScore()->getHands();
+        $this->data["game"] = [
+            "round" => $round,
+            "board" => $round->getBoard()->getData(),
+            "handScores" => $round->getScore()->getHands()
+        ];
+
+        // $this->data["round"] = $round;
+        // $this->data["board"] = $round->getBoard()->getData();
+        // $this->data["handScores"] = $round->getScore()->getHands();
 
         return $this->render("proj/game/single_round.html.twig", $this->data);
     }
@@ -618,28 +624,16 @@ class ProjectController extends AbstractController
         }
 
         if ($gameManager->allGamesAreOver()) {
-            var_dump("gameover");
+            $this->data["pageTitle"] = "Resultat";
+            $this->data["gameStates"] = $gameManager->getAllGameStates();
+            return $this->render("proj/game/end_of_game.html.twig", $this->data);
         }
 
+        $currentGameState = $gameManager->getCurrentGameState();
+        // $this->data["pageTitle"] = $currentGameState["player"];
         $this->data["pageTitle"] = "Pokersquares";
-        $this->data = array_merge($this->data, $gameManager->getCurrentGameState());
+        $this->data["game"] = $currentGameState;
         return $this->render("proj/game/gameplay.html.twig", $this->data);
-
-
-        
-        // foreach ($games as $game) {
-        //     if ($game->gameisOver()) {
-        //         continue;
-        //     }
-            
-        //     $session->set("game", $game);
-        //     $this->data["pageTitle"] = "Pokersquares";
-        //     $this->data = array_merge($this->data, $game->getState());
-        //     return $this->render("proj/game/multiplayer.html.twig", $this->data);
-        // }
-
-        // $this->data["pageTitle"] = "Bra jobbat!";
-        // return $this->render("proj/game/end_of_game.html.twig", $this->data);
     }
 
 
@@ -676,11 +670,14 @@ class ProjectController extends AbstractController
 
     #[Route("/proj/game/save", name: "proj_game_save", methods: ["POST"])]
     public function saveGame(
+        Request $request,
         SessionInterface $session,
         PlayerRepository $playerRepository,
         EntityManagerInterface $entityManager
     ): Response {
-        $game = $session->get("game");
+        $gameIndex = $request->request->get("game_index");
+        $gameManager = $session->get("gameManager");
+        $game = $gameManager->getGameByIndex($gameIndex);
         $roundData = $game->getRoundData();
 
         // Player entity has been detached from entity manager,
@@ -698,11 +695,48 @@ class ProjectController extends AbstractController
             $roundData["duration"]
         );
 
-        $entityManager->persist($round);
-        $entityManager->flush();
+        try {
+            $entityManager->persist($round);
+            $entityManager->flush();
+            $this->addFlash("notice", "{$player->getName()}'s runda sparades!");
+        } catch (UniqueConstraintViolationException) {
+            $this->addFlash("warning", "{$player->getName()}'s runda har redan sparats!");
+        }
 
-        $this->addFlash("notice", "Din runda sparades!");
-
-        return $this->redirectToRoute("proj_highscore");
+        return $this->redirectToRoute("proj_game_play");
     }
+
+
+
+    // #[Route("/proj/game/save", name: "proj_game_save", methods: ["POST"])]
+    // public function saveGame(
+    //     SessionInterface $session,
+    //     PlayerRepository $playerRepository,
+    //     EntityManagerInterface $entityManager
+    // ): Response {
+    //     $game = $session->get("game");
+    //     $roundData = $game->getRoundData();
+
+    //     // Player entity has been detached from entity manager,
+    //     // and needs to be fetched again
+    //     $playerId = $roundData["player"]->getId();
+    //     $player = $playerRepository->find($playerId);
+
+    //     $round = new Round();
+    //     $round->setRoundData(
+    //         $player,
+    //         $roundData["board"],
+    //         $roundData["score"],
+    //         $roundData["start"],
+    //         $roundData["finish"],
+    //         $roundData["duration"]
+    //     );
+
+    //     $entityManager->persist($round);
+    //     $entityManager->flush();
+
+    //     $this->addFlash("notice", "Din runda sparades!");
+
+    //     return $this->redirectToRoute("proj_highscore");
+    // }
 }

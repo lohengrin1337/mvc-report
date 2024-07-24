@@ -3,23 +3,23 @@
         <div class="row">
             {% for col in range(1, 5) %}
                 {% set slot = row ~ col %}
-                {% if board[slot] %}
-                    <div class="slot {{ board[slot] }}">
+                {% if game.board[slot] %}
+                    <div class="slot {{ game.board[slot] }}">
                         {% if row == 5 %}
-                            <span class="hand-score-col header-sm">{{ handScores["col" ~ col] }}</span>
+                            <span class="hand-score-col header-sm">{{ game.handScores["col" ~ col] }}</span>
                         {% endif %}
                     </div>
                 {% else %}
                     <div class="slot empty-slot" data-slot-id="{{ slot }}">
                         {% if row == 5 %}
-                            <span class="hand-score-col header-sm">{{ handScores["col" ~ col] }}</span>
+                            <span class="hand-score-col header-sm">{{ game.handScores["col" ~ col] }}</span>
                         {% endif %}
                     </div>
                 {% endif %}
 
 
             {% endfor %}
-            <span class="hand-score-row header-sm">{{ handScores["row" ~ row] }}</span>
+            <span class="hand-score-row header-sm">{{ game.handScores["row" ~ row] }}</span>
         </div>
     {% endfor %}
 

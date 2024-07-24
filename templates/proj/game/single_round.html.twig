@@ -11,13 +11,13 @@
         <div class="gameview">
             {{ include('proj/game/_gameboard.html.twig') }}
             <div>
-                <div class="header-m margin-b">Spelare: <a href="{{ path('proj_show_player', {id: round.player.id}) }}">{{ round.player.name }}</a></div>
-                <div class="header-m margin-b">Summa: {{ round.score.total }} poäng</div>
-                <div class="header-m margin-b">Starttid: {{ round.start|date("Y-m-d H:i", localTimeZone) }}</div>
-                <div class="header-m margin-b">Sluttid: {{ round.finish|date("Y-m-d H:i", localTimeZone) }}</div>
-                <div class="header-m margin-b">Tid: {{ round.duration|date("i:s") }}</div>
+                <div class="header-m margin-b">Spelare: <a href="{{ path('proj_show_player', {id: game.round.player.id}) }}">{{ game.round.player.name }}</a></div>
+                <div class="header-m margin-b">Summa: {{ game.round.score.total }} poäng</div>
+                <div class="header-m margin-b">Starttid: {{ game.round.start|date("Y-m-d H:i", localTimeZone) }}</div>
+                <div class="header-m margin-b">Sluttid: {{ game.round.finish|date("Y-m-d H:i", localTimeZone) }}</div>
+                <div class="header-m margin-b">Tid: {{ game.round.duration|date("i:s") }}</div>
 
-                <a href="{{ path('proj_delete_round', {'id': round.id}) }}" class="button">Radera</a>
+                <a href="{{ path('proj_delete_round', {'id': game.round.id}) }}" class="button">Radera</a>
             </div>
         </div>
 
