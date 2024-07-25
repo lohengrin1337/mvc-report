@@ -106,19 +106,6 @@ class ProjectController extends AbstractController
         $this->data["rounds"] = $rounds;
 
         return $this->render("proj/game/multiple_rounds.html.twig", $this->data);
-
-        // $this->data["rounds"] = [];
-        // foreach ($rounds as $round) {
-        //     $player = $round->getPlayer();
-        //     $board = $round->getBoard();
-        //     $score = $round->getScore();
-        //     $this->data["rounds"][] = [
-        //         "player" => $player->getName(),
-        //         "score" => $score->getTotal(),
-        //         "duration" => $round->getDuration()->format('i:s'),
-        //         "roundId" => $round->getId(),
-        //     ];
-        // }
     }
 
 
@@ -154,10 +141,6 @@ class ProjectController extends AbstractController
             "board" => $round->getBoard()->getData(),
             "handScores" => $round->getScore()->getHands()
         ];
-
-        // $this->data["round"] = $round;
-        // $this->data["board"] = $round->getBoard()->getData();
-        // $this->data["handScores"] = $round->getScore()->getHands();
 
         return $this->render("proj/game/single_round.html.twig", $this->data);
     }
@@ -376,152 +359,6 @@ class ProjectController extends AbstractController
 
 
 
-    #[Route("/proj/game/singleplayer/init", name: "proj_singleplayer_init", methods: ["GET", "POST"])]
-    public function singleplayerInit(
-        Request $request,
-        PlayerRepository $playerRepository,
-        EntityManagerInterface $entityManager,
-        SessionInterface $session
-    ): Response {
-        $player = null;
-
-        $playerSelectForm = $this->createForm(PlayerSelectType::class, null, ["submit_label" => "Starta spelet"]);
-        $playerSelectForm->handleRequest($request);
-        if ($playerSelectForm->isSubmitted() && $playerSelectForm->isValid()) {
-            $data = $playerSelectForm->getData();
-            $player = $data["player"] ?? null;
-        }
-
-        $playerForm = $this->createForm(
-            PlayerType::class,
-            new Player(),
-            [
-                "name_label" => "Lägg till ny spelare:",
-                "submit_label" => "Spara",
-            ]
-        );
-        $playerForm->handleRequest($request);
-        if ($playerForm->isSubmitted() && $playerForm->isValid()) {
-            try {
-                $player = $playerForm->getData();
-                $entityManager->persist($player);
-                $entityManager->flush();
-                $this->addFlash("notice", "Spelaren '{$player->getName()}' har lagts till!");
-            } catch (UniqueConstraintViolationException $e) {
-                $this->addFlash("warning", "Det finns redan en spelare med namn '{$player->getName()}'!");
-            } catch (Exception $e) {
-                $this->addFlash("warning", $e->getMessage());
-            } finally {
-                return $this->redirectToRoute("proj_singleplayer_init");
-            }
-        }
-
-        if ($player) {
-            $game = new PokerSquaresGame(
-                new PokerSquareRules(),
-                new AmericanScores(),
-                new Score(),
-                new Gameboard(),
-                $player,
-                new CardDeck(CardSvg::class)
-            );
-    
-            // FILL GAMEBOARD (24 cards) FOR TESTING
-            $gb = new GameBoard();
-            $slots = array_keys($gb->getBoardView());
-            for ($i=0; $i < 24; $i++) { 
-                $game->process($slots[$i]);
-            }
-    
-            $session->set("game", $game);
-    
-            return $this->redirectToRoute("proj_singleplayer_play");
-        }
-    
-        $this->data["pageTitle"] = "Välj spelare";
-        $this->data["playerSelectForm"] = $playerSelectForm;
-        $this->data["playerForm"] = $playerForm;
-        return $this->render("proj/game/singleplayer_init.html.twig", $this->data);
-    }
-
-
-
-    // #[Route("/proj/game/init", name: "proj_game_init_view", methods: ["GET"])]
-    // public function gameInitView(): Response
-    // {
-    //     $this->data["pageTitle"] = "Hantera spelare";
-    //     return $this->render("proj/game/init.html.twig", $this->data);
-    // }
-
-
-
-    // #[Route("/proj/game/init", name: "proj_game_init", methods: ["POST"])]
-    // public function gameInit(
-    //     Request $request,
-    //     PlayerRepository $playerRepository,
-    //     EntityManagerInterface $entityManager,
-    //     SessionInterface $session
-    // ): Response {
-    //     $playerName = $request->request->get("player");
-
-    //     // check if the player already exists
-    //     $player = $playerRepository->findOneBy(['name' => $playerName]);
-    //     if (!$player) {
-    //         $player = new Player();
-    //         $player->setName($playerName);
-    //         $entityManager->persist($player);
-    //         $entityManager->flush();
-    //     }
-
-    //     $game = new PokerSquaresGame(
-    //         new PokerSquareRules(),
-    //         new AmericanScores(),
-    //         new Score(),
-    //         new Gameboard(),
-    //         $player,
-    //         new CardDeck(CardSvg::class)
-    //     );
-
-    //     // FILL GAMEBOARD FOR TESTING
-    //     $gb = new GameBoard();
-    //     $slots = array_keys($gb->getBoardView());
-    //     for ($i=0; $i < 24; $i++) { 
-    //         $game->process($slots[$i]);
-    //     }
-
-
-    //     $session->set("game", $game);
-
-    //     return $this->redirectToRoute("proj_singleplayer");
-    // }
-
-
-
-    #[Route("/proj/game/singleplayer/play", name: "proj_singleplayer_play", methods: ["GET"])]
-    public function singleplayerPlay(SessionInterface $session): Response
-    {
-        $this->data["pageTitle"] = "Singleplayer";
-        $game = $session->get("game");
-        $this->data = array_merge($this->data, $game->getState());
-
-        if ($game->gameIsOver()) {
-            $this->data["pageTitle"] = "Bra jobbat {$this->data['player']}!";
-            return $this->render("proj/game/end_of_game.html.twig", $this->data);
-        }
-
-        return $this->render("proj/game/singleplayer.html.twig", $this->data);
-    }
-
-
-
-    #[Route("/proj/game/multiplayer", name: "proj_multiplayer", methods: ["GET"])]
-    public function multiplayer(SessionInterface $session): Response
-    {
-        $this->data["pageTitle"] = "Multiplayer";
-        return $this->render("proj/game/multiplayer.html.twig", $this->data);
-    }
-
-
 
     #[Route("/proj/game/init", name: "proj_game_init", methods: ["GET", "POST"])]
     public function gameInit(
@@ -594,6 +431,13 @@ class ProjectController extends AbstractController
                     clone $deck     // same deck for all players, but unique instances
                 );
 
+            // FILL GAMEBOARD FOR TESTING
+            // $gb = new GameBoard();
+            // $slots = array_keys($gb->getBoardView());
+            // for ($i=0; $i < 20; $i++) { 
+            //     $game->process($slots[$i]);
+            // }
+
                 $games[] = $game;
             }
 
@@ -625,12 +469,12 @@ class ProjectController extends AbstractController
 
         if ($gameManager->allGamesAreOver()) {
             $this->data["pageTitle"] = "Resultat";
+            $this->data["conclusion"] = $gameManager->getConclusion();
             $this->data["gameStates"] = $gameManager->getAllGameStates();
             return $this->render("proj/game/end_of_game.html.twig", $this->data);
         }
 
         $currentGameState = $gameManager->getCurrentGameState();
-        // $this->data["pageTitle"] = $currentGameState["player"];
         $this->data["pageTitle"] = "Pokersquares";
         $this->data["game"] = $currentGameState;
         return $this->render("proj/game/gameplay.html.twig", $this->data);
@@ -650,21 +494,6 @@ class ProjectController extends AbstractController
 
         return $this->redirectToRoute("proj_game_play");
     }
-
-
-
-    // #[Route("/proj/game/place-card", name: "proj_place_card", methods: ["POST"])]
-    // public function placeCard(
-    //     Request $request,
-    //     SessionInterface $session
-    // ): Response {
-    //     $slotId = $request->request->get("slot_id");
-    //     $game = $session->get("game");
-    //     $game->process($slotId);
-    //     $session->set("game", $game);
-
-    //     return $this->redirectToRoute("proj_singleplayer_play");
-    // }
 
 
 
@@ -738,5 +567,169 @@ class ProjectController extends AbstractController
     //     $this->addFlash("notice", "Din runda sparades!");
 
     //     return $this->redirectToRoute("proj_highscore");
+    // }
+
+
+
+
+
+    // #[Route("/proj/game/singleplayer/init", name: "proj_singleplayer_init", methods: ["GET", "POST"])]
+    // public function singleplayerInit(
+    //     Request $request,
+    //     PlayerRepository $playerRepository,
+    //     EntityManagerInterface $entityManager,
+    //     SessionInterface $session
+    // ): Response {
+    //     $player = null;
+
+    //     $playerSelectForm = $this->createForm(PlayerSelectType::class, null, ["submit_label" => "Starta spelet"]);
+    //     $playerSelectForm->handleRequest($request);
+    //     if ($playerSelectForm->isSubmitted() && $playerSelectForm->isValid()) {
+    //         $data = $playerSelectForm->getData();
+    //         $player = $data["player"] ?? null;
+    //     }
+
+    //     $playerForm = $this->createForm(
+    //         PlayerType::class,
+    //         new Player(),
+    //         [
+    //             "name_label" => "Lägg till ny spelare:",
+    //             "submit_label" => "Spara",
+    //         ]
+    //     );
+    //     $playerForm->handleRequest($request);
+    //     if ($playerForm->isSubmitted() && $playerForm->isValid()) {
+    //         try {
+    //             $player = $playerForm->getData();
+    //             $entityManager->persist($player);
+    //             $entityManager->flush();
+    //             $this->addFlash("notice", "Spelaren '{$player->getName()}' har lagts till!");
+    //         } catch (UniqueConstraintViolationException $e) {
+    //             $this->addFlash("warning", "Det finns redan en spelare med namn '{$player->getName()}'!");
+    //         } catch (Exception $e) {
+    //             $this->addFlash("warning", $e->getMessage());
+    //         } finally {
+    //             return $this->redirectToRoute("proj_singleplayer_init");
+    //         }
+    //     }
+
+    //     if ($player) {
+    //         $game = new PokerSquaresGame(
+    //             new PokerSquareRules(),
+    //             new AmericanScores(),
+    //             new Score(),
+    //             new Gameboard(),
+    //             $player,
+    //             new CardDeck(CardSvg::class)
+    //         );
+    
+    //         // FILL GAMEBOARD (24 cards) FOR TESTING
+    //         $gb = new GameBoard();
+    //         $slots = array_keys($gb->getBoardView());
+    //         for ($i=0; $i < 24; $i++) { 
+    //             $game->process($slots[$i]);
+    //         }
+    
+    //         $session->set("game", $game);
+    
+    //         return $this->redirectToRoute("proj_singleplayer_play");
+    //     }
+    
+    //     $this->data["pageTitle"] = "Välj spelare";
+    //     $this->data["playerSelectForm"] = $playerSelectForm;
+    //     $this->data["playerForm"] = $playerForm;
+    //     return $this->render("proj/game/singleplayer_init.html.twig", $this->data);
+    // }
+
+
+
+    // #[Route("/proj/game/init", name: "proj_game_init_view", methods: ["GET"])]
+    // public function gameInitView(): Response
+    // {
+    //     $this->data["pageTitle"] = "Hantera spelare";
+    //     return $this->render("proj/game/init.html.twig", $this->data);
+    // }
+
+
+
+    // #[Route("/proj/game/init", name: "proj_game_init", methods: ["POST"])]
+    // public function gameInit(
+    //     Request $request,
+    //     PlayerRepository $playerRepository,
+    //     EntityManagerInterface $entityManager,
+    //     SessionInterface $session
+    // ): Response {
+    //     $playerName = $request->request->get("player");
+
+    //     // check if the player already exists
+    //     $player = $playerRepository->findOneBy(['name' => $playerName]);
+    //     if (!$player) {
+    //         $player = new Player();
+    //         $player->setName($playerName);
+    //         $entityManager->persist($player);
+    //         $entityManager->flush();
+    //     }
+
+    //     $game = new PokerSquaresGame(
+    //         new PokerSquareRules(),
+    //         new AmericanScores(),
+    //         new Score(),
+    //         new Gameboard(),
+    //         $player,
+    //         new CardDeck(CardSvg::class)
+    //     );
+
+    //     // FILL GAMEBOARD FOR TESTING
+    //     $gb = new GameBoard();
+    //     $slots = array_keys($gb->getBoardView());
+    //     for ($i=0; $i < 24; $i++) { 
+    //         $game->process($slots[$i]);
+    //     }
+
+
+    //     $session->set("game", $game);
+
+    //     return $this->redirectToRoute("proj_singleplayer");
+    // }
+
+
+
+    // #[Route("/proj/game/singleplayer/play", name: "proj_singleplayer_play", methods: ["GET"])]
+    // public function singleplayerPlay(SessionInterface $session): Response
+    // {
+    //     $this->data["pageTitle"] = "Singleplayer";
+    //     $game = $session->get("game");
+    //     $this->data = array_merge($this->data, $game->getState());
+
+    //     if ($game->gameIsOver()) {
+    //         $this->data["pageTitle"] = "Bra jobbat {$this->data['player']}!";
+    //         return $this->render("proj/game/end_of_game.html.twig", $this->data);
+    //     }
+
+    //     return $this->render("proj/game/singleplayer.html.twig", $this->data);
+    // }
+
+
+
+    // #[Route("/proj/game/multiplayer", name: "proj_multiplayer", methods: ["GET"])]
+    // public function multiplayer(SessionInterface $session): Response
+    // {
+    //     $this->data["pageTitle"] = "Multiplayer";
+    //     return $this->render("proj/game/multiplayer.html.twig", $this->data);
+    // }
+
+
+
+    // #[Route("/proj/game/place-card", name: "proj_place_card", methods: ["POST"])]
+    // public function placeCard(
+    //     Request $request,
+    //     SessionInterface $session
+    // ): Response {
+    //     $slotId = $request->request->get("slot_id");
+    //     $game = $session->get("game");
+    //     $game->process($slotId);
+    //     $session->set("game", $game);
+
+    //     return $this->redirectToRoute("proj_singleplayer_play");
     // }
 }
