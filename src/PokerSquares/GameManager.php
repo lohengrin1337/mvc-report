@@ -122,4 +122,52 @@ class GameManager
             $game->process($slot);
         }
     }
+
+
+
+    /**
+     * Assess quality of score
+     * 
+     * @param int $score
+     * @return string - assassment
+     */
+    private function assessScore($score): string
+    {
+        if ($score < 30) {
+            return "Bra kämpat";
+        }
+        if ($score < 100) {
+            return "Snyggt jobbat";
+        }
+        return "Imponerande";
+    }
+
+
+
+    /**
+     * Get concluding message with winner and score
+     * 
+     * @return string
+     */
+    public function getConclusion(): string
+    {
+        $winner = "";
+        $winningScore = -1;
+
+        foreach ($this->games as $game) {
+            $state = $game->getState();
+            $score = $state["totalScore"];
+            $name = $state["player"];
+
+            if ($score > $winningScore) {
+                $winningScore = $score;
+                $winner = $state["player"];
+            } elseif ($score === $winningScore) {
+                $winner .= " och " . $state["player"];
+            }
+        }
+
+        $assassment = $this->assessScore($winningScore);
+        return "$assassment $winner! - $winningScore poäng";
+    }
 }
