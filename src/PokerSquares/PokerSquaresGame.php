@@ -225,4 +225,42 @@ class PokerSquaresGame
 
         return $duration;
     }
+
+
+
+    /**
+     * Check if player is of typ cpu (computer player)
+     * 
+     * @return bool
+     */
+    public function playerIsCpu(): bool
+    {
+        return $this->player->getType() === "cpu";
+    }
+
+
+
+    /**
+     * Get cpu level
+     * 
+     * @return int
+     */
+    private function getCpuLevel(): int
+    {
+        return $this->player->getLevel();
+    }
+
+
+
+    /**
+     * Let cpu do a card placement
+     * 
+     * @return void
+     */
+    public function cpuPlay(): void
+    {
+        
+
+        $this->process($slot);
+    }
 }
