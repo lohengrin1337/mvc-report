@@ -474,6 +474,12 @@ class ProjectController extends AbstractController
             return $this->render("proj/game/end_of_game.html.twig", $this->data);
         }
 
+        // $gameManager->cpuPlay(); // play all cpu rounds if not already played
+        $game = $gameManager->getCurrentGame();
+        if ($game->playerIsCpu()) {
+            $game->cpuPlay();
+        }
+
         $currentGameState = $gameManager->getCurrentGameState();
         $this->data["pageTitle"] = "Pokersquares";
         $this->data["game"] = $currentGameState;
