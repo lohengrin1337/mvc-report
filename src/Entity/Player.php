@@ -17,7 +17,13 @@ class Player
 
     #[ORM\Column(length: 50, unique: true)]
     private ?string $name = null;
-
+    
+    #[ORM\Column(length: 10, options: ["default" => "human"])]
+    private ?string $type = "human";
+    
+    #[ORM\Column(nullable: true)]
+    private ?int $level = null;
+    
     /**
      * @var Collection<int, Round>
      */
@@ -42,6 +48,30 @@ class Player
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): static
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getLevel(): ?int
+    {
+        return $this->level;
+    }
+
+    public function setLevel(?int $level): static
+    {
+        $this->level = $level;
 
         return $this;
     }
