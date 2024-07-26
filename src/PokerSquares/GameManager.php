@@ -5,7 +5,7 @@ namespace App\PokerSquares;
 use InvalidArgumentException;
 
 /**
- * Container and manager for a number of poker square games
+ * Container and manager for a set of poker square games
  */
 class GameManager
 {

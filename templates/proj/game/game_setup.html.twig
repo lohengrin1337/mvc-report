@@ -14,12 +14,16 @@
 
         {{ form(playerSelectForm) }}
 
-        {% for player in players %}
-            <div class="player">{{ player.name }}</div>
-        {% endfor %}
-
         {% if players|length > 0 %}
+            <p class="label-small">Valda spelare</p>
+            <div class="players">
+                {% for player in players %}
+                    <p class="header-sm">{{ player.name }}</p>
+                {% endfor %}
+            </div>
+
             {{ form(playerDeselectBtn) }}
+
             {{ form(startBtn) }}
         {% endif %}
 

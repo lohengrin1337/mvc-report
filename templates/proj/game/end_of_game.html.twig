@@ -15,8 +15,8 @@
             {{ include('proj/game/_gameboard.html.twig') }}
 
             <div>
-                <h2 class="header-m">{{ game.player }}</h2>
-                <p class="header-sm margin-b">{{ game.totalScore }} poäng</p>
+                <h2 class="header-m margin-b">{{ game.player }}</h2>
+                <p class="header-m margin-b">{{ game.totalScore }} poäng</p>
                 <form action="{{ path('proj_game_save') }}" method="post">
                     <input type="hidden" name="game_index" value="{{ loop.index0 }}">
                     <button class="button margin-b" type="submit">Spara runda</button>

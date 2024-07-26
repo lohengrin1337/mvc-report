@@ -31,7 +31,7 @@ class PlayerSelectType extends AbstractType
                 'player',
                 ChoiceType::class,
                 [
-                    'label' => false,
+                    'label' => 'Välj bland befintliga spelare',
                     'placeholder' => 'Välj en spelare',
                     'choices' => $players,
                     'choice_value' => 'name',

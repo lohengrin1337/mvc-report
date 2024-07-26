@@ -371,8 +371,8 @@ class ProjectController extends AbstractController
             PlayerType::class,
             new Player(),
             [
-                "name_label" => "Lägg till ny spelare:",
-                "submit_label" => "Spara",
+                "name_label" => "Skapa ny spelare",
+                "submit_label" => "Skapa",
             ]
         );
         $playerForm->handleRequest($request);
@@ -432,11 +432,11 @@ class ProjectController extends AbstractController
                 );
 
             // FILL GAMEBOARD FOR TESTING
-            // $gb = new GameBoard();
-            // $slots = array_keys($gb->getBoardView());
-            // for ($i=0; $i < 20; $i++) { 
-            //     $game->process($slots[$i]);
-            // }
+            $gb = new GameBoard();
+            $slots = array_keys($gb->getBoardView());
+            for ($i=0; $i < 24; $i++) { 
+                $game->process($slots[$i]);
+            }
 
                 $games[] = $game;
             }
