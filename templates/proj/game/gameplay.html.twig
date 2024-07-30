@@ -6,11 +6,13 @@
             {{ include('proj/_nav.html.twig') }}
         </div>
 
-        {# <h1>{{ pageTitle }}</h1> #}
-        {# <h2 class="header-m margin-b">{{ game.player }}</h2> #}
-
         <div class="gameview">
-            {{ include('proj/game/_gameboard.html.twig') }}
+            {% if game.playerType == "cpu" %}
+                {{ include('proj/game/_cpu_gameboard.html.twig') }}
+            {% else %}
+                {{ include('proj/game/_gameboard.html.twig') }}
+            {% endif %}
+
             {{ include('proj/game/_deck_and_card.html.twig') }}
         </div>
 

@@ -7,7 +7,7 @@
                 {% if game.board[slot] %}
                     <div class="slot {{ game.board[slot] }}">
                 {% else %}
-                    <div class="slot empty-slot" data-slot-id="{{ slot }}">
+                    <div class="slot">
                 {% endif %}
 
                 {% if row == 5 %}
@@ -21,7 +21,5 @@
         </div>
     {% endfor %}
 
-    <form id="place_card_form" action="{{ path('proj_place_card') }}" method="post">
-        <input id="card_slot_input" type="hidden" name="slot_id" value="0">
-    </form>
+    <form id="cpu_play_form" action="{{ path('proj_game_play') }}" method="get"></form>
 </div>
