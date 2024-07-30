@@ -421,20 +421,28 @@ class ProjectController extends AbstractController
         if ($startBtn->isSubmitted() && $startBtn->isValid()) {
             $games = [];
             $deck = new CardDeck(CardSvg::class);
+
+            // CPU TEST
+            $cpuPlayer = new Player();
+            $cpuPlayer->setName("cpu1");
+            $cpuPlayer->setType("cpu");
+            $cpuPlayer->setLevel(1);
+
             foreach ($players as $player) {
                 $game = new PokerSquaresGame(
                     new PokerSquareRules(),
                     new AmericanScores(),
                     new Score(),
                     new Gameboard(),
-                    $player,
+                    // $player,
+                    $cpuPlayer,
                     clone $deck     // same deck for all players, but unique instances
                 );
 
             // FILL GAMEBOARD FOR TESTING
             $gb = new GameBoard();
             $slots = array_keys($gb->getBoardView());
-            for ($i=0; $i < 24; $i++) { 
+            for ($i=0; $i < 0; $i++) { 
                 $game->process($slots[$i]);
             }
 
@@ -474,15 +482,16 @@ class ProjectController extends AbstractController
             return $this->render("proj/game/end_of_game.html.twig", $this->data);
         }
 
-        // $gameManager->cpuPlay(); // play all cpu rounds if not already played
         $game = $gameManager->getCurrentGame();
+
+        // handle cpu players action
         if ($game->playerIsCpu()) {
             $game->cpuPlay();
         }
 
-        $currentGameState = $gameManager->getCurrentGameState();
+        $gameState = $game->getState();
         $this->data["pageTitle"] = "Pokersquares";
-        $this->data["game"] = $currentGameState;
+        $this->data["game"] = $gameState;
         return $this->render("proj/game/gameplay.html.twig", $this->data);
     }
 
@@ -495,8 +504,8 @@ class ProjectController extends AbstractController
     ): Response {
         $slotId = $request->request->get("slot_id");
         $gameManager = $session->get("gameManager");
-        $gameManager->processCurrent($slotId);
-        $session->set("gameManager", $gameManager);
+        $game = $gameManager->getCurrentGame();
+        $game->process($slotId);
 
         return $this->redirectToRoute("proj_game_play");
     }

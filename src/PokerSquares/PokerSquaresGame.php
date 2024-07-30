@@ -5,6 +5,8 @@ namespace App\PokerSquares;
 use App\Card\CardDeck;
 use App\Entity\Player;
 use App\Entity\Score;
+use App\PokerSquares\Cpu\CpuFactory;
+use App\PokerSquares\Cpu\CpuLogicInterface;
 
 /**
  * Game engine for Poker Squares
@@ -48,6 +50,11 @@ class PokerSquaresGame
     private Player $player;
 
     /**
+     * @var CpuLogicInterface|null $cpuIntel - brain of cpu player
+     */
+    private ?CpuLogicInterface $cpuIntel = null;
+
+    /**
      * @var CardDeck $deck
      */
     private CardDeck $deck;
@@ -87,6 +94,12 @@ class PokerSquaresGame
         $this->gameboard = $gameboard;
         $this->player = $player;
         $this->deck = $deck;
+
+        // Add cpu intel of some level
+        if ($this->playerIsCpu()) {
+            $level = $this->getCpuLevel();
+            $this->cpuIntel = CpuFactory::getCpuIntel($level);
+        }
     }
 
 
@@ -100,8 +113,9 @@ class PokerSquaresGame
     {
         return [
             "player" => $this->player->getName(),
+            "playerType" => $this->player->getType(),
             "cardBack" => $this->deck->getCardBack(),
-            "card" => $this->deck->peak(),
+            "card" => $this->deck->peak()->getAsString(),
             "board" => $this->gameboard->getBoardView(),
             "handScores" => $this->score->getHands(),
             "totalScore" => $this->score->getTotal(),
@@ -259,7 +273,10 @@ class PokerSquaresGame
      */
     public function cpuPlay(): void
     {
-        
+        $slot = $this->cpuIntel->suggestPlacement(
+            $this->gameboard->getBoard(),
+            $this->deck->peak()
+        );
 
         $this->process($slot);
     }
