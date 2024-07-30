@@ -52,7 +52,7 @@ class GameManager
      * 
      * @return PokerSquaresGame|null
      */
-    private function getCurrentGame(): PokerSquaresGame|null
+    public function getCurrentGame(): PokerSquaresGame|null
     {
         foreach ($this->games as $game) {
             if ($game->gameisOver()) {
@@ -77,19 +77,19 @@ class GameManager
 
 
 
-    /**
-     * Get state of current game (first unfinished game)
-     * 
-     * @return array<mixed>|null
-     */
-    public function getCurrentGameState(): array|null
-    {
-        $game = $this->getCurrentGame();
-        if ($game) {
-            return $game->getState();
-        }
-        return null;
-    }
+    // /**
+    //  * Get state of current game (first unfinished game)
+    //  * 
+    //  * @return array<mixed>|null
+    //  */
+    // public function getCurrentGameState(): array|null
+    // {
+    //     $game = $this->getCurrentGame();
+    //     if ($game) {
+    //         return $game->getState();
+    //     }
+    //     return null;
+    // }
 
 
 
@@ -109,19 +109,19 @@ class GameManager
 
 
 
-    /**
-     * Process card placement, time, and scores for current game
-     * 
-     * @param string $slot - a valid card slot
-     * @return void
-     */
-    public function processCurrent(string $slot): void
-    {
-        $game = $this->getCurrentGame();
-        if ($game) {
-            $game->process($slot);
-        }
-    }
+    // /**
+    //  * Process card placement, time, and scores for current game
+    //  * 
+    //  * @param string $slot - a valid card slot
+    //  * @return void
+    //  */
+    // public function processCurrent(string $slot): void
+    // {
+    //     $game = $this->getCurrentGame();
+    //     if ($game) {
+    //         $game->process($slot);
+    //     }
+    // }
 
 
 

@@ -100,16 +100,16 @@ class CardDeck
 
 
     /**
-     * Peak at the top card of the deck (get the string representation)
+     * Peak at the top card of the deck
      * 
-     * @return string
+     * @return CardInterface
      */
-    public function peak(): string
+    public function peak(): CardInterface
     {
         if (!end($this->cards)) {
             return "";
         }
-        return end($this->cards)->getAsString();
+        return end($this->cards);
     }
 
 

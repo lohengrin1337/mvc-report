@@ -30,9 +30,21 @@ class Gameboard
             }
         }
     }
-    
-    
-    
+
+
+
+    /**
+     * Get the gameboard
+     * 
+     * @return array
+     */
+    public function getBoard(): array
+    {
+        return $this->board;
+    }
+
+
+
     /**
      * Place a card on the board
      * 
@@ -53,7 +65,7 @@ class Gameboard
 
 
     /**
-     * Get board with cards as strings
+     * Get board with cards as strings (for visual representation)
      * 
      * @return array<string>
      */
