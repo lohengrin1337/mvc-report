@@ -5,12 +5,17 @@
 
 "use strict";
 
-import { default as clickAction } from "./click-action.js";
+import makeCardSlotsClickable from "./click-action.js";
+import delayCpuCardPlacement from "./cpu-action.js";
 
 (function(){
     document.addEventListener("DOMContentLoaded", () => {
         if (document.getElementById("place_card_form")) {
-            clickAction();
+            makeCardSlotsClickable();
+        }
+
+        if (document.getElementById("cpu_play_form")) {
+            delayCpuCardPlacement();
         }
     });
 })();

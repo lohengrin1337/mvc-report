@@ -15,10 +15,4 @@ function makeCardSlotsClickable() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    if (document.getElementById("place_card_form")) {
-
-    }
-});
-
 export default makeCardSlotsClickable;
