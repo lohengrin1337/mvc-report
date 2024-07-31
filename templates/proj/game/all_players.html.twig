@@ -23,8 +23,10 @@
                     {% for player in players %}
                         <tr class="clickable" onclick="window.location.href='{{ path('proj_show_player', {'id': player.id}) }}'">
                             <td>{{ player.name }}</td>
-                            {# <td>{{ player.type }}</td> #}
-                            <td>typ</td>
+                            <td>
+                                {{ player.type }}
+                                {% if player.level %} level {{ player.level }} {% endif %}
+                            </td>
                             <td>{{ player.rounds|length }}</td>
                         </tr>
                     {% endfor %}

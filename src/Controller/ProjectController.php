@@ -21,6 +21,7 @@ use App\Repository\BoardRepository;
 use App\Repository\PlayerRepository;
 use App\Repository\RoundRepository;
 use App\Repository\ScoreRepository;
+use App\Service\InitCpuPlayerService;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -362,11 +363,16 @@ class ProjectController extends AbstractController
 
     #[Route("/proj/game/init", name: "proj_game_init", methods: ["GET", "POST"])]
     public function gameInit(
+        InitCpuPlayerService $icps,
         Request $request,
         PlayerRepository $playerRepository,
         EntityManagerInterface $entityManager,
         SessionInterface $session
     ): Response {
+        // add missing cpu players
+        $icps->addMissingPlayers();
+
+        // create new players
         $playerForm = $this->createForm(
             PlayerType::class,
             new Player(),
@@ -391,6 +397,7 @@ class ProjectController extends AbstractController
             }
         }
 
+        // select players
         $players = $session->get("players") ?? [];
         $playerSelectForm = $this->createForm(PlayerSelectType::class, null, ["submit_label" => "Lägg till"]);
         $playerSelectForm->handleRequest($request);
@@ -400,7 +407,7 @@ class ProjectController extends AbstractController
             $session->set("players", $players);
         }
 
-
+        // deselect players
         $playerDeselectBtn = $this->createForm(
             ConfirmDeleteType::class,
             null,
@@ -415,7 +422,7 @@ class ProjectController extends AbstractController
             $session->set("players", $players);
         }
 
-
+        // start game
         $startBtn = $this->createForm(ConfirmType::class, null, ["label" => "Starta spelet"]);
         $startBtn->handleRequest($request);
         if ($startBtn->isSubmitted() && $startBtn->isValid()) {
@@ -423,10 +430,10 @@ class ProjectController extends AbstractController
             $deck = new CardDeck(CardSvg::class);
 
             // CPU TEST
-            $cpuPlayer = new Player();
-            $cpuPlayer->setName("cpu1");
-            $cpuPlayer->setType("cpu");
-            $cpuPlayer->setLevel(1);
+            // $cpuPlayer = new Player();
+            // $cpuPlayer->setName("cpu1");
+            // $cpuPlayer->setType("cpu");
+            // $cpuPlayer->setLevel(1);
 
             foreach ($players as $player) {
                 $game = new PokerSquaresGame(
@@ -434,17 +441,17 @@ class ProjectController extends AbstractController
                     new AmericanScores(),
                     new Score(),
                     new Gameboard(),
-                    // $player,
-                    $cpuPlayer,
+                    $player,
+                    // $cpuPlayer,
                     clone $deck     // same deck for all players, but unique instances
                 );
 
             // FILL GAMEBOARD FOR TESTING
-            $gb = new GameBoard();
-            $slots = array_keys($gb->getBoardView());
-            for ($i=0; $i < 0; $i++) { 
-                $game->process($slots[$i]);
-            }
+            // $gb = new GameBoard();
+            // $slots = array_keys($gb->getBoardView());
+            // for ($i=0; $i < 22; $i++) { 
+            //     $game->process($slots[$i]);
+            // }
 
                 $games[] = $game;
             }

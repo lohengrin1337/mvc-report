@@ -11,9 +11,12 @@
         {{ include('flash.html.twig') }}
 
         <h2 class="header-m margin-b">Namn: {{ player.name }}</h2>
-        <h2 class="header-m margin-b">Typ: ...</h2>
+        <h2 class="header-m margin-b">
+            Typ:
+            {{ player.type }}
+            {% if player.level %} level {{ player.level }} {% endif %}
+        </h2>
         <h2 class="header-m margin-b">Antal rundor: {{ player.rounds|length }}</h2>
-        {# <h2 class="header-md margin-b">{{ player.type }}</h2> #}
 
         <a href="{{ path('proj_show_player_rounds', {'id': player.id}) }}" class="button margin-b">Visa rundor</a>
         <a href="{{ path('proj_edit_player', {'id': player.id}) }}" class="button margin-b">Redigera</a>

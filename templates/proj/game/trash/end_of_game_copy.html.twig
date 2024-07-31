@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main">
+        <div class="sub-nav">
+            {{ include('proj/_nav.html.twig') }}
+        </div>
+
+        <h1>{{ pageTitle }}</h1>
+
+        <div class="gameview">
+            {{ include('proj/game/_gameboard.html.twig') }}
+
+            <div>
+                <h2>Summa: {{ totalScore }} poäng</h2>
+                <form action="{{ path('proj_game_save') }}" method="post">
+                    <button class="button margin-b" type="submit">Spara runda</button>
+                </form>
+                <a class="button" href="{{ path('proj_singleplayer_init') }}">Nytt spel</a>
+            </div>
+        </div>
+    </main>
+{% endblock %}
