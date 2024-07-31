@@ -19,9 +19,10 @@
         </h2>
         <h2 class="header-m margin-b">Antal rundor: {{ player.rounds|length }}</h2>
 
-        <h2 class="header-m margin-b">Observera att eventuella rundor relaterade till spelaren raderas!</h2>
-
-        {{ form(form) }}
+        {% if form %}
+            <h2 class="header-m margin-b">Observera att eventuella rundor relaterade till spelaren raderas!</h2>
+            {{ form(form) }}
+        {% endif %}
 
     </main>
 {% endblock %}

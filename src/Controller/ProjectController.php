@@ -331,29 +331,38 @@ class ProjectController extends AbstractController
             return $this->redirectToRoute("proj_show_players");
         }
 
-        $form = $this->createForm(ConfirmDeleteType::class);
+        if ($player->getType() === "cpu") {
+            $this->addFlash(
+                "notice",
+                "En dator-spelare kan inte raderas. Du kan däremot redigera dess namn, eller ta bort en runda."
+            );
+            $this->data["form"] = null;
+        } else {
+            $form = $this->createForm(ConfirmDeleteType::class);
 
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            try {
-                $playerName = $player->getName();
-                $roundCount = count($player->getRounds());
-                $entityManager->remove($player);
-                $entityManager->flush();
-                $this->addFlash(
-                    "notice",
-                    "Spelaren '$playerName' samt relaterade rundor ($roundCount) har tagits bort!"
-                );
-                return $this->redirectToRoute("proj_show_players");
-            } catch (Exception $e) {
-                $this->addFlash("warning", $e->getMessage());
-                return $this->redirectToRoute("proj_delete_player", ['id' => $id]);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                try {
+                    $playerName = $player->getName();
+                    $roundCount = count($player->getRounds());
+                    $entityManager->remove($player);
+                    $entityManager->flush();
+                    $this->addFlash(
+                        "notice",
+                        "Spelaren '$playerName' samt relaterade rundor ($roundCount) har tagits bort!"
+                    );
+                    return $this->redirectToRoute("proj_show_players");
+                } catch (Exception $e) {
+                    $this->addFlash("warning", $e->getMessage());
+                    return $this->redirectToRoute("proj_delete_player", ['id' => $id]);
+                }
             }
+
+            $this->data["form"] = $form;
         }
 
         $this->data["pageTitle"] = "Ta bort spelare";
         $this->data["player"] = $player;
-        $this->data["form"] = $form;
 
         return $this->render('proj/game/delete_player.html.twig', $this->data);
     }
@@ -370,7 +379,14 @@ class ProjectController extends AbstractController
         SessionInterface $session
     ): Response {
         // add missing cpu players
-        $icps->addMissingPlayers();
+        try {
+            $icps->addMissingPlayers();
+        } catch (UniqueConstraintViolationException $e) {
+            $this->addFlash(
+                "warning",
+                "En spelare har ett namn som blockerar en dator-spelare att skapas."
+            );
+        }
 
         // create new players
         $playerForm = $this->createForm(
@@ -397,8 +413,15 @@ class ProjectController extends AbstractController
             }
         }
 
-        // select players
+        // get players from session, and verify their existance
         $players = $session->get("players") ?? [];
+        foreach ($players as $index => $player) {
+            if (!$playerRepository->find($player->getId())) {
+                unset($players[$index]);
+            }
+        }
+
+        // select player
         $playerSelectForm = $this->createForm(PlayerSelectType::class, null, ["submit_label" => "Lägg till"]);
         $playerSelectForm->handleRequest($request);
         if ($playerSelectForm->isSubmitted() && $playerSelectForm->isValid()) {
@@ -407,7 +430,7 @@ class ProjectController extends AbstractController
             $session->set("players", $players);
         }
 
-        // deselect players
+        // deselect all players
         $playerDeselectBtn = $this->createForm(
             ConfirmDeleteType::class,
             null,
@@ -429,12 +452,6 @@ class ProjectController extends AbstractController
             $games = [];
             $deck = new CardDeck(CardSvg::class);
 
-            // CPU TEST
-            // $cpuPlayer = new Player();
-            // $cpuPlayer->setName("cpu1");
-            // $cpuPlayer->setType("cpu");
-            // $cpuPlayer->setLevel(1);
-
             foreach ($players as $player) {
                 $game = new PokerSquaresGame(
                     new PokerSquareRules(),
@@ -442,16 +459,15 @@ class ProjectController extends AbstractController
                     new Score(),
                     new Gameboard(),
                     $player,
-                    // $cpuPlayer,
                     clone $deck     // same deck for all players, but unique instances
                 );
 
             // FILL GAMEBOARD FOR TESTING
-            // $gb = new GameBoard();
-            // $slots = array_keys($gb->getBoardView());
-            // for ($i=0; $i < 22; $i++) { 
-            //     $game->process($slots[$i]);
-            // }
+            $gb = new GameBoard();
+            $slots = array_keys($gb->getBoardView());
+            for ($i=0; $i < 22; $i++) { 
+                $game->process($slots[$i]);
+            }
 
                 $games[] = $game;
             }
