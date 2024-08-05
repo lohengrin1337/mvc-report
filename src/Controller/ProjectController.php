@@ -451,7 +451,6 @@ class ProjectController extends AbstractController
         if ($startBtn->isSubmitted() && $startBtn->isValid()) {
             $games = [];
             $deck = new CardDeck(CardSvg::class);
-
             foreach ($players as $player) {
                 $game = new PokerSquaresGame(
                     new PokerSquareRules(),
@@ -463,11 +462,11 @@ class ProjectController extends AbstractController
                 );
 
             // FILL GAMEBOARD FOR TESTING
-            $gb = new GameBoard();
-            $slots = array_keys($gb->getBoardView());
-            for ($i=0; $i < 22; $i++) { 
-                $game->process($slots[$i]);
-            }
+            // $gb = new GameBoard();
+            // $slots = array_keys($gb->getBoardView());
+            // for ($i=0; $i < 22; $i++) { 
+            //     $game->process($slots[$i]);
+            // }
 
                 $games[] = $game;
             }
@@ -498,6 +497,7 @@ class ProjectController extends AbstractController
             $this->redirectToRoute("proj_game_init");
         }
 
+        // handle end of game
         if ($gameManager->allGamesAreOver()) {
             $this->data["pageTitle"] = "Resultat";
             $this->data["conclusion"] = $gameManager->getConclusion();
@@ -512,6 +512,7 @@ class ProjectController extends AbstractController
             $game->cpuPlay();
         }
 
+        // show gameplay
         $gameState = $game->getState();
         $this->data["pageTitle"] = "Pokersquares";
         $this->data["game"] = $gameState;
