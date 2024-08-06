@@ -50,9 +50,9 @@ class PokerSquaresGame
     private Player $player;
 
     /**
-     * @var CpuLogicInterface|null $cpuIntel - brain of cpu player
+     * @var string|null $cpuIntel - brain of cpu player (class name)
      */
-    private ?CpuLogicInterface $cpuIntel = null;
+    private ?string $cpuIntel = null;
 
     /**
      * @var CardDeck $deck
@@ -273,7 +273,8 @@ class PokerSquaresGame
      */
     public function cpuPlay(): void
     {
-        $slot = $this->cpuIntel->suggestPlacement(
+        // use static method of cpu intel class
+        $slot = $this->cpuIntel::suggestPlacement(
             $this->gameboard->getBoard(),
             $this->deck->peak()
         );

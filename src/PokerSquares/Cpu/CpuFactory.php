@@ -8,12 +8,13 @@ namespace App\PokerSquares\Cpu;
 class CpuFactory
 {
     /**
-     * Get cpu intel of relevant level
+     * Get cpu intel of relevant level (name of the class)
      * 
      * @param int $level - cpu level
-     * @return CpuLogicInterface
+     * @throws \Exception
+     * @return string - class name
      */
-    public static function getCpuIntel(int $level): CpuLogicInterface
+    public static function getCpuIntel(int $level): string
     {
         $cpuClassName = __NAMESPACE__ . '\\Cpu' . $level;
 
@@ -21,6 +22,6 @@ class CpuFactory
             throw new \Exception("CPU class '$cpuClassName' does not exist.");
         }
 
-        return new $cpuClassName();
+        return $cpuClassName;
     }
 }

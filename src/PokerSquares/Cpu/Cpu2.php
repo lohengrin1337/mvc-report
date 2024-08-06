@@ -17,16 +17,6 @@ class Cpu2 implements CpuLogicInterface
     ];
 
     /**
-     * @var array<CardInterface|null> $board - slots and cards
-     */
-    private array $board;
-
-    /**
-     * @var CardInterface|null $card - the top card of the deck
-     */
-    private array $card;
-
-    /**
      * Suggest an empty slot on the bord for the current card
      * Cpu2 always tries to get flush in columns 1-4
      * 
@@ -34,64 +24,22 @@ class Cpu2 implements CpuLogicInterface
      * @param CardInterface $card - the top card of the deck
      * @return string|null
      */
-    public function suggestPlacement(array $board, CardInterface $card): ?string
+    public static function suggestPlacement(array $board, CardInterface $card): ?string
     {
-        $this->$board = $board;
-        $this->$card = $card;
-        $slot = null;
-
         // step 1 - find an empty slot in a matching column
-        $slot = $this->findPrefferedSlot();
+        $slot = self::findPreferredSlot($board, $card);
 
         if (is_null($slot)) {
             // step 2 - find a slot in column 5 (trash column)
-            $slot = $this->findTrashSlot();
+            $slot = self::findTrashSlot($board);
         }
 
         if (is_null($slot)) {
             // step 3 - find first available slot
-            $slot = $this->findFirstEmpty();
+            $slot = self::findFirstEmpty($board);
         }
 
         return $slot;
-
-        // $suit = $card->getSuit();
-
-        // $suitToCol = [
-        //     "hearts" => "1",
-        //     "spades" => "2",
-        //     "diamonds" => "3",
-        //     "clubs" => "4",
-        // ];
-
-        // $prefferedCol = $suitToCol[$suit];
-
-        // // find an empty slot in the preffered column
-        // foreach ($board as $slot => $card) {
-        //     if (
-        //         str_ends_with($slot, $prefferedCol) &&
-        //         is_null($card)
-        //     ){
-        //         return $slot;
-        //     }
-        // }
-
-        // // find an empty slot in col5
-        // foreach ($board as $slot => $card) {
-        //     if (
-        //         str_ends_with($slot, "5") &&
-        //         is_null($card)
-        //     ){
-        //         return $slot;
-        //     }
-        // }
-
-        // // find first empty slot
-        // foreach ($board as $slot => $card) {
-        //     if (is_null($card)){
-        //         return $slot;
-        //     }
-        // }
     }
 
 
@@ -99,15 +47,12 @@ class Cpu2 implements CpuLogicInterface
     /**
      * Get the preffered column for a card
      * 
-     * @return string|null
+     * @param CardInterface $card
+     * @return string
      */
-    private function getPrefferedColumn(): ?string
+    private static function getPrefferedColumn(CardInterface $card): string
     {
-        if (!$this->card) {
-            return null;
-        }
-
-        $suit = $this->card->getSuit();
+        $suit = $card->getSuit();
         return self::SUIT_TO_COL[$suit];
     }
 
@@ -115,13 +60,15 @@ class Cpu2 implements CpuLogicInterface
     /**
      * find an empty slot in the preffered column
      * 
+     * @param array $board
+     * @param CardInterface $card
      * @return string|null
      */
-    private function findPrefferedSlot(): ?string
+    private static function findPreferredSlot(array $board, CardInterface $card): ?string
     {
-        $prefferedCol = $this->getPrefferedColumn();
+        $prefferedCol = self::getPrefferedColumn($card);
 
-        foreach ($this->board as $slot => $card) {
+        foreach ($board as $slot => $card) {
             if (
                 str_ends_with($slot, $prefferedCol) &&
                 is_null($card)
@@ -137,12 +84,13 @@ class Cpu2 implements CpuLogicInterface
     /**
      * Find a slot in 'trash column' col 5
      * 
+     * @param array $board
      * @return string|null
      */
-    private function findTrashSlot(): ?string
+    private static function findTrashSlot(array $board): ?string
     {
         // find an empty slot in col5
-        foreach ($this->board as $slot => $card) {
+        foreach ($board as $slot => $card) {
             if (
                 str_ends_with($slot, "5") &&
                 is_null($card)
@@ -158,11 +106,12 @@ class Cpu2 implements CpuLogicInterface
     /**
      * Find any empty slot
      * 
+     * @param array $board
      * @return string|null
      */
-    private function findFirstEmpty(): ?string
+    private static function findFirstEmpty(array $board): ?string
     {
-        foreach ($this->board as $slot => $card) {
+        foreach ($board as $slot => $card) {
             if (is_null($card)){
                 return $slot;
             }

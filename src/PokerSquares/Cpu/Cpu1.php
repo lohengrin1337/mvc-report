@@ -12,14 +12,19 @@ class Cpu1 implements CpuLogicInterface
      * 
      * @param array<CardInterface|null> $board - slots and cards
      * @param CardInterface $card - the top card of the deck
+     * @return string|null
      */
-    public function suggestPlacement(array $board, CardInterface $card): string
+    public static function suggestPlacement(array $board, CardInterface $card): ?string
     {
         $emptySlots = [];
         foreach ($board as $slot => $card) {
             if (is_null($card)) {
                 $emptySlots[] = $slot;
             }
+        }
+
+        if (!$emptySlots) {
+            return null;
         }
 
         $randomIndex = rand(0, count($emptySlots) - 1);
