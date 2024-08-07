@@ -44,16 +44,78 @@ class Cpu3 extends Cpu2 implements CpuLogicInterface
      */
     private static function findPreferredSlot(array $board, CardInterface $card): ?string
     {
-        $preferredCol = self::getPreferredColumn($card);
-        $preferredRows = self::getPreferredRows($board, $card);
+        $rows = self::getPreferredRows($board, $card);
+        $col = self::getPreferredColumn($card);
 
+        foreach ($rows as $row) {
+            $slot = $row . $col;
+            if (!$board[$slot]) {
+                return $slot;
+            }
+        }
+
+        // find any empty slot in preferred column
+        return parent::findPreferredSlot($board, $card);
     }
 
 
 
     /**
-     * Get the preferred rows for a card (row with most cards of same rank first)
+     * Find a slot in 'trash column' col 5, try to find row with matching rank
      * 
+     * @param array $board
+     * @param CardInterface $card
+     * @return string|null
+     */
+    private static function findTrashSlot(array $board, CardInterface $card): ?string
+    {
+        $rows = self::getPreferredRows($board, $card);
+        $col = "5";
+
+        foreach ($rows as $row) {
+            $slot = $row . $col;
+            if (!$board[$slot]) {
+                return $slot;
+            }
+        }
+
+        // find any empty slot in trash column
+        return parent::findTrashSlot($board);
+    }
+
+
+
+    /**
+     * Find any empty slot in preferred row
+     * 
+     * @param array $board
+     * @param CardInterface $card
+     * @return string|null
+     */
+    private static function findFirstEmpty(array $board, CardInterface $card): ?string
+    {
+        $rows = self::getPreferredRows($board, $card);
+
+        foreach ($rows as $row) {
+            foreach ($board as $slot => $boardCard) {
+                if (
+                    $slot[0] === $row &&
+                    is_null($boardCard)
+                ){
+                    return $slot;
+                }
+            }
+        }
+
+        return parent::findFirstEmpty();
+    }
+
+
+
+    /**
+     * Get the preferred rows for a card (rows with most cards of same rank first)
+     * 
+     * @param array $board
      * @param CardInterface $card
      * @return array
      */

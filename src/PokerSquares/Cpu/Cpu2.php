@@ -89,10 +89,12 @@ class Cpu2 implements CpuLogicInterface
      */
     private static function findTrashSlot(array $board): ?string
     {
+        $col = "5";
+
         // find an empty slot in col5
         foreach ($board as $slot => $card) {
             if (
-                str_ends_with($slot, "5") &&
+                str_ends_with($slot, $col) &&
                 is_null($card)
             ){
                 return $slot;
