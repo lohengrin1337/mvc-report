@@ -12,6 +12,22 @@ use App\Exception\InvalidSlotException;
 class Gameboard
 {
     /**
+     * @var array HANDS_TO_SLOTS - map hands to slots
+     */
+    private const HANDS_TO_SLOTS = [
+        "row1" => ["11", "12", "13", "14", "15"],
+        "row2" => ["21", "22", "23", "24", "25"],
+        "row3" => ["31", "32", "33", "34", "35"],
+        "row4" => ["41", "42", "43", "44", "45"],
+        "row5" => ["51", "52", "53", "54", "55"],
+        "col1" => ["11", "21", "31", "41", "51"],
+        "col2" => ["12", "22", "32", "42", "52"],
+        "col3" => ["13", "23", "33", "43", "53"],
+        "col4" => ["14", "24", "34", "44", "54"],
+        "col5" => ["15", "25", "35", "45", "55"],
+    ];
+
+    /**
      * @var array<Cardinterface|null> board - a key-value array with slots and cards
      */
     private array $board = [];
@@ -147,20 +163,6 @@ class Gameboard
      */
     public function getAllHands(): array
     {
-        // map hands to slots
-        $handsToSlots = [
-            "row1" => ["11", "12", "13", "14", "15"],
-            "row2" => ["21", "22", "23", "24", "25"],
-            "row3" => ["31", "32", "33", "34", "35"],
-            "row4" => ["41", "42", "43", "44", "45"],
-            "row5" => ["51", "52", "53", "54", "55"],
-            "col1" => ["11", "21", "31", "41", "51"],
-            "col2" => ["12", "22", "32", "42", "52"],
-            "col3" => ["13", "23", "33", "43", "53"],
-            "col4" => ["14", "24", "34", "44", "54"],
-            "col5" => ["15", "25", "35", "45", "55"],
-        ];
-
         // fill $hands with content of board slots (CardInterface|null)
         $hands = array_map(
             function($slots)
@@ -171,7 +173,7 @@ class Gameboard
                 }
                 return $hand;
             },
-            $handsToSlots
+            self::HANDS_TO_SLOTS
         );
 
         return $hands;
