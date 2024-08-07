@@ -7,7 +7,7 @@ use App\Card\CardInterface;
 class Cpu2 implements CpuLogicInterface
 {
     /**
-     * @var array SUIT_TO_COL - maps every suit to a preffered column
+     * @var array SUIT_TO_COL - maps every suit to a preferred column
      */
     private const SUIT_TO_COL = [
         "hearts" => "1",
@@ -45,12 +45,12 @@ class Cpu2 implements CpuLogicInterface
 
 
     /**
-     * Get the preffered column for a card
+     * Get the preferred column for a card
      * 
      * @param CardInterface $card
      * @return string
      */
-    private static function getPrefferedColumn(CardInterface $card): string
+    private static function getPreferredColumn(CardInterface $card): string
     {
         $suit = $card->getSuit();
         return self::SUIT_TO_COL[$suit];
@@ -58,7 +58,7 @@ class Cpu2 implements CpuLogicInterface
 
 
     /**
-     * find an empty slot in the preffered column
+     * find an empty slot in the preferred column
      * 
      * @param array $board
      * @param CardInterface $card
@@ -66,11 +66,11 @@ class Cpu2 implements CpuLogicInterface
      */
     private static function findPreferredSlot(array $board, CardInterface $card): ?string
     {
-        $prefferedCol = self::getPrefferedColumn($card);
+        $preferredCol = self::getPreferredColumn($card);
 
         foreach ($board as $slot => $card) {
             if (
-                str_ends_with($slot, $prefferedCol) &&
+                str_ends_with($slot, $preferredCol) &&
                 is_null($card)
             ){
                 return $slot;
