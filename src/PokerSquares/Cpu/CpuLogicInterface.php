@@ -10,7 +10,7 @@ interface CpuLogicInterface {
      * 
      * @param array<CardInterface|null> $board - slots and cards
      * @param CardInterface $card - the top card of the deck
-     * @return string|null
+     * @return int|null
      */
-    public static function suggestPlacement(array $board, CardInterface $card): ?string;
+    public static function suggestPlacement(array $board, CardInterface $card): ?int;
 }

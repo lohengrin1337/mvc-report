@@ -14,9 +14,9 @@ class InitCpuPlayerService
      * @var array CPU_PLAYERS - name and level
      */
     public const CPU_PLAYERS = [
-        "cpu1" => 1,
-        "cpu2" => 2,
-        "cpu3" => 3,
+        "CPU LÄTT" => 1,
+        "CPU MEDEL" => 2,
+        "CPU SVÅR" => 3,
     ];
 
     /**
