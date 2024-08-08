@@ -7,6 +7,9 @@ use App\Entity\Player;
 use App\Entity\Score;
 use App\PokerSquares\Cpu\CpuFactory;
 use App\PokerSquares\Cpu\CpuLogicInterface;
+use \DateTime;
+use \DateTimeInterface;
+use \DateTimeZone;
 
 /**
  * Game engine for Poker Squares
@@ -21,7 +24,6 @@ class PokerSquaresGame
     /**
      * @var string DEFAULT_TIME_ZONE
      */
-    // public const DEFAULT_TIME_ZONE = "Europe/Stockholm";
     public const DEFAULT_TIME_ZONE = "UTC";
 
     /**
@@ -60,14 +62,14 @@ class PokerSquaresGame
     private CardDeck $deck;
 
     /**
-     * @var \DateTimeInterface|null $start - time of start
+     * @var DateTimeInterface|null $start - time of start
      */
-    private ?\DateTimeInterface $start = null;
+    private ?DateTimeInterface $start = null;
 
     /**
-     * @var \DateTimeInterface|null $finish - time of finish
+     * @var DateTimeInterface|null $finish - time of finish
      */
-    private ?\DateTimeInterface $finish = null;
+    private ?DateTimeInterface $finish = null;
 
     /**
      * Constructor
@@ -207,11 +209,11 @@ class PokerSquaresGame
     /**
      * Get current DateTime
      * 
-     * @return \DateTimeInterface
+     * @return DateTimeInterface
      */
-    private function getDateTime(): \DateTimeInterface
+    private function getDateTime(): DateTimeInterface
     {
-        return new \DateTime('now', new \DateTimeZone(self::DEFAULT_TIME_ZONE));
+        return new DateTime('now', new DateTimeZone(self::DEFAULT_TIME_ZONE));
         // return new \DateTime('now');
     }
 
@@ -220,22 +222,22 @@ class PokerSquaresGame
     /**
      * Calculate duration from start to finish (or now if not finished)
      * 
-     * @return \DateTimeInterface
+     * @return DateTimeInterface
      */
-    public function getDuration(): \DateTimeInterface
+    public function getDuration(): DateTimeInterface
     {
         $start = $this->start;
         $finish = $this->finish;
 
         if (!$start) {
-            return (new \DateTime())->setTime(0, 0, 0);
+            return (new DateTime())->setTime(0, 0, 0);
         }
         if (!$finish) {
             $finish = $this->getDateTime();
         }
 
         $interval = $start->diff($finish);
-        $duration = (new \DateTime())->setTime($interval->h, $interval->i, $interval->s);
+        $duration = (new DateTime())->setTime($interval->h, $interval->i, $interval->s);
 
         return $duration;
     }

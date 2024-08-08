@@ -87,15 +87,12 @@ class Gameboard
      */
     public function getBoardView(): array
     {
-        return array_map(
-            function($card)
-            {
+        return array_map(function($card) {
                 if (is_null($card)) {
                     return $card;
                 }
                 return $card->getAsString();
-            },
-            $this->board
+            }, $this->board
         );
     }
 

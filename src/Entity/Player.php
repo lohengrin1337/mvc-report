@@ -77,7 +77,7 @@ class Player
     }
 
     /**
-     * @return Collection<int, Round>
+     * @return Collection<Round>
      */
     public function getRounds(): Collection
     {

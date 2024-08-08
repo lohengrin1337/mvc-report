@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ScoreRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use InvalidArgumentException;
 
 #[ORM\Entity(repositoryClass: ScoreRepository::class)]
 class Score
@@ -92,6 +93,9 @@ class Score
      */
     private function updateTotal(): void
     {
+        // $total = (int) array_sum($this->hands);
+        // $this->setTotal($total);
+
         $this->total = (int) array_sum($this->hands);
     }
 
@@ -100,19 +104,5 @@ class Score
     public function getId(): ?int
     {
         return $this->id;
-    }
-    
-    public function setHands(array $hands): static
-    {
-        $this->hands = $hands;
-
-        return $this;
-    }
-
-    public function setTotal(int $total): static
-    {
-        $this->total = $total;
-
-        return $this;
     }
 }

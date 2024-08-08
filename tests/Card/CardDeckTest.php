@@ -106,6 +106,6 @@ class CardDeckTest extends TestCase
         $deck->sort();
         $res = $deck->peak();
 
-        $this->assertEquals("svg-card-kc", $res);
+        $this->assertEquals("svg-card-kc", $res->getAsString());
     }
 }

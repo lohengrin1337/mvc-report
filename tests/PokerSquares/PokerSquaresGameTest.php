@@ -4,6 +4,8 @@ namespace App\PokerSquares;
 
 use App\Card\CardDeck;
 use App\Card\CardInterface;
+use App\Entity\Player;
+use App\Entity\Score;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -27,14 +29,23 @@ class PokerSquaresGameTest extends TestCase
             return $cardStub;
         });
         $deckStub->method("getCardBack")->willReturn("svg-card-back");
-        $deckStub->method("peak")->willReturn("svg-card-5h");
+        $deckStub->method("peak")->willReturnCallback(function () {
+            $cardStub = $this->createStub(CardInterface::class);
+            $cardStub->method("getRank")->willReturn(5);
+            $cardStub->method("getSuit")->willReturn("hearts");
+            $cardStub->method("getAsString")->willReturn("svg-card-5h");
+            return $cardStub;
+        });
+
+        $player = new Player();
+        $player->setName("Anonymous");
 
         $this->game = new PokerSquaresGame(
             new PokerSquareRules(),
             new AmericanScores(),
             new Score(),
             new Gameboard(),
-            new Player("Anonymous"),
+            $player,
             $deckStub
         );
     }
@@ -59,6 +70,7 @@ class PokerSquaresGameTest extends TestCase
         $state = $this->game->getState();
 
         $this->assertEquals("Anonymous", $state["player"]);
+        $this->assertEquals("human", $state["playerType"]);
         $this->assertEquals("svg-card-back", $state["cardBack"]);
         $this->assertEquals("svg-card-5h", $state["card"]);
         $this->assertIsArray($state["board"]);
