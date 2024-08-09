@@ -7,6 +7,9 @@ use App\Repository\PlayerRepository;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * Test cases for Player Select Form.
+ */
 class PlayerSelectTypeTest extends TypeTestCase
 {
     private $playerRepository;
@@ -35,7 +38,7 @@ class PlayerSelectTypeTest extends TypeTestCase
 
 
     /**
-     * submit default
+     * submit default, and verify player
      */
     public function testSubmitValidData()
     {

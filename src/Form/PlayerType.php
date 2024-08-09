@@ -21,7 +21,6 @@ class PlayerType extends AbstractType
                 TextType::class,
                 [
                     'label' => $options['name_label'],
-                    'constraints' => new Length(['min' => 3]),
                     'attr' => ['placeholder' => 'Ange ett spelarnamn'],
                 ]
             )
