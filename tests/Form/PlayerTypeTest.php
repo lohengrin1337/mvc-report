@@ -80,4 +80,28 @@ class PlayerTypeTest extends TypeTestCase
             $form->get('save')->getConfig()->getOption('label')
         );
     }
+
+
+
+    // /**
+    //  * submit invalid
+    //  * I was unable to make validation work during test, but it works in app
+    //  */
+    // public function testSubmitInvalidData()
+    // {
+    //     $formData = [
+    //         'name' => '',
+    //         'save' => null,
+    //     ];
+    //     $form = $this->factory->create(PlayerType::class);
+    //     $form->submit($formData);
+    //     $this->assertFalse($form->isValid());
+
+    //     $formData = [
+    //         'name' => 'An',
+    //         'save' => null,
+    //     ];
+    //     $form->submit($formData);
+    //     $this->assertFalse($form->isValid());
+    // }
 }

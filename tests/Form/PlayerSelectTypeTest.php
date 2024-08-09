@@ -59,6 +59,10 @@ class PlayerSelectTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
         $this->assertSame($player1, $form->get('player')->getData());
         $this->assertEquals(
+            'John Doe',
+            $form->get('player')->getData()
+        );
+        $this->assertEquals(
             'Välj bland befintliga spelare',
             $form->get('player')->getConfig()->getOption('label')
         );

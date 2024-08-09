@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1723204233">
-  <project timestamp="1723204233">
+<coverage generated="1723207102">
+  <project timestamp="1723207102">
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="14" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
@@ -1522,6 +1522,10 @@
       <line num="21" type="stmt" count="2"/>
       <line num="22" type="stmt" count="2"/>
       <line num="23" type="stmt" count="2"/>
+      <line num="24" type="stmt" count="2"/>
+      <line num="25" type="stmt" count="2"/>
+      <line num="26" type="stmt" count="2"/>
+      <line num="27" type="stmt" count="2"/>
       <line num="28" type="stmt" count="2"/>
       <line num="29" type="stmt" count="2"/>
       <line num="30" type="stmt" count="2"/>
@@ -1530,18 +1534,14 @@
       <line num="33" type="stmt" count="2"/>
       <line num="34" type="stmt" count="2"/>
       <line num="35" type="stmt" count="2"/>
-      <line num="36" type="stmt" count="2"/>
-      <line num="37" type="stmt" count="2"/>
-      <line num="38" type="stmt" count="2"/>
-      <line num="39" type="stmt" count="2"/>
-      <line num="42" type="method" name="configureOptions" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="38" type="method" name="configureOptions" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="40" type="stmt" count="2"/>
+      <line num="41" type="stmt" count="2"/>
+      <line num="42" type="stmt" count="2"/>
+      <line num="43" type="stmt" count="2"/>
       <line num="44" type="stmt" count="2"/>
       <line num="45" type="stmt" count="2"/>
-      <line num="46" type="stmt" count="2"/>
-      <line num="47" type="stmt" count="2"/>
-      <line num="48" type="stmt" count="2"/>
-      <line num="49" type="stmt" count="2"/>
-      <metrics loc="52" ncloc="48" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="26" coveredelements="26"/>
+      <metrics loc="48" ncloc="48" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="26" coveredelements="26"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Kernel.php">
       <class name="App\Kernel" namespace="global">
@@ -2248,6 +2248,6 @@
       <line num="34" type="stmt" count="44"/>
       <metrics loc="36" ncloc="22" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
-    <metrics files="73" loc="6974" ncloc="5120" classes="66" methods="296" coveredmethods="136" conditionals="0" coveredconditionals="0" statements="1528" coveredstatements="482" elements="1824" coveredelements="618"/>
+    <metrics files="73" loc="6970" ncloc="5120" classes="66" methods="296" coveredmethods="136" conditionals="0" coveredconditionals="0" statements="1528" coveredstatements="482" elements="1824" coveredelements="618"/>
   </project>
 </coverage>
