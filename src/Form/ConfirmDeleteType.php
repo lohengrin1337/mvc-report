@@ -17,7 +17,6 @@ class ConfirmDeleteType extends AbstractType
             [
                 "label" => $options["label"],
                 "attr" => $options["btn-attr"],
-                // "attr" => ["class" => "button"],
             ]
         );
     }
