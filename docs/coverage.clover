@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1723207102">
-  <project timestamp="1723207102">
+<coverage generated="1723270952">
+  <project timestamp="1723270952">
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="14" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
@@ -35,7 +35,7 @@
       <line num="238" type="stmt" count="4"/>
       <line num="240" type="stmt" count="4"/>
       <line num="241" type="stmt" count="4"/>
-      <line num="242" type="stmt" count="2"/>
+      <line num="242" type="stmt" count="3"/>
       <line num="245" type="stmt" count="4"/>
       <metrics loc="250" ncloc="144" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
     </file>
@@ -1299,25 +1299,25 @@
       <class name="App\Entity\Player" namespace="global">
         <metrics complexity="14" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="31" coveredelements="31"/>
       </class>
-      <line num="33" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="11"/>
-      <line num="35" type="stmt" count="11"/>
+      <line num="33" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="12"/>
+      <line num="35" type="stmt" count="12"/>
       <line num="38" type="method" name="getId" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="40" type="stmt" count="1"/>
       <line num="43" type="method" name="getName" visibility="public" complexity="1" crap="1" count="4"/>
       <line num="45" type="stmt" count="4"/>
-      <line num="48" type="method" name="setName" visibility="public" complexity="1" crap="1" count="11"/>
-      <line num="50" type="stmt" count="11"/>
-      <line num="52" type="stmt" count="11"/>
+      <line num="48" type="method" name="setName" visibility="public" complexity="1" crap="1" count="12"/>
+      <line num="50" type="stmt" count="12"/>
+      <line num="52" type="stmt" count="12"/>
       <line num="55" type="method" name="getType" visibility="public" complexity="1" crap="1" count="4"/>
       <line num="57" type="stmt" count="4"/>
-      <line num="60" type="method" name="setType" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="62" type="stmt" count="1"/>
-      <line num="64" type="stmt" count="1"/>
+      <line num="60" type="method" name="setType" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="62" type="stmt" count="2"/>
+      <line num="64" type="stmt" count="2"/>
       <line num="67" type="method" name="getLevel" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="69" type="stmt" count="1"/>
-      <line num="72" type="method" name="setLevel" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="74" type="stmt" count="1"/>
-      <line num="76" type="stmt" count="1"/>
+      <line num="72" type="method" name="setLevel" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="74" type="stmt" count="2"/>
+      <line num="76" type="stmt" count="2"/>
       <line num="82" type="method" name="getRounds" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="84" type="stmt" count="2"/>
       <line num="87" type="method" name="addRound" visibility="public" complexity="2" crap="2" count="7"/>
@@ -2193,21 +2193,21 @@
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Service/InitCpuPlayerService.php">
       <class name="App\Service\InitCpuPlayerService" namespace="global">
-        <metrics complexity="4" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="12" coveredelements="0"/>
+        <metrics complexity="4" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
       </class>
-      <line num="36" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="40" type="stmt" count="0"/>
-      <line num="41" type="stmt" count="0"/>
-      <line num="50" type="method" name="addMissingPlayers" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="52" type="stmt" count="0"/>
-      <line num="53" type="stmt" count="0"/>
-      <line num="54" type="stmt" count="0"/>
-      <line num="55" type="stmt" count="0"/>
-      <line num="56" type="stmt" count="0"/>
-      <line num="57" type="stmt" count="0"/>
-      <line num="58" type="stmt" count="0"/>
-      <line num="61" type="stmt" count="0"/>
-      <metrics loc="65" ncloc="47" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="12" coveredelements="0"/>
+      <line num="36" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="40" type="stmt" count="2"/>
+      <line num="41" type="stmt" count="2"/>
+      <line num="50" type="method" name="addMissingPlayers" visibility="public" complexity="3" crap="3" count="1"/>
+      <line num="52" type="stmt" count="1"/>
+      <line num="53" type="stmt" count="1"/>
+      <line num="54" type="stmt" count="1"/>
+      <line num="55" type="stmt" count="1"/>
+      <line num="56" type="stmt" count="1"/>
+      <line num="57" type="stmt" count="1"/>
+      <line num="58" type="stmt" count="1"/>
+      <line num="62" type="stmt" count="1"/>
+      <metrics loc="65" ncloc="47" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Service/ResetLibraryService.php">
       <class name="App\Service\ResetLibraryService" namespace="global">
@@ -2248,6 +2248,6 @@
       <line num="34" type="stmt" count="44"/>
       <metrics loc="36" ncloc="22" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
-    <metrics files="73" loc="6970" ncloc="5120" classes="66" methods="296" coveredmethods="136" conditionals="0" coveredconditionals="0" statements="1528" coveredstatements="482" elements="1824" coveredelements="618"/>
+    <metrics files="73" loc="6970" ncloc="5120" classes="66" methods="296" coveredmethods="138" conditionals="0" coveredconditionals="0" statements="1528" coveredstatements="492" elements="1824" coveredelements="630"/>
   </project>
 </coverage>

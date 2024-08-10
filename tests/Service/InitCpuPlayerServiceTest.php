@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use App\Card\CardInterface;
 use App\Entity\Player;
 use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,14 +14,21 @@ use PHPUnit\Framework\TestCase;
 class InitCpuPlayerServiceTest extends TestCase
 {
     private InitCpuPlayerService $initService;
+    private EntityManagerInterface $entityManagerMock;
+    private PlayerRepository $playerRepoStub;
 
     protected function setUp(): void
     {
-        $entityManagerMock = $this->createMock(EntityManagerInterface::class);
-        $playerRepoStub = $this->createStub(PlayerRepository::class);
-        $playerStub = $this->createStub(Player::class);
-        $playerRepoStub->method("getPlayerByLevel")->willReturn($playerStub);
-        $this->initService = new InitCpuPlayerService($entityManagerMock, $playerRepoStub);
+        $this->entityManagerMock = $this->createMock(EntityManagerInterface::class);
+        $this->playerRepoStub = $this->createStub(PlayerRepository::class);
+
+        // by default no player will be returned
+        $this->playerRepoStub->method("getPlayerByLevel")->willReturn(null);
+        
+        $this->initService = new InitCpuPlayerService(
+            $this->entityManagerMock,
+            $this->playerRepoStub
+        );
     }
 
 
@@ -38,31 +44,38 @@ class InitCpuPlayerServiceTest extends TestCase
 
 
     /**
-     * Check a hand of card stubs is a valid flush (5 hearts)
+     * Add no players (no missing)
      */
-    public function testCheckHandValid(): void
+    public function addNoMissingPlayers(): void
     {
-        foreach ($this->cardStubs as $cardStub) {
-            $cardStub->method("getSuit")->willReturn("hearts");
-        }
+        // expect no persist
+        $this->entityManagerMock->expects($this->never())
+        ->method("persist");
 
-        $res = $this->flushRule->checkHand($this->cardStubs);
-        $this->assertTrue($res);
+        $this->entityManagerMock->expects($this->once())
+        ->method("flush");
+
+        $this->initService->addMissingPlayers();
     }
 
 
 
     /**
-     * Check a hand of card stubs is NOT a valid flush (4 hearts and 1 spades)
+     * Add 3 missing players
      */
-    public function testCheckHandInvalid(): void
+    public function testAddMissingPlayers(): void
     {
-        for ($i=0; $i < 4; $i++) { 
-            $this->cardStubs[$i]->method("getSuit")->willReturn("hearts");
-        }
-        $this->cardStubs[4]->method("getSuit")->willReturn("spades");
+        $playerStub = $this->createStub(Player::class);
+        $this->playerRepoStub->method("getPlayerByLevel")->willReturn($playerStub);
 
-        $res = $this->flushRule->checkHand($this->cardStubs);
-        $this->assertFalse($res);
+        // expect persist x3
+        $this->entityManagerMock->expects($this->exactly(3))
+        ->method("persist")
+        ->with($this->isInstanceOf(Player::class));
+
+        $this->entityManagerMock->expects($this->once())
+        ->method("flush");
+
+        $this->initService->addMissingPlayers();
     }
 }

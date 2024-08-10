@@ -57,8 +57,8 @@ class InitCpuPlayerService
                 $cpuPlayer->setLevel($level);
                 $this->entityManager->persist($cpuPlayer);
             }
-
-            $this->entityManager->flush();
         }
+
+        $this->entityManager->flush();
     }
 }
