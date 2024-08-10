@@ -102,10 +102,12 @@ class Cpu3 extends Cpu2 implements CpuLogicInterface
             return !$boardCard && in_array($row, $preferredRows);
         }, ARRAY_FILTER_USE_BOTH);
 
+
+
         // return best matching slot
         foreach ($preferredRows as $preferredRow) {
             foreach (array_keys($relevantSlots) as $slot) {
-                $row = substr($slot, 0, 1);
+                $row = (int) substr($slot, 0, 1);
                 if ($row === $preferredRow) {
                     return $slot;
                 }
@@ -113,7 +115,7 @@ class Cpu3 extends Cpu2 implements CpuLogicInterface
         }
 
         // find any empty slot
-        return parent::findFirstEmpty($board);
+        return self::findFirstEmpty($board);
     }
 
 
