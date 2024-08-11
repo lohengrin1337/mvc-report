@@ -42,6 +42,9 @@ class GameManager
      */
     public function getGameByIndex($index): PokerSquaresGame|null
     {
+        if (!isset($this->games[$index])) {
+            return null;
+        }
         return $this->games[$index];
     }
 
@@ -77,51 +80,17 @@ class GameManager
 
 
 
-    // /**
-    //  * Get state of current game (first unfinished game)
-    //  * 
-    //  * @return array<mixed>|null
-    //  */
-    // public function getCurrentGameState(): array|null
-    // {
-    //     $game = $this->getCurrentGame();
-    //     if ($game) {
-    //         return $game->getState();
-    //     }
-    //     return null;
-    // }
-
-
-
     /**
      * Get state of all games
      * 
-     * @return array<array<mixed>>|null
+     * @return array<array<mixed>>
      */
-    public function getAllGameStates(): array|null
+    public function getAllGameStates(): array
     {
-        $gameStates = [];
-        foreach ($this->games as $game) {
-            $gameStates[] = $game->getState();
-        }
-        return $gameStates;
+        return array_map(function ($game) {
+            return $game->getState();
+        }, $this->games);
     }
-
-
-
-    // /**
-    //  * Process card placement, time, and scores for current game
-    //  * 
-    //  * @param string $slot - a valid card slot
-    //  * @return void
-    //  */
-    // public function processCurrent(string $slot): void
-    // {
-    //     $game = $this->getCurrentGame();
-    //     if ($game) {
-    //         $game->process($slot);
-    //     }
-    // }
 
 
 
