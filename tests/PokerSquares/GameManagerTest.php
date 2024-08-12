@@ -155,17 +155,25 @@ class GameManagerTest extends TestCase
      */
     public function testGetConclusion(): void
     {
+        // both games are over, player2 is winner
         $this->gameIsOver2 = true;
 
         $res = $this->gameManager->getConclusion();
         $this->assertEquals("Bra kämpat player2! - 25 poäng", $res);
 
+        // player1 is winner
         $this->state1["totalScore"] = 50;
         $res = $this->gameManager->getConclusion();
         $this->assertEquals("Snyggt jobbat player1! - 50 poäng", $res);
 
+        // player 2 is winner
         $this->state2["totalScore"] = 110;
         $res = $this->gameManager->getConclusion();
         $this->assertEquals("Imponerande player2! - 110 poäng", $res);
+
+        // player 1 and 2 are winners
+        $this->state1["totalScore"] = 110;
+        $res = $this->gameManager->getConclusion();
+        $this->assertEquals("Imponerande player1 och player2! - 110 poäng", $res);
     }
 }

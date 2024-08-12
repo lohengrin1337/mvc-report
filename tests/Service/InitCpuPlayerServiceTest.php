@@ -50,10 +50,10 @@ class InitCpuPlayerServiceTest extends TestCase
     {
         // expect no persist
         $this->entityManagerMock->expects($this->never())
-        ->method("persist");
+            ->method("persist");
 
         $this->entityManagerMock->expects($this->once())
-        ->method("flush");
+            ->method("flush");
 
         $this->initService->addMissingPlayers();
     }
@@ -70,11 +70,11 @@ class InitCpuPlayerServiceTest extends TestCase
 
         // expect persist x3
         $this->entityManagerMock->expects($this->exactly(3))
-        ->method("persist")
-        ->with($this->isInstanceOf(Player::class));
+            ->method("persist")
+            ->with($this->isInstanceOf(Player::class));
 
         $this->entityManagerMock->expects($this->once())
-        ->method("flush");
+            ->method("flush");
 
         $this->initService->addMissingPlayers();
     }
