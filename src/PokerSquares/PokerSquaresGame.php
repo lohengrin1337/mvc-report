@@ -281,6 +281,8 @@ class PokerSquaresGame
             $this->deck->peak()
         );
 
-        $this->process($slot);
+        if ($slot) {
+            $this->process($slot);
+        }
     }
 }

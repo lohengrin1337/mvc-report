@@ -4,6 +4,7 @@ namespace App\PokerSquares;
 
 use App\Card\CardInterface;
 use App\Exception\InvalidSlotException;
+use App\Entity\Board;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -39,6 +40,28 @@ class GameboardTest extends TestCase
     public function testCreateGameboard(): void
     {
         $this->assertInstanceOf(Gameboard::class, $this->gbEmpty);
+        $this->assertInstanceOf(Gameboard::class, $this->gbFull);
+    }
+
+
+
+    /**
+     * Get board
+     */
+    public function testGetBoard(): void
+    {
+        $this->assertIsArray($this->gbFull->getBoard());
+    }
+
+
+
+    /**
+     * Export as entity
+     */
+    public function testExportEntity(): void
+    {
+        $boardEntity = $this->gbFull->exportAsEntity();
+        $this->assertInstanceOf(Board::class, $boardEntity);
     }
 
 
@@ -85,6 +108,17 @@ class GameboardTest extends TestCase
         $this->gbEmpty->placeCard("23", $this->cardStub);
         $this->expectException(InvalidSlotException::class);
         $this->gbEmpty->placeCard("23", $this->cardStub);
+    }
+
+
+
+    /**
+     * Place 1 card and assert board has one card
+     */
+    public function testBoardHasOneCard(): void
+    {
+        $this->gbEmpty->placeCard("33", $this->cardStub);
+        $this->assertTrue($this->gbEmpty->boardHasOneCard());
     }
 
 

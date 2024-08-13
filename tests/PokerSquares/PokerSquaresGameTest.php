@@ -8,6 +8,7 @@ use App\Entity\Board;
 use App\Entity\Player;
 use App\Entity\Score;
 use PHPUnit\Framework\TestCase;
+use \ReflectionClass;
 
 /**
  * Test cases for class PokerSquaresGame.
@@ -57,7 +58,7 @@ class PokerSquaresGameTest extends TestCase
             return $this->totalScore;
         });
 
-        // create gameboard-stub, and connect to empty boardView, and bool values
+        // create gameboard-mock, and connect to empty boardView, and bool values
         $this->gameboardMock = $this->createStub(Gameboard::class);
         for ($i = 1; $i <= 5; $i++) {
             for ($j = 1; $j <= 5; $j++) {
@@ -65,6 +66,9 @@ class PokerSquaresGameTest extends TestCase
             }
         }
         $this->gameboardMock->method("getBoardView")->willReturnCallback(function() {
+            return $this->boardView;
+        });
+        $this->gameboardMock->method("getBoard")->willReturnCallback(function() {
             return $this->boardView;
         });
         $this->boolVal1 = false;
@@ -82,20 +86,19 @@ class PokerSquaresGameTest extends TestCase
             }, $this->hands);
         });
 
-        // create stubs for deck and cards
+        // create card stub - 5 of hearts
+        $cardStub = $this->createStub(CardInterface::class);
+        $cardStub->method("getRank")->willReturn(5);
+        $cardStub->method("getSuit")->willReturn("hearts");
+        $cardStub->method("getAsString")->willReturn("svg-card-5h");
+
+        // create deck-stub and connect with cardStub
         $deckStub = $this->createStub(CardDeck::class);
         $deckStub->method("getCardBack")->willReturn("svg-card-back");
-        $deckStub->method("draw")->willReturnCallback(function () {
-            $cardStub = $this->createStub(CardInterface::class);
-            $cardStub->method("getRank")->willReturn(5);
-            $cardStub->method("getSuit")->willReturn("hearts");
+        $deckStub->method("draw")->willReturnCallback(function() use ($cardStub) {
             return $cardStub;
         });
-        $deckStub->method("peak")->willReturnCallback(function () {
-            $cardStub = $this->createStub(CardInterface::class);
-            $cardStub->method("getRank")->willReturn(5);
-            $cardStub->method("getSuit")->willReturn("hearts");
-            $cardStub->method("getAsString")->willReturn("svg-card-5h");
+        $deckStub->method("peak")->willReturnCallback(function() use ($cardStub) {
             return $cardStub;
         });
 
@@ -134,6 +137,23 @@ class PokerSquaresGameTest extends TestCase
 
 
     /**
+     * Helper method to set a private or protected property
+     *
+     * @param object $object - The object to modify
+     * @param string $property - The name of the property to set
+     * @param mixed $value - The value to set the property to
+     */
+    private function setPrivateProperty(object $object, string $property, $value): void
+    {
+        $reflection = new ReflectionClass($object);
+        $propertyReflection = $reflection->getProperty($property);
+        $propertyReflection->setAccessible(true);
+        $propertyReflection->setValue($object, $value);
+    }
+
+
+
+    /**
      * Construct object and verify instances
      */
     public function testCreateInstance(): void
@@ -163,9 +183,9 @@ class PokerSquaresGameTest extends TestCase
 
 
     /**
-     * get and verify RoundData unfinished game
+     * get and verify RoundData before the start of the game
      */
-    public function testGetRoundDataUnfinished(): void
+    public function testGetRoundDataBeforeGame(): void
     {
         $data = $this->humanGame->getRoundData();
 
@@ -215,13 +235,6 @@ class PokerSquaresGameTest extends TestCase
         $this->boolVal1 = false;
         $this->boolVal2 = true;
         $this->humanGame->process("55");
-
-        // // check start and finish
-        // $data = $this->humanGame->getRoundData();
-        // $this->isInstanceOf("DateType", $data["start"]);
-        // $this->isInstanceOf("DateType", $data["finish"]);
-        // $this->isInstanceOf("DateType", $data["duration"]);
-        // $this->assertNotSame($data["start"], $data["finish"]);
     }
 
 
@@ -231,89 +244,65 @@ class PokerSquaresGameTest extends TestCase
      */
     public function testGetDurationInGame(): void
     {
+        $threeMinutesAgo = new \DateTime('now -3 minutes', new \DateTimeZone(PokerSquaresGame::DEFAULT_TIME_ZONE));
+        $now = new \DateTime('now', new \DateTimeZone(PokerSquaresGame::DEFAULT_TIME_ZONE));
+        $diff = $now->diff($threeMinutesAgo);
+        $expectedDuration = (new \DateTime())
+            ->setTime($diff->h, $diff->i, $diff->s)
+            ->format('H:i:s');
+
         // Set start time
-        $start = new \DateTime('2023-08-10 12:00:00', new \DateTimeZone(PokerSquaresGame::DEFAULT_TIME_ZONE));
-        $this->setPrivateProperty($this->pokerSquaresGame, 'start', $start);
-
-        // // Set finish time
-        // $finish = new DateTime('2023-08-10 12:05:30', new DateTimeZone(PokerSquaresGame::DEFAULT_TIME_ZONE));
-        // $this->setPrivateProperty($this->pokerSquaresGame, 'finish', $finish);
-
-        // Calculate expected duration
-        $expectedDuration = '00:05:30';
+        $this->setPrivateProperty($this->humanGame, 'start', $threeMinutesAgo);
 
         // Assert that the duration matches the expected duration
-        $duration = $this->pokerSquaresGame->getDuration();
-        $this->assertEquals($expectedDuration, $duration->format('H:i:s'));
+        $duration = $this->humanGame->getDuration()
+            ->format('H:i:s');
+        $this->assertEquals($expectedDuration, $duration);
     }
 
 
-//     public function testProcess2()
-// {
-//     $slot = '11'; // Replace with an appropriate slot value
 
-//     // Mock the CardDeck to return a specific card
-//     $cardMock = $this->createMock(CardInterface::class);
-//     $this->deckMock->method('draw')->willReturn($cardMock);
+    /**
+     * check duration at end of game
+     */
+    public function testGetDurationAtEndOfGame(): void
+    {
+        $start = new \DateTime('now -5 minutes', new \DateTimeZone(PokerSquaresGame::DEFAULT_TIME_ZONE));
+        $finish = new \DateTime('now -2 minutes', new \DateTimeZone(PokerSquaresGame::DEFAULT_TIME_ZONE));
+        $diff = $finish->diff($start);
+        $expectedDuration = (new \DateTime())
+            ->setTime($diff->h, $diff->i, $diff->s)
+            ->format('H:i:s');
 
-//     // Mock the GameBoard to expect specific interactions
-//     $this->gameboardMock->expects($this->once())
-//         ->method('placeCard')
-//         ->with($this->equalTo($slot), $this->equalTo($cardMock));
+        // Set start time
+        $this->setPrivateProperty($this->humanGame, 'start', $start);
+        $this->setPrivateProperty($this->humanGame, 'finish', $finish);
 
-//     // Trigger the process method
-//     $this->pokerSquaresGame->process($slot);
-
-//     // You can also add assertions for start/finish times if needed
-// }
-
-    
-
-
-    
-    // /**
-    //  * get and verify RoundData finished game
-    //  */
-    // public function testGetRoundDataFinished(): void
-    // {
-    //     // foreach (array_keys($this->boardView) as $slot) {
-    //         //     $this->boardView[$slot] = $this->createStub(CardInterface::class);
-    //         // }
-    //         // 
-        
-    //     // fill board 
-
-    //     $data = $this->humanGame->getRoundData();
-
-    //     var_dump($data);
-
-    //     $this->assertInstanceOf(Player::class, $data["player"]);
-    //     $this->assertInstanceOf(Board::class, $data["board"]);
-    //     $this->assertInstanceOf(Score::class, $data["score"]);
-    //     $this->assertInstanceOf("DateTime", $data["start"]);
-    //     $this->assertInstanceOf("DateTime", $data["finish"]);
-    //     $this->assertInstanceOf("DateTime", $data["duration"]);
-    // }
-
-
-    // /**
-    //  * 
-    //  */
-    // public function testProcess(): void
-    // {
-    //     $this->game->process("11");
-    //     $this->game->process("12");
-    //     $this->game->process("13");
-    //     $this->game->process("45");
-    //     $this->game->process("55");
-
-    //     $state = $this->game->getState();
-    //     $this->assertEquals(10, $state["handScores"]["row1"]);
-    //     $this->assertEquals(2, $state["handScores"]["col5"]);
-    //     $this->assertEquals(12, $state["totalScore"]);
-    // }
+        // Assert that the duration matches the expected duration
+        $duration = $this->humanGame->getDuration()
+            ->format('H:i:s');
+        $this->assertEquals($expectedDuration, $duration);
+    }
 
 
 
+    /**
+     * test cpuPlay, and verify method calls
+     */
+    public function testCpuPlay(): void
+    {
+        // expect method calls
+        $this->gameboardMock->expects($this->once())
+            ->method("getBoard");
+        $this->gameboardMock->expects($this->once())
+            ->method("placeCard")
+            ->with(
+                $this->equalTo("11"),   // expected slot 11
+                $this->callback(function ($card) {
+                    return $card instanceof CardInterface;
+                })
+            );
 
+        $this->cpuGame->cpuPlay();
+    }
 }
