@@ -54,4 +54,13 @@ class MainController extends AbstractController
         $this->data["pageTitle"] = "Databasen";
         return $this->render("proj/about/database.html.twig", $this->data);
     }
+
+
+
+    #[Route("/proj/api", name: "proj_api", methods: ["GET"])]
+    public function api(): Response
+    {
+        $this->data["pageTitle"] = "API";
+        return $this->render("proj/api/api.html.twig", $this->data);
+    }
 }

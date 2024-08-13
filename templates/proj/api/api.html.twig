@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="main text-container">
+        <div class="sub-nav">
+            {{ include('proj/_nav.html.twig') }}
+        </div>
+
+        <h1>{{ pageTitle }}</h1>
+
+        <a class="button margin-b" href="{{ path('proj_api_players') }}">Visa alla spelare</a>
+        <a class="button margin-b" href="{{ path('proj_api_highscore') }}">Visa topplista</a>
+        <a class="button margin-b" href="{{ path('proj_api_rounds') }}">Visa alla rundor</a>
+
+    </main>
+{% endblock %}
