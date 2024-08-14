@@ -21,15 +21,22 @@ class ResetDatabaseService
     private PlayerRepository $playerRepo;
 
     /**
+     * @var InitCpuPlayerService $initService;
+     */
+    private InitCpuPlayerService $initService;
+
+    /**
      * Constructor
      * Add entity manager and player repository
      */
     public function __construct(
         EntityManagerInterface $entityManager,
-        PlayerRepository $playerRepo
+        PlayerRepository $playerRepo,
+        InitCpuPlayerService $initService
     ){
         $this->entityManager = $entityManager;
         $this->playerRepo = $playerRepo;
+        $this->initService = $initService;
     }
 
 
@@ -41,26 +48,35 @@ class ResetDatabaseService
     public function reset(): array
     {
         // get all players
-        $players = $playerRepo->findAll();
+        $players = $this->playerRepo->findAll();
 
         if (!$players) {
             $response = ["message" => "There were no players to remove"];
         } else {
             try {
-                $playerCount = $count($players);
+                $playerCount = count($players);
                 $roundCount = 0;
 
                 // remove each player, and related rounds by cascade
                 foreach ($players as $player) {
                     $roundCount += count($player->getRounds());
-                    $em->remove($player);
+                    $this->entityManager->remove($player);
                 }
 
-                $em->flush();
+                $this->entityManager->flush();
 
                 $response = [
-                    "message" => "$playerCount players, and $roundCount rounds were successfully removed"
+                    "message" => "$playerCount players and $roundCount rounds were successfully removed"
                 ];
+
+                // recreate the cpu players
+                try {
+                    $this->initService->addMissingPlayers();
+
+                    $response["message"] .= ", and cpu players were recreated";
+                } catch (UniqueConstraintViolationException $e) {
+                    $response["error"] = "Something went wrong with recreating the cpu players";
+                }
             } catch (\Exception $e) {
                 $response = [
                     "message" => "Something went wrong",

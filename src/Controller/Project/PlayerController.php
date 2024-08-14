@@ -9,7 +9,6 @@ use App\Entity\Score;
 use App\Form\ConfirmDeleteType;
 use App\Form\PlayerType;
 use App\Repository\PlayerRepository;
-use App\Service\InitCpuPlayerService;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,20 +42,8 @@ class PlayerController extends AbstractController
 
 
     #[Route("/proj/game/player", name: "proj_show_players", methods: ["GET"])]
-    public function showPlayers(
-        InitCpuPlayerService $icps,
-        PlayerRepository $playerRepository
-    ): Response {
-        // add missing cpu players
-        try {
-            $icps->addMissingPlayers();
-        } catch (UniqueConstraintViolationException $e) {
-            $this->addFlash(
-                "warning",
-                "En spelare har ett namn som blockerar en dator-spelare att skapas."
-            );
-        }
-
+    public function showPlayers(PlayerRepository $playerRepository): Response
+    {
         $players = $playerRepository->getAllSortedByName();
 
         $this->data["pageTitle"] = "Spelare";

@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,6 +19,13 @@ class ConfirmType extends AbstractType
                 "label" => $options["label"],
                 "attr" => ["class" => "button"]
             ]
+        )
+        ->add(
+            "auth",
+            HiddenType::class,
+            [
+                "data" => $options["auth"],
+            ]
         );
     }
 
@@ -25,6 +33,7 @@ class ConfirmType extends AbstractType
     {
         $resolver->setDefaults([
             "label" => "Bekräfta",
+            "auth" => null,
         ]);
     }
 }

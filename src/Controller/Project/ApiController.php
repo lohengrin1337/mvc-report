@@ -4,12 +4,14 @@ namespace App\Controller\Project;
 
 use \DateTimeZone;
 use App\Controller\JsonResponseTrait;
+use App\Form\ConfirmType;
 use App\Repository\PlayerRepository;
 use App\Repository\RoundRepository;
 use App\Service\ResetDatabaseService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 /**
@@ -104,13 +106,24 @@ class ApiController extends AbstractController
 
 
     #[Route("/proj/api/reset", name: "proj_api_reset", methods: ["POST"])]
-    public function resetDatabase(ResetDatabaseService $rds): JsonResponse
-    {
-        // remove players and rounds
-        $response = $rds->reset();
+    public function resetDatabase(
+        Request $request,
+        ResetDatabaseService $rds
+    ): JsonResponse {
+        // get auth from request
+        $auth = $this->createForm(ConfirmType::class)
+            ->handleRequest($request)
+            ->getData()["auth"] ?? null;
 
+        // verify auth
+        $response = ["error" => "Bad request - auth failed"];
+        if ($auth === "p@ssw0rd") {
+            // remove players and rounds, and set response message
+            $response = $rds->reset();
+        }
+
+        // return jsonresponse with message
         $this->setResponse($response);
-
         return $this->response;
     }
 }

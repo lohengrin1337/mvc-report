@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 
+
 /**
  * Controller for landingpage and about pages of project
  */
@@ -63,7 +64,18 @@ class MainController extends AbstractController
     {
         $this->data["pageTitle"] = "API";
 
-        $resetForm = $this->createForm(ConfirmType::class);
+
+        // create post form (button) to reset database
+        $this->data["resetForm"] = $this->createForm(
+            ConfirmType::class,
+            null,
+            [
+                'action' => $this->generateUrl('proj_api_reset'),
+                'method' => 'POST',
+                "label" => "Återställ databasen",
+                "auth" => "p@ssw0rd",
+            ]
+        );
 
         return $this->render("proj/api/api.html.twig", $this->data);
     }
