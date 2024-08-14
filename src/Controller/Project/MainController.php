@@ -64,6 +64,17 @@ class MainController extends AbstractController
     {
         $this->data["pageTitle"] = "API";
 
+        // create post form (button) to show current game state
+        $this->data["gameForm"] = $this->createForm(
+            ConfirmType::class,
+            null,
+            [
+                'action' => $this->generateUrl('proj_api_game'),
+                'method' => 'POST',
+                "label" => "Visa pågående spel",
+                "auth" => "p@ssw0rd",
+            ]
+        );
 
         // create post form (button) to reset database
         $this->data["resetForm"] = $this->createForm(

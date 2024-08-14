@@ -19,6 +19,7 @@ use App\PokerSquares\PokerSquareRules;
 use App\PokerSquares\PokerSquaresGame;
 use App\Repository\PlayerRepository;
 use App\Service\InitCpuPlayerService;
+use App\Service\SelectedPlayersService;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -75,6 +76,7 @@ class GameController extends AbstractController
         Request $request,
         PlayerRepository $playerRepository,
         EntityManagerInterface $entityManager,
+        SelectedPlayersService $sps,
         SessionInterface $session
     ): Response {
         // add missing cpu players
@@ -112,13 +114,8 @@ class GameController extends AbstractController
             }
         }
 
-        // get players from session, and verify their existance
-        $players = $session->get("players") ?? [];
-        foreach ($players as $index => $player) {
-            if (!$playerRepository->find($player->getId())) {
-                unset($players[$index]);
-            }
-        }
+        // get players from session, verify their existance, and correct if neccessary
+        $players = $sps->getSelectedPlayers($session);
 
         // select player
         $playerSelectForm = $this->createForm(PlayerSelectType::class, null, ["submit_label" => "Lägg till"]);

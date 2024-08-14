@@ -17,7 +17,7 @@ class ConfirmType extends AbstractType
             SubmitType::class,
             [
                 "label" => $options["label"],
-                "attr" => ["class" => "button"]
+                "attr" => ["class" => "button margin-b"]
             ]
         )
         ->add(

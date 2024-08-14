@@ -28,7 +28,6 @@ class GameManager
                 throw new InvalidArgumentException("Invalid game instance!");
             }
             $this->games[] = $game;
-
         }
     }
 

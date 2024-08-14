@@ -8,10 +8,11 @@
 
         <h1>{{ pageTitle }}</h1>
 
+        <a class="button margin-b" href="{{ path('proj_api_rounds') }}">Visa alla rundor</a>
         <a class="button margin-b" href="{{ path('proj_api_highscore') }}">Visa topplista</a>
         <a class="button margin-b" href="{{ path('proj_api_players') }}">Visa alla spelare</a>
-        <a class="button margin-b" href="{{ path('proj_api_rounds') }}">Visa alla rundor</a>
+        <a class="button margin-b" href="{{ path('proj_api_selected_players') }}">Visa valda spelare</a>
+        {{ form(gameForm) }}
         {{ form(resetForm) }}
-        
     </main>
 {% endblock %}
