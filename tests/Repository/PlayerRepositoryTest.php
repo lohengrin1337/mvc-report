@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\Player;
-use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\SchemaTool;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;

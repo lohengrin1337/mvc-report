@@ -35,7 +35,7 @@ class ConfirmTypeTest extends TypeTestCase
         $this->assertTrue($form->isSynchronized());
         $this->assertEquals("Bekräfta", $form->get("confirm")->getConfig()->getOption("label"));
         $this->assertEquals(
-            ["class" => "button"],
+            ["class" => "button margin-b"],
             $form->get("confirm")->getConfig()->getOption("attr")
         );
     }
