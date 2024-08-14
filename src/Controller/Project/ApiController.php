@@ -6,6 +6,8 @@ use \DateTimeZone;
 use App\Controller\JsonResponseTrait;
 use App\Repository\PlayerRepository;
 use App\Repository\RoundRepository;
+use App\Service\ResetDatabaseService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
@@ -95,6 +97,19 @@ class ApiController extends AbstractController
         }, $rounds);
 
         $this->setResponse($data);
+
+        return $this->response;
+    }
+
+
+
+    #[Route("/proj/api/reset", name: "proj_api_reset", methods: ["POST"])]
+    public function resetDatabase(ResetDatabaseService $rds): JsonResponse
+    {
+        // remove players and rounds
+        $response = $rds->reset();
+
+        $this->setResponse($response);
 
         return $this->response;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Project;
 
+use App\Form\ConfirmType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -61,6 +62,9 @@ class MainController extends AbstractController
     public function api(): Response
     {
         $this->data["pageTitle"] = "API";
+
+        $resetForm = $this->createForm(ConfirmType::class);
+
         return $this->render("proj/api/api.html.twig", $this->data);
     }
 }
