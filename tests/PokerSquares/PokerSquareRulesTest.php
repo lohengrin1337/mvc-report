@@ -18,7 +18,7 @@ class PokerSquareRulesTest extends TestCase
     {
         $this->pokerSquareRules = new PokerSquareRules();
 
-        for ($i=0; $i < 5; $i++) { 
+        for ($i = 0; $i < 5; $i++) {
             $cardStub = $this->createStub(CardInterface::class);
             $this->cardStubs[] = $cardStub;
         }
@@ -63,7 +63,7 @@ class PokerSquareRulesTest extends TestCase
      */
     public function testAssessFourOFAKind(): void
     {
-        for ($i=0; $i < 4; $i++) { 
+        for ($i = 0; $i < 4; $i++) {
             $this->cardStubs[$i]->method("getRank")->willReturn(1);
             $this->cardStubs[$i]->method("getSuit")->willReturn("hearts");
         }
@@ -104,7 +104,7 @@ class PokerSquareRulesTest extends TestCase
      */
     public function testAssessThreeOFAKind(): void
     {
-        for ($i=0; $i < 3; $i++) { 
+        for ($i = 0; $i < 3; $i++) {
             $this->cardStubs[$i]->method("getRank")->willReturn(1);
             $this->cardStubs[$i]->method("getSuit")->willReturn("hearts");
         }

@@ -17,13 +17,13 @@ class Player
 
     #[ORM\Column(length: 50, unique: true)]
     private ?string $name = null;
-    
+
     #[ORM\Column(length: 10, options: ["default" => "human"])]
     private ?string $type = "human";
-    
+
     #[ORM\Column(nullable: true)]
     private ?int $level = null;
-    
+
     /**
      * @var Collection<int, Round>
      */

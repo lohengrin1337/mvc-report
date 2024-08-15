@@ -6,7 +6,6 @@ use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
 /**
  * Makes sure that players stored in session are still existing
  */
@@ -29,7 +28,7 @@ class SelectedPlayersService
     public function __construct(
         EntityManagerInterface $entityManager,
         PlayerRepository $playerRepo,
-    ){
+    ) {
         $this->entityManager = $entityManager;
         $this->playerRepo = $playerRepo;
     }

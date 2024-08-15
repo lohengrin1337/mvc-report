@@ -18,7 +18,7 @@ class ThreeOfAKindTest extends TestCase
     {
         $this->rule = new ThreeOfAKind();
 
-        for ($i=0; $i < 5; $i++) { 
+        for ($i = 0; $i < 5; $i++) {
             $cardStub = $this->createStub(CardInterface::class);
             $this->cardStubs[] = $cardStub;
         }
@@ -41,7 +41,7 @@ class ThreeOfAKindTest extends TestCase
      */
     public function testCheckHandValid(): void
     {
-        for ($i=0; $i < 3; $i++) { 
+        for ($i = 0; $i < 3; $i++) {
             $this->cardStubs[$i]->method("getRank")->willReturn(5);
         }
         $this->cardStubs[3]->method("getRank")->willReturn(7);

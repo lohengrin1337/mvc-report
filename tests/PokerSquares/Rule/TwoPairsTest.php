@@ -18,7 +18,7 @@ class TwoPairsTest extends TestCase
     {
         $this->rule = new TwoPairs();
 
-        for ($i=0; $i < 5; $i++) { 
+        for ($i = 0; $i < 5; $i++) {
             $cardStub = $this->createStub(CardInterface::class);
             $this->cardStubs[] = $cardStub;
         }

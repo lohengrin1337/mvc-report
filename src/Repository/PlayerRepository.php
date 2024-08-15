@@ -18,7 +18,7 @@ class PlayerRepository extends ServiceEntityRepository
 
     /**
      * Get all players ordered by name asc
-     * 
+     *
      * @return Player[] Returns an array of Player objects
      */
     public function getAllSortedByName(): array
@@ -32,7 +32,7 @@ class PlayerRepository extends ServiceEntityRepository
 
     /**
      * Get a player by level
-     * 
+     *
      * @param int $level
      * @return Player|null Returns a Player object or null
      */

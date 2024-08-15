@@ -101,7 +101,7 @@ class CardDeck
 
     /**
      * Peak at the top card of the deck
-     * 
+     *
      * @return CardInterface
      */
     public function peak(): CardInterface

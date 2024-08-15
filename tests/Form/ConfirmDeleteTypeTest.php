@@ -67,4 +67,3 @@ class ConfirmDeleteTypeTest extends TypeTestCase
         );
     }
 }
-

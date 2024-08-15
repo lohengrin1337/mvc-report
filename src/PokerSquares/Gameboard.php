@@ -42,7 +42,7 @@ class Gameboard
     {
         for ($i = 1; $i <= 5; $i++) {
             for ($j = 1; $j <= 5; $j++) {
-            $this->board[$i . $j] = null;
+                $this->board[$i . $j] = null;
             }
         }
     }
@@ -51,7 +51,7 @@ class Gameboard
 
     /**
      * Get the gameboard
-     * 
+     *
      * @return array
      */
     public function getBoard(): array
@@ -63,7 +63,7 @@ class Gameboard
 
     /**
      * Place a card on the board
-     * 
+     *
      * @param string $slot - row and column as string ("11" means row 1 col 1)
      * @param CardInterface $card - a playing card
      * @throws InvalidSlotException - if slot is invalid
@@ -74,7 +74,7 @@ class Gameboard
         if (!$this->slotIsValid($slot)) {
             throw new InvalidSlotException("'$slot' is not a valid slot on the gameboard!");
         }
-        
+
         $this->board[$slot] = $card;
     }
 
@@ -82,17 +82,19 @@ class Gameboard
 
     /**
      * Get board with cards as strings (for visual representation)
-     * 
+     *
      * @return array<string>
      */
     public function getBoardView(): array
     {
-        return array_map(function($card) {
+        return array_map(
+            function ($card) {
                 if (is_null($card)) {
                     return $card;
                 }
                 return $card->getAsString();
-            }, $this->board
+            },
+            $this->board
         );
     }
 
@@ -100,7 +102,7 @@ class Gameboard
 
     /**
      * Export board as Board entity
-     * 
+     *
      * @return BoardEntity
      */
     public function exportAsEntity(): BoardEntity
@@ -114,7 +116,7 @@ class Gameboard
 
     /**
      * Validate slot exists, and value is null (no card yet)
-     * 
+     *
      * @param string $slot
      * @return bool
      */
@@ -127,12 +129,12 @@ class Gameboard
 
     /**
      * Check if only 1 slot is filled
-     * 
+     *
      * @return bool - true if only one card is placed on the board
      */
     public function boardHasOneCard(): bool
     {
-        $nullCount = array_reduce($this->board, function($carry, $card) {
+        $nullCount = array_reduce($this->board, function ($carry, $card) {
             return $carry + (is_null($card) ? 1 : 0);
         }, 0);
 
@@ -143,7 +145,7 @@ class Gameboard
 
     /**
      * Check if all 25 slots are filled
-     * 
+     *
      * @return bool - true if board is full
      */
     public function boardIsFull(): bool
@@ -155,15 +157,14 @@ class Gameboard
 
     /**
      * Get all 10 poker hands (5 rows and 5 columns)
-     * 
+     *
      * @return array<array<CardInterface|null>>
      */
     public function getAllHands(): array
     {
         // fill $hands with content of board slots (CardInterface|null)
         $hands = array_map(
-            function($slots)
-            {
+            function ($slots) {
                 $hand = [];
                 foreach ($slots as $slot) {
                     $hand[] = $this->board[$slot];

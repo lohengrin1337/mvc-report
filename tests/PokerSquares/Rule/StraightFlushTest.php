@@ -18,7 +18,7 @@ class StraightFlushTest extends TestCase
     {
         $this->rule = new StraightFlush();
 
-        for ($i=0; $i < 5; $i++) { 
+        for ($i = 0; $i < 5; $i++) {
             $cardStub = $this->createStub(CardInterface::class);
             $this->cardStubs[] = $cardStub;
         }
@@ -80,7 +80,7 @@ class StraightFlushTest extends TestCase
 
 
 
-        /**
+    /**
      * Check a hand of card stubs is also NOT a valid StraightFlush (1,2,3,4,5 of hearts and diamonds)
      */
     public function testCheckHandInvalid2(): void

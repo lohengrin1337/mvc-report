@@ -18,7 +18,7 @@ class RoyalFlushTest extends TestCase
     {
         $this->rule = new RoyalFlush();
 
-        for ($i=0; $i < 5; $i++) { 
+        for ($i = 0; $i < 5; $i++) {
             $cardStub = $this->createStub(CardInterface::class);
             $this->cardStubs[] = $cardStub;
         }
@@ -80,7 +80,7 @@ class RoyalFlushTest extends TestCase
 
 
 
-        /**
+    /**
      * Check a hand of card stubs is also NOT a valid RoyalFlush (10,11,12,13,1 of cloves and spades)
      */
     public function testCheckHandInvalid2(): void

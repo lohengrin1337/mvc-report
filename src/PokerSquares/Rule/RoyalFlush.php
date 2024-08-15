@@ -17,7 +17,7 @@ class RoyalFlush implements PokerRuleInterface
      * @var array<array<int>> ROYAL_STRAIGHTS
      */
     private const ROYAL_STRAIGHTS = [[10,11,12,13,1]];
-    
+
     /**
      * Constructor
      * Set name of rule
@@ -31,7 +31,7 @@ class RoyalFlush implements PokerRuleInterface
 
     /**
      * Check if rule is met
-     * 
+     *
      * @param CardInterface[] $cards - array of cards to check
      * @return bool - true if rule is met
      */

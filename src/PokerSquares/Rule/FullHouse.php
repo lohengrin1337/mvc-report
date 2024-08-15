@@ -25,7 +25,7 @@ class FullHouse implements PokerRuleInterface
 
     /**
      * Check if rule is met
-     * 
+     *
      * @param CardInterface[] $cards - array of cards to check
      * @return bool - true if rule is met
      */
@@ -62,7 +62,7 @@ class FullHouse implements PokerRuleInterface
         //     if ($count >= 2) {
         //         $pairCount += 1;
         //         $pairCount += $count === 2 ? 1 : 0;
-        //     } 
+        //     }
         // }
 
         // if ($pairCount >= 2) {
@@ -70,7 +70,7 @@ class FullHouse implements PokerRuleInterface
         //         // check for 3 or more of a kind
         //         if ($count >= 3) {
         //             $ruleIsMet = true;
-        //         } 
+        //         }
         // }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Controller\Project;
 
-use \DateTimeZone;
+use DateTimeZone;
 use App\Controller\JsonResponseTrait;
 use App\Form\ConfirmType;
 use App\Repository\PlayerRepository;
@@ -31,7 +31,7 @@ class ApiController extends AbstractController
         // get all rounds, ordered by date - latest first
         $rounds = $roundRepo->getLatestRounds();
 
-        $data = array_map(function($round) {
+        $data = array_map(function ($round) {
             return [
                 "id" => $round->getId(),
                 "player" => $round->getPlayer()->getName(),
@@ -61,7 +61,7 @@ class ApiController extends AbstractController
         // get top ten rounds
         $rounds = $roundRepo->getTopRounds(10);
 
-        $data = array_map(function($round) {
+        $data = array_map(function ($round) {
             return [
                 "id" => $round->getId(),
                 "player" => $round->getPlayer()->getName(),
@@ -91,7 +91,7 @@ class ApiController extends AbstractController
         // get players from database
         $players = $playerRepo->getAllSortedByName();
 
-        $data = array_map(function($player) {
+        $data = array_map(function ($player) {
             return [
                 "id" => $player->getId(),
                 "name" => $player->getName(),
@@ -116,7 +116,7 @@ class ApiController extends AbstractController
         // get selected players from session that exists in db
         $players = $sps->getSelectedPlayers($session);
 
-        $data = array_map(function($player) {
+        $data = array_map(function ($player) {
             return [
                 "id" => $player->getId(),
                 "name" => $player->getName(),

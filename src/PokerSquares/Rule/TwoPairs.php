@@ -25,7 +25,7 @@ class TwoPairs implements PokerRuleInterface
 
     /**
      * Check if rule is met
-     * 
+     *
      * @param CardInterface[] $cards - array of cards to check
      * @return bool - true if rule is met
      */
@@ -40,7 +40,7 @@ class TwoPairs implements PokerRuleInterface
         foreach ($rankMap as $count) {
             if ($count >= 2) {
                 $pairCount += 1;
-            } 
+            }
         }
 
         if ($pairCount >= 2) {

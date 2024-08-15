@@ -10,7 +10,7 @@ class Cpu3 extends Cpu2 implements CpuLogicInterface
      * Suggest an empty slot on the bord for the current card
      * Cpu3 always tries to get flush in columns 1-4 like Cpu2,
      * and also put the card in a row with most cards of same rank
-     * 
+     *
      * @param array<CardInterface|null> $board - slots and cards
      * @param CardInterface $card - the top card of the deck
      * @return int|null
@@ -37,7 +37,7 @@ class Cpu3 extends Cpu2 implements CpuLogicInterface
 
     /**
      * find an empty slot in a preferred column and row
-     * 
+     *
      * @param array<CardInterface|null> $board
      * @param CardInterface $card
      * @return int|null
@@ -62,7 +62,7 @@ class Cpu3 extends Cpu2 implements CpuLogicInterface
 
     /**
      * Find a slot in 'trash column' col 5, first try to find row with matching rank
-     * 
+     *
      * @param array<CardInterface|null> $board
      * @param CardInterface $card
      * @return int|null
@@ -87,7 +87,7 @@ class Cpu3 extends Cpu2 implements CpuLogicInterface
 
     /**
      * Find any empty slot in preferred row
-     * 
+     *
      * @param array<CardInterface|null> $board
      * @param CardInterface $card
      * @return int|null
@@ -97,7 +97,7 @@ class Cpu3 extends Cpu2 implements CpuLogicInterface
         $preferredRows = self::getPreferredRows($board, $card);
 
         // filter out the relevant slots (empty and in a preferred row)
-        $relevantSlots = array_filter($board, function($boardCard, $slot) use ($preferredRows) {
+        $relevantSlots = array_filter($board, function ($boardCard, $slot) use ($preferredRows) {
             $row = substr($slot, 0, 1);
             return !$boardCard && in_array($row, $preferredRows);
         }, ARRAY_FILTER_USE_BOTH);
@@ -122,7 +122,7 @@ class Cpu3 extends Cpu2 implements CpuLogicInterface
 
     /**
      * Get the preferred rows for a card (rows with most cards of same rank first)
-     * 
+     *
      * @param array<CardInterface|null> $board
      * @param CardInterface $card
      * @return array<int>
@@ -132,13 +132,13 @@ class Cpu3 extends Cpu2 implements CpuLogicInterface
         $rank = $card->getRank();
 
         // find all rows with cards of same rank
-        $relevantCards = array_filter($board, function($boardCard) use ($rank){
+        $relevantCards = array_filter($board, function ($boardCard) use ($rank) {
             return $boardCard && $boardCard->getRank() === $rank;
         });
 
         // get the rows of relevant cards (one for each card)
-        $rows = array_map(function($slot) {
-             return substr($slot, 0, 1);
+        $rows = array_map(function ($slot) {
+            return substr($slot, 0, 1);
         }, array_keys($relevantCards));
 
         // count amount of each row

@@ -9,7 +9,7 @@ trait RankMappingTrait
 {
     /**
      * Get the card ranks
-     * 
+     *
      * @param CardInterface[] $cards
      * @return int[]
      */
@@ -17,8 +17,7 @@ trait RankMappingTrait
     {
         // get the rank of all cards
         $ranks = array_map(
-            function($card)
-            {
+            function ($card) {
                 return $card->getRank();
             },
             $cards
@@ -31,7 +30,7 @@ trait RankMappingTrait
 
     /**
      * Get a key => value array with the rank as key, and the count as value
-     * 
+     *
      * @param CardInterface[] $cards
      * @return int[]
      */
@@ -45,7 +44,7 @@ trait RankMappingTrait
 
     // /**
     //  * Get unique ranks
-    //  * 
+    //  *
     //  * @param CardInterface[] $cards
     //  * @return int[]
     //  */

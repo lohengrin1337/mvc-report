@@ -18,7 +18,7 @@ class Cpu1Test extends TestCase
         // set up 25 empty slots
         for ($i = 1; $i <= 5; $i++) {
             for ($j = 1; $j <= 5; $j++) {
-            $this->board[$i . $j] = null;
+                $this->board[$i . $j] = null;
             }
         }
 

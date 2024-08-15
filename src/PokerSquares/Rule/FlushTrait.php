@@ -9,7 +9,7 @@ trait FlushTrait
 {
     /**
      * Get the card suits
-     * 
+     *
      * @param CardInterface[] $cards
      * @return string[]
      */
@@ -17,8 +17,7 @@ trait FlushTrait
     {
         // get the suit of all cards
         $suits = array_map(
-            function($card)
-            {
+            function ($card) {
                 return $card->getSuit();
             },
             $cards
@@ -31,7 +30,7 @@ trait FlushTrait
 
     /**
      * Get a key => value array with the suit as key, and the count as value
-     * 
+     *
      * @param CardInterface[] $cards
      * @return int[]
      */
@@ -45,7 +44,7 @@ trait FlushTrait
 
     /**
      * Check if there is at least 5 cards of the same suit
-     * 
+     *
      * @param CardInterface[] $cards
      * @return bool
      */

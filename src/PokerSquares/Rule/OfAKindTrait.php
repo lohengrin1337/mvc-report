@@ -16,7 +16,7 @@ trait OfAKindTrait
 
     /**
      * Check if rule is met
-     * 
+     *
      * @param CardInterface[] $cards - array of cards to check
      * @return bool - true if rule is met
      */
@@ -30,7 +30,7 @@ trait OfAKindTrait
         foreach ($rankMap as $count) {
             if ($count >= $this->amount) {
                 $ruleIsMet = true;
-            } 
+            }
         }
 
         return $ruleIsMet;
@@ -61,7 +61,7 @@ trait OfAKindTrait
     //     foreach ($uniqueRankCount as $count) {
     //         if ($count >= $this->amount) {
     //             $ruleIsMet = true;
-    //         } 
+    //         }
     //     }
 
     //     return $ruleIsMet;

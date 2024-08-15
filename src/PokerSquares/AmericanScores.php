@@ -31,7 +31,7 @@ class AmericanScores implements ScoreMappingInterface
 
     /**
      * Get points for a fullfilled rule
-     * 
+     *
      * @param string $rule - name of a rule that is fullfilled
      * @throws InvalidArgumentException - if rule name is invalid
      * @return int - points

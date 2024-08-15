@@ -25,7 +25,7 @@ class Straight implements PokerRuleInterface
 
     /**
      * Check if rule is met
-     * 
+     *
      * @param CardInterface[] $cards - array of cards to check
      * @return bool - true if rule is met
      */

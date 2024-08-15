@@ -62,4 +62,3 @@ class ConfirmTypeTest extends TypeTestCase
         );
     }
 }
-

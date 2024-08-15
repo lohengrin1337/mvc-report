@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use \DateTime;
+use DateTime;
 use App\Entity\Board;
 use App\Entity\Player;
 use App\Entity\Round;

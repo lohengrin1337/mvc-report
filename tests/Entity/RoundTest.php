@@ -3,8 +3,7 @@
 namespace App\Entity;
 
 use PHPUnit\Framework\TestCase;
-use \DateTime;
-
+use DateTime;
 
 /**
  * Test cases for Round Entity.
@@ -22,7 +21,7 @@ class RoundTest extends TestCase
         $finish = new DateTime('12:01');
         $interval = $start->diff($finish);
         $duration = (new DateTime())->setTime($interval->h, $interval->i, $interval->s);
-        
+
         $round = new Round();
         $round->setRoundData(
             $player,

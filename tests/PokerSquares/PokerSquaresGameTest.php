@@ -8,7 +8,7 @@ use App\Entity\Board;
 use App\Entity\Player;
 use App\Entity\Score;
 use PHPUnit\Framework\TestCase;
-use \ReflectionClass;
+use ReflectionClass;
 
 /**
  * Test cases for class PokerSquaresGame.
@@ -50,11 +50,11 @@ class PokerSquaresGameTest extends TestCase
             "col4" => 0,
             "col5" => 0,
         ];
-        $this->scoreMock->method("getHands")->willReturnCallback(function() {
+        $this->scoreMock->method("getHands")->willReturnCallback(function () {
             return $this->hands;
         });
         $this->totalScore = 0;
-        $this->scoreMock->method("getTotal")->willReturnCallback(function() {
+        $this->scoreMock->method("getTotal")->willReturnCallback(function () {
             return $this->totalScore;
         });
 
@@ -62,26 +62,26 @@ class PokerSquaresGameTest extends TestCase
         $this->gameboardMock = $this->createStub(Gameboard::class);
         for ($i = 1; $i <= 5; $i++) {
             for ($j = 1; $j <= 5; $j++) {
-            $this->boardView[$i . $j] = null;
+                $this->boardView[$i . $j] = null;
             }
         }
-        $this->gameboardMock->method("getBoardView")->willReturnCallback(function() {
+        $this->gameboardMock->method("getBoardView")->willReturnCallback(function () {
             return $this->boardView;
         });
-        $this->gameboardMock->method("getBoard")->willReturnCallback(function() {
+        $this->gameboardMock->method("getBoard")->willReturnCallback(function () {
             return $this->boardView;
         });
         $this->boolVal1 = false;
-        $this->gameboardMock->method("boardHasOneCard")->willReturnCallback(function() {
+        $this->gameboardMock->method("boardHasOneCard")->willReturnCallback(function () {
             return $this->boolVal1;
         });
         $this->boolVal2 = false;
-        $this->gameboardMock->method("boardIsFull")->willReturnCallback(function() {
+        $this->gameboardMock->method("boardIsFull")->willReturnCallback(function () {
             return $this->boolVal2;
         });
-        $this->gameboardMock->method("getAllHands")->willReturnCallback(function() {
+        $this->gameboardMock->method("getAllHands")->willReturnCallback(function () {
             $cardStub = $this->createStub(CardInterface::class);
-            return array_map(function($card) use ($cardStub) {
+            return array_map(function ($card) use ($cardStub) {
                 return [$cardStub, $cardStub, $cardStub, $cardStub, $cardStub];
             }, $this->hands);
         });
@@ -95,10 +95,10 @@ class PokerSquaresGameTest extends TestCase
         // create deck-stub and connect with cardStub
         $deckStub = $this->createStub(CardDeck::class);
         $deckStub->method("getCardBack")->willReturn("svg-card-back");
-        $deckStub->method("draw")->willReturnCallback(function() use ($cardStub) {
+        $deckStub->method("draw")->willReturnCallback(function () use ($cardStub) {
             return $cardStub;
         });
-        $deckStub->method("peak")->willReturnCallback(function() use ($cardStub) {
+        $deckStub->method("peak")->willReturnCallback(function () use ($cardStub) {
             return $cardStub;
         });
 

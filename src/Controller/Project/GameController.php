@@ -157,19 +157,19 @@ class GameController extends AbstractController
                     clone $deck     // same deck for all players, but unique instances
                 );
 
-            // FILL GAMEBOARD FOR TESTING
-            // $gb = new GameBoard();
-            // $slots = array_keys($gb->getBoardView());
-            // for ($i=0; $i < 22; $i++) { 
-            //     $game->process($slots[$i]);
-            // }
+                // FILL GAMEBOARD FOR TESTING
+                // $gb = new GameBoard();
+                // $slots = array_keys($gb->getBoardView());
+                // for ($i=0; $i < 22; $i++) {
+                //     $game->process($slots[$i]);
+                // }
 
                 $games[] = $game;
             }
 
             $gameManager = new GameManager($games);
             $session->set("gameManager", $gameManager);
-    
+
             return $this->redirectToRoute("proj_game_play");
         }
 

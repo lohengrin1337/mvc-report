@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use PHPUnit\Framework\TestCase;
 
-
 /**
  * Test cases for Player Entity.
  */

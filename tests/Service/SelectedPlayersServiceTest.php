@@ -9,9 +9,8 @@ use Doctrine\ORM\Tools\SchemaTool;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
 /**
- * Test cases for class SelectedPlayersService with sqlite db 
+ * Test cases for class SelectedPlayersService with sqlite db
  */
 class SelectedPlayersServiceTest extends KernelTestCase
 {
@@ -101,7 +100,7 @@ class SelectedPlayersServiceTest extends KernelTestCase
         $this->assertCount(2, $players);
 
         // get names
-        $playerNames = array_map(function($player) {
+        $playerNames = array_map(function ($player) {
             return $player->getName();
         }, $players);
 

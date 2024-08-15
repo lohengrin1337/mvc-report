@@ -7,13 +7,13 @@ use App\Entity\Player;
 use App\Entity\Score;
 use App\PokerSquares\Cpu\CpuFactory;
 use App\PokerSquares\Cpu\CpuLogicInterface;
-use \DateTime;
-use \DateTimeInterface;
-use \DateTimeZone;
+use DateTime;
+use DateTimeInterface;
+use DateTimeZone;
 
 /**
  * Game engine for Poker Squares
- * 
+ *
  * API:
  * 1. Draw a card
  * 2. Place a card
@@ -74,7 +74,7 @@ class PokerSquaresGame
     /**
      * Constructor
      * Set rules, score mapper, gamebord, player and deck
-     * 
+     *
      * @param RuleCollectionInterface $rules - set of rules
      * @param ScoreMappingInterface $scoreMapper
      * @param Score $score
@@ -89,7 +89,7 @@ class PokerSquaresGame
         GameBoard $gameboard,
         Player $player,
         CardDeck $deck
-    ){
+    ) {
         $this->rules = $rules;
         $this->scoreMapper = $scoreMapper;
         $this->score = $score;
@@ -108,7 +108,7 @@ class PokerSquaresGame
 
     /**
      * Get current state of the game
-     * 
+     *
      * @return array<mixed>
      */
     public function getState(): array
@@ -128,7 +128,7 @@ class PokerSquaresGame
 
     /**
      * Get player, board and score to fill Round entity
-     * 
+     *
      * @return array<mixed>
      */
     public function getRoundData(): array
@@ -147,7 +147,7 @@ class PokerSquaresGame
 
     /**
      * Check if game is over
-     * 
+     *
      * @return bool
      */
     public function gameIsOver(): bool
@@ -159,7 +159,7 @@ class PokerSquaresGame
 
     /**
      * Process new card placement, set start/finish time, and calculate scores
-     * 
+     *
      * @param string $slot - a valid card slot
      * @return void
      */
@@ -174,7 +174,7 @@ class PokerSquaresGame
 
     /**
      * Calculate and set scores for each hand of the current gameboard
-     * 
+     *
      * @return void
      */
     private function calcScores(): void
@@ -191,7 +191,7 @@ class PokerSquaresGame
 
     /**
      * Set time for start and finish (when first/last card is placed)
-     * 
+     *
      * @return void
      */
     private function setStartAndFinish(): void
@@ -208,7 +208,7 @@ class PokerSquaresGame
 
     /**
      * Get current DateTime
-     * 
+     *
      * @return DateTimeInterface
      */
     private function getDateTime(): DateTimeInterface
@@ -221,7 +221,7 @@ class PokerSquaresGame
 
     /**
      * Calculate duration from start to finish (or now if not finished)
-     * 
+     *
      * @return DateTimeInterface
      */
     public function getDuration(): DateTimeInterface
@@ -246,7 +246,7 @@ class PokerSquaresGame
 
     /**
      * Check if player is of typ cpu (computer player)
-     * 
+     *
      * @return bool
      */
     public function playerIsCpu(): bool
@@ -258,7 +258,7 @@ class PokerSquaresGame
 
     /**
      * Get cpu level
-     * 
+     *
      * @return int
      */
     private function getCpuLevel(): int
@@ -270,7 +270,7 @@ class PokerSquaresGame
 
     /**
      * Let cpu do a card placement
-     * 
+     *
      * @return void
      */
     public function cpuPlay(): void

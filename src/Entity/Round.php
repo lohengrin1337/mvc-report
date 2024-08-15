@@ -37,7 +37,7 @@ class Round
 
     /**
      * Set player, board, score and time
-     * 
+     *
      * @param Player $player
      * @param Board $board
      * @param Score $score
@@ -102,7 +102,7 @@ class Round
 
         return $this;
     }
-    
+
     public function getStart(): ?\DateTimeInterface
     {
         return $this->start;
@@ -114,7 +114,7 @@ class Round
 
         return $this;
     }
-        
+
     public function getFinish(): ?\DateTimeInterface
     {
         return $this->finish;
@@ -122,7 +122,7 @@ class Round
 
     public function setFinish(\DateTimeInterface $finish): static
     {
-        $this->finish = $finish; 
+        $this->finish = $finish;
 
         return $this;
     }

@@ -46,7 +46,7 @@ class Score
 
     /**
      * Get score for each hand
-     * 
+     *
      * @return array
      */
     public function getHands(): array
@@ -57,7 +57,7 @@ class Score
 
     /**
      * Get total score
-     * 
+     *
      * @return int
      */
     public function getTotal(): int
@@ -69,7 +69,7 @@ class Score
 
     /**
      * Set score for a single hand
-     * 
+     *
      * @param string $handName
      * @param int $points
      * @return void
@@ -88,7 +88,7 @@ class Score
 
     /**
      * Update total score
-     * 
+     *
      * @return void
      */
     private function updateTotal(): void

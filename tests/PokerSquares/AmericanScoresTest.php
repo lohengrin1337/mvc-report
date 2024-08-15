@@ -51,7 +51,7 @@ class AmericanScoresTest extends TestCase
         foreach ($rules as $ruleName) {
             $sumScores += $this->scoreMap->getScore($ruleName);
         }
-        
+
         $this->assertEquals(302, $sumScores);
     }
 

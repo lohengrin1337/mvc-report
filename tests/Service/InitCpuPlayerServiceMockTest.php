@@ -7,7 +7,6 @@ use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 
-
 /**
  * Test cases for class InitCpuPlayerService
  */
@@ -24,7 +23,7 @@ class InitCpuPlayerServiceMockTest extends TestCase
 
         // by default no player will be returned
         $this->playerRepoStub->method("getPlayerByLevel")->willReturn(null);
-        
+
         $this->initService = new InitCpuPlayerService(
             $this->entityManagerMock,
             $this->playerRepoStub

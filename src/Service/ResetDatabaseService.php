@@ -33,7 +33,7 @@ class ResetDatabaseService
         EntityManagerInterface $entityManager,
         PlayerRepository $playerRepo,
         InitCpuPlayerService $initService
-    ){
+    ) {
         $this->entityManager = $entityManager;
         $this->playerRepo = $playerRepo;
         $this->initService = $initService;

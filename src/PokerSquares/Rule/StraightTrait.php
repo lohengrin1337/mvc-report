@@ -27,7 +27,7 @@ trait StraightTrait
 
     /**
      * Check if there is at least 5 cards in sequence (ranks)
-     * 
+     *
      * @param CardInterface[] $cards
      * @param int[] $straights - straights to match
      * @return bool

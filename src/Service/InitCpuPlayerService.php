@@ -7,7 +7,6 @@ use App\Repository\PlayerRepository;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 
-
 class InitCpuPlayerService
 {
     /**
@@ -36,7 +35,7 @@ class InitCpuPlayerService
     public function __construct(
         EntityManagerInterface $entityManager,
         PlayerRepository $playerRepo
-    ){
+    ) {
         $this->entityManager = $entityManager;
         $this->playerRepo = $playerRepo;
     }

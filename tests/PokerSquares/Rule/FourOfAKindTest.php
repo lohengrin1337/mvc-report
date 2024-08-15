@@ -18,7 +18,7 @@ class FourOfAKindTest extends TestCase
     {
         $this->rule = new FourOfAKind();
 
-        for ($i=0; $i < 5; $i++) { 
+        for ($i = 0; $i < 5; $i++) {
             $cardStub = $this->createStub(CardInterface::class);
             $this->cardStubs[] = $cardStub;
         }
@@ -41,7 +41,7 @@ class FourOfAKindTest extends TestCase
      */
     public function testCheckHandValid(): void
     {
-        for ($i=0; $i < 4; $i++) { 
+        for ($i = 0; $i < 4; $i++) {
             $this->cardStubs[$i]->method("getRank")->willReturn(5);
         }
         $this->cardStubs[4]->method("getRank")->willReturn(7);
@@ -57,7 +57,7 @@ class FourOfAKindTest extends TestCase
      */
     public function testCheckHandInvalid(): void
     {
-        for ($i=0; $i < 3; $i++) { 
+        for ($i = 0; $i < 3; $i++) {
             $this->cardStubs[$i]->method("getRank")->willReturn(5);
         }
         $this->cardStubs[3]->method("getRank")->willReturn(7);

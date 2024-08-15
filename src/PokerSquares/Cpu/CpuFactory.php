@@ -2,7 +2,7 @@
 
 namespace App\PokerSquares\Cpu;
 
-use \Exception;
+use Exception;
 
 /**
  * Factory class for creating cpu intel classes
@@ -11,7 +11,7 @@ class CpuFactory
 {
     /**
      * Get cpu intel of relevant level (name of the class)
-     * 
+     *
      * @param int $level - cpu level
      * @throws Exception
      * @return string - class name

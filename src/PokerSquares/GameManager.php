@@ -17,7 +17,7 @@ class GameManager
     /**
      * Constructor
      * Populate $games
-     * 
+     *
      * @param PokerSquaresGame[] $games
      * @throws InvalidArgumentException - if any game is invalid
      */
@@ -35,7 +35,7 @@ class GameManager
 
     /**
      * Get game by index
-     * 
+     *
      * @param int $index
      * @return PokerSquaresGame|null
      */
@@ -51,7 +51,7 @@ class GameManager
 
     /**
      * Get the current (first unfinished) game
-     * 
+     *
      * @return PokerSquaresGame|null
      */
     public function getCurrentGame(): PokerSquaresGame|null
@@ -69,7 +69,7 @@ class GameManager
 
     /**
      * Check if all games are finished
-     * 
+     *
      * @return bool
      */
     public function allGamesAreOver(): bool
@@ -81,7 +81,7 @@ class GameManager
 
     /**
      * Get state of all games
-     * 
+     *
      * @return array<array<mixed>>
      */
     public function getAllGameStates(): array
@@ -95,7 +95,7 @@ class GameManager
 
     /**
      * Assess quality of score
-     * 
+     *
      * @param int $score
      * @return string - assassment
      */
@@ -114,7 +114,7 @@ class GameManager
 
     /**
      * Get concluding message with winner and score
-     * 
+     *
      * @return string
      */
     public function getConclusion(): string

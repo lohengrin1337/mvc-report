@@ -19,7 +19,7 @@ class Cpu2 implements CpuLogicInterface
     /**
      * Suggest an empty slot on the bord for the current card
      * Cpu2 always tries to get flush in columns 1-4
-     * 
+     *
      * @param array<CardInterface|null> $board - slots and cards
      * @param CardInterface $card - the top card of the deck
      * @return int|null
@@ -46,7 +46,7 @@ class Cpu2 implements CpuLogicInterface
 
     /**
      * Get the preferred column for a card
-     * 
+     *
      * @param CardInterface $card
      * @return string
      */
@@ -59,7 +59,7 @@ class Cpu2 implements CpuLogicInterface
 
     /**
      * find an empty slot in the preferred column
-     * 
+     *
      * @param array $board
      * @param CardInterface $card
      * @return int|null
@@ -72,7 +72,7 @@ class Cpu2 implements CpuLogicInterface
             if (
                 str_ends_with($slot, $preferredCol) &&
                 is_null($card)
-            ){
+            ) {
                 return $slot;
             }
         }
@@ -83,7 +83,7 @@ class Cpu2 implements CpuLogicInterface
 
     /**
      * Find a slot in 'trash column' col 5
-     * 
+     *
      * @param array $board
      * @return int|null
      */
@@ -96,7 +96,7 @@ class Cpu2 implements CpuLogicInterface
             if (
                 str_ends_with($slot, $col) &&
                 is_null($card)
-            ){
+            ) {
                 return $slot;
             }
         }
@@ -107,14 +107,14 @@ class Cpu2 implements CpuLogicInterface
 
     /**
      * Find any empty slot
-     * 
+     *
      * @param array $board
      * @return int|null
      */
     protected static function findFirstEmpty(array $board): ?int
     {
         foreach ($board as $slot => $card) {
-            if (is_null($card)){
+            if (is_null($card)) {
                 return $slot;
             }
         }

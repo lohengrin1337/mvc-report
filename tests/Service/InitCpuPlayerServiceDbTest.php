@@ -9,7 +9,7 @@ use Doctrine\ORM\Tools\SchemaTool;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
- * Test cases for class InitCpuPlayerService with sqlite db 
+ * Test cases for class InitCpuPlayerService with sqlite db
  */
 class InitCpuPlayerServiceDbTest extends KernelTestCase
 {
@@ -105,7 +105,7 @@ class InitCpuPlayerServiceDbTest extends KernelTestCase
         }
 
         // get players of level 1 and 3 (the 2 newly added)
-        $newCpuPlayers = array_filter($newPlayers, function($newPlayer) {
+        $newCpuPlayers = array_filter($newPlayers, function ($newPlayer) {
             $level = $newPlayer->getLevel();
             return $level === 1 || $level == 3;
         });
