@@ -26,7 +26,7 @@ class ResetDatabaseServiceTest extends KernelTestCase
         // set reset service, entity manager and init service mock
         $this->entityManager = self::getContainer()->get('doctrine')->getManager();
         $this->playerRepo = $this->entityManager->getRepository(Player::class);
-        $this->initServiceMock = $this->createMock(InitCpuPlayerService::class);;
+        $this->initServiceMock = $this->createMock(InitCpuPlayerService::class);
 
         // create the ResetDatabaseService instance
         $this->resetService = new ResetDatabaseService(

@@ -9,9 +9,9 @@ use PHPUnit\Framework\TestCase;
 
 
 /**
- * Test cases for class InitCpuPlayerService.
+ * Test cases for class InitCpuPlayerService
  */
-class InitCpuPlayerServiceTest extends TestCase
+class InitCpuPlayerServiceMockTest extends TestCase
 {
     private InitCpuPlayerService $initService;
     private EntityManagerInterface $entityManagerMock;

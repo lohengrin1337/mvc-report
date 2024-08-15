@@ -22,11 +22,6 @@ class SelectedPlayersService
      */
     private PlayerRepository $playerRepo;
 
-    // /**
-    //  * @var SessionInterface $session;
-    //  */
-    // private SessionInterface $session;
-
     /**
      * Constructor
      * Add entity manager, player repository
@@ -34,11 +29,9 @@ class SelectedPlayersService
     public function __construct(
         EntityManagerInterface $entityManager,
         PlayerRepository $playerRepo,
-        // SessionInterface $session
     ){
         $this->entityManager = $entityManager;
         $this->playerRepo = $playerRepo;
-        // $this->session = $session;
     }
 
 
