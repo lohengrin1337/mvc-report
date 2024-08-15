@@ -7,6 +7,7 @@ use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\SchemaTool;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * Test cases for ResetDatabaseService with sqlite db
@@ -14,9 +15,10 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 class ResetDatabaseServiceTest extends KernelTestCase
 {
     private ResetDatabaseService $resetService;
-    private ?EntityManagerInterface $entityManager = null;
+    private EntityManagerInterface $entityManager;
     private PlayerRepository $playerRepo;
-    private InitCpuPlayerService $initServiceMock;
+    private MockObject $initServiceMock;
+    
 
     protected function setup(): void
     {
@@ -24,7 +26,7 @@ class ResetDatabaseServiceTest extends KernelTestCase
         self::bootKernel();
 
         // set reset service, entity manager and init service mock
-        $this->entityManager = self::getContainer()->get('doctrine')->getManager();
+        $this->entityManager = self::getContainer()->get('doctrine')->getManager(); // @phpstan-ignore-line
         $this->playerRepo = $this->entityManager->getRepository(Player::class);
         $this->initServiceMock = $this->createMock(InitCpuPlayerService::class);
 
@@ -67,7 +69,6 @@ class ResetDatabaseServiceTest extends KernelTestCase
 
         // close entity manager
         $this->entityManager->close();
-        $this->entityManager = null;
     }
 
 

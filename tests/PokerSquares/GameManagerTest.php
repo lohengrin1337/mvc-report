@@ -2,6 +2,7 @@
 
 namespace App\PokerSquares;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -10,11 +11,15 @@ use PHPUnit\Framework\TestCase;
 class GameManagerTest extends TestCase
 {
     private GameManager $gameManager;
-    private PokerSquaresGame $gameMock1;
-    private PokerSquaresGame $gameMock2;
+    private MockObject $gameMock1;
+    private MockObject $gameMock2;
     private bool $gameIsOver1;
     private bool $gameIsOver2;
+    
+    /** @var mixed[] */
     private array $state1;
+
+    /** @var mixed[] */
     private array $state2;
 
     protected function setUp(): void
@@ -68,7 +73,7 @@ class GameManagerTest extends TestCase
     public function testCreateInvalidInstance(): void
     {
         $this->expectException("InvalidArgumentException");
-        new GameManager([1,2]);
+        new GameManager([1,2]); // @phpstan-ignore-line
     }
 
 

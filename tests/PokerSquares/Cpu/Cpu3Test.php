@@ -10,9 +10,14 @@ use PHPUnit\Framework\TestCase;
  */
 class Cpu3Test extends TestCase
 {
+    /** @var mixed[] */
     private array $board = [];
-    private CardInterface $cardStub1; // 1 of hearts
-    private CardInterface $cardStub2; // 2 of hearts
+
+    /** @var mixed */
+    private $cardStub1; // 1 of hearts
+
+    /** @var mixed */
+    private $cardStub2; // 2 of hearts
 
     protected function setUp(): void
     {
@@ -64,7 +69,7 @@ class Cpu3Test extends TestCase
     {
         // populate the hearts column (col1)
         foreach ($this->board as $slot => $card) {
-            if (str_ends_with($slot, 1)) {
+            if (str_ends_with($slot, "1")) {
                 $this->board[$slot] = $this->cardStub1;
             }
         }
@@ -85,7 +90,7 @@ class Cpu3Test extends TestCase
     {
         // populate the hearts column (col1)
         foreach ($this->board as $slot => $card) {
-            if (str_ends_with($slot, 1)) {
+            if (str_ends_with($slot, "1")) {
                 $this->board[$slot] = $this->cardStub1;
             }
         }
@@ -103,7 +108,7 @@ class Cpu3Test extends TestCase
     {
         // populate the hearts column (col1), and trash column (col5)
         foreach ($this->board as $slot => $card) {
-            if (str_ends_with($slot, 1) || str_ends_with($slot, 5)) {
+            if (str_ends_with($slot, "1") || str_ends_with($slot, "5")) {
                 $this->board[$slot] = $this->cardStub1;
             }
         }
@@ -124,7 +129,7 @@ class Cpu3Test extends TestCase
     {
         // populate the hearts column (col1), and trash column (col5)
         foreach ($this->board as $slot => $card) {
-            if (str_ends_with($slot, 1) || str_ends_with($slot, 5)) {
+            if (str_ends_with($slot, "1") || str_ends_with($slot, "5")) {
                 $this->board[$slot] = $this->cardStub1;
             }
         }

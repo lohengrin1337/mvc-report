@@ -2,6 +2,7 @@
 
 namespace App\Card;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,9 +21,9 @@ class CardGame21Test extends TestCase
     private CardGame21 $gameWithDeckStub;
 
     /**
-     * @var object $cardStub - a mocked card
+     * @var CardInterface|MockObject $cardStub - a mocked card
      */
-    private object $cardStub;
+    private CardInterface|MockObject $cardStub;
 
 
 

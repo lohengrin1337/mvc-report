@@ -12,6 +12,7 @@ class FourOfAKindTest extends TestCase
 {
     private FourOfAKind $rule;
 
+    /** @var mixed[] */
     private array $cardStubs = [];
 
     protected function setUp(): void

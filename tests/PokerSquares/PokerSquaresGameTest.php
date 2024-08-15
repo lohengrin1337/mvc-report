@@ -7,6 +7,8 @@ use App\Card\CardInterface;
 use App\Entity\Board;
 use App\Entity\Player;
 use App\Entity\Score;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
@@ -17,11 +19,21 @@ class PokerSquaresGameTest extends TestCase
 {
     private PokerSquaresGame $humanGame;
     private PokerSquaresGame $cpuGame;
-    private Score $scoreMock;
-    private Gameboard $gameboardMock;
+
+    /** @var MockObject */
+    private $scoreMock;
+
+    /** @var MockObject */
+    private $gameboardMock;
+
+    /** @var mixed[] */
     private array $hands = [];
+
     private int $totalScore;
+
+    /** @var mixed[] */
     private array $boardView = [];
+
     private bool $boolVal1;
     private bool $boolVal2;
 
@@ -59,7 +71,7 @@ class PokerSquaresGameTest extends TestCase
         });
 
         // create gameboard-mock, and connect to empty boardView, and bool values
-        $this->gameboardMock = $this->createStub(Gameboard::class);
+        $this->gameboardMock = $this->createMock(Gameboard::class);
         for ($i = 1; $i <= 5; $i++) {
             for ($j = 1; $j <= 5; $j++) {
                 $this->boardView[$i . $j] = null;

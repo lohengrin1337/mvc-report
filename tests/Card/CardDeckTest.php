@@ -15,10 +15,6 @@ class CardDeckTest extends TestCase
     {
         // deck of CardGraphic cards
         $this->deck = new CardDeck(CardGraphic::class);
-
-        // $this->deck = new CardDeck(
-        //     $this->createStub(CardGraphic::class)::class
-        // );
     }
 
 

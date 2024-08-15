@@ -2,6 +2,7 @@
 
 namespace App\Dice;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -11,7 +12,7 @@ class DiceHandTest extends TestCase
 {
     private DiceHand $diceHand;
 
-    private Dice $diceStub;
+    private MockObject $diceStub;
 
     protected function setUp(): void
     {

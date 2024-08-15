@@ -12,6 +12,7 @@ class ThreeOfAKindTest extends TestCase
 {
     private ThreeOfAKind $rule;
 
+    /** @var mixed[] */
     private array $cardStubs = [];
 
     protected function setUp(): void

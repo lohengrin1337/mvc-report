@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  */
 class RoundRepositoryTest extends KernelTestCase
 {
-    private ?EntityManagerInterface $entityManager = null;
+    private EntityManagerInterface $entityManager;
     private RoundRepository $roundRepo;
     private Round $round1;
     private Round $round2;
@@ -28,7 +28,7 @@ class RoundRepositoryTest extends KernelTestCase
         self::bootKernel();
 
         // set entity manager and player repository
-        $this->entityManager = self::getContainer()->get('doctrine')->getManager();
+        $this->entityManager = self::getContainer()->get('doctrine')->getManager(); // @phpstan-ignore-line
         $this->roundRepo = $this->entityManager->getRepository(Round::class);
 
         // set up schema tool
@@ -88,7 +88,6 @@ class RoundRepositoryTest extends KernelTestCase
 
         // close entity manager
         $this->entityManager->close();
-        $this->entityManager = null;
     }
 
 

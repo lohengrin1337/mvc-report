@@ -5,6 +5,7 @@ namespace App\PokerSquares;
 use App\Card\CardInterface;
 use App\Exception\InvalidSlotException;
 use App\Entity\Board;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**

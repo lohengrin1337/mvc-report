@@ -12,6 +12,7 @@ class PokerSquareRulesTest extends TestCase
 {
     private RuleCollectionInterface $pokerSquareRules;
 
+    /** @var mixed[] */
     private array $cardStubs = [];
 
     protected function setUp(): void

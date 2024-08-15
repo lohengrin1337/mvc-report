@@ -12,8 +12,10 @@ class ConfirmDeleteTypeTest extends TypeTestCase
 {
     /**
      * preload form type
+     * 
+     * @return PreloadedExtension[]
      */
-    protected function getExtensions()
+    protected function getExtensions(): array
     {
         $type = new ConfirmDeleteType();
 
@@ -26,7 +28,7 @@ class ConfirmDeleteTypeTest extends TypeTestCase
     /**
      * submit default
      */
-    public function testSubmitValidData()
+    public function testSubmitValidData(): void
     {
         $formData = [];
         $form = $this->factory->create(ConfirmDeleteType::class);
@@ -45,7 +47,7 @@ class ConfirmDeleteTypeTest extends TypeTestCase
     /**
      * submit custom
      */
-    public function testSubmitCustomOptions()
+    public function testSubmitCustomOptions(): void
     {
         $formData = [];
         $customOptions = [

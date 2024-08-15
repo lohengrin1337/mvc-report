@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 class InitCpuPlayerServiceDbTest extends KernelTestCase
 {
     private InitCpuPlayerService $initService;
-    private ?EntityManagerInterface $entityManager = null;
+    private EntityManagerInterface $entityManager;
     private PlayerRepository $playerRepo;
 
     protected function setup(): void
@@ -23,7 +23,7 @@ class InitCpuPlayerServiceDbTest extends KernelTestCase
         self::bootKernel();
 
         // set reset service, entity manager
-        $this->entityManager = self::getContainer()->get('doctrine')->getManager();
+        $this->entityManager = self::getContainer()->get('doctrine')->getManager(); // @phpstan-ignore-line
         $this->playerRepo = $this->entityManager->getRepository(Player::class);
 
         // create the InitCpuPlayerService instance
@@ -64,7 +64,6 @@ class InitCpuPlayerServiceDbTest extends KernelTestCase
 
         // close entity manager
         $this->entityManager->close();
-        $this->entityManager = null;
     }
 
 

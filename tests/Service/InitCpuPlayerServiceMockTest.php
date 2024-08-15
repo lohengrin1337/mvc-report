@@ -5,6 +5,7 @@ namespace App\Service;
 use App\Entity\Player;
 use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -13,17 +14,24 @@ use PHPUnit\Framework\TestCase;
 class InitCpuPlayerServiceMockTest extends TestCase
 {
     private InitCpuPlayerService $initService;
-    private EntityManagerInterface $entityManagerMock;
-    private PlayerRepository $playerRepoStub;
+    private MockObject $entityManagerMock;
+
+    /** @var MockObject|PlayerRepository */
+    private $playerRepoStub;
+
+    private Player|null $player = null;
 
     protected function setUp(): void
     {
         $this->entityManagerMock = $this->createMock(EntityManagerInterface::class);
         $this->playerRepoStub = $this->createStub(PlayerRepository::class);
 
-        // by default no player will be returned
-        $this->playerRepoStub->method("getPlayerByLevel")->willReturn(null);
+        // mock getPlayerByLevel() to return $this->$player
+        $this->playerRepoStub->method("getPlayerByLevel")->willReturnCallback(function() {
+            return $this->player;
+        });
 
+    
         $this->initService = new InitCpuPlayerService(
             $this->entityManagerMock,
             $this->playerRepoStub
@@ -47,6 +55,9 @@ class InitCpuPlayerServiceMockTest extends TestCase
      */
     public function addNoMissingPlayers(): void
     {
+        // a player will always be returned from playerrepo::getPlayerByLevel
+        $this->player = $this->createStub(Player::class);
+
         // expect no persist
         $this->entityManagerMock->expects($this->never())
             ->method("persist");
@@ -64,9 +75,6 @@ class InitCpuPlayerServiceMockTest extends TestCase
      */
     public function testAddMissingPlayers(): void
     {
-        $playerStub = $this->createStub(Player::class);
-        $this->playerRepoStub->method("getPlayerByLevel")->willReturn($playerStub);
-
         // expect persist x3
         $this->entityManagerMock->expects($this->exactly(3))
             ->method("persist")

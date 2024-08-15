@@ -2,6 +2,7 @@
 
 namespace App\Card;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -11,7 +12,7 @@ class CardHandTest extends TestCase
 {
     private CardHand $hand;
 
-    private CardDeck $deckStub; // top card = ♥7
+    private MockObject $deckStub; // top card = ♥7
 
     protected function setUp(): void
     {

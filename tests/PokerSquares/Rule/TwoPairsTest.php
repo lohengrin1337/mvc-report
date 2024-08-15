@@ -3,6 +3,7 @@
 namespace App\PokerSquares\Rule;
 
 use App\Card\CardInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -12,6 +13,7 @@ class TwoPairsTest extends TestCase
 {
     private TwoPairs $rule;
 
+    /** @var mixed[] */
     private array $cardStubs = [];
 
     protected function setUp(): void

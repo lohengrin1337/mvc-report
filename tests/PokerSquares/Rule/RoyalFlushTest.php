@@ -12,6 +12,7 @@ class RoyalFlushTest extends TestCase
 {
     private RoyalFlush $rule;
 
+    /** @var mixed[] */
     private array $cardStubs = [];
 
     protected function setUp(): void

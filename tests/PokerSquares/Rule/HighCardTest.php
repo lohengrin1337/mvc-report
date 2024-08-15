@@ -12,6 +12,7 @@ class HighCardTest extends TestCase
 {
     private HighCard $rule;
 
+    /** @var mixed[] */
     private array $cardStubs = [];
 
     protected function setUp(): void

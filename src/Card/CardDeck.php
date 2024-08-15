@@ -102,12 +102,12 @@ class CardDeck
     /**
      * Peak at the top card of the deck
      *
-     * @return CardInterface
+     * @return CardInterface|null
      */
-    public function peak(): CardInterface
+    public function peak(): ?CardInterface
     {
         if (!end($this->cards)) {
-            return "";
+            return null;
         }
         return end($this->cards);
     }

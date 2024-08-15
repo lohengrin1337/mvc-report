@@ -12,6 +12,7 @@ class StraightTest extends TestCase
 {
     private Straight $rule;
 
+    /** @var mixed[] */
     private array $cardStubs = [];
 
     protected function setUp(): void

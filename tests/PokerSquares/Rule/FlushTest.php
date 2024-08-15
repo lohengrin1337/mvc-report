@@ -12,6 +12,7 @@ class FlushTest extends TestCase
 {
     private Flush $flushRule;
 
+    /** @var mixed[] */
     private array $cardStubs = [];
 
     protected function setUp(): void

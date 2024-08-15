@@ -12,6 +12,7 @@ class FullHouseTest extends TestCase
 {
     private FullHouse $rule;
 
+    /** @var mixed[] */
     private array $cardStubs = [];
 
     protected function setUp(): void

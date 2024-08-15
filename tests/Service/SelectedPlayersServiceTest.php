@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class SelectedPlayersServiceTest extends KernelTestCase
 {
     private SelectedPlayersService $spService;
-    private ?EntityManagerInterface $entityManager = null;
+    private EntityManagerInterface $entityManager;
     private PlayerRepository $playerRepo;
     private SessionInterface $sessionStub;
 
@@ -25,7 +25,7 @@ class SelectedPlayersServiceTest extends KernelTestCase
         self::bootKernel();
 
         // set entity manager, player repo and session stub
-        $this->entityManager = self::getContainer()->get('doctrine')->getManager();
+        $this->entityManager = self::getContainer()->get('doctrine')->getManager(); // @phpstan-ignore-line
         $this->playerRepo = $this->entityManager->getRepository(Player::class);
         $this->sessionStub = $this->createStub(SessionInterface::class);
 
@@ -73,7 +73,6 @@ class SelectedPlayersServiceTest extends KernelTestCase
 
         // close entity manager
         $this->entityManager->close();
-        $this->entityManager = null;
     }
 
 

@@ -10,8 +10,11 @@ use PHPUnit\Framework\TestCase;
  */
 class Cpu2Test extends TestCase
 {
+    /** @var mixed[] */    
     private array $board = [];
-    private CardInterface $cardStub;
+
+    /** @var mixed */
+    private $cardStub;
 
     protected function setUp(): void
     {
@@ -46,7 +49,7 @@ class Cpu2Test extends TestCase
     {
         // populate the hearts column (col1)
         foreach ($this->board as $slot => $card) {
-            if (str_ends_with($slot, 1)) {
+            if (str_ends_with($slot, "1")) {
                 $this->board[$slot] = $this->cardStub;
             }
         }
@@ -64,7 +67,7 @@ class Cpu2Test extends TestCase
     {
         // populate the hearts column (col1), and trash column (col5)
         foreach ($this->board as $slot => $card) {
-            if (str_ends_with($slot, 1) || str_ends_with($slot, 5)) {
+            if (str_ends_with($slot, "1") || str_ends_with($slot, "5")) {
                 $this->board[$slot] = $this->cardStub;
             }
         }

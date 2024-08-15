@@ -6,18 +6,20 @@ use App\Entity\Player;
 use App\Repository\PlayerRepository;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * Test cases for Player Select Form.
  */
 class PlayerSelectTypeTest extends TypeTestCase
 {
-    private $playerRepository;
+    /** @var mixed */
+    private $playerRepoStub;
 
     protected function setUp(): void
     {
         // mock playerrepo
-        $this->playerRepository = $this->createStub(PlayerRepository::class);
+        $this->playerRepoStub = $this->createStub(PlayerRepository::class);
         parent::setUp();
     }
 
@@ -25,10 +27,12 @@ class PlayerSelectTypeTest extends TypeTestCase
 
     /**
      * preload form type
+     * 
+     * @return PreloadedExtension[]
      */
-    protected function getExtensions()
+    protected function getExtensions(): array
     {
-        $formType = new PlayerSelectType($this->playerRepository);
+        $formType = new PlayerSelectType($this->playerRepoStub);
 
         return [
             new PreloadedExtension([$formType], []),
@@ -40,14 +44,15 @@ class PlayerSelectTypeTest extends TypeTestCase
     /**
      * submit default, and verify player
      */
-    public function testSubmitValidData()
+    public function testSubmitValidData(): void
     {
         // mock players and connect to repo
         $player1 = $this->createStub(Player::class);
         $player1->method("getName")->willReturn('John Doe');
         $player2 = $this->createStub(Player::class);
         $player2->method("getName")->willReturn('Jane Doe');
-        $this->playerRepository->method("getAllSortedByName")->willReturn([$player1, $player2]);
+        $this->playerRepoStub->method("getAllSortedByName")
+            ->willReturn([$player1, $player2]);
 
         $formData = [
             'player' => 'John Doe',
@@ -73,7 +78,7 @@ class PlayerSelectTypeTest extends TypeTestCase
     /**
      * submit custom
      */
-    public function testCustomSubmitLabel()
+    public function testCustomSubmitLabel(): void
     {
         $form = $this->factory->create(PlayerSelectType::class, null, ['submit_label' => 'Select Player']);
         $this->assertEquals('Select Player', $form->get('save')->getConfig()->getOption('label'));

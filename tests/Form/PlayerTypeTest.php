@@ -12,8 +12,10 @@ class PlayerTypeTest extends TypeTestCase
 {
     /**
      * preload form type
+     * 
+     * @return PreloadedExtension[]
      */
-    protected function getExtensions()
+    protected function getExtensions(): array
     {
         $formType = new PlayerType();
 
@@ -27,7 +29,7 @@ class PlayerTypeTest extends TypeTestCase
     /**
      * submit default
      */
-    public function testSubmitValidData()
+    public function testSubmitValidData(): void
     {
         $formData = [
             'name' => 'Anonymous',
@@ -61,7 +63,7 @@ class PlayerTypeTest extends TypeTestCase
     /**
      * submit custom
      */
-    public function testCustomSubmitLabel()
+    public function testCustomSubmitLabel(): void
     {
         $form = $this->factory->create(
             PlayerType::class,

@@ -10,8 +10,11 @@ use PHPUnit\Framework\TestCase;
  */
 class Cpu1Test extends TestCase
 {
+    /** @var mixed[] */
     private array $board = [];
-    private CardInterface $cardStub;
+
+    /** @var mixed */
+    private $cardStub;
 
     protected function setUp(): void
     {

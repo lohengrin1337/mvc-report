@@ -12,8 +12,10 @@ class ConfirmTypeTest extends TypeTestCase
 {
     /**
      * preload form type
+     * 
+     * @return PreloadedExtension[]
      */
-    protected function getExtensions()
+    protected function getExtensions(): array
     {
         $type = new ConfirmType();
 
@@ -26,7 +28,7 @@ class ConfirmTypeTest extends TypeTestCase
     /**
      * submit default
      */
-    public function testSubmitValidData()
+    public function testSubmitValidData(): void
     {
         $formData = [];
         $form = $this->factory->create(ConfirmType::class);
@@ -45,7 +47,7 @@ class ConfirmTypeTest extends TypeTestCase
     /**
      * submit custom
      */
-    public function testSubmitCustomOptions()
+    public function testSubmitCustomOptions(): void
     {
         $formData = [];
         $customOptions = [

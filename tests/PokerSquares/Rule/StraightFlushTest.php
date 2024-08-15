@@ -12,6 +12,7 @@ class StraightFlushTest extends TestCase
 {
     private StraightFlush $rule;
 
+    /** @var mixed[] */
     private array $cardStubs = [];
 
     protected function setUp(): void
