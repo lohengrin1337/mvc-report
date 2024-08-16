@@ -10,7 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class InitCpuPlayerService
 {
     /**
-     * @var array CPU_PLAYERS - name and level
+     * @var array<string,int> CPU_PLAYERS - name and level
      */
     public const CPU_PLAYERS = [
         "CPU LÄTT" => 1,

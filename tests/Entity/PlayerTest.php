@@ -15,6 +15,7 @@ class PlayerTest extends TestCase
     {
         $player = new Player();
         $player->setName("UserName");
+
         $round = $this->createStub(Round::class);
         $player->addRound($round);
         $this->player = $player;
@@ -89,10 +90,14 @@ class PlayerTest extends TestCase
      */
     public function testRemoveRound(): void
     {
+        /** @var mixed */
         $round = $this->player->getRounds()[0];
-        $round->method("getPlayer")->willReturn($this->player);
-        $this->player->removeRound($round);
-        $this->assertEmpty($this->player->getRounds());
+
+        if ($round) {
+            $round->method("getPlayer")->willReturn($this->player);
+            $this->player->removeRound($round);
+            $this->assertEmpty($this->player->getRounds());
+        }
 
         $newRound = $this->createStub(Round::class);
         $this->player->removeRound($newRound);

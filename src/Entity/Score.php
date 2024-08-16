@@ -15,8 +15,9 @@ class Score
     #[ORM\Column]
     private ?int $id = null;
 
+    /** @var array<string|int> */
     #[ORM\Column(type: Types::ARRAY)]   // score of the 10 hands
-    private array $hands = [];
+    private array $hands;
 
     #[ORM\Column]                       // total score
     private int $total;
@@ -47,7 +48,7 @@ class Score
     /**
      * Get score for each hand
      *
-     * @return array
+     * @return array<string|int>
      */
     public function getHands(): array
     {

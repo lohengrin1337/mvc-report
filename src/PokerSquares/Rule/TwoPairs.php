@@ -3,6 +3,7 @@
 namespace App\PokerSquares\Rule;
 
 use App\Trait\Nameable;
+use App\Card\CardInterface;
 
 /**
  * Class for two pairs rule

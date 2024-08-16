@@ -12,11 +12,11 @@ class CpuFactory
     /**
      * Get cpu intel of relevant level (name of the class)
      *
-     * @param int $level - cpu level
+     * @param int|null $level - cpu level
      * @throws Exception
      * @return string - class name
      */
-    public static function getCpuIntel(int $level): string
+    public static function getCpuIntel(?int $level): string
     {
         $cpuClassName = __NAMESPACE__ . '\\Cpu' . $level;
 

@@ -2,6 +2,8 @@
 
 namespace App\PokerSquares;
 
+use App\Card\CardInterface;
+use App\PokerSquares\Rule\PokerRuleInterface;
 use App\PokerSquares\Rule\RoyalFlush;
 use App\PokerSquares\Rule\StraightFlush;
 use App\PokerSquares\Rule\FourOfAKind;
@@ -55,12 +57,18 @@ class PokerSquareRules implements RuleCollectionInterface
         // get the actual cards from hand (no null values)
         $cards = array_filter($hand);
 
+        $ruleName = "no-cards";
+        if(!$cards) {
+            return $ruleName;  // occurs if hand is empty
+        }
+
         foreach ($this->rules as $rule) {
             if ($rule->checkHand($cards)) {
-                return $rule->getName();
+                $ruleName = $rule->getName();
+                return $ruleName;
             }
         }
 
-        return "no-cards";  // occurs if hand is empty
+        return $ruleName; // should never happen
     }
 }

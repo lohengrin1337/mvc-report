@@ -2,6 +2,8 @@
 
 namespace App\PokerSquares\Rule;
 
+use App\Card\CardInterface;
+
 /**
  * Has the ability to check if straight rule is met
  */
@@ -9,6 +11,7 @@ trait StraightTrait
 {
     use RankMappingTrait;
 
+    /** @var array<array<int>> */
     private const VALID_STRAIGHTS = [
         [1,2,3,4,5],
         [2,3,4,5,6],
@@ -29,7 +32,7 @@ trait StraightTrait
      * Check if there is at least 5 cards in sequence (ranks)
      *
      * @param CardInterface[] $cards
-     * @param int[] $straights - straights to match
+     * @param array<array<int>> $straights - straights to match
      * @return bool
      */
     private function isAStraight(

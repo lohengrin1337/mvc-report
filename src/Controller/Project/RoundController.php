@@ -78,8 +78,8 @@ class RoundController extends AbstractController
 
         $this->data["game"] = [
             "round" => $round,
-            "board" => $round->getBoard()->getData(),
-            "handScores" => $round->getScore()->getHands()
+            "board" => $round->getBoard()?->getData(),
+            "handScores" => $round->getScore()?->getHands()
         ];
 
         return $this->render("proj/game/single_round.html.twig", $this->data);
@@ -112,7 +112,7 @@ class RoundController extends AbstractController
                     "Runda med id '$id' har tagits bort!"
                 );
                 return $this->redirectToRoute("proj_show_rounds");
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 $this->addFlash("warning", $e->getMessage());
                 return $this->redirectToRoute("proj_delete_round", ['id' => $id]);
             }

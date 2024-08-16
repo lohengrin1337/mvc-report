@@ -12,7 +12,7 @@ use App\Exception\InvalidSlotException;
 class Gameboard
 {
     /**
-     * @var array<int> HANDS_TO_SLOTS - map hands to slots
+     * @var array<array<int>> HANDS_TO_SLOTS - map hands to slots
      */
     private const HANDS_TO_SLOTS = [
         "row1" => [11, 12, 13, 14, 15],
@@ -52,7 +52,7 @@ class Gameboard
     /**
      * Get the gameboard
      *
-     * @return array
+     * @return array<CardInterface|null>
      */
     public function getBoard(): array
     {
@@ -65,12 +65,16 @@ class Gameboard
      * Place a card on the board
      *
      * @param string $slot - row and column as string ("11" means row 1 col 1)
-     * @param CardInterface $card - a playing card
+     * @param CardInterface|null $card - a playing card
      * @throws InvalidSlotException - if slot is invalid
      * @return void
      */
-    public function placeCard(string $slot, CardInterface $card): void
+    public function placeCard(string $slot, ?CardInterface $card): void
     {
+        if (!$card) {
+            return;
+        }
+
         if (!$this->slotIsValid($slot)) {
             throw new InvalidSlotException("'$slot' is not a valid slot on the gameboard!");
         }
@@ -83,7 +87,7 @@ class Gameboard
     /**
      * Get board with cards as strings (for visual representation)
      *
-     * @return array<string>
+     * @return array<string|null>
      */
     public function getBoardView(): array
     {

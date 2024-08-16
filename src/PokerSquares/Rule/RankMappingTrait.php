@@ -2,6 +2,8 @@
 
 namespace App\PokerSquares\Rule;
 
+use App\Card\CardInterface;
+
 /**
  * Has the ability to map the count of cards with the same rank
  */
@@ -16,12 +18,9 @@ trait RankMappingTrait
     private function getRanks(array $cards): array
     {
         // get the rank of all cards
-        $ranks = array_map(
-            function ($card) {
+        $ranks = array_map(function ($card) {
                 return $card->getRank();
-            },
-            $cards
-        );
+            }, $cards);
 
         return $ranks;
     }

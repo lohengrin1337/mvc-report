@@ -35,7 +35,7 @@ class PlayerSelectType extends AbstractType
                     'placeholder' => 'Välj en spelare',
                     'choices' => $players,
                     'choice_value' => 'name',
-                    'choice_label' => function (Player $player): string {
+                    'choice_label' => function (Player $player): string|null {
                         return $player->getName();
                     },
                 ]

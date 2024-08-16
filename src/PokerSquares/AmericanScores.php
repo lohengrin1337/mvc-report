@@ -11,7 +11,7 @@ use InvalidArgumentException;
 class AmericanScores implements ScoreMappingInterface
 {
     /**
-     * @var array SCORE_MAP
+     * @var array<string,int> SCORE_MAP
      */
     private const SCORE_MAP = [
         "royal-flush" => 100,

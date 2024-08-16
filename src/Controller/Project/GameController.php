@@ -107,7 +107,7 @@ class GameController extends AbstractController
                 $this->addFlash("notice", "Spelaren '{$player->getName()}' har lagts till!");
             } catch (UniqueConstraintViolationException $e) {
                 $this->addFlash("warning", "Det finns redan en spelare med namn '{$player->getName()}'!");
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 $this->addFlash("warning", $e->getMessage());
             } finally {
                 return $this->redirectToRoute("proj_game_init");
@@ -248,6 +248,16 @@ class GameController extends AbstractController
         // and needs to be fetched again
         $playerId = $roundData["player"]->getId();
         $player = $playerRepository->find($playerId);
+
+        if(!$player) {
+            $playerName = $roundData["player"]->getName();
+            $this->addFlash(
+                "warning",
+                "Spelaren '$playerName' är raderad. " .
+                "Rundan kan inte sparas!"
+            );
+            return $this->redirectToRoute("proj_game_play");
+        }
 
         $round = new Round();
         $round->setRoundData(

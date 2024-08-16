@@ -31,8 +31,7 @@ class SelectedPlayersServiceTest extends KernelTestCase
 
         // create the SelectedPlayersService instance
         $this->spService = new SelectedPlayersService(
-            $this->entityManager,
-            $this->playerRepo,
+            $this->playerRepo
         );
 
         // set up schema tool

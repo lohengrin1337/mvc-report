@@ -43,7 +43,7 @@ class ResetDatabaseService
     /**
      * Reset database by removing all players and related rounds
      *
-     * @return array response
+     * @return array<string,string> response
      */
     public function reset(): array
     {

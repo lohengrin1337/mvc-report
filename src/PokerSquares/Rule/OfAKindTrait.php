@@ -2,6 +2,8 @@
 
 namespace App\PokerSquares\Rule;
 
+use App\Card\CardInterface;
+
 trait OfAKindTrait
 {
     use RankMappingTrait;

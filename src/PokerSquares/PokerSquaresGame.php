@@ -42,9 +42,9 @@ class PokerSquaresGame
     private Score $score;
 
     /**
-     * @var GameBoard $gameboard - represents the 5x5 gameboard
+     * @var Gameboard $gameboard - represents the 5x5 gameboard
      */
-    private GameBoard $gameboard;
+    private Gameboard $gameboard;
 
     /**
      * @var Player $player
@@ -78,7 +78,7 @@ class PokerSquaresGame
      * @param RuleCollectionInterface $rules - set of rules
      * @param ScoreMappingInterface $scoreMapper
      * @param Score $score
-     * @param GameBoard $gameboard
+     * @param Gameboard $gameboard
      * @param Player $player
      * @param CardDeck $deck
      */
@@ -86,7 +86,7 @@ class PokerSquaresGame
         RuleCollectionInterface $rules,
         ScoreMappingInterface $scoreMapper,
         Score $score,
-        GameBoard $gameboard,
+        Gameboard $gameboard,
         Player $player,
         CardDeck $deck
     ) {
@@ -117,7 +117,7 @@ class PokerSquaresGame
             "player" => $this->player->getName(),
             "playerType" => $this->player->getType(),
             "cardBack" => $this->deck->getCardBack(),
-            "card" => $this->deck->peak()->getAsString(),
+            "card" => $this->deck->peak()?->getAsString() ?? "",
             "board" => $this->gameboard->getBoardView(),
             "handScores" => $this->score->getHands(),
             "totalScore" => $this->score->getTotal(),
@@ -259,9 +259,9 @@ class PokerSquaresGame
     /**
      * Get cpu level
      *
-     * @return int
+     * @return int|null
      */
-    private function getCpuLevel(): int
+    private function getCpuLevel(): ?int
     {
         return $this->player->getLevel();
     }
@@ -275,6 +275,10 @@ class PokerSquaresGame
      */
     public function cpuPlay(): void
     {
+        if (!$this->cpuIntel) {
+            return;
+        }
+    
         // use static method of cpu intel class
         $slot = $this->cpuIntel::suggestPlacement(
             $this->gameboard->getBoard(),

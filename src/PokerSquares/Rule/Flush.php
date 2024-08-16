@@ -2,6 +2,7 @@
 
 namespace App\PokerSquares\Rule;
 
+use App\Card\CardInterface;
 use App\Trait\Nameable;
 
 /**

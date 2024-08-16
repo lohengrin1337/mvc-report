@@ -7,7 +7,7 @@ use App\Card\CardInterface;
 class Cpu2 implements CpuLogicInterface
 {
     /**
-     * @var array SUIT_TO_COL - maps every suit to a preferred column
+     * @var array<string,int> SUIT_TO_COL - maps every suit to a preferred column
      */
     private const SUIT_TO_COL = [
         "hearts" => 1,
@@ -21,11 +21,15 @@ class Cpu2 implements CpuLogicInterface
      * Cpu2 always tries to get flush in columns 1-4
      *
      * @param array<CardInterface|null> $board - slots and cards
-     * @param CardInterface $card - the top card of the deck
+     * @param CardInterface|null $card - the top card of the deck
      * @return int|null
      */
-    public static function suggestPlacement(array $board, CardInterface $card): ?int
+    public static function suggestPlacement(array $board, ?CardInterface $card): ?int
     {
+        if (!$card) {
+            return null;
+        }
+
         // step 1 - find an empty slot in a matching column
         $slot = self::findPreferredSlot($board, $card);
 
@@ -48,9 +52,9 @@ class Cpu2 implements CpuLogicInterface
      * Get the preferred column for a card
      *
      * @param CardInterface $card
-     * @return string
+     * @return int
      */
-    protected static function getPreferredColumn(CardInterface $card): string
+    protected static function getPreferredColumn(CardInterface $card): int
     {
         $suit = $card->getSuit();
         return self::SUIT_TO_COL[$suit];
@@ -60,7 +64,7 @@ class Cpu2 implements CpuLogicInterface
     /**
      * find an empty slot in the preferred column
      *
-     * @param array $board
+     * @param array<CardInterface|null> $board
      * @param CardInterface $card
      * @return int|null
      */
@@ -70,7 +74,7 @@ class Cpu2 implements CpuLogicInterface
 
         foreach ($board as $slot => $card) {
             if (
-                str_ends_with($slot, $preferredCol) &&
+                str_ends_with($slot, (string) $preferredCol) &&
                 is_null($card)
             ) {
                 return $slot;
@@ -84,12 +88,12 @@ class Cpu2 implements CpuLogicInterface
     /**
      * Find a slot in 'trash column' col 5
      *
-     * @param array $board
+     * @param array<CardInterface|null> $board
      * @return int|null
      */
     protected static function findTrashSlot(array $board): ?int
     {
-        $col = 5;
+        $col = "5";
 
         // find an empty slot in col5
         foreach ($board as $slot => $card) {
@@ -108,7 +112,7 @@ class Cpu2 implements CpuLogicInterface
     /**
      * Find any empty slot
      *
-     * @param array $board
+     * @param array<CardInterface|null> $board
      * @return int|null
      */
     protected static function findFirstEmpty(array $board): ?int

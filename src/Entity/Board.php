@@ -14,6 +14,7 @@ class Board
     #[ORM\Column]
     private ?int $id = null;
 
+    /** @var array<string|null> $data */
     #[ORM\Column(type: Types::ARRAY)]
     private array $data = [];
 
@@ -22,11 +23,13 @@ class Board
         return $this->id;
     }
 
+    /** @return array<string|null> */
     public function getData(): array
     {
         return $this->data;
     }
 
+    /** @param array<string|null> $data */
     public function setData(array $data): static
     {
         $this->data = $data;

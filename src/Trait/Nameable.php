@@ -14,7 +14,7 @@ trait Nameable
     /**
      * Get name
      *
-     * @return string - the name
+     * @return string $name
      */
     public function getName(): string
     {
@@ -26,7 +26,7 @@ trait Nameable
     /**
      * Set name
      *
-     * @param string - a name
+     * @param string $name
      * @return void
      */
     private function setName(string $name): void

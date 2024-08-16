@@ -2,6 +2,9 @@
 
 namespace App\PokerSquares\Rule;
 
+use App\Card\CardInterface;
+
+
 /**
  * Has the ability to check if flush rule is met
  */

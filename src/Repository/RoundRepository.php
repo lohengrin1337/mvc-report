@@ -21,7 +21,7 @@ class RoundRepository extends ServiceEntityRepository
     /**
      * Get rounds ordered by score DESC
      *
-     * @param $limit - max num of rounds
+     * @param int $limit - max num of rounds
      * @return Round[] Returns an array of Round objects
      */
     public function getTopRounds($limit = 1000): array
@@ -40,7 +40,7 @@ class RoundRepository extends ServiceEntityRepository
     /**
      * Get rounds ordered by date DESC
      *
-     * @param $limit - max num of rounds
+     * @param int $limit - max num of rounds
      * @return Round[] Returns an array of Round objects
      */
     public function getLatestRounds($limit = 1000): array

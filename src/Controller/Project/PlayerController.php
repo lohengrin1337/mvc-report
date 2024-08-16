@@ -79,7 +79,7 @@ class PlayerController extends AbstractController
     ): Response {
         $player = $playerRepository->find($id) ?? null;
         if (!$player) {
-            $this->addFlash("warning", "Det finns ingen spelare med id '$playerId'!");
+            $this->addFlash("warning", "Det finns ingen spelare med id '$id'!");
             return $this->redirectToRoute("proj_show_players");
         }
 
@@ -110,7 +110,7 @@ class PlayerController extends AbstractController
             } catch (UniqueConstraintViolationException $e) {
                 $this->addFlash("warning", "Det finns redan en spelare med namn '{$player->getName()}'!");
                 return $this->redirectToRoute("proj_create_player");
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 $this->addFlash("warning", $e->getMessage());
                 return $this->redirectToRoute("proj_create_player");
             }
@@ -156,7 +156,7 @@ class PlayerController extends AbstractController
             } catch (UniqueConstraintViolationException $e) {
                 $this->addFlash("warning", "Det finns en annan spelare med namnet '{$player->getName()}'!");
                 return $this->redirectToRoute("proj_edit_player", ['id' => $id]);
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 $this->addFlash("warning", $e->getMessage());
                 return $this->redirectToRoute("proj_edit_player", ['id' => $id]);
             }
@@ -204,7 +204,7 @@ class PlayerController extends AbstractController
                         "Spelaren '$playerName' samt relaterade rundor ($roundCount) har tagits bort!"
                     );
                     return $this->redirectToRoute("proj_show_players");
-                } catch (Exception $e) {
+                } catch (\Exception $e) {
                     $this->addFlash("warning", $e->getMessage());
                     return $this->redirectToRoute("proj_delete_player", ['id' => $id]);
                 }

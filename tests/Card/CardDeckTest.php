@@ -102,6 +102,7 @@ class CardDeckTest extends TestCase
         $deck->sort();
         $res = $deck->peak();
 
+        $this->assertInstanceOf(CardInterface::class, $res);
         $this->assertEquals("svg-card-kc", $res->getAsString());
     }
 }

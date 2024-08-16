@@ -12,11 +12,15 @@ class Cpu3 extends Cpu2 implements CpuLogicInterface
      * and also put the card in a row with most cards of same rank
      *
      * @param array<CardInterface|null> $board - slots and cards
-     * @param CardInterface $card - the top card of the deck
+     * @param CardInterface|null $card - the top card of the deck
      * @return int|null
      */
-    public static function suggestPlacement(array $board, CardInterface $card): ?int
+    public static function suggestPlacement(array $board, ?CardInterface $card): ?int
     {
+        if (!$card) {
+            return null;
+        }
+
         // step 1 - find an empty slot in a matching column and preferred row
         $slot = self::findPreferredSlot($board, $card);
 

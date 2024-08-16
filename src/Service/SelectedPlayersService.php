@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Player;
 use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -12,24 +13,17 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class SelectedPlayersService
 {
     /**
-     * @var EntityManagerInterface $entityManager
-     */
-    private EntityManagerInterface $entityManager;
-
-    /**
      * @var PlayerRepository $playerRepo;
      */
     private PlayerRepository $playerRepo;
 
     /**
      * Constructor
-     * Add entity manager, player repository
+     * Add player repository
      */
     public function __construct(
-        EntityManagerInterface $entityManager,
         PlayerRepository $playerRepo,
     ) {
-        $this->entityManager = $entityManager;
         $this->playerRepo = $playerRepo;
     }
 
@@ -37,7 +31,7 @@ class SelectedPlayersService
     /**
      * Get all selected players from session that are existing in database
      *
-     * @return array players
+     * @return Player[] players
      */
     public function getSelectedPlayers(SessionInterface $session): array
     {
