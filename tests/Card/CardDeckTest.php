@@ -105,4 +105,21 @@ class CardDeckTest extends TestCase
         $this->assertInstanceOf(CardInterface::class, $res);
         $this->assertEquals("svg-card-kc", $res->getAsString());
     }
+
+
+
+    /**
+     * peak empty deck
+     */
+    public function testPeakEmpty(): void
+    {
+        // create new deck
+        $deck = new CardDeck(CardSvg::class);
+
+        for ($i = 0; $i < 52; $i++) {
+            $deck->draw(); // empty the deck
+        }
+
+        $this->assertNull($deck->peak());
+    }
 }

@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1723878507">
-  <project timestamp="1723878507">
+<coverage generated="1723883108">
+  <project timestamp="1723883108">
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="14" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
       </class>
       <line num="71" type="method" name="getCardBack" visibility="public" complexity="1" crap="1" count="12"/>
       <line num="73" type="stmt" count="12"/>
-      <line num="104" type="method" name="suitIsValid" visibility="protected" complexity="2" crap="2" count="31"/>
-      <line num="106" type="stmt" count="31"/>
+      <line num="104" type="method" name="suitIsValid" visibility="protected" complexity="2" crap="2" count="32"/>
+      <line num="106" type="stmt" count="32"/>
       <line num="107" type="stmt" count="1"/>
-      <line num="110" type="stmt" count="31"/>
-      <line num="120" type="method" name="rankIsValid" visibility="protected" complexity="2" crap="2" count="31"/>
-      <line num="122" type="stmt" count="31"/>
+      <line num="110" type="stmt" count="32"/>
+      <line num="120" type="method" name="rankIsValid" visibility="protected" complexity="2" crap="2" count="32"/>
+      <line num="122" type="stmt" count="32"/>
       <line num="123" type="stmt" count="2"/>
-      <line num="126" type="stmt" count="31"/>
-      <line num="139" type="method" name="__construct" visibility="public" complexity="3" crap="3" count="31"/>
-      <line num="153" type="stmt" count="31"/>
+      <line num="126" type="stmt" count="32"/>
+      <line num="139" type="method" name="__construct" visibility="public" complexity="3" crap="3" count="32"/>
+      <line num="153" type="stmt" count="32"/>
       <line num="154" type="stmt" count="1"/>
-      <line num="156" type="stmt" count="31"/>
+      <line num="156" type="stmt" count="32"/>
       <line num="157" type="stmt" count="1"/>
-      <line num="160" type="stmt" count="31"/>
-      <line num="161" type="stmt" count="31"/>
+      <line num="160" type="stmt" count="32"/>
+      <line num="161" type="stmt" count="32"/>
       <line num="194" type="method" name="getSuit" visibility="public" complexity="1" crap="1" count="4"/>
       <line num="196" type="stmt" count="4"/>
       <line num="206" type="method" name="getRank" visibility="public" complexity="1" crap="1" count="8"/>
@@ -41,37 +41,37 @@
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/CardDeck.php">
       <class name="App\Card\CardDeck" namespace="global">
-        <metrics complexity="16" methods="11" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="34" elements="46" coveredelements="44"/>
+        <metrics complexity="16" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="35" elements="46" coveredelements="46"/>
       </class>
-      <line num="29" type="method" name="allSuits" visibility="public" complexity="1" crap="1" count="17"/>
-      <line num="31" type="stmt" count="17"/>
-      <line num="32" type="stmt" count="17"/>
-      <line num="33" type="stmt" count="17"/>
-      <line num="34" type="stmt" count="17"/>
-      <line num="35" type="stmt" count="17"/>
-      <line num="36" type="stmt" count="17"/>
-      <line num="46" type="method" name="allRanks" visibility="public" complexity="1" crap="1" count="17"/>
-      <line num="48" type="stmt" count="17"/>
-      <line num="59" type="method" name="__construct" visibility="public" complexity="4" crap="4" count="17"/>
-      <line num="61" type="stmt" count="17"/>
+      <line num="29" type="method" name="allSuits" visibility="public" complexity="1" crap="1" count="18"/>
+      <line num="31" type="stmt" count="18"/>
+      <line num="32" type="stmt" count="18"/>
+      <line num="33" type="stmt" count="18"/>
+      <line num="34" type="stmt" count="18"/>
+      <line num="35" type="stmt" count="18"/>
+      <line num="36" type="stmt" count="18"/>
+      <line num="46" type="method" name="allRanks" visibility="public" complexity="1" crap="1" count="18"/>
+      <line num="48" type="stmt" count="18"/>
+      <line num="59" type="method" name="__construct" visibility="public" complexity="4" crap="4" count="18"/>
+      <line num="61" type="stmt" count="18"/>
       <line num="62" type="stmt" count="1"/>
-      <line num="65" type="stmt" count="17"/>
-      <line num="67" type="stmt" count="17"/>
-      <line num="68" type="stmt" count="17"/>
-      <line num="69" type="stmt" count="17"/>
-      <line num="72" type="stmt" count="17"/>
+      <line num="65" type="stmt" count="18"/>
+      <line num="67" type="stmt" count="18"/>
+      <line num="68" type="stmt" count="18"/>
+      <line num="69" type="stmt" count="18"/>
+      <line num="72" type="stmt" count="18"/>
       <line num="83" type="method" name="getCardBack" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="85" type="stmt" count="3"/>
-      <line num="95" type="method" name="add" visibility="protected" complexity="1" crap="1" count="17"/>
-      <line num="97" type="stmt" count="17"/>
-      <line num="107" type="method" name="peak" visibility="public" complexity="2" crap="2.15" count="1"/>
-      <line num="109" type="stmt" count="1"/>
-      <line num="110" type="stmt" count="0"/>
+      <line num="95" type="method" name="add" visibility="protected" complexity="1" crap="1" count="18"/>
+      <line num="97" type="stmt" count="18"/>
+      <line num="107" type="method" name="peak" visibility="public" complexity="2" crap="2" count="2"/>
+      <line num="109" type="stmt" count="2"/>
+      <line num="110" type="stmt" count="1"/>
       <line num="112" type="stmt" count="1"/>
-      <line num="122" type="method" name="draw" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="124" type="stmt" count="2"/>
-      <line num="132" type="method" name="shuffle" visibility="public" complexity="1" crap="1" count="17"/>
-      <line num="134" type="stmt" count="17"/>
+      <line num="122" type="method" name="draw" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="124" type="stmt" count="3"/>
+      <line num="132" type="method" name="shuffle" visibility="public" complexity="1" crap="1" count="18"/>
+      <line num="134" type="stmt" count="18"/>
       <line num="142" type="method" name="sort" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="145" type="stmt" count="3"/>
       <line num="146" type="stmt" count="3"/>
@@ -89,7 +89,7 @@
       <line num="182" type="stmt" count="2"/>
       <line num="183" type="stmt" count="2"/>
       <line num="186" type="stmt" count="2"/>
-      <metrics loc="189" ncloc="122" classes="1" methods="11" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="34" elements="46" coveredelements="44"/>
+      <metrics loc="189" ncloc="122" classes="1" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="35" elements="46" coveredelements="46"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/CardGame21.php">
       <class name="App\Card\CardGame21" namespace="global">
@@ -173,8 +173,8 @@
       <class name="App\Card\CardGraphic" namespace="global">
         <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
       </class>
-      <line num="37" type="method" name="getCardBack" visibility="public" complexity="1" crap="1" count="7"/>
-      <line num="39" type="stmt" count="7"/>
+      <line num="37" type="method" name="getCardBack" visibility="public" complexity="1" crap="1" count="8"/>
+      <line num="39" type="stmt" count="8"/>
       <line num="49" type="method" name="getAsString" visibility="public" complexity="2" crap="2" count="4"/>
       <line num="51" type="stmt" count="4"/>
       <line num="53" type="stmt" count="4"/>
@@ -221,8 +221,8 @@
       <class name="App\Card\CardSvg" namespace="global">
         <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="8" coveredelements="8"/>
       </class>
-      <line num="43" type="method" name="getCardBack" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="45" type="stmt" count="2"/>
+      <line num="43" type="method" name="getCardBack" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="45" type="stmt" count="3"/>
       <line num="55" type="method" name="getAsString" visibility="public" complexity="2" crap="2" count="3"/>
       <line num="58" type="stmt" count="3"/>
       <line num="59" type="stmt" count="3"/>
@@ -230,1117 +230,6 @@
       <line num="64" type="stmt" count="3"/>
       <line num="66" type="stmt" count="3"/>
       <metrics loc="69" ncloc="45" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="8" coveredelements="8"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/ApiController.php">
-      <class name="App\Controller\ApiController" namespace="global">
-        <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="0" elements="16" coveredelements="0"/>
-      </class>
-      <line num="47" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <line num="60" type="method" name="updateQuote" visibility="private" complexity="1" crap="2" count="0"/>
-      <line num="62" type="stmt" count="0"/>
-      <line num="63" type="stmt" count="0"/>
-      <line num="65" type="stmt" count="0"/>
-      <line num="77" type="method" name="updateTime" visibility="private" complexity="1" crap="2" count="0"/>
-      <line num="79" type="stmt" count="0"/>
-      <line num="80" type="stmt" count="0"/>
-      <line num="82" type="stmt" count="0"/>
-      <line num="83" type="stmt" count="0"/>
-      <line num="91" type="method" name="quote" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="94" type="stmt" count="0"/>
-      <line num="95" type="stmt" count="0"/>
-      <line num="96" type="stmt" count="0"/>
-      <line num="98" type="stmt" count="0"/>
-      <metrics loc="101" ncloc="74" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="0" elements="16" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/CardApiController.php">
-      <class name="App\Controller\CardApiController" namespace="global">
-        <metrics complexity="9" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="41" coveredstatements="0" elements="45" coveredelements="0"/>
-      </class>
-      <line num="22" type="method" name="apiDeck" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="40" type="method" name="apiDeckShuffle" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="47" type="stmt" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <line num="50" type="stmt" count="0"/>
-      <line num="51" type="stmt" count="0"/>
-      <line num="53" type="stmt" count="0"/>
-      <line num="58" type="method" name="apiDeckDraw" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="63" type="stmt" count="0"/>
-      <line num="69" type="stmt" count="0"/>
-      <line num="70" type="stmt" count="0"/>
-      <line num="71" type="stmt" count="0"/>
-      <line num="74" type="stmt" count="0"/>
-      <line num="75" type="stmt" count="0"/>
-      <line num="76" type="stmt" count="0"/>
-      <line num="78" type="stmt" count="0"/>
-      <line num="79" type="stmt" count="0"/>
-      <line num="80" type="stmt" count="0"/>
-      <line num="81" type="stmt" count="0"/>
-      <line num="83" type="stmt" count="0"/>
-      <line num="85" type="stmt" count="0"/>
-      <line num="90" type="method" name="apiDeckDeal" visibility="public" complexity="5" crap="30" count="0"/>
-      <line num="95" type="stmt" count="0"/>
-      <line num="96" type="stmt" count="0"/>
-      <line num="97" type="stmt" count="0"/>
-      <line num="99" type="stmt" count="0"/>
-      <line num="100" type="stmt" count="0"/>
-      <line num="101" type="stmt" count="0"/>
-      <line num="103" type="stmt" count="0"/>
-      <line num="104" type="stmt" count="0"/>
-      <line num="105" type="stmt" count="0"/>
-      <line num="108" type="stmt" count="0"/>
-      <line num="109" type="stmt" count="0"/>
-      <line num="110" type="stmt" count="0"/>
-      <line num="111" type="stmt" count="0"/>
-      <line num="112" type="stmt" count="0"/>
-      <line num="114" type="stmt" count="0"/>
-      <line num="115" type="stmt" count="0"/>
-      <line num="117" type="stmt" count="0"/>
-      <line num="119" type="stmt" count="0"/>
-      <metrics loc="151" ncloc="115" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="41" coveredstatements="0" elements="45" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/CardController.php">
-      <class name="App\Controller\CardController" namespace="global">
-        <metrics complexity="15" methods="8" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="62" coveredstatements="0" elements="70" coveredelements="0"/>
-      </class>
-      <line num="29" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
-      <line num="53" type="method" name="drawCards" visibility="private" complexity="2" crap="6" count="0"/>
-      <line num="55" type="stmt" count="0"/>
-      <line num="56" type="stmt" count="0"/>
-      <line num="57" type="stmt" count="0"/>
-      <line num="58" type="stmt" count="0"/>
-      <line num="59" type="stmt" count="0"/>
-      <line num="60" type="stmt" count="0"/>
-      <line num="63" type="stmt" count="0"/>
-      <line num="65" type="stmt" count="0"/>
-      <line num="66" type="stmt" count="0"/>
-      <line num="71" type="method" name="start" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="74" type="stmt" count="0"/>
-      <line num="77" type="stmt" count="0"/>
-      <line num="78" type="stmt" count="0"/>
-      <line num="79" type="stmt" count="0"/>
-      <line num="80" type="stmt" count="0"/>
-      <line num="81" type="stmt" count="0"/>
-      <line num="84" type="stmt" count="0"/>
-      <line num="89" type="method" name="deck" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="92" type="stmt" count="0"/>
-      <line num="94" type="stmt" count="0"/>
-      <line num="95" type="stmt" count="0"/>
-      <line num="96" type="stmt" count="0"/>
-      <line num="99" type="stmt" count="0"/>
-      <line num="100" type="stmt" count="0"/>
-      <line num="101" type="stmt" count="0"/>
-      <line num="103" type="stmt" count="0"/>
-      <line num="108" type="method" name="deckShuffle" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="111" type="stmt" count="0"/>
-      <line num="120" type="stmt" count="0"/>
-      <line num="121" type="stmt" count="0"/>
-      <line num="122" type="stmt" count="0"/>
-      <line num="123" type="stmt" count="0"/>
-      <line num="125" type="stmt" count="0"/>
-      <line num="130" type="method" name="deckDraw" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="133" type="stmt" count="0"/>
-      <line num="135" type="stmt" count="0"/>
-      <line num="136" type="stmt" count="0"/>
-      <line num="137" type="stmt" count="0"/>
-      <line num="140" type="stmt" count="0"/>
-      <line num="141" type="stmt" count="0"/>
-      <line num="142" type="stmt" count="0"/>
-      <line num="147" type="method" name="deckDrawNum" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="152" type="stmt" count="0"/>
-      <line num="154" type="stmt" count="0"/>
-      <line num="155" type="stmt" count="0"/>
-      <line num="156" type="stmt" count="0"/>
-      <line num="159" type="stmt" count="0"/>
-      <line num="160" type="stmt" count="0"/>
-      <line num="161" type="stmt" count="0"/>
-      <line num="166" type="method" name="deckDeal" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="172" type="stmt" count="0"/>
-      <line num="174" type="stmt" count="0"/>
-      <line num="175" type="stmt" count="0"/>
-      <line num="176" type="stmt" count="0"/>
-      <line num="179" type="stmt" count="0"/>
-      <line num="180" type="stmt" count="0"/>
-      <line num="181" type="stmt" count="0"/>
-      <line num="182" type="stmt" count="0"/>
-      <line num="184" type="stmt" count="0"/>
-      <line num="186" type="stmt" count="0"/>
-      <metrics loc="189" ncloc="163" classes="1" methods="8" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="62" coveredstatements="0" elements="70" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/DiceGameController.php">
-      <class name="App\Controller\DiceGameController" namespace="global">
-        <metrics complexity="17" methods="10" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="79" coveredstatements="0" elements="89" coveredelements="0"/>
-      </class>
-      <line num="34" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
-      <line num="39" type="stmt" count="0"/>
-      <line num="44" type="method" name="home" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="47" type="stmt" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <line num="54" type="method" name="testRollDice" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="57" type="stmt" count="0"/>
-      <line num="59" type="stmt" count="0"/>
-      <line num="60" type="stmt" count="0"/>
-      <line num="61" type="stmt" count="0"/>
-      <line num="63" type="stmt" count="0"/>
-      <line num="68" type="method" name="testRollMultipleDice" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="71" type="stmt" count="0"/>
-      <line num="73" type="stmt" count="0"/>
-      <line num="74" type="stmt" count="0"/>
-      <line num="77" type="stmt" count="0"/>
-      <line num="78" type="stmt" count="0"/>
-      <line num="79" type="stmt" count="0"/>
-      <line num="81" type="stmt" count="0"/>
-      <line num="82" type="stmt" count="0"/>
-      <line num="83" type="stmt" count="0"/>
-      <line num="86" type="stmt" count="0"/>
-      <line num="91" type="method" name="testDiceHand" visibility="public" complexity="4" crap="20" count="0"/>
-      <line num="94" type="stmt" count="0"/>
-      <line num="96" type="stmt" count="0"/>
-      <line num="97" type="stmt" count="0"/>
-      <line num="100" type="stmt" count="0"/>
-      <line num="101" type="stmt" count="0"/>
-      <line num="103" type="stmt" count="0"/>
-      <line num="106" type="stmt" count="0"/>
-      <line num="108" type="stmt" count="0"/>
-      <line num="109" type="stmt" count="0"/>
-      <line num="110" type="stmt" count="0"/>
-      <line num="111" type="stmt" count="0"/>
-      <line num="113" type="stmt" count="0"/>
-      <line num="118" type="method" name="init" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="121" type="stmt" count="0"/>
-      <line num="123" type="stmt" count="0"/>
-      <line num="128" type="method" name="initCallback" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="133" type="stmt" count="0"/>
-      <line num="135" type="stmt" count="0"/>
-      <line num="136" type="stmt" count="0"/>
-      <line num="137" type="stmt" count="0"/>
-      <line num="140" type="stmt" count="0"/>
-      <line num="141" type="stmt" count="0"/>
-      <line num="142" type="stmt" count="0"/>
-      <line num="144" type="stmt" count="0"/>
-      <line num="149" type="method" name="play" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="152" type="stmt" count="0"/>
-      <line num="154" type="stmt" count="0"/>
-      <line num="156" type="stmt" count="0"/>
-      <line num="157" type="stmt" count="0"/>
-      <line num="158" type="stmt" count="0"/>
-      <line num="159" type="stmt" count="0"/>
-      <line num="161" type="stmt" count="0"/>
-      <line num="166" type="method" name="roll" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="169" type="stmt" count="0"/>
-      <line num="170" type="stmt" count="0"/>
-      <line num="171" type="stmt" count="0"/>
-      <line num="172" type="stmt" count="0"/>
-      <line num="174" type="stmt" count="0"/>
-      <line num="175" type="stmt" count="0"/>
-      <line num="177" type="stmt" count="0"/>
-      <line num="178" type="stmt" count="0"/>
-      <line num="179" type="stmt" count="0"/>
-      <line num="180" type="stmt" count="0"/>
-      <line num="182" type="stmt" count="0"/>
-      <line num="185" type="stmt" count="0"/>
-      <line num="186" type="stmt" count="0"/>
-      <line num="187" type="stmt" count="0"/>
-      <line num="189" type="stmt" count="0"/>
-      <line num="194" type="method" name="save" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="198" type="stmt" count="0"/>
-      <line num="199" type="stmt" count="0"/>
-      <line num="200" type="stmt" count="0"/>
-      <line num="201" type="stmt" count="0"/>
-      <line num="202" type="stmt" count="0"/>
-      <line num="205" type="stmt" count="0"/>
-      <line num="208" type="stmt" count="0"/>
-      <line num="209" type="stmt" count="0"/>
-      <line num="210" type="stmt" count="0"/>
-      <line num="213" type="stmt" count="0"/>
-      <line num="214" type="stmt" count="0"/>
-      <line num="215" type="stmt" count="0"/>
-      <line num="216" type="stmt" count="0"/>
-      <line num="218" type="stmt" count="0"/>
-      <metrics loc="221" ncloc="207" classes="1" methods="10" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="79" coveredstatements="0" elements="89" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/GameApiController.php">
-      <class name="App\Controller\GameApiController" namespace="global">
-        <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="0" elements="15" coveredelements="0"/>
-      </class>
-      <line num="22" type="method" name="apiGame" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
-      <line num="39" type="stmt" count="0"/>
-      <line num="41" type="stmt" count="0"/>
-      <line num="43" type="stmt" count="0"/>
-      <metrics loc="46" ncloc="43" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="0" elements="15" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/GameController.php">
-      <class name="App\Controller\GameController" namespace="global">
-        <metrics complexity="15" methods="8" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="47" coveredstatements="0" elements="55" coveredelements="0"/>
-      </class>
-      <line num="30" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="40" type="method" name="gameStart" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="43" type="stmt" count="0"/>
-      <line num="45" type="stmt" count="0"/>
-      <line num="50" type="method" name="gameDoc" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="53" type="stmt" count="0"/>
-      <line num="55" type="stmt" count="0"/>
-      <line num="60" type="method" name="gameInit" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="63" type="stmt" count="0"/>
-      <line num="64" type="stmt" count="0"/>
-      <line num="65" type="stmt" count="0"/>
-      <line num="66" type="stmt" count="0"/>
-      <line num="67" type="stmt" count="0"/>
-      <line num="69" type="stmt" count="0"/>
-      <line num="71" type="stmt" count="0"/>
-      <line num="76" type="method" name="gamePlay" visibility="public" complexity="4" crap="20" count="0"/>
-      <line num="79" type="stmt" count="0"/>
-      <line num="82" type="stmt" count="0"/>
-      <line num="83" type="stmt" count="0"/>
-      <line num="84" type="stmt" count="0"/>
-      <line num="88" type="stmt" count="0"/>
-      <line num="90" type="stmt" count="0"/>
-      <line num="91" type="stmt" count="0"/>
-      <line num="92" type="stmt" count="0"/>
-      <line num="95" type="stmt" count="0"/>
-      <line num="96" type="stmt" count="0"/>
-      <line num="97" type="stmt" count="0"/>
-      <line num="98" type="stmt" count="0"/>
-      <line num="101" type="stmt" count="0"/>
-      <line num="106" type="method" name="gameDraw" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="109" type="stmt" count="0"/>
-      <line num="110" type="stmt" count="0"/>
-      <line num="111" type="stmt" count="0"/>
-      <line num="114" type="stmt" count="0"/>
-      <line num="115" type="stmt" count="0"/>
-      <line num="117" type="stmt" count="0"/>
-      <line num="122" type="method" name="gameStop" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="125" type="stmt" count="0"/>
-      <line num="126" type="stmt" count="0"/>
-      <line num="127" type="stmt" count="0"/>
-      <line num="130" type="stmt" count="0"/>
-      <line num="131" type="stmt" count="0"/>
-      <line num="133" type="stmt" count="0"/>
-      <line num="138" type="method" name="gameSetAce" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="143" type="stmt" count="0"/>
-      <line num="144" type="stmt" count="0"/>
-      <line num="145" type="stmt" count="0"/>
-      <line num="146" type="stmt" count="0"/>
-      <line num="149" type="stmt" count="0"/>
-      <line num="150" type="stmt" count="0"/>
-      <line num="152" type="stmt" count="0"/>
-      <metrics loc="155" ncloc="140" classes="1" methods="8" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="47" coveredstatements="0" elements="55" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/GameTestController.php">
-      <class name="App\Controller\GameTestController" namespace="global">
-        <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="31" coveredelements="0"/>
-      </class>
-      <line num="30" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="40" type="method" name="gameTest" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="43" type="stmt" count="0"/>
-      <line num="45" type="stmt" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="48" type="stmt" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <line num="50" type="stmt" count="0"/>
-      <line num="51" type="stmt" count="0"/>
-      <line num="52" type="stmt" count="0"/>
-      <line num="54" type="stmt" count="0"/>
-      <line num="55" type="stmt" count="0"/>
-      <line num="56" type="stmt" count="0"/>
-      <line num="57" type="stmt" count="0"/>
-      <line num="58" type="stmt" count="0"/>
-      <line num="59" type="stmt" count="0"/>
-      <line num="60" type="stmt" count="0"/>
-      <line num="61" type="stmt" count="0"/>
-      <line num="62" type="stmt" count="0"/>
-      <line num="63" type="stmt" count="0"/>
-      <line num="64" type="stmt" count="0"/>
-      <line num="65" type="stmt" count="0"/>
-      <line num="66" type="stmt" count="0"/>
-      <line num="68" type="stmt" count="0"/>
-      <line num="70" type="stmt" count="0"/>
-      <line num="72" type="stmt" count="0"/>
-      <line num="74" type="stmt" count="0"/>
-      <metrics loc="189" ncloc="99" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="31" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/JsonResponseTrait.php">
-      <class name="App\Controller\JsonResponseTrait" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="6" coveredelements="0"/>
-      </class>
-      <line num="22" type="method" name="setResponse" visibility="private" complexity="1" crap="2" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <metrics loc="32" ncloc="23" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="6" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/LibraryApiController.php">
-      <class name="App\Controller\LibraryApiController" namespace="global">
-        <metrics complexity="4" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="0" elements="25" coveredelements="0"/>
-      </class>
-      <line num="19" type="method" name="apiAllBooks" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="22" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="39" type="method" name="apiSingleBook" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="44" type="stmt" count="0"/>
-      <line num="45" type="stmt" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="47" type="stmt" count="0"/>
-      <line num="50" type="stmt" count="0"/>
-      <line num="51" type="stmt" count="0"/>
-      <line num="52" type="stmt" count="0"/>
-      <line num="53" type="stmt" count="0"/>
-      <line num="54" type="stmt" count="0"/>
-      <line num="55" type="stmt" count="0"/>
-      <line num="57" type="stmt" count="0"/>
-      <line num="58" type="stmt" count="0"/>
-      <metrics loc="61" ncloc="58" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="0" elements="25" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/LibraryController.php">
-      <class name="App\Controller\LibraryController" namespace="global">
-        <metrics complexity="22" methods="13" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="107" coveredstatements="0" elements="120" coveredelements="0"/>
-      </class>
-      <line num="26" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="39" type="method" name="handleMissingBook" visibility="private" complexity="1" crap="2" count="0"/>
-      <line num="41" type="stmt" count="0"/>
-      <line num="42" type="stmt" count="0"/>
-      <line num="43" type="stmt" count="0"/>
-      <line num="44" type="stmt" count="0"/>
-      <line num="45" type="stmt" count="0"/>
-      <line num="50" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="53" type="stmt" count="0"/>
-      <line num="55" type="stmt" count="0"/>
-      <line num="60" type="method" name="createBookView" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="63" type="stmt" count="0"/>
-      <line num="65" type="stmt" count="0"/>
-      <line num="70" type="method" name="createBook" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="75" type="stmt" count="0"/>
-      <line num="77" type="stmt" count="0"/>
-      <line num="78" type="stmt" count="0"/>
-      <line num="79" type="stmt" count="0"/>
-      <line num="80" type="stmt" count="0"/>
-      <line num="81" type="stmt" count="0"/>
-      <line num="83" type="stmt" count="0"/>
-      <line num="84" type="stmt" count="0"/>
-      <line num="86" type="stmt" count="0"/>
-      <line num="87" type="stmt" count="0"/>
-      <line num="88" type="stmt" count="0"/>
-      <line num="89" type="stmt" count="0"/>
-      <line num="91" type="stmt" count="0"/>
-      <line num="96" type="method" name="allBooks" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="99" type="stmt" count="0"/>
-      <line num="101" type="stmt" count="0"/>
-      <line num="103" type="stmt" count="0"/>
-      <line num="105" type="stmt" count="0"/>
-      <line num="110" type="method" name="singleBook" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="115" type="stmt" count="0"/>
-      <line num="116" type="stmt" count="0"/>
-      <line num="117" type="stmt" count="0"/>
-      <line num="120" type="stmt" count="0"/>
-      <line num="121" type="stmt" count="0"/>
-      <line num="123" type="stmt" count="0"/>
-      <line num="128" type="method" name="editBookView" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="133" type="stmt" count="0"/>
-      <line num="134" type="stmt" count="0"/>
-      <line num="135" type="stmt" count="0"/>
-      <line num="138" type="stmt" count="0"/>
-      <line num="139" type="stmt" count="0"/>
-      <line num="141" type="stmt" count="0"/>
-      <line num="146" type="method" name="editBook" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="151" type="stmt" count="0"/>
-      <line num="153" type="stmt" count="0"/>
-      <line num="154" type="stmt" count="0"/>
-      <line num="155" type="stmt" count="0"/>
-      <line num="156" type="stmt" count="0"/>
-      <line num="157" type="stmt" count="0"/>
-      <line num="158" type="stmt" count="0"/>
-      <line num="159" type="stmt" count="0"/>
-      <line num="161" type="stmt" count="0"/>
-      <line num="162" type="stmt" count="0"/>
-      <line num="163" type="stmt" count="0"/>
-      <line num="166" type="stmt" count="0"/>
-      <line num="167" type="stmt" count="0"/>
-      <line num="168" type="stmt" count="0"/>
-      <line num="169" type="stmt" count="0"/>
-      <line num="171" type="stmt" count="0"/>
-      <line num="173" type="stmt" count="0"/>
-      <line num="174" type="stmt" count="0"/>
-      <line num="175" type="stmt" count="0"/>
-      <line num="176" type="stmt" count="0"/>
-      <line num="178" type="stmt" count="0"/>
-      <line num="184" type="method" name="deleteBookView" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="189" type="stmt" count="0"/>
-      <line num="190" type="stmt" count="0"/>
-      <line num="191" type="stmt" count="0"/>
-      <line num="194" type="stmt" count="0"/>
-      <line num="195" type="stmt" count="0"/>
-      <line num="197" type="stmt" count="0"/>
-      <line num="202" type="method" name="deleteBook" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="207" type="stmt" count="0"/>
-      <line num="208" type="stmt" count="0"/>
-      <line num="209" type="stmt" count="0"/>
-      <line num="210" type="stmt" count="0"/>
-      <line num="211" type="stmt" count="0"/>
-      <line num="212" type="stmt" count="0"/>
-      <line num="213" type="stmt" count="0"/>
-      <line num="216" type="stmt" count="0"/>
-      <line num="217" type="stmt" count="0"/>
-      <line num="218" type="stmt" count="0"/>
-      <line num="221" type="stmt" count="0"/>
-      <line num="222" type="stmt" count="0"/>
-      <line num="224" type="stmt" count="0"/>
-      <line num="225" type="stmt" count="0"/>
-      <line num="226" type="stmt" count="0"/>
-      <line num="227" type="stmt" count="0"/>
-      <line num="229" type="stmt" count="0"/>
-      <line num="234" type="method" name="resetLibraryView" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="237" type="stmt" count="0"/>
-      <line num="239" type="stmt" count="0"/>
-      <line num="244" type="method" name="resetLibrary" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="249" type="stmt" count="0"/>
-      <line num="250" type="stmt" count="0"/>
-      <line num="251" type="stmt" count="0"/>
-      <line num="252" type="stmt" count="0"/>
-      <line num="253" type="stmt" count="0"/>
-      <line num="254" type="stmt" count="0"/>
-      <line num="255" type="stmt" count="0"/>
-      <line num="259" type="stmt" count="0"/>
-      <line num="261" type="stmt" count="0"/>
-      <line num="262" type="stmt" count="0"/>
-      <line num="263" type="stmt" count="0"/>
-      <line num="264" type="stmt" count="0"/>
-      <line num="265" type="stmt" count="0"/>
-      <line num="266" type="stmt" count="0"/>
-      <line num="269" type="stmt" count="0"/>
-      <line num="270" type="stmt" count="0"/>
-      <line num="271" type="stmt" count="0"/>
-      <line num="272" type="stmt" count="0"/>
-      <line num="273" type="stmt" count="0"/>
-      <metrics loc="276" ncloc="266" classes="1" methods="13" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="107" coveredstatements="0" elements="120" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/MainController.php">
-      <class name="App\Controller\MainController" namespace="global">
-        <metrics complexity="15" methods="11" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="51" coveredstatements="0" elements="62" coveredelements="0"/>
-      </class>
-      <line num="26" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="43" type="method" name="updateLuckyNum" visibility="private" complexity="2" crap="6" count="0"/>
-      <line num="45" type="stmt" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="48" type="stmt" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <line num="50" type="stmt" count="0"/>
-      <line num="54" type="stmt" count="0"/>
-      <line num="56" type="stmt" count="0"/>
-      <line num="57" type="stmt" count="0"/>
-      <line num="68" type="method" name="updateLuckyCredits" visibility="private" complexity="2" crap="6" count="0"/>
-      <line num="71" type="stmt" count="0"/>
-      <line num="72" type="stmt" count="0"/>
-      <line num="73" type="stmt" count="0"/>
-      <line num="75" type="stmt" count="0"/>
-      <line num="76" type="stmt" count="0"/>
-      <line num="79" type="stmt" count="0"/>
-      <line num="85" type="method" name="home" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="88" type="stmt" count="0"/>
-      <line num="90" type="stmt" count="0"/>
-      <line num="95" type="method" name="about" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="98" type="stmt" count="0"/>
-      <line num="100" type="stmt" count="0"/>
-      <line num="105" type="method" name="report" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="108" type="stmt" count="0"/>
-      <line num="110" type="stmt" count="0"/>
-      <line num="115" type="method" name="lucky" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="118" type="stmt" count="0"/>
-      <line num="121" type="stmt" count="0"/>
-      <line num="122" type="stmt" count="0"/>
-      <line num="124" type="stmt" count="0"/>
-      <line num="129" type="method" name="api" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="132" type="stmt" count="0"/>
-      <line num="134" type="stmt" count="0"/>
-      <line num="139" type="method" name="session" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="142" type="stmt" count="0"/>
-      <line num="145" type="stmt" count="0"/>
-      <line num="147" type="stmt" count="0"/>
-      <line num="152" type="method" name="sessionDelete" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="158" type="stmt" count="0"/>
-      <line num="159" type="stmt" count="0"/>
-      <line num="160" type="stmt" count="0"/>
-      <line num="161" type="stmt" count="0"/>
-      <line num="162" type="stmt" count="0"/>
-      <line num="163" type="stmt" count="0"/>
-      <line num="165" type="stmt" count="0"/>
-      <line num="169" type="stmt" count="0"/>
-      <line num="170" type="stmt" count="0"/>
-      <line num="172" type="stmt" count="0"/>
-      <line num="173" type="stmt" count="0"/>
-      <line num="174" type="stmt" count="0"/>
-      <line num="175" type="stmt" count="0"/>
-      <line num="177" type="stmt" count="0"/>
-      <line num="182" type="method" name="metrics" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="185" type="stmt" count="0"/>
-      <line num="187" type="stmt" count="0"/>
-      <metrics loc="190" ncloc="164" classes="1" methods="11" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="51" coveredstatements="0" elements="62" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/ProductController.php">
-      <class name="App\Controller\ProductController" namespace="global">
-        <metrics complexity="11" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="0" elements="62" coveredelements="0"/>
-      </class>
-      <line num="14" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="17" type="stmt" count="0"/>
-      <line num="18" type="stmt" count="0"/>
-      <line num="19" type="stmt" count="0"/>
-      <line num="24" type="method" name="create" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="41" type="method" name="showAll" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="44" type="stmt" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="47" type="stmt" count="0"/>
-      <line num="48" type="stmt" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <line num="51" type="stmt" count="0"/>
-      <line num="56" type="method" name="showById" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="61" type="stmt" count="0"/>
-      <line num="63" type="stmt" count="0"/>
-      <line num="68" type="method" name="deleteById" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="73" type="stmt" count="0"/>
-      <line num="74" type="stmt" count="0"/>
-      <line num="76" type="stmt" count="0"/>
-      <line num="77" type="stmt" count="0"/>
-      <line num="80" type="stmt" count="0"/>
-      <line num="81" type="stmt" count="0"/>
-      <line num="83" type="stmt" count="0"/>
-      <line num="88" type="method" name="update" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="94" type="stmt" count="0"/>
-      <line num="95" type="stmt" count="0"/>
-      <line num="97" type="stmt" count="0"/>
-      <line num="98" type="stmt" count="0"/>
-      <line num="101" type="stmt" count="0"/>
-      <line num="102" type="stmt" count="0"/>
-      <line num="104" type="stmt" count="0"/>
-      <line num="109" type="method" name="viewAll" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="112" type="stmt" count="0"/>
-      <line num="114" type="stmt" count="0"/>
-      <line num="115" type="stmt" count="0"/>
-      <line num="116" type="stmt" count="0"/>
-      <line num="117" type="stmt" count="0"/>
-      <line num="118" type="stmt" count="0"/>
-      <line num="120" type="stmt" count="0"/>
-      <line num="125" type="method" name="viewMinVal" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="130" type="stmt" count="0"/>
-      <line num="132" type="stmt" count="0"/>
-      <line num="133" type="stmt" count="0"/>
-      <line num="134" type="stmt" count="0"/>
-      <line num="135" type="stmt" count="0"/>
-      <line num="136" type="stmt" count="0"/>
-      <line num="138" type="stmt" count="0"/>
-      <line num="143" type="method" name="view2MinVal" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="148" type="stmt" count="0"/>
-      <line num="150" type="stmt" count="0"/>
-      <line num="151" type="stmt" count="0"/>
-      <line num="152" type="stmt" count="0"/>
-      <line num="153" type="stmt" count="0"/>
-      <line num="154" type="stmt" count="0"/>
-      <line num="156" type="stmt" count="0"/>
-      <metrics loc="159" ncloc="159" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="0" elements="62" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/Project/ApiController.php">
-      <class name="App\Controller\Project\ApiController" namespace="global">
-        <metrics complexity="9" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="81" coveredstatements="0" elements="87" coveredelements="0"/>
-      </class>
-      <line num="28" type="method" name="rounds" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
-      <line num="39" type="stmt" count="0"/>
-      <line num="40" type="stmt" count="0"/>
-      <line num="41" type="stmt" count="0"/>
-      <line num="42" type="stmt" count="0"/>
-      <line num="43" type="stmt" count="0"/>
-      <line num="44" type="stmt" count="0"/>
-      <line num="45" type="stmt" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="47" type="stmt" count="0"/>
-      <line num="48" type="stmt" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <line num="52" type="stmt" count="0"/>
-      <line num="53" type="stmt" count="0"/>
-      <line num="58" type="method" name="highscore" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="62" type="stmt" count="0"/>
-      <line num="64" type="stmt" count="0"/>
-      <line num="65" type="stmt" count="0"/>
-      <line num="66" type="stmt" count="0"/>
-      <line num="67" type="stmt" count="0"/>
-      <line num="68" type="stmt" count="0"/>
-      <line num="69" type="stmt" count="0"/>
-      <line num="70" type="stmt" count="0"/>
-      <line num="71" type="stmt" count="0"/>
-      <line num="72" type="stmt" count="0"/>
-      <line num="73" type="stmt" count="0"/>
-      <line num="74" type="stmt" count="0"/>
-      <line num="75" type="stmt" count="0"/>
-      <line num="76" type="stmt" count="0"/>
-      <line num="77" type="stmt" count="0"/>
-      <line num="78" type="stmt" count="0"/>
-      <line num="79" type="stmt" count="0"/>
-      <line num="82" type="stmt" count="0"/>
-      <line num="83" type="stmt" count="0"/>
-      <line num="88" type="method" name="players" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="92" type="stmt" count="0"/>
-      <line num="94" type="stmt" count="0"/>
-      <line num="95" type="stmt" count="0"/>
-      <line num="96" type="stmt" count="0"/>
-      <line num="97" type="stmt" count="0"/>
-      <line num="98" type="stmt" count="0"/>
-      <line num="99" type="stmt" count="0"/>
-      <line num="100" type="stmt" count="0"/>
-      <line num="101" type="stmt" count="0"/>
-      <line num="102" type="stmt" count="0"/>
-      <line num="105" type="stmt" count="0"/>
-      <line num="106" type="stmt" count="0"/>
-      <line num="111" type="method" name="showSelectedPlayers" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="117" type="stmt" count="0"/>
-      <line num="119" type="stmt" count="0"/>
-      <line num="120" type="stmt" count="0"/>
-      <line num="121" type="stmt" count="0"/>
-      <line num="122" type="stmt" count="0"/>
-      <line num="123" type="stmt" count="0"/>
-      <line num="124" type="stmt" count="0"/>
-      <line num="125" type="stmt" count="0"/>
-      <line num="126" type="stmt" count="0"/>
-      <line num="127" type="stmt" count="0"/>
-      <line num="130" type="stmt" count="0"/>
-      <line num="131" type="stmt" count="0"/>
-      <line num="136" type="method" name="showGameState" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="142" type="stmt" count="0"/>
-      <line num="143" type="stmt" count="0"/>
-      <line num="144" type="stmt" count="0"/>
-      <line num="147" type="stmt" count="0"/>
-      <line num="148" type="stmt" count="0"/>
-      <line num="150" type="stmt" count="0"/>
-      <line num="152" type="stmt" count="0"/>
-      <line num="153" type="stmt" count="0"/>
-      <line num="154" type="stmt" count="0"/>
-      <line num="159" type="stmt" count="0"/>
-      <line num="160" type="stmt" count="0"/>
-      <line num="165" type="method" name="resetDatabase" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="171" type="stmt" count="0"/>
-      <line num="172" type="stmt" count="0"/>
-      <line num="173" type="stmt" count="0"/>
-      <line num="176" type="stmt" count="0"/>
-      <line num="177" type="stmt" count="0"/>
-      <line num="179" type="stmt" count="0"/>
-      <line num="183" type="stmt" count="0"/>
-      <line num="184" type="stmt" count="0"/>
-      <metrics loc="187" ncloc="168" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="81" coveredstatements="0" elements="87" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/Project/GameController.php">
-      <class name="App\Controller\Project\GameController" namespace="global">
-        <metrics complexity="24" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="128" coveredstatements="0" elements="135" coveredelements="0"/>
-      </class>
-      <line num="44" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="47" type="stmt" count="0"/>
-      <line num="48" type="stmt" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <line num="50" type="stmt" count="0"/>
-      <line num="55" type="method" name="gameStart" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="58" type="stmt" count="0"/>
-      <line num="59" type="stmt" count="0"/>
-      <line num="64" type="method" name="gameRules" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="67" type="stmt" count="0"/>
-      <line num="68" type="stmt" count="0"/>
-      <line num="73" type="method" name="gameInit" visibility="public" complexity="13" crap="182" count="0"/>
-      <line num="84" type="stmt" count="0"/>
-      <line num="85" type="stmt" count="0"/>
-      <line num="86" type="stmt" count="0"/>
-      <line num="87" type="stmt" count="0"/>
-      <line num="88" type="stmt" count="0"/>
-      <line num="89" type="stmt" count="0"/>
-      <line num="93" type="stmt" count="0"/>
-      <line num="94" type="stmt" count="0"/>
-      <line num="95" type="stmt" count="0"/>
-      <line num="96" type="stmt" count="0"/>
-      <line num="97" type="stmt" count="0"/>
-      <line num="98" type="stmt" count="0"/>
-      <line num="99" type="stmt" count="0"/>
-      <line num="100" type="stmt" count="0"/>
-      <line num="101" type="stmt" count="0"/>
-      <line num="102" type="stmt" count="0"/>
-      <line num="104" type="stmt" count="0"/>
-      <line num="105" type="stmt" count="0"/>
-      <line num="106" type="stmt" count="0"/>
-      <line num="107" type="stmt" count="0"/>
-      <line num="108" type="stmt" count="0"/>
-      <line num="109" type="stmt" count="0"/>
-      <line num="110" type="stmt" count="0"/>
-      <line num="111" type="stmt" count="0"/>
-      <line num="113" type="stmt" count="0"/>
-      <line num="118" type="stmt" count="0"/>
-      <line num="121" type="stmt" count="0"/>
-      <line num="122" type="stmt" count="0"/>
-      <line num="123" type="stmt" count="0"/>
-      <line num="124" type="stmt" count="0"/>
-      <line num="125" type="stmt" count="0"/>
-      <line num="126" type="stmt" count="0"/>
-      <line num="130" type="stmt" count="0"/>
-      <line num="131" type="stmt" count="0"/>
-      <line num="132" type="stmt" count="0"/>
-      <line num="133" type="stmt" count="0"/>
-      <line num="134" type="stmt" count="0"/>
-      <line num="135" type="stmt" count="0"/>
-      <line num="136" type="stmt" count="0"/>
-      <line num="137" type="stmt" count="0"/>
-      <line num="138" type="stmt" count="0"/>
-      <line num="139" type="stmt" count="0"/>
-      <line num="140" type="stmt" count="0"/>
-      <line num="141" type="stmt" count="0"/>
-      <line num="145" type="stmt" count="0"/>
-      <line num="146" type="stmt" count="0"/>
-      <line num="147" type="stmt" count="0"/>
-      <line num="148" type="stmt" count="0"/>
-      <line num="149" type="stmt" count="0"/>
-      <line num="150" type="stmt" count="0"/>
-      <line num="151" type="stmt" count="0"/>
-      <line num="152" type="stmt" count="0"/>
-      <line num="153" type="stmt" count="0"/>
-      <line num="154" type="stmt" count="0"/>
-      <line num="155" type="stmt" count="0"/>
-      <line num="156" type="stmt" count="0"/>
-      <line num="157" type="stmt" count="0"/>
-      <line num="158" type="stmt" count="0"/>
-      <line num="167" type="stmt" count="0"/>
-      <line num="170" type="stmt" count="0"/>
-      <line num="171" type="stmt" count="0"/>
-      <line num="173" type="stmt" count="0"/>
-      <line num="176" type="stmt" count="0"/>
-      <line num="177" type="stmt" count="0"/>
-      <line num="178" type="stmt" count="0"/>
-      <line num="179" type="stmt" count="0"/>
-      <line num="180" type="stmt" count="0"/>
-      <line num="181" type="stmt" count="0"/>
-      <line num="182" type="stmt" count="0"/>
-      <line num="187" type="method" name="gamePlay" visibility="public" complexity="4" crap="20" count="0"/>
-      <line num="190" type="stmt" count="0"/>
-      <line num="191" type="stmt" count="0"/>
-      <line num="192" type="stmt" count="0"/>
-      <line num="193" type="stmt" count="0"/>
-      <line num="197" type="stmt" count="0"/>
-      <line num="198" type="stmt" count="0"/>
-      <line num="199" type="stmt" count="0"/>
-      <line num="200" type="stmt" count="0"/>
-      <line num="201" type="stmt" count="0"/>
-      <line num="204" type="stmt" count="0"/>
-      <line num="207" type="stmt" count="0"/>
-      <line num="208" type="stmt" count="0"/>
-      <line num="212" type="stmt" count="0"/>
-      <line num="213" type="stmt" count="0"/>
-      <line num="214" type="stmt" count="0"/>
-      <line num="215" type="stmt" count="0"/>
-      <line num="220" type="method" name="placeCard" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="225" type="stmt" count="0"/>
-      <line num="226" type="stmt" count="0"/>
-      <line num="227" type="stmt" count="0"/>
-      <line num="228" type="stmt" count="0"/>
-      <line num="230" type="stmt" count="0"/>
-      <line num="235" type="method" name="saveGame" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="242" type="stmt" count="0"/>
-      <line num="243" type="stmt" count="0"/>
-      <line num="244" type="stmt" count="0"/>
-      <line num="245" type="stmt" count="0"/>
-      <line num="249" type="stmt" count="0"/>
-      <line num="250" type="stmt" count="0"/>
-      <line num="252" type="stmt" count="0"/>
-      <line num="253" type="stmt" count="0"/>
-      <line num="254" type="stmt" count="0"/>
-      <line num="255" type="stmt" count="0"/>
-      <line num="256" type="stmt" count="0"/>
-      <line num="257" type="stmt" count="0"/>
-      <line num="258" type="stmt" count="0"/>
-      <line num="259" type="stmt" count="0"/>
-      <line num="262" type="stmt" count="0"/>
-      <line num="263" type="stmt" count="0"/>
-      <line num="264" type="stmt" count="0"/>
-      <line num="265" type="stmt" count="0"/>
-      <line num="266" type="stmt" count="0"/>
-      <line num="267" type="stmt" count="0"/>
-      <line num="268" type="stmt" count="0"/>
-      <line num="269" type="stmt" count="0"/>
-      <line num="270" type="stmt" count="0"/>
-      <line num="273" type="stmt" count="0"/>
-      <line num="274" type="stmt" count="0"/>
-      <line num="275" type="stmt" count="0"/>
-      <line num="276" type="stmt" count="0"/>
-      <line num="277" type="stmt" count="0"/>
-      <line num="280" type="stmt" count="0"/>
-      <metrics loc="283" ncloc="257" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="128" coveredstatements="0" elements="135" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/Project/MainController.php">
-      <class name="App\Controller\Project\MainController" namespace="global">
-        <metrics complexity="5" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="0" elements="37" coveredelements="0"/>
-      </class>
-      <line num="23" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="33" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="42" type="method" name="about" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="45" type="stmt" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="51" type="method" name="database" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="54" type="stmt" count="0"/>
-      <line num="55" type="stmt" count="0"/>
-      <line num="60" type="method" name="api" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="63" type="stmt" count="0"/>
-      <line num="66" type="stmt" count="0"/>
-      <line num="67" type="stmt" count="0"/>
-      <line num="68" type="stmt" count="0"/>
-      <line num="69" type="stmt" count="0"/>
-      <line num="70" type="stmt" count="0"/>
-      <line num="71" type="stmt" count="0"/>
-      <line num="72" type="stmt" count="0"/>
-      <line num="73" type="stmt" count="0"/>
-      <line num="74" type="stmt" count="0"/>
-      <line num="75" type="stmt" count="0"/>
-      <line num="78" type="stmt" count="0"/>
-      <line num="79" type="stmt" count="0"/>
-      <line num="80" type="stmt" count="0"/>
-      <line num="81" type="stmt" count="0"/>
-      <line num="82" type="stmt" count="0"/>
-      <line num="83" type="stmt" count="0"/>
-      <line num="84" type="stmt" count="0"/>
-      <line num="85" type="stmt" count="0"/>
-      <line num="86" type="stmt" count="0"/>
-      <line num="87" type="stmt" count="0"/>
-      <line num="89" type="stmt" count="0"/>
-      <metrics loc="92" ncloc="81" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="0" elements="37" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/Project/PlayerController.php">
-      <class name="App\Controller\Project\PlayerController" namespace="global">
-        <metrics complexity="23" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="97" coveredstatements="0" elements="104" coveredelements="0"/>
-      </class>
-      <line num="32" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
-      <line num="43" type="method" name="showPlayers" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="48" type="stmt" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <line num="51" type="stmt" count="0"/>
-      <line num="56" type="method" name="showPlayer" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="61" type="stmt" count="0"/>
-      <line num="62" type="stmt" count="0"/>
-      <line num="63" type="stmt" count="0"/>
-      <line num="64" type="stmt" count="0"/>
-      <line num="67" type="stmt" count="0"/>
-      <line num="68" type="stmt" count="0"/>
-      <line num="70" type="stmt" count="0"/>
-      <line num="75" type="method" name="showPlayerRounds" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="80" type="stmt" count="0"/>
-      <line num="81" type="stmt" count="0"/>
-      <line num="82" type="stmt" count="0"/>
-      <line num="83" type="stmt" count="0"/>
-      <line num="86" type="stmt" count="0"/>
-      <line num="87" type="stmt" count="0"/>
-      <line num="88" type="stmt" count="0"/>
-      <line num="89" type="stmt" count="0"/>
-      <line num="95" type="method" name="createPlayer" visibility="public" complexity="5" crap="30" count="0"/>
-      <line num="100" type="stmt" count="0"/>
-      <line num="102" type="stmt" count="0"/>
-      <line num="103" type="stmt" count="0"/>
-      <line num="105" type="stmt" count="0"/>
-      <line num="106" type="stmt" count="0"/>
-      <line num="107" type="stmt" count="0"/>
-      <line num="108" type="stmt" count="0"/>
-      <line num="109" type="stmt" count="0"/>
-      <line num="110" type="stmt" count="0"/>
-      <line num="111" type="stmt" count="0"/>
-      <line num="112" type="stmt" count="0"/>
-      <line num="113" type="stmt" count="0"/>
-      <line num="114" type="stmt" count="0"/>
-      <line num="115" type="stmt" count="0"/>
-      <line num="119" type="stmt" count="0"/>
-      <line num="120" type="stmt" count="0"/>
-      <line num="122" type="stmt" count="0"/>
-      <line num="127" type="method" name="editPlayer" visibility="public" complexity="6" crap="42" count="0"/>
-      <line num="134" type="stmt" count="0"/>
-      <line num="135" type="stmt" count="0"/>
-      <line num="136" type="stmt" count="0"/>
-      <line num="137" type="stmt" count="0"/>
-      <line num="140" type="stmt" count="0"/>
-      <line num="141" type="stmt" count="0"/>
-      <line num="142" type="stmt" count="0"/>
-      <line num="143" type="stmt" count="0"/>
-      <line num="144" type="stmt" count="0"/>
-      <line num="145" type="stmt" count="0"/>
-      <line num="146" type="stmt" count="0"/>
-      <line num="147" type="stmt" count="0"/>
-      <line num="149" type="stmt" count="0"/>
-      <line num="150" type="stmt" count="0"/>
-      <line num="152" type="stmt" count="0"/>
-      <line num="153" type="stmt" count="0"/>
-      <line num="154" type="stmt" count="0"/>
-      <line num="155" type="stmt" count="0"/>
-      <line num="156" type="stmt" count="0"/>
-      <line num="157" type="stmt" count="0"/>
-      <line num="158" type="stmt" count="0"/>
-      <line num="159" type="stmt" count="0"/>
-      <line num="160" type="stmt" count="0"/>
-      <line num="161" type="stmt" count="0"/>
-      <line num="165" type="stmt" count="0"/>
-      <line num="166" type="stmt" count="0"/>
-      <line num="168" type="stmt" count="0"/>
-      <line num="173" type="method" name="deletePlayer" visibility="public" complexity="6" crap="42" count="0"/>
-      <line num="180" type="stmt" count="0"/>
-      <line num="181" type="stmt" count="0"/>
-      <line num="182" type="stmt" count="0"/>
-      <line num="183" type="stmt" count="0"/>
-      <line num="186" type="stmt" count="0"/>
-      <line num="187" type="stmt" count="0"/>
-      <line num="188" type="stmt" count="0"/>
-      <line num="189" type="stmt" count="0"/>
-      <line num="190" type="stmt" count="0"/>
-      <line num="191" type="stmt" count="0"/>
-      <line num="193" type="stmt" count="0"/>
-      <line num="195" type="stmt" count="0"/>
-      <line num="196" type="stmt" count="0"/>
-      <line num="198" type="stmt" count="0"/>
-      <line num="199" type="stmt" count="0"/>
-      <line num="200" type="stmt" count="0"/>
-      <line num="201" type="stmt" count="0"/>
-      <line num="202" type="stmt" count="0"/>
-      <line num="203" type="stmt" count="0"/>
-      <line num="204" type="stmt" count="0"/>
-      <line num="205" type="stmt" count="0"/>
-      <line num="206" type="stmt" count="0"/>
-      <line num="207" type="stmt" count="0"/>
-      <line num="208" type="stmt" count="0"/>
-      <line num="209" type="stmt" count="0"/>
-      <line num="213" type="stmt" count="0"/>
-      <line num="216" type="stmt" count="0"/>
-      <line num="217" type="stmt" count="0"/>
-      <line num="219" type="stmt" count="0"/>
-      <metrics loc="222" ncloc="213" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="97" coveredstatements="0" elements="104" coveredelements="0"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Controller/Project/RoundController.php">
-      <class name="App\Controller\Project\RoundController" namespace="global">
-        <metrics complexity="10" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="45" coveredstatements="0" elements="50" coveredelements="0"/>
-      </class>
-      <line num="30" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="41" type="method" name="highscore" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="44" type="stmt" count="0"/>
-      <line num="45" type="stmt" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="48" type="stmt" count="0"/>
-      <line num="53" type="method" name="showRounds" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="56" type="stmt" count="0"/>
-      <line num="58" type="stmt" count="0"/>
-      <line num="59" type="stmt" count="0"/>
-      <line num="61" type="stmt" count="0"/>
-      <line num="66" type="method" name="showRound" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="71" type="stmt" count="0"/>
-      <line num="73" type="stmt" count="0"/>
-      <line num="74" type="stmt" count="0"/>
-      <line num="75" type="stmt" count="0"/>
-      <line num="76" type="stmt" count="0"/>
-      <line num="79" type="stmt" count="0"/>
-      <line num="80" type="stmt" count="0"/>
-      <line num="81" type="stmt" count="0"/>
-      <line num="82" type="stmt" count="0"/>
-      <line num="83" type="stmt" count="0"/>
-      <line num="85" type="stmt" count="0"/>
-      <line num="90" type="method" name="deleteRound" visibility="public" complexity="5" crap="30" count="0"/>
-      <line num="97" type="stmt" count="0"/>
-      <line num="98" type="stmt" count="0"/>
-      <line num="99" type="stmt" count="0"/>
-      <line num="100" type="stmt" count="0"/>
-      <line num="103" type="stmt" count="0"/>
-      <line num="105" type="stmt" count="0"/>
-      <line num="106" type="stmt" count="0"/>
-      <line num="108" type="stmt" count="0"/>
-      <line num="109" type="stmt" count="0"/>
-      <line num="110" type="stmt" count="0"/>
-      <line num="111" type="stmt" count="0"/>
-      <line num="112" type="stmt" count="0"/>
-      <line num="113" type="stmt" count="0"/>
-      <line num="114" type="stmt" count="0"/>
-      <line num="115" type="stmt" count="0"/>
-      <line num="116" type="stmt" count="0"/>
-      <line num="117" type="stmt" count="0"/>
-      <line num="121" type="stmt" count="0"/>
-      <line num="122" type="stmt" count="0"/>
-      <line num="123" type="stmt" count="0"/>
-      <line num="125" type="stmt" count="0"/>
-      <metrics loc="128" ncloc="119" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="45" coveredstatements="0" elements="50" coveredelements="0"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Dice/Dice.php">
       <class name="App\Dice\Dice" namespace="global">
@@ -1423,34 +312,6 @@
       <line num="37" type="stmt" count="4"/>
       <metrics loc="40" ncloc="37" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="7" coveredelements="7"/>
     </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Entity/Book.php">
-      <class name="App\Entity\Book" namespace="global">
-        <metrics complexity="9" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="22" coveredelements="0"/>
-      </class>
-      <line num="28" type="method" name="getId" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="33" type="method" name="getIsbn" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="38" type="method" name="setIsbn" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="40" type="stmt" count="0"/>
-      <line num="42" type="stmt" count="0"/>
-      <line num="45" type="method" name="getTitle" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="47" type="stmt" count="0"/>
-      <line num="50" type="method" name="setTitle" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="52" type="stmt" count="0"/>
-      <line num="54" type="stmt" count="0"/>
-      <line num="57" type="method" name="getAuthor" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="59" type="stmt" count="0"/>
-      <line num="62" type="method" name="setAuthor" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="64" type="stmt" count="0"/>
-      <line num="66" type="stmt" count="0"/>
-      <line num="69" type="method" name="getImage" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="71" type="stmt" count="0"/>
-      <line num="74" type="method" name="setImage" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="76" type="stmt" count="0"/>
-      <line num="78" type="stmt" count="0"/>
-      <metrics loc="81" ncloc="81" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="22" coveredelements="0"/>
-    </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Entity/Player.php">
       <class name="App\Entity\Player" namespace="global">
         <metrics complexity="14" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="31" coveredelements="31"/>
@@ -1487,24 +348,6 @@
       <line num="102" type="stmt" count="1"/>
       <line num="106" type="stmt" count="1"/>
       <metrics loc="109" ncloc="102" classes="1" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="31" coveredelements="31"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Entity/Product.php">
-      <class name="App\Entity\Product" namespace="global">
-        <metrics complexity="5" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="12" coveredelements="0"/>
-      </class>
-      <line num="22" type="method" name="getId" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="27" type="method" name="getName" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="32" type="method" name="setName" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="39" type="method" name="getValue" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="41" type="stmt" count="0"/>
-      <line num="44" type="method" name="setValue" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="48" type="stmt" count="0"/>
-      <metrics loc="51" ncloc="51" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="12" coveredelements="0"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Entity/Round.php">
       <class name="App\Entity\Round" namespace="global">
@@ -2060,23 +903,23 @@
       <class name="App\PokerSquares\Rule\FlushTrait" namespace="global">
         <metrics complexity="5" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="16" coveredelements="16"/>
       </class>
-      <line num="19" type="method" name="getSuits" visibility="private" complexity="1" crap="1" count="11"/>
+      <line num="18" type="method" name="getSuits" visibility="private" complexity="1" crap="1" count="11"/>
+      <line num="21" type="stmt" count="11"/>
       <line num="22" type="stmt" count="11"/>
       <line num="23" type="stmt" count="11"/>
       <line num="24" type="stmt" count="11"/>
       <line num="25" type="stmt" count="11"/>
       <line num="26" type="stmt" count="11"/>
-      <line num="27" type="stmt" count="11"/>
-      <line num="29" type="stmt" count="11"/>
-      <line num="40" type="method" name="getSuitMap" visibility="private" complexity="1" crap="1" count="11"/>
-      <line num="43" type="stmt" count="11"/>
-      <line num="54" type="method" name="isAFlush" visibility="private" complexity="3" crap="3" count="11"/>
-      <line num="56" type="stmt" count="11"/>
+      <line num="28" type="stmt" count="11"/>
+      <line num="39" type="method" name="getSuitMap" visibility="private" complexity="1" crap="1" count="11"/>
+      <line num="42" type="stmt" count="11"/>
+      <line num="53" type="method" name="isAFlush" visibility="private" complexity="3" crap="3" count="11"/>
+      <line num="55" type="stmt" count="11"/>
+      <line num="57" type="stmt" count="11"/>
       <line num="58" type="stmt" count="11"/>
-      <line num="59" type="stmt" count="11"/>
-      <line num="60" type="stmt" count="5"/>
-      <line num="64" type="stmt" count="6"/>
-      <metrics loc="67" ncloc="44" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="16" coveredelements="16"/>
+      <line num="59" type="stmt" count="5"/>
+      <line num="63" type="stmt" count="6"/>
+      <metrics loc="66" ncloc="43" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="16" coveredelements="16"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/PokerSquares/Rule/FourOfAKind.php">
       <class name="App\PokerSquares\Rule\FourOfAKind" namespace="global">
@@ -2237,21 +1080,6 @@
       <line num="16" type="stmt" count="1"/>
       <metrics loc="19" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Repository/BookRepository.php">
-      <class name="App\Repository\BookRepository" namespace="global">
-        <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="9" coveredelements="0"/>
-      </class>
-      <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="16" type="stmt" count="0"/>
-      <line num="27" type="method" name="getByIsbn" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <metrics loc="37" ncloc="28" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="9" coveredelements="0"/>
-    </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Repository/PlayerRepository.php">
       <class name="App\Repository\PlayerRepository" namespace="global">
         <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="15" coveredelements="15"/>
@@ -2272,28 +1100,6 @@
       <line num="45" type="stmt" count="2"/>
       <line num="46" type="stmt" count="2"/>
       <metrics loc="49" ncloc="35" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="15" coveredelements="15"/>
-    </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Repository/ProductRepository.php">
-      <class name="App\Repository\ProductRepository" namespace="global">
-        <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="16" coveredelements="0"/>
-      </class>
-      <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="16" type="stmt" count="0"/>
-      <line num="27" type="method" name="findByMinVal" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="46" type="method" name="findByMinVal2" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="48" type="stmt" count="0"/>
-      <line num="50" type="stmt" count="0"/>
-      <line num="54" type="stmt" count="0"/>
-      <line num="56" type="stmt" count="0"/>
-      <line num="58" type="stmt" count="0"/>
-      <metrics loc="61" ncloc="46" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="16" coveredelements="0"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Repository/RoundRepository.php">
       <class name="App\Repository\RoundRepository" namespace="global">
@@ -2373,35 +1179,6 @@
       <line num="79" type="stmt" count="2"/>
       <metrics loc="82" ncloc="58" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="21" elements="23" coveredelements="23"/>
     </file>
-    <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Service/ResetLibraryService.php">
-      <class name="App\Service\ResetLibraryService" namespace="global">
-        <metrics complexity="7" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="0" elements="23" coveredelements="0"/>
-      </class>
-      <line num="29" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="42" type="method" name="resetLibrary" visibility="public" complexity="6" crap="42" count="0"/>
-      <line num="45" type="stmt" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="47" type="stmt" count="0"/>
-      <line num="51" type="stmt" count="0"/>
-      <line num="52" type="stmt" count="0"/>
-      <line num="53" type="stmt" count="0"/>
-      <line num="55" type="stmt" count="0"/>
-      <line num="58" type="stmt" count="0"/>
-      <line num="59" type="stmt" count="0"/>
-      <line num="60" type="stmt" count="0"/>
-      <line num="64" type="stmt" count="0"/>
-      <line num="65" type="stmt" count="0"/>
-      <line num="66" type="stmt" count="0"/>
-      <line num="67" type="stmt" count="0"/>
-      <line num="68" type="stmt" count="0"/>
-      <line num="69" type="stmt" count="0"/>
-      <line num="70" type="stmt" count="0"/>
-      <line num="71" type="stmt" count="0"/>
-      <line num="73" type="stmt" count="0"/>
-      <line num="75" type="stmt" count="0"/>
-      <metrics loc="78" ncloc="55" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="0" elements="23" coveredelements="0"/>
-    </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Service/SelectedPlayersService.php">
       <class name="App\Service\SelectedPlayersService" namespace="global">
         <metrics complexity="4" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
@@ -2427,6 +1204,6 @@
       <line num="34" type="stmt" count="41"/>
       <metrics loc="37" ncloc="23" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
-    <metrics files="77" loc="7013" ncloc="5424" classes="70" methods="304" coveredmethods="172" conditionals="0" coveredconditionals="0" statements="1675" coveredstatements="700" elements="1979" coveredelements="872"/>
+    <metrics files="55" loc="4022" ncloc="2813" classes="48" methods="180" coveredmethods="173" conditionals="0" coveredconditionals="0" statements="708" coveredstatements="701" elements="888" coveredelements="874"/>
   </project>
 </coverage>

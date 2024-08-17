@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2024-05-19 13:15:03        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2024-08-17 08:28:48        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -93,7 +93,7 @@
                             <path d="M0 0h24v24H0z" fill="none">
                             <path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z">
                         </svg>
-                        Violations (7)
+                        Violations (12)
                     </a>
                 </li>
                                     <li>
@@ -385,6 +385,190 @@
         ]
     },
     {
+        "name": "\\App\\Controller\\Project\\MainController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\Project\\GameController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\App\\Service\\InitCpuPlayerService",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\App\\Repository\\PlayerRepository",
+            "\\Doctrine\\ORM\\EntityManagerInterface",
+            "\\App\\Service\\SelectedPlayersService",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\Entity\\Player",
+            "\\App\\Card\\CardDeck",
+            "\\App\\PokerSquares\\PokerSquareRules",
+            "\\App\\PokerSquares\\AmericanScores",
+            "\\App\\Entity\\Score",
+            "\\App\\PokerSquares\\Gameboard",
+            "\\App\\PokerSquares\\PokerSquaresGame",
+            "\\App\\PokerSquares\\GameManager",
+            "\\App\\Entity\\Round"
+        ]
+    },
+    {
+        "name": "\\App\\Service\\InitCpuPlayerService",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\PlayerRepository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Service\\SelectedPlayersService",
+        "size": 3000,
+        "relations": [
+            "\\App\\Repository\\PlayerRepository",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Entity\\Player",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Common\\Collections\\ArrayCollection",
+            "\\Doctrine\\Common\\Collections\\Collection",
+            "\\App\\Entity\\Round"
+        ]
+    },
+    {
+        "name": "\\App\\PokerSquares\\PokerSquareRules",
+        "size": 3000,
+        "relations": [
+            "\\App\\PokerSquares\\RuleCollectionInterface",
+            "\\App\\PokerSquares\\Rule\\RoyalFlush",
+            "\\App\\PokerSquares\\Rule\\StraightFlush",
+            "\\App\\PokerSquares\\Rule\\FourOfAKind",
+            "\\App\\PokerSquares\\Rule\\FullHouse",
+            "\\App\\PokerSquares\\Rule\\Flush",
+            "\\App\\PokerSquares\\Rule\\Straight",
+            "\\App\\PokerSquares\\Rule\\ThreeOfAKind",
+            "\\App\\PokerSquares\\Rule\\TwoPairs",
+            "\\App\\PokerSquares\\Rule\\OnePair",
+            "\\App\\PokerSquares\\Rule\\HighCard"
+        ]
+    },
+    {
+        "name": "\\App\\PokerSquares\\AmericanScores",
+        "size": 3000,
+        "relations": [
+            "\\App\\PokerSquares\\ScoreMappingInterface",
+            "\\InvalidArgumentException"
+        ]
+    },
+    {
+        "name": "\\App\\Entity\\Score",
+        "size": 3000,
+        "relations": [
+            "\\InvalidArgumentException"
+        ]
+    },
+    {
+        "name": "\\App\\PokerSquares\\Gameboard",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\PokerSquaresGame",
+        "size": 3000,
+        "relations": [
+            "\\App\\PokerSquares\\RuleCollectionInterface",
+            "\\App\\PokerSquares\\ScoreMappingInterface",
+            "\\App\\Entity\\Score",
+            "\\App\\PokerSquares\\Gameboard",
+            "\\App\\Entity\\Player",
+            "\\App\\Card\\CardDeck",
+            "\\App\\PokerSquares\\Cpu\\CpuFactory",
+            "\\DateTimeInterface",
+            "\\DateTimeZone",
+            "\\DateTime",
+            "\\this"
+        ]
+    },
+    {
+        "name": "\\App\\PokerSquares\\GameManager",
+        "size": 3000,
+        "relations": [
+            "\\InvalidArgumentException"
+        ]
+    },
+    {
+        "name": "\\App\\Entity\\Round",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Controller\\Project\\RoundController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\App\\Repository\\RoundRepository",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\Doctrine\\ORM\\EntityManagerInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Repository\\RoundRepository",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\Project\\ApiController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
+            "\\App\\Repository\\RoundRepository",
+            "\\DateTimeZone",
+            "\\App\\Repository\\PlayerRepository",
+            "\\App\\Service\\SelectedPlayersService",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\App\\Service\\ResetDatabaseService"
+        ]
+    },
+    {
+        "name": "\\DateTimeZone",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Service\\ResetDatabaseService",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\ORM\\EntityManagerInterface",
+            "\\App\\Repository\\PlayerRepository",
+            "\\App\\Service\\InitCpuPlayerService"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\Project\\PlayerController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\App\\Repository\\PlayerRepository",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\Doctrine\\ORM\\EntityManagerInterface",
+            "\\App\\Entity\\Player"
+        ]
+    },
+    {
         "name": "\\App\\Controller\\ApiController",
         "size": 3000,
         "relations": [
@@ -504,7 +688,129 @@
         ]
     },
     {
-        "name": "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+        "name": "\\App\\Form\\PlayerSelectType",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\Form\\AbstractType",
+            "\\App\\Repository\\PlayerRepository",
+            "\\Symfony\\Component\\Form\\FormBuilderInterface",
+            "\\Symfony\\Component\\OptionsResolver\\OptionsResolver"
+        ]
+    },
+    {
+        "name": "\\Symfony\\Component\\Form\\AbstractType",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\Form\\FormBuilderInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\OptionsResolver\\OptionsResolver",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Form\\ConfirmType",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\Form\\AbstractType",
+            "\\Symfony\\Component\\Form\\FormBuilderInterface",
+            "\\Symfony\\Component\\OptionsResolver\\OptionsResolver"
+        ]
+    },
+    {
+        "name": "\\App\\Form\\PlayerType",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\Form\\AbstractType",
+            "\\Symfony\\Component\\Form\\FormBuilderInterface",
+            "\\Symfony\\Component\\OptionsResolver\\OptionsResolver"
+        ]
+    },
+    {
+        "name": "\\App\\Form\\ConfirmDeleteType",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\Form\\AbstractType",
+            "\\Symfony\\Component\\Form\\FormBuilderInterface",
+            "\\Symfony\\Component\\OptionsResolver\\OptionsResolver"
+        ]
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\StraightTrait",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\FourOfAKind",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\PokerRuleInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\StraightFlush",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\RankMappingTrait",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\RoyalFlush",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\FlushTrait",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\ThreeOfAKind",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\TwoPairs",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\FullHouse",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\OfAKindTrait",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\Flush",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\Straight",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\OnePair",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Rule\\HighCard",
         "size": 3000,
         "relations": []
     },
@@ -514,7 +820,29 @@
         "relations": []
     },
     {
-        "name": "\\cardClass",
+        "name": "\\App\\PokerSquares\\Cpu\\CpuFactory",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\Cpu\\Cpu3",
+        "size": 3000,
+        "relations": [
+            "\\App\\PokerSquares\\Cpu\\Cpu2",
+            "\\App\\PokerSquares\\Cpu\\CpuLogicInterface",
+            "\\App\\Card\\CardInterface"
+        ]
+    },
+    {
+        "name": "\\App\\PokerSquares\\Cpu\\Cpu2",
+        "size": 3000,
+        "relations": [
+            "\\App\\PokerSquares\\Cpu\\CpuLogicInterface",
+            "\\App\\Card\\CardInterface"
+        ]
+    },
+    {
+        "name": "\\App\\PokerSquares\\Cpu\\CpuLogicInterface",
         "size": 3000,
         "relations": []
     },
@@ -524,9 +852,86 @@
         "relations": []
     },
     {
+        "name": "\\App\\PokerSquares\\Cpu\\Cpu1",
+        "size": 3000,
+        "relations": [
+            "\\App\\PokerSquares\\Cpu\\CpuLogicInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Exception\\InvalidSlotException",
+        "size": 3000,
+        "relations": [
+            "\\Exception"
+        ]
+    },
+    {
+        "name": "\\App\\Entity\\Board",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\RuleCollectionInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\PokerSquares\\ScoreMappingInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\DateTimeInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\DateTime",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\this",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\ScoreRepository",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry"
+        ]
+    },
+    {
+        "name": "\\App\\Repository\\BoardRepository",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry"
+        ]
+    },
+    {
+        "name": "\\cardClass",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\App\\Card\\Card",
         "size": 3000,
         "relations": []
+    },
+    {
+        "name": "\\App\\Card\\CardSvg",
+        "size": 3000,
+        "relations": [
+            "\\App\\Card\\Card"
+        ]
     },
     {
         "name": "\\App\\Card\\CardGraphic",
@@ -534,6 +939,21 @@
         "relations": [
             "\\App\\Card\\Card"
         ]
+    },
+    {
+        "name": "\\Doctrine\\Common\\Collections\\ArrayCollection",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Doctrine\\Common\\Collections\\Collection",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Trait\\Nameable",
+        "size": 3000,
+        "relations": []
     },
     {
         "name": "\\App\\Kernel",
