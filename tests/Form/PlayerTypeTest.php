@@ -12,7 +12,7 @@ class PlayerTypeTest extends TypeTestCase
 {
     /**
      * preload form type
-     * 
+     *
      * @return PreloadedExtension[]
      */
     protected function getExtensions(): array

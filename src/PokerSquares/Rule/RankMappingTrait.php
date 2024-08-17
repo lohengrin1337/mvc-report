@@ -19,8 +19,8 @@ trait RankMappingTrait
     {
         // get the rank of all cards
         $ranks = array_map(function ($card) {
-                return $card->getRank();
-            }, $cards);
+            return $card->getRank();
+        }, $cards);
 
         return $ranks;
     }

@@ -34,17 +34,17 @@ class ApiController extends AbstractController
         $data = array_map(function ($round) {
             return [
                 "id" => $round->getId(),
-                "player" => $round->getPlayer()->getName(),
-                "score" => $round->getScore()->getTotal(),
-                "board" => $round->getBoard()->getData(),
-                "start" => $round->getStart()
-                    ->setTimezone(new DateTimeZone(self::LOCAL_TIME_ZONE))
+                "player" => $round->getPlayer()?->getName(),
+                "score" => $round->getScore()?->getTotal(),
+                "board" => $round->getBoard()?->getData(),
+                "start" => $round->getStart() // @phpstan-ignore-line
+                    ?->setTimezone(new DateTimeZone(self::LOCAL_TIME_ZONE))
                     ->format("Y-m-d H:i"),
-                "finish" => $round->getFinish()
-                    ->setTimezone(new DateTimeZone(self::LOCAL_TIME_ZONE))
+                "finish" => $round->getFinish() // @phpstan-ignore-line
+                    ?->setTimezone(new DateTimeZone(self::LOCAL_TIME_ZONE))
                     ->format("Y-m-d H:i"),
                 "duration" => $round->getDuration()
-                    ->format("H:i:s"),
+                    ?->format("H:i:s"),
             ];
         }, $rounds);
 
@@ -64,17 +64,17 @@ class ApiController extends AbstractController
         $data = array_map(function ($round) {
             return [
                 "id" => $round->getId(),
-                "player" => $round->getPlayer()->getName(),
-                "score" => $round->getScore()->getTotal(),
-                "board" => $round->getBoard()->getData(),
-                "start" => $round->getStart()
-                    ->setTimezone(new DateTimeZone(self::LOCAL_TIME_ZONE))
+                "player" => $round->getPlayer()?->getName(),
+                "score" => $round->getScore()?->getTotal(),
+                "board" => $round->getBoard()?->getData(),
+                "start" => $round->getStart() // @phpstan-ignore-line
+                    ?->setTimezone(new DateTimeZone(self::LOCAL_TIME_ZONE))
                     ->format("Y-m-d H:i"),
-                "finish" => $round->getFinish()
-                    ->setTimezone(new DateTimeZone(self::LOCAL_TIME_ZONE))
+                "finish" => $round->getFinish() // @phpstan-ignore-line
+                    ?->setTimezone(new DateTimeZone(self::LOCAL_TIME_ZONE))
                     ->format("Y-m-d H:i"),
                 "duration" => $round->getDuration()
-                    ->format("H:i:s"),
+                    ?->format("H:i:s"),
             ];
         }, $rounds);
 

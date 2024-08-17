@@ -278,7 +278,7 @@ class PokerSquaresGame
         if (!$this->cpuIntel) {
             return;
         }
-    
+
         // use static method of cpu intel class
         $slot = $this->cpuIntel::suggestPlacement(
             $this->gameboard->getBoard(),

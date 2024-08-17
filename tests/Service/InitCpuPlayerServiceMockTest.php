@@ -27,11 +27,11 @@ class InitCpuPlayerServiceMockTest extends TestCase
         $this->playerRepoStub = $this->createStub(PlayerRepository::class);
 
         // mock getPlayerByLevel() to return $this->$player
-        $this->playerRepoStub->method("getPlayerByLevel")->willReturnCallback(function() {
+        $this->playerRepoStub->method("getPlayerByLevel")->willReturnCallback(function () {
             return $this->player;
         });
 
-    
+
         $this->initService = new InitCpuPlayerService(
             $this->entityManagerMock,
             $this->playerRepoStub

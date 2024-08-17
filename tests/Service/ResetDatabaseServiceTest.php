@@ -18,7 +18,7 @@ class ResetDatabaseServiceTest extends KernelTestCase
     private EntityManagerInterface $entityManager;
     private PlayerRepository $playerRepo;
     private MockObject $initServiceMock;
-    
+
 
     protected function setup(): void
     {

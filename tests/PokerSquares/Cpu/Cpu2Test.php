@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class Cpu2Test extends TestCase
 {
-    /** @var mixed[] */    
+    /** @var mixed[] */
     private array $board = [];
 
     /** @var mixed */

@@ -15,7 +15,7 @@ class GameManagerTest extends TestCase
     private MockObject $gameMock2;
     private bool $gameIsOver1;
     private bool $gameIsOver2;
-    
+
     /** @var mixed[] */
     private array $state1;
 
