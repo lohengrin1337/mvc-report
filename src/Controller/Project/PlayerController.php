@@ -48,7 +48,7 @@ class PlayerController extends AbstractController
         $this->data["pageTitle"] = "Spelare";
         $this->data["players"] = $players;
 
-        return $this->render("proj/game/all_players.html.twig", $this->data);
+        return $this->render("proj/game/player/all_players.html.twig", $this->data);
     }
 
 
@@ -67,7 +67,7 @@ class PlayerController extends AbstractController
         $this->data["pageTitle"] = "Spelarprofil";
         $this->data["player"] = $player;
 
-        return $this->render("proj/game/single_player.html.twig", $this->data);
+        return $this->render("proj/game/player/single_player.html.twig", $this->data);
     }
 
 
@@ -86,7 +86,7 @@ class PlayerController extends AbstractController
         $rounds = $player->getRounds();
         $this->data["pageTitle"] = "{$player->getName()}s Rundor";
         $this->data["rounds"] = $rounds;
-        return $this->render("proj/game/multiple_rounds.html.twig", $this->data);
+        return $this->render("proj/game/round/multiple_rounds.html.twig", $this->data);
     }
 
 
@@ -119,7 +119,7 @@ class PlayerController extends AbstractController
         $this->data["pageTitle"] = "Skapa ny spelare";
         $this->data["form"] = $form;
 
-        return $this->render('proj/game/create_player.html.twig', $this->data);
+        return $this->render('proj/game/player/create_player.html.twig', $this->data);
     }
 
 
@@ -165,7 +165,7 @@ class PlayerController extends AbstractController
         $this->data["pageTitle"] = "Redigera spelare";
         $this->data["form"] = $form;
 
-        return $this->render('proj/game/edit_player.html.twig', $this->data);
+        return $this->render('proj/game/player/edit_player.html.twig', $this->data);
     }
 
 
@@ -216,6 +216,6 @@ class PlayerController extends AbstractController
         $this->data["pageTitle"] = "Ta bort spelare";
         $this->data["player"] = $player;
 
-        return $this->render('proj/game/delete_player.html.twig', $this->data);
+        return $this->render('proj/game/player/delete_player.html.twig', $this->data);
     }
 }

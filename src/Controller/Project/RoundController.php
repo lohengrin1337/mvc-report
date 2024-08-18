@@ -45,7 +45,7 @@ class RoundController extends AbstractController
         $this->data["pageTitle"] = "Topplista";
         $this->data["rounds"] = $rounds;
 
-        return $this->render("proj/game/multiple_rounds.html.twig", $this->data);
+        return $this->render("proj/game/round/multiple_rounds.html.twig", $this->data);
     }
 
 
@@ -58,7 +58,7 @@ class RoundController extends AbstractController
         $this->data["pageTitle"] = "Rundor";
         $this->data["rounds"] = $rounds;
 
-        return $this->render("proj/game/multiple_rounds.html.twig", $this->data);
+        return $this->render("proj/game/round/multiple_rounds.html.twig", $this->data);
     }
 
 
@@ -82,7 +82,7 @@ class RoundController extends AbstractController
             "handScores" => $round->getScore()?->getHands()
         ];
 
-        return $this->render("proj/game/single_round.html.twig", $this->data);
+        return $this->render("proj/game/round/single_round.html.twig", $this->data);
     }
 
 
@@ -122,6 +122,6 @@ class RoundController extends AbstractController
         $this->data["round"] = $round;
         $this->data["form"] = $form;
 
-        return $this->render('proj/game/delete_round.html.twig', $this->data);
+        return $this->render('proj/game/round/delete_round.html.twig', $this->data);
     }
 }
