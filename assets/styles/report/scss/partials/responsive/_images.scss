@@ -1,0 +1,21 @@
+@use "../variables" as var;
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 550px) {
+    .profile-img {
+        float: none;
+        padding: 0;
+        margin-bottom: var.$baseline;
+    }
+}
+
+
+@media (max-width: 750px) {
+    .book {
+        float: none;
+    }
+}

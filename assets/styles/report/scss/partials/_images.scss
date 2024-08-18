@@ -1,0 +1,39 @@
+// IMAGES
+
+@use "variables" as var;
+
+.img {
+    margin-bottom: var.$baseline;
+    border-radius: 5px;
+    overflow: hidden;
+    filter: brightness(0.85);
+}
+
+// .img-center {
+//     display: flex;
+//     justify-content: center;
+// }
+
+figure,
+picture {
+    margin: 0;
+    display: flex;
+}
+
+.profile-img {
+    float: left;
+    margin-right: var.$baseline;
+    margin-bottom: var.$baseline-half;
+}
+
+.library-img {
+    width: 100%;
+}
+
+.book {
+    float: left;
+    margin-right: var.$baseline-x2;
+    margin-bottom: var.$baseline;
+    width: 100%;
+    max-width: 300px;
+}

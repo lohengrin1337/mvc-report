@@ -1,0 +1,52 @@
+@use "variables" as var;
+
+.button {
+    display: block;
+    width: fit-content;
+    padding: var.$baseline-half var.$baseline;
+    border: 1px solid var.$border-regular;
+    border-radius: 3px;
+    background-color: var.$bg-color-button;
+    color: var.$color-nav-links;
+    font-family: var.$font-header;
+    font-size: 1rem;
+    font-weight: 400;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.btn-book {
+    background-color: var.$bg-color-btn-strong;
+    color: var.$color-btn-strong;
+    box-shadow: var.$box-shadow-light;
+}
+
+.button:hover {
+    background-color: var.$bg-color-hover;
+    color: var.$color-hover;
+    cursor: pointer;
+}
+
+
+.btn-delete {
+    border: none;
+    background-color: var.$bg-color-button-del;
+    color: var.$color-btn-del;
+}
+
+.btn-delete:hover {
+    background-color: var.$bg-color-button-del-hover
+}
+
+.btn-container {
+    display: flex;
+    // flex-direction: column;
+    // justify-content: space-evenly;
+    gap: var.$baseline;
+    margin-bottom: var.$baseline;
+}
+
+.btn-api {
+    margin-bottom: var.$baseline;
+}

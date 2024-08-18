@@ -1,0 +1,64 @@
+@use "../variables" as var;
+@use "sass:math";
+
+@media (max-width: 900px) {
+    .header {
+        .site-title {
+            font-size: calc(1rem * math.pow(var.$scale-factor-mobile, 4));
+        }
+    
+        .nav a {
+            font-size: calc(1rem * math.pow(var.$scale-factor-mobile, 2));
+        }
+    }
+    
+    .footer {
+        * {
+            font-size: calc(1rem * var.$scale-factor-mobile);
+        }
+    }
+
+    .aside li {
+        font-size: calc(1rem * math.pow(var.$scale-factor-mobile, 1));
+    }
+
+    h1 {
+        font-size: calc(1rem * math.pow(var.$scale-factor-mobile, 4));
+    }
+    
+    h2 {
+        font-size: calc(1rem * math.pow(var.$scale-factor-mobile, 3));
+    }
+    
+    h3 {
+        font-size: calc(1rem * math.pow(var.$scale-factor-mobile, 2));
+    }
+    
+    h4 {
+        font-size: calc(1rem * var.$scale-factor-mobile);
+    }
+
+    .header-lg {
+        font-size: calc(1rem * math.pow(var.$scale-factor-mobile, 2));
+    }
+
+    .header-m {
+        font-size: calc(1rem * var.$scale-factor-mobile);
+    }
+
+    .header-xs {
+        font-size: calc(1rem / var.$scale-factor-mobile);
+    }
+    
+    .introduction {
+        font-size: calc(1rem * var.$scale-factor-mobile);
+    }
+
+    blockquote {
+        font-size: calc(1rem * math.pow(var.$scale-factor-mobile, 1));
+    }
+
+    .tour-list {
+        font-size: calc(1rem * var.$scale-factor-mobile);
+    }
+}

@@ -1,0 +1,30 @@
+@use "variables" as var;
+
+
+.footer > .flash-container {
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s;
+
+    position: absolute;
+    top: -30vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: min(80vw, 420px);
+    padding: var.$baseline var.$baseline;
+    background-color: var.$bg-flash;
+    border-radius: 5px;
+    box-shadow: var.$box-shadow-light;
+
+    font-weight: 300;
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    &.show-msg {
+        z-index: auto;
+        opacity: 1;
+    }
+}

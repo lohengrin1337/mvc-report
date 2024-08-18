@@ -1,0 +1,185 @@
+// TYPOGRAHY
+
+@forward "fonts";
+@forward "code";
+// @forward "blockquotes";
+
+@use "../variables" as var;
+@use 'sass:math';
+
+%headers {
+    font-family: var.$font-header;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin: 0;
+}
+
+%headers-nav {
+    font-size: calc(1rem * math.pow(var.$scale-factor, 2));
+    font-weight: 300;
+    color: var.$color-nav-links;
+    text-transform: lowercase;
+}
+
+.site-header {
+    .site-title {
+        font-size: calc(1rem * math.pow(var.$scale-factor, 4));
+        font-weight: 700;
+        text-transform: lowercase;
+    }
+
+    .nav a {
+        @extend %headers-nav;
+        // font-size: calc(1rem * math.pow(var.$scale-factor, 2));
+        // font-weight: 300;
+        // color: var.$color-nav-links;
+        // text-transform: lowercase;
+    }
+}
+
+.footer {
+    * {
+        font-size: calc(1rem * var.$scale-factor);
+    }
+
+    text-transform: lowercase;
+}
+
+
+.body {
+    font-family: var.$font-body;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    color: var.$color-body;
+}
+
+.sub-nav li,
+.aside li {
+    @extend %headers-nav;
+    font-size: calc(1rem * math.pow(var.$scale-factor, 1));
+}
+
+.text-container {
+    max-width: 700px;
+}
+
+p {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: var.$baseline;
+}
+
+a {
+    color: var.$color-nav-links;
+    text-decoration: none;
+}
+
+h1 {
+    @extend %headers;
+    font-size: calc(1rem * math.pow(var.$scale-factor, 4));
+    margin-bottom: var.$baseline-x2;
+}
+
+h2 {
+    @extend %headers;
+    margin-bottom: var.$baseline;
+    font-size: calc(1rem * math.pow(var.$scale-factor, 3));
+}
+
+h3,
+.header-lg {
+    @extend %headers;
+    // margin-bottom: var.$baseline;
+    margin-bottom: 0;
+    font-size: calc(1rem * math.pow(var.$scale-factor, 2));
+    font-weight: 200;
+}
+
+h4,
+.header-m {
+    @extend %headers;
+    font-size: calc(1rem * var.$scale-factor);
+    font-weight: 200;
+}
+
+
+* + h2 {
+    margin-top: var.$baseline-x3;
+}
+
+* + h3 {
+    margin-top: var.$baseline-x2;
+}
+
+h2 + h3 {
+    margin-top: 0;
+}
+
+
+.header-sm {
+    @extend %headers;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.header-xs {
+    @extend %headers;
+    font-size: calc(1rem / var.$scale-factor);
+    font-weight: 300;
+}
+
+section {
+    margin-bottom: var.$baseline-x4;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    margin-bottom: var.$baseline-half;
+}
+
+.margin-b {
+    margin-bottom: var.$baseline;
+}
+
+.margin-b-half {
+    margin-bottom: var.$baseline-half;
+}
+
+.margin-b-x2 {
+    margin-bottom: var.$baseline-x2;
+}
+
+.right {
+    float: right;
+}
+
+// .introduction {
+//     font-family: var.$font-header;
+//     font-weight: 500;
+//     font-size: calc(1rem * var.$scale-factor);
+//     border: 1px solid var.$border-alternate;
+//     border-radius: 5px;
+//     padding: var.$baseline;
+//     margin-bottom: var.$baseline-x3;
+// }
+
+// .highlight {
+//     font-weight: 500;
+//     font-style: italic;
+// }
+
+// .tour-list {
+//     font-size: calc(1rem * var.$scale-factor);
+// }
+
+// .red-text {
+//     color: var.$color-red-text;
+//     font-weight: 500;
+//     font-style: italic;
+// }

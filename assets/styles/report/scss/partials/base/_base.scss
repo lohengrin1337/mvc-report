@@ -1,0 +1,53 @@
+// BASE LAYOUT
+
+@forward "header";
+@forward "navigation";
+@forward "footer";
+
+@use "../variables" as var;
+
+html,
+body {
+    min-height: 100vh;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    background-color: var.$bg-color-body;
+}
+
+.site-header {
+    width: 100%;
+    min-height: var.$baseline-x4;
+    flex: 0 0 auto;
+}
+
+.content-wrapper {
+    width: 100%;
+    flex: 1 0 auto;
+    padding: var.$baseline-x2;
+    display: flex;
+    gap: var.$baseline-x2;
+    // flex-wrap: wrap;
+    // gap: var.$baseline-x2;
+}
+
+.main {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    // flex: 1 0 auto;
+}
+
+.aside {
+    width: 100%;
+    max-width: 200px;
+    // flex: 0 0 auto;
+}
+
+.footer {
+    width: 100%;
+    min-height: var.$baseline-x4;
+    flex: 0 0 auto;
+}

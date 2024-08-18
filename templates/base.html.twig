@@ -5,23 +5,25 @@
         <title>{% block title %}{{ pageTitle }} | {{ siteTitle }}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        {# <link rel="icon" href="{{ asset('img/glider.svg') }}"> #}
-        {# <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>"> #}
+        {% block favicon %}
+            {# <link rel="icon" href="{{ asset('img/glider.svg') }}"> #}
+            {# <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>"> #}
+        {% endblock %}
+
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('report') }}
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {{ encore_entry_script_tags('report') }}
+            {# {% block importmap %}{{ importmap('app') }}{% endblock %} #}
         {% endblock %}
     </head>
     <body class="body">
+    {% block header %}
         <header class="site-header">
             <span class="site-title">
-                <a href="{{ path('home') }}">
-                    MVC
-                </a>
+                <a href="{{ path('home') }}">MVC</a>
             </span>
 
             <nav class="nav">
@@ -41,13 +43,16 @@
                 </ul>
             </nav>
         </header>
+    {% endblock %}
 
-        <div class="content-wrapper">
-            {% block body %}{% endblock %}
-        </div>
+    <div class="content-wrapper">
+        {% block content %}{% endblock %}
+    </div>
 
+    {% block footer %}
         <footer class="footer">
             <p>Copyright &copy; 2024 Olof Jönsson - oljn22</p>
         </footer>
+    {% endblock %}
     </body>
 </html>

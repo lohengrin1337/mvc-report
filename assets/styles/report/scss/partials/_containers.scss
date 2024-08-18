@@ -1,0 +1,36 @@
+@use "variables" as var;
+
+.container {
+    padding-bottom: var.$baseline;
+}
+
+.container-flex {
+    display: flex;
+    gap: var.$baseline;
+    // justify-content: space-between;
+}
+
+.container-frame {
+    padding: var.$baseline;
+    border: 1px solid var.$border-regular;
+    border-radius: 5px;
+    margin-bottom: var.$baseline;
+}
+
+.container-game-board-21 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid var.$border-regular;
+    border-radius: 10px;
+    padding: var.$baseline;
+    margin-bottom: var.$baseline-x2;
+}
+
+.container-game-middle {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: var.$baseline;
+    align-items: center;
+}

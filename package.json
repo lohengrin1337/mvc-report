@@ -21,8 +21,8 @@
         "build": "encore production --progress",
         "server": "php -S localhost:8888 -t public",
         "debug": "bin/console debug:router",
-        "sass-b": "sass assets/styles/scss/style.scss assets/styles/app.css --no-source-map --style expanded",
-        "sass-w": "sass assets/styles/scss/style.scss assets/styles/app.css --no-source-map --style expanded --watch",
+        "sass-b": "sass assets/styles/project/scss/style.scss assets/styles/project.css --no-source-map --style expanded",
+        "sass-w": "sass assets/styles/project/scss/style.scss assets/styles/project.css --no-source-map --style expanded --watch",
         "lint": "stylelint '**/*.scss'; exit 0"
     }
 }

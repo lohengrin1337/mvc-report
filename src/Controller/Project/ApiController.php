@@ -3,7 +3,7 @@
 namespace App\Controller\Project;
 
 use DateTimeZone;
-use App\Controller\JsonResponseTrait;
+use App\Controller\Report\JsonResponseTrait;
 use App\Form\ConfirmType;
 use App\Repository\PlayerRepository;
 use App\Repository\RoundRepository;

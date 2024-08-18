@@ -1,0 +1,28 @@
+@use "variables" as var;
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    margin-bottom: var.$baseline;
+  }
+
+th, td {
+    text-align: left;
+    padding: var.$baseline-half;
+}
+
+tr:nth-child(even){background-color: var.$bg-color-table-data}
+
+th {
+    background-color: var.$bg-color-table-header;
+}
+
+tr:hover {
+    background-color: var.$bg-color-table-hover;
+}
+
+tr.clickable:hover {
+    cursor: pointer;
+}

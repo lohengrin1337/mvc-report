@@ -1,0 +1,39 @@
+@use "variables" as var;
+
+// UTF-8 CARDS
+.cards {
+    width: 100%;
+    min-height: 140px;
+    display: flex;
+    flex-flow: row wrap;
+    gap: var.$baseline;
+    margin-bottom: var.$baseline;
+    padding: var.$baseline-half;
+    border: 1px solid var.$border-black;
+    border-radius: 5px;
+}
+
+.card {
+    font-size: 100px;
+    margin-bottom: -20px;
+    position: relative;
+    top: -5px;
+    left: 5px;
+
+    // &[class*="f0b"],
+    // &[class*="f0c"] {
+    //     color: red;
+    // }
+}
+
+.deck-count {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var.$color-yellow;
+    background-color: var.$bg-dark;
+    font-weight: 300;
+    border-radius: 50%;
+    padding: var.$baseline-quart;
+}

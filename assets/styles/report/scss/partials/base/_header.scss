@@ -1,0 +1,19 @@
+// HEADER
+
+@use "../variables" as var;
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    padding: var.$baseline-half var.$baseline-x2;
+    border-bottom: 3px solid var.$border-header;
+    background-color: var.$bg-color-header;
+    color: var.$color-header;
+}
+
+.site-title {
+    margin-right: var.$baseline;
+}
