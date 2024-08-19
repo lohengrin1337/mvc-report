@@ -33,7 +33,7 @@ class MainController extends AbstractController
     #[Route("/proj", name: "proj_start", methods: ["GET"])]
     public function index(): Response
     {
-        $this->data["pageTitle"] = "Projekt";
+        $this->data["pageTitle"] = "Poker Squares";
         return $this->render("proj/index.html.twig", $this->data);
     }
 
@@ -82,6 +82,7 @@ class MainController extends AbstractController
                 'action' => $this->generateUrl('proj_api_reset'),
                 'method' => 'POST',
                 "label" => "Återställ databasen",
+                "btn_attr" => ["class" => "button btn-delete margin-b"],
                 "auth" => "p@ssw0rd",
             ]
         );

@@ -5,10 +5,21 @@
 
         <h1>{{ pageTitle }}</h1>
 
-        <ul>
-            <li><a class="button margin-b" href="{{ path('proj_about') }}">Om</a></li>
-            <li><a class="button margin-b" href="{{ path('proj_game_start') }}">Poker Squares</a></li>
-            <li><a class="button margin-b" href="{{ path('proj_api') }}">API</a></li>
-        </ul>
+        <h2 class="header-m margin-b">
+            Välkommen till sidan för mitt projekt i kursen MVC!<br>
+            Jag har valt att bygga spelet "Poker Squares."
+        </h2>
+
+        <img
+            class="img"
+            src="/img/proj/cards-bg-700.jpg"
+            srcset="img/about/cards-bg-1400.jpg 2x"
+            alt="En bild på spelkort"/>
+
+        <div class="container-flex">
+            <li><a class="button margin-b" href="{{ path('proj_about') }}">Om projektet</a></li>
+            <li><a class="button margin-b" href="{{ path('proj_game_start') }}">Spela Poker Squares</a></li>
+            <li><a class="button margin-b" href="{{ path('proj_api') }}">Testa API:er</a></li>
+        </div>
     </main>
 {% endblock %}

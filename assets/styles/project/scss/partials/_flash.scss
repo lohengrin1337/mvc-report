@@ -8,18 +8,16 @@
 }
 
 .flash-notice {
-    color: #004085;
-    background-color: #cce5ff;
-    border-color: #b8daff;
+    color: var.$color-flash-notice;
+    background-color: var.$bg-color-flash-notice;
 }
 .flash-notice:before {
     content: "ⓘ";
 }
 
 .flash-warning {
-    color: #856404;
-    background-color: #fff3cd;
-    border-color: #ffeeba;
+    color: var.$color-flash-warning;
+    background-color: var.$bg-color-flash-warning;
 }
 .flash-warning:before {
     content: "⚠";

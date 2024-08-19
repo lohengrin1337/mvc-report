@@ -5,7 +5,9 @@
 
         <h1>{{ pageTitle }}</h1>
 
-        <a href="{{ path('proj_database') }}">Om databasen</a>
+        {{ include('proj/about/content/about.md')|markdown_to_html }}
+
+        <a class="button" href="{{ path('proj_database') }}">Om databasen</a>
 
     </main>
 {% endblock %}

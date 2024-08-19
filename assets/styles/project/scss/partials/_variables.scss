@@ -4,6 +4,21 @@
 
 // colors
 
+$main: #002C00;
+$main-light: #1D661D;
+$main-x-light: #96D096;
+
+$second:#002121;
+$second-light:#164D4D;
+$second-x-light:#74A0A0;
+
+
+$accent: #620C0C;
+// $accent-light: #924848;
+$accent-light: #DD8484;
+$accent-dark: #370000;
+
+
 $blue-green-0: #1C7878; // Main Primary color */
 $blue-green-1: #569E9E;
 $blue-green-2: #338585;
@@ -72,10 +87,10 @@ $transparent-white-light: color.adjust($white, $alpha: -0.95);
 
 
 // font-colors
-$color-body: $white;
-$color-header: $yellow-3;
-$color-footer: $yellow-2;
-$color-nav-links: $yellow-0;
+$color-body: $almost-white;
+$color-header: $almost-white;
+$color-footer: $almost-white;
+$color-nav-links: $almost-white;
 $color-yellow: $yellow-0;
 
 $color-btn-del: $white;
@@ -85,12 +100,14 @@ $color-text-stroke: $grey-light;
 $color-red-text: $red-main;
 $color-btn-strong: $white;
 $color-hover: $white;
+$color-flash-warning: $black;
+$color-flash-notice: $white;
 
 
 // background-colors
-$bg-color-body: $almost-black;
-$bg-color-header: $transparent-mid;
-$bg-color-footer: $transparent-mid;
+$bg-color-body: $main;
+$bg-color-header: $second;
+$bg-color-footer: $second;
 $bg-color-code: $transparent-white-light;
 
 $bg-color-main: $transparent-dark;
@@ -102,25 +119,27 @@ $bg-color-button: $transparent;
 $bg-color-button-del: $red-0;
 $bg-color-button-del-hover: $red-3;
 $bg-color-btn-strong: $green-dark;
-$bg-color-hover: $yellow-4;
+$bg-color-hover: $main-light;
 $bg-color-blockquote: $transparent-mid;
 $bg-color-list-1: $transparent;
 $bg-color-list-2: $transparent-mid;
 $bg-flash: $transparent-super-dark;
 $bg-dark: $transparent-super-dark;
 
-$bg-color-table-header: $blue-green-0;
+$bg-color-table-header: $main-light;
 $bg-color-table-data: $transparent-mid;
 $bg-color-table-hover: $transparent-dark;
 $bg-color-option: $almost-black;
+$bg-color-flash-warning: $yellow-1;
+$bg-color-flash-notice: $second;
 
 
 
 // borders
-$border-header: $blue-green-4;
-$border-footer: $blue-green-4;
-$border-regular: $yellow-3;
-$border-dark: $green-dark;
+$border-header: $second-light;
+$border-footer: $second-light;
+$border-regular: $second-x-light;
+$border-dark: $main-light;
 $border-black: $black;
 $border-alternate: $yellow-0;
 $border-code: $grey-dark;
@@ -151,5 +170,7 @@ $scale-factor-mobile: 1.2;
 
 
 // fonts
-$font-header: "Josefin Sans", sans-serif;
-$font-body: "Josefin Slab", monospace;
+// $font-header: "Josefin Sans", sans-serif;
+$font-header: "Lora", serif;
+// $font-body: "Josefin Slab", monospace;
+$font-body: "Montserrat", sans-serif;

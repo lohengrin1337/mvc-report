@@ -19,7 +19,7 @@
 
 
 ## About
-This is a personal me- and report page for the MVC course at BTH.
+This is a personal report page for the MVC course at Blekinge Tekniska Högskola. The page serves as a platform for the assigments during the course, and the finishing project, which is a card game.
 
 It is a web app built with Symfony framework.
 

@@ -16,6 +16,7 @@
 }
 
 %headers-nav {
+    font-family: var.$font-header;
     font-size: calc(1rem * math.pow(var.$scale-factor, 2));
     font-weight: 300;
     color: var.$color-nav-links;
@@ -24,8 +25,9 @@
 
 .site-header {
     .site-title {
+        font-family: var.$font-header;
         font-size: calc(1rem * math.pow(var.$scale-factor, 4));
-        font-weight: 700;
+        font-weight: 600;
         text-transform: lowercase;
     }
 
@@ -39,6 +41,8 @@
 }
 
 .footer {
+    font-family: var.$font-header;
+
     * {
         font-size: calc(1rem * var.$scale-factor);
     }

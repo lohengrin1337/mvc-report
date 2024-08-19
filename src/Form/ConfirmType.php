@@ -17,7 +17,7 @@ class ConfirmType extends AbstractType
             SubmitType::class,
             [
                 "label" => $options["label"],
-                "attr" => ["class" => "button margin-b"]
+                "attr" => $options["btn_attr"],
             ]
         )
         ->add(
@@ -33,6 +33,7 @@ class ConfirmType extends AbstractType
     {
         $resolver->setDefaults([
             "label" => "Bekräfta",
+            "btn_attr" => ["class" => "button margin-b"],
             "auth" => null,
         ]);
     }
