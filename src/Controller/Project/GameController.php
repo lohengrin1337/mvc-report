@@ -50,26 +50,6 @@ class GameController extends AbstractController
         ];
     }
 
-
-
-    #[Route("/proj/game", name: "proj_game_start", methods: ["GET"])]
-    public function gameStart(): Response
-    {
-        $this->data["pageTitle"] = "Poker Squares";
-        return $this->render("proj/game/index.html.twig", $this->data);
-    }
-
-
-
-    #[Route("/proj/game/rules", name: "proj_rules", methods: ["GET"])]
-    public function gameRules(): Response
-    {
-        $this->data["pageTitle"] = "Regler";
-        return $this->render("proj/game/rules.html.twig", $this->data);
-    }
-
-
-
     #[Route("/proj/game/init", name: "proj_game_init", methods: ["GET", "POST"])]
     public function gameInit(
         InitCpuPlayerService $icps,

@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 /**
- * Controller for landingpage and about pages of project
+ * Controller for landingpages and text pages of poker squares project
  */
 class MainController extends AbstractController
 {
@@ -53,6 +53,24 @@ class MainController extends AbstractController
     {
         $this->data["pageTitle"] = "Databasen";
         return $this->render("proj/about/database.html.twig", $this->data);
+    }
+
+
+
+    #[Route("/proj/game", name: "proj_game_start", methods: ["GET"])]
+    public function gameStart(): Response
+    {
+        $this->data["pageTitle"] = "Poker Squares";
+        return $this->render("proj/game/index.html.twig", $this->data);
+    }
+
+
+
+    #[Route("/proj/game/rules", name: "proj_rules", methods: ["GET"])]
+    public function gameRules(): Response
+    {
+        $this->data["pageTitle"] = "Regler";
+        return $this->render("proj/game/rules.html.twig", $this->data);
     }
 
 
