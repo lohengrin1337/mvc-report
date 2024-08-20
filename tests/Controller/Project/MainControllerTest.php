@@ -5,7 +5,6 @@ namespace App\Controller\Project;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-
 /**
  * test cases for MainController
  */

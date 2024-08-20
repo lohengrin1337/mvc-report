@@ -19,7 +19,7 @@
 
 
 ## About
-This is a personal report page for the MVC course at Blekinge Tekniska Högskola. The page serves as a platform for the assigments during the course, and the finishing project, which is a card game.
+This is a personal report page for the MVC course at Blekinge Tekniska Högskola. The page serves as a platform for the assigments during the course, and the finishing project, which is a poker squares card game.
 
 It is a web app built with Symfony framework.
 
@@ -65,11 +65,7 @@ npm run build
 ## Create sqlite database
 
 ```
-php bin/console doctrine:database:create
-
-php bin/console make:migration
-
-php bin/console doctrine:migrations:migrate
+npm run setup-database
 ```
 
 
