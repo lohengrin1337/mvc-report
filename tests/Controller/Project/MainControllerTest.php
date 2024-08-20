@@ -4,10 +4,12 @@ namespace App\Controller\Project;
 
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\DomCrawler\Crawler;
-use Symfony\Component\HttpFoundation\Response;
 
-class GameControllerTest extends WebTestCase
+
+/**
+ * test cases for MainController
+ */
+class MainControllerTest extends WebTestCase
 {
     private KernelBrowser $client;
 
