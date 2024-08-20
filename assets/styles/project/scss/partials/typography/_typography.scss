@@ -134,6 +134,13 @@ h2 + h3 {
     font-weight: 300;
 }
 
+.header-custom {
+    font-family: var.$font-body;
+    font-size: calc(1rem * math.pow(var.$scale-factor, 2));
+    font-weight: 300;
+    text-transform: none;
+}
+
 section {
     margin-bottom: var.$baseline-x4;
 }

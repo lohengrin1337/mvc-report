@@ -5,5 +5,9 @@
 
         <h1>{{ pageTitle }}</h1>
 
+        {{ include('proj/game/content/rules.md')|markdown_to_html }}
+
+        {{ include('proj/game/_points_table.html.twig') }}
+
     </main>
 {% endblock %}

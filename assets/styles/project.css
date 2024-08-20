@@ -566,6 +566,13 @@ h2 + h3 {
   font-weight: 300;
 }
 
+.header-custom {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.69rem;
+  font-weight: 300;
+  text-transform: none;
+}
+
 section {
   margin-bottom: 5.6rem;
 }
@@ -1256,6 +1263,9 @@ tr.clickable:hover {
   }
   .header-m {
     font-size: 1.2rem;
+  }
+  .header-custom {
+    font-size: 1.44rem;
   }
   .header-xs {
     font-size: 0.8333333333rem;

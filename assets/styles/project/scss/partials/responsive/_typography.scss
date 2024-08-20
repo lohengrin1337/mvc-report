@@ -46,6 +46,10 @@
         font-size: calc(1rem * var.$scale-factor-mobile);
     }
 
+    .header-custom {
+        font-size: calc(1rem * math.pow(var.$scale-factor-mobile, 2));
+    }
+
     .header-xs {
         font-size: calc(1rem / var.$scale-factor-mobile);
     }

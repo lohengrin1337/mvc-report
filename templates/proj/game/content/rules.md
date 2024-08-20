@@ -1,0 +1,3 @@
+*Poker Squares*, även kallat *Poker Solitaire* or *Poker Patience*, är ett *patiens-spel* som går ut på att bygga tio höga pokerhänder av 25 kort i ett rutnät om 5x5 kort.
+
+Ett kort i taget dras från kortleken, och placeras på valfri plats i rutnätet. När alla 25 kort är placerade kan poängen för de tio pokerhänderna räknas ut (fem rader och fem kolumner). Ett amerikanskt poängsystem används, vilket syftar till att spegla svårigheten att få respektive hand i vanlig poker.

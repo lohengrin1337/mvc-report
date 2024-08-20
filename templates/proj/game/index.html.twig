@@ -5,7 +5,12 @@
 
         <h1>{{ pageTitle }}</h1>
 
-        <a class="button margin-b" href="{{ path('proj_rules') }}">Regler</a>
+        <p class="header-custom">Välkommen att spela en runda Poker Squares!</p>
+
+        <p class="header-custom">Du kan välja att spela själv, mot datorn, eller mot en annan spelare. Lycka till!</p>
+
         <a class="button margin-b" href="{{ path('proj_game_init') }}">Spela</a>
+        <a class="button margin-b" href="{{ path('proj_highscore') }}">Visa topplista</a>
+        <a class="button margin-b" href="{{ path('proj_rules') }}">Regler</a>
     </main>
 {% endblock %}
