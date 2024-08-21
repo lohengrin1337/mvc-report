@@ -612,7 +612,10 @@ li {
 figure,
 picture {
   margin: 0;
-  display: flex;
+}
+
+figcaption {
+  font-style: italic;
 }
 
 .profile-img {

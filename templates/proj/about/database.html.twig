@@ -5,11 +5,15 @@
 
         <h1>{{ pageTitle }}</h1>
 
-        <img
+        <figure class="img">
+            <img
             width="480"
-            class="img"
-            src="/img/proj/class-diagram.png"
-            alt="Klassdiagram"/>
+            src="/img/proj/er-diagram.png"
+            alt="ER-diagram över databastabeller"/>
+            <figcaption>ER-diagram över fyra tabeller i databasen</figcaption>
+        </figure>
+
+        {{ include('proj/about/content/database.md')|markdown_to_html }}
 
     </main>
 {% endblock %}

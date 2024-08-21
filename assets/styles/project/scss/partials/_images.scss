@@ -17,7 +17,12 @@
 figure,
 picture {
     margin: 0;
-    display: flex;
+    // display: flex;
+}
+
+figcaption {
+    font-style: italic;
+    // text-align: center;
 }
 
 .profile-img {

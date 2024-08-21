@@ -5,6 +5,8 @@
 
         <h1>{{ pageTitle }}</h1>
 
+        {{ include('proj/api/content/api.md')|markdown_to_html }}
+
         <a class="button margin-b" href="{{ path('proj_api_rounds') }}">Visa alla rundor</a>
         <a class="button margin-b" href="{{ path('proj_api_highscore') }}">Visa topplista</a>
         <a class="button margin-b" href="{{ path('proj_api_players') }}">Visa alla spelare</a>
