@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1724160422">
-  <project timestamp="1724160422">
+<coverage generated="1724230293">
+  <project timestamp="1724230293">
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="14" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
@@ -35,7 +35,7 @@
       <line num="238" type="stmt" count="4"/>
       <line num="240" type="stmt" count="4"/>
       <line num="241" type="stmt" count="4"/>
-      <line num="242" type="stmt" count="3"/>
+      <line num="242" type="stmt" count="2"/>
       <line num="245" type="stmt" count="4"/>
       <metrics loc="250" ncloc="144" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
     </file>
