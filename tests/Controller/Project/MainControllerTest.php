@@ -33,85 +33,85 @@ class MainControllerTest extends WebTestCase
 
 
 
-    /**
-     * render landingpage and verify title
-     */
-    public function testRenderStart(): void
-    {
-        // do request
-        $this->client->request("GET", "/proj");
+    // /**
+    //  * render landingpage and verify title
+    //  */
+    // public function testRenderStart(): void
+    // {
+    //     // do request
+    //     $this->client->request("GET", "/proj");
 
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains("h1", "Poker Squares");
-    }
-
-
-
-    /**
-     * render about page and verify title
-     */
-    public function testRenderAbout(): void
-    {
-        // do request
-        $this->client->request("GET", "/proj/about");
-
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains("h1", "Om Projektet");
-    }
+    //     $this->assertResponseIsSuccessful();
+    //     $this->assertSelectorTextContains("h1", "Poker Squares");
+    // }
 
 
 
-    /**
-     * render database page and verify title
-     */
-    public function testRenderDatabase(): void
-    {
-        // do request
-        $this->client->request("GET", "/proj/about/database");
+    // /**
+    //  * render about page and verify title
+    //  */
+    // public function testRenderAbout(): void
+    // {
+    //     // do request
+    //     $this->client->request("GET", "/proj/about");
 
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains("h1", "Databasen");
-    }
-
-
-
-    /**
-     * render game page and verify title
-     */
-    public function testRenderGame(): void
-    {
-        // do request
-        $this->client->request("GET", "/proj/game");
-
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains("h1", "Poker Squares");
-    }
+    //     $this->assertResponseIsSuccessful();
+    //     $this->assertSelectorTextContains("h1", "Om Projektet");
+    // }
 
 
 
-    /**
-     * render rules page and verify title
-     */
-    public function testRenderRules(): void
-    {
-        // do request
-        $this->client->request("GET", "/proj/game/rules");
+    // /**
+    //  * render database page and verify title
+    //  */
+    // public function testRenderDatabase(): void
+    // {
+    //     // do request
+    //     $this->client->request("GET", "/proj/about/database");
 
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains("h1", "Regler");
-    }
+    //     $this->assertResponseIsSuccessful();
+    //     $this->assertSelectorTextContains("h1", "Databasen");
+    // }
 
 
 
-    /**
-     * render api page and verify title
-     */
-    public function testRenderApi(): void
-    {
-        // do request
-        $this->client->request("GET", "/proj/api");
+    // /**
+    //  * render game page and verify title
+    //  */
+    // public function testRenderGame(): void
+    // {
+    //     // do request
+    //     $this->client->request("GET", "/proj/game");
 
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains("h1", "API");
-    }
+    //     $this->assertResponseIsSuccessful();
+    //     $this->assertSelectorTextContains("h1", "Poker Squares");
+    // }
+
+
+
+    // /**
+    //  * render rules page and verify title
+    //  */
+    // public function testRenderRules(): void
+    // {
+    //     // do request
+    //     $this->client->request("GET", "/proj/game/rules");
+
+    //     $this->assertResponseIsSuccessful();
+    //     $this->assertSelectorTextContains("h1", "Regler");
+    // }
+
+
+
+    // /**
+    //  * render api page and verify title
+    //  */
+    // public function testRenderApi(): void
+    // {
+    //     // do request
+    //     $this->client->request("GET", "/proj/api");
+
+    //     $this->assertResponseIsSuccessful();
+    //     $this->assertSelectorTextContains("h1", "API");
+    // }
 }

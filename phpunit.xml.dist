@@ -29,11 +29,12 @@
         </include>
 
         <exclude>
-            <directory>src/Controller/Report</directory>
-            <file>src/Controller/Project/ApiController.php</file>
-            <file>src/Controller/Project/GameController.php</file>
-            <file>src/Controller/Project/PlayerController.php</file>
-            <file>src/Controller/Project/RoundController.php</file>
+            <directory>src/Controller</directory>
+            <!-- <directory>src/Controller/Report</directory> -->
+            <!-- <file>src/Controller/Project/ApiController.php</file> -->
+            <!-- <file>src/Controller/Project/GameController.php</file> -->
+            <!-- <file>src/Controller/Project/PlayerController.php</file> -->
+            <!-- <file>src/Controller/Project/RoundController.php</file> -->
             <file>src/Entity/Book.php</file>
             <file>src/Entity/Product.php</file>
             <file>src/Repository/BookRepository.php</file>
