@@ -32,7 +32,6 @@ class MainControllerTest extends WebTestCase
     }
 
 
-    // HAD TO REMOVE THESE TEST, BECAUSE SCRUTINIZER FAILED WHEN RUNNING THEM
     /**
      * render landingpage and verify title
      */
