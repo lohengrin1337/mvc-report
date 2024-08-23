@@ -1,0 +1,23 @@
+{
+  "entrypoints": {
+    "report": {
+      "js": [
+        "build/runtime.9b90c2b9.js",
+        "build/report.0a63634f.js"
+      ],
+      "css": [
+        "build/report.425337d9.css"
+      ]
+    },
+    "project": {
+      "js": [
+        "build/runtime.9b90c2b9.js",
+        "build/120.06cc1f30.js",
+        "build/project.c6341fef.js"
+      ],
+      "css": [
+        "build/project.7dcf92a6.css"
+      ]
+    }
+  }
+}

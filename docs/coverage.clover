@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1724318883">
-  <project timestamp="1724318883">
+<coverage generated="1724405981">
+  <project timestamp="1724405981">
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="14" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
@@ -35,7 +35,7 @@
       <line num="238" type="stmt" count="4"/>
       <line num="240" type="stmt" count="4"/>
       <line num="241" type="stmt" count="4"/>
-      <line num="242" type="stmt" count="2"/>
+      <line num="242" type="stmt" count="3"/>
       <line num="245" type="stmt" count="4"/>
       <metrics loc="250" ncloc="144" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
     </file>
@@ -457,28 +457,28 @@
       <class name="App\Form\ConfirmType" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="22" coveredelements="22"/>
       </class>
-      <line num="13" type="method" name="buildForm" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="15" type="stmt" count="2"/>
-      <line num="16" type="stmt" count="2"/>
-      <line num="17" type="stmt" count="2"/>
-      <line num="18" type="stmt" count="2"/>
-      <line num="19" type="stmt" count="2"/>
-      <line num="20" type="stmt" count="2"/>
-      <line num="21" type="stmt" count="2"/>
-      <line num="22" type="stmt" count="2"/>
-      <line num="23" type="stmt" count="2"/>
-      <line num="24" type="stmt" count="2"/>
-      <line num="25" type="stmt" count="2"/>
-      <line num="26" type="stmt" count="2"/>
-      <line num="27" type="stmt" count="2"/>
-      <line num="28" type="stmt" count="2"/>
-      <line num="29" type="stmt" count="2"/>
-      <line num="32" type="method" name="configureOptions" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="34" type="stmt" count="2"/>
-      <line num="35" type="stmt" count="2"/>
-      <line num="36" type="stmt" count="2"/>
-      <line num="37" type="stmt" count="2"/>
-      <line num="38" type="stmt" count="2"/>
+      <line num="13" type="method" name="buildForm" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="15" type="stmt" count="3"/>
+      <line num="16" type="stmt" count="3"/>
+      <line num="17" type="stmt" count="3"/>
+      <line num="18" type="stmt" count="3"/>
+      <line num="19" type="stmt" count="3"/>
+      <line num="20" type="stmt" count="3"/>
+      <line num="21" type="stmt" count="3"/>
+      <line num="22" type="stmt" count="3"/>
+      <line num="23" type="stmt" count="3"/>
+      <line num="24" type="stmt" count="3"/>
+      <line num="25" type="stmt" count="3"/>
+      <line num="26" type="stmt" count="3"/>
+      <line num="27" type="stmt" count="3"/>
+      <line num="28" type="stmt" count="3"/>
+      <line num="29" type="stmt" count="3"/>
+      <line num="32" type="method" name="configureOptions" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="34" type="stmt" count="3"/>
+      <line num="35" type="stmt" count="3"/>
+      <line num="36" type="stmt" count="3"/>
+      <line num="37" type="stmt" count="3"/>
+      <line num="38" type="stmt" count="3"/>
       <metrics loc="41" ncloc="41" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="22" coveredelements="22"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Form/PlayerSelectType.php">
