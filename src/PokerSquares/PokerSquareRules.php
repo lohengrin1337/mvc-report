@@ -3,17 +3,7 @@
 namespace App\PokerSquares;
 
 use App\Card\CardInterface;
-use App\PokerSquares\Rule\PokerRuleInterface;
-use App\PokerSquares\Rule\RoyalFlush;
-use App\PokerSquares\Rule\StraightFlush;
-use App\PokerSquares\Rule\FourOfAKind;
-use App\PokerSquares\Rule\FullHouse;
-use App\PokerSquares\Rule\Flush;
-use App\PokerSquares\Rule\Straight;
-use App\PokerSquares\Rule\ThreeOfAKind;
-use App\PokerSquares\Rule\TwoPairs;
-use App\PokerSquares\Rule\OnePair;
-use App\PokerSquares\Rule\HighCard;
+use App\PokerSquares\Rule;
 
 /**
  * Class holding a set of Poker Square rules
@@ -32,16 +22,16 @@ class PokerSquareRules implements RuleCollectionInterface
     {
         // add rules in order from highest to lowest
         $this->rules = [
-            new RoyalFlush(),
-            new StraightFlush(),
-            new FourOfAKind(),
-            new FullHouse(),
-            new Flush(),
-            new Straight(),
-            new ThreeOfAKind(),
-            new TwoPairs(),
-            new OnePair(),
-            new HighCard(),
+            new Rule\RoyalFlush(),
+            new Rule\StraightFlush(),
+            new Rule\FourOfAKind(),
+            new Rule\FullHouse(),
+            new Rule\Flush(),
+            new Rule\Straight(),
+            new Rule\ThreeOfAKind(),
+            new Rule\TwoPairs(),
+            new Rule\OnePair(),
+            new Rule\HighCard(),
         ];
     }
 

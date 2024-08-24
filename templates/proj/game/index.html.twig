@@ -9,8 +9,10 @@
 
         <p class="header-custom">Du kan välja att spela själv, mot datorn, eller mot en annan spelare. Lycka till!</p>
 
-        <a class="button margin-b" href="{{ path('proj_game_init') }}">Spela</a>
-        <a class="button margin-b" href="{{ path('proj_highscore') }}">Visa topplista</a>
-        <a class="button margin-b" href="{{ path('proj_rules') }}">Regler</a>
+        <div class="container-flex">
+            <a class="button margin-b" href="{{ path('proj_game_init') }}">Spela</a>
+            <a class="button margin-b" href="{{ path('proj_highscore') }}">Visa topplista</a>
+            <a class="button margin-b" href="{{ path('proj_rules') }}">Regler</a>
+        </div>
     </main>
 {% endblock %}

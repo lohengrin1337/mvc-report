@@ -1,0 +1,15 @@
+@use "../variables" as var;
+
+@media (max-width: 580px) {
+    .gameview {
+        flex-direction: column;
+        gap: var.$baseline-x4;
+    }
+}
+
+@media (max-width: 420px) {
+    .gameboard .slot {
+        width: 62px;
+        height: 90px;
+    }
+}

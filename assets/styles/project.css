@@ -1300,3 +1300,21 @@ img {
     float: none;
   }
 }
+@media (max-width: 500px) {
+  .container-flex {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+@media (max-width: 580px) {
+  .gameview {
+    flex-direction: column;
+    gap: 5.6rem;
+  }
+}
+@media (max-width: 420px) {
+  .gameboard .slot {
+    width: 62px;
+    height: 90px;
+  }
+}

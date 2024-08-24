@@ -13,11 +13,6 @@ use DateTimeZone;
 
 /**
  * Game engine for Poker Squares
- *
- * API:
- * 1. Draw a card
- * 2. Place a card
- * 3. Calculate points
  */
 class PokerSquaresGame
 {

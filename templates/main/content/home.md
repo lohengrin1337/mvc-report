@@ -1,7 +1,7 @@
 # Välkommen!
 
 <figure class="img profile-img">
-    <img src="img/profile.jpg" width="200" height="200" alt="En bild på Olof"/>
+    <img src="{{ asset('img/profile.jpg') }}" width="200" height="200" alt="En bild på Olof"/>
 </figure>
 
 Jag heter Olof Jönsson, och kommer från Höör i Skåne.
