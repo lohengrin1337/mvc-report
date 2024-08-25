@@ -41,7 +41,6 @@ Author: Olof Jönsson
 
 ```
 git clone https://github.com/lohengrin1337/mvc-report
-
 ```
 
 
@@ -62,10 +61,10 @@ npm install
 npm run build
 ```
 
-## Create sqlite database
+## Create SQLite database
 
 ```
-npm run setup-database
+composer setup-database
 ```
 
 
