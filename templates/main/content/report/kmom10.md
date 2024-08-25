@@ -8,6 +8,8 @@ Mitt repo går att klona, och jag har gjort så att en SQLite-databas används v
 
 Jag har försökt skriva enhetstester för att täcka in majoriteten av koden. Jag har utelämnat de kontrollers som jobbar mot databasen eftersom jag inte fick det att fungera, men jag har skrivit andra tester mot en *in memory SQLite-databas*, som jag fick att fungera.
 
+Länk till [`/proj/about`]({{ path('proj_about') }})
+
 ### Krav 4
 
 På sidan [`/proj/api`]({{ path('proj_api') }}) presenterar jag sex olika JSON api:er - fyra *GET-routes* och två *POST-routes*. 
@@ -51,5 +53,13 @@ Jag ville bygga en applikation jag var nöjd med, och lära mig så mycket som m
 
 ### Om projektet
 
+Det gick ganska snabbt att komma igång med projektet, eftersom det innebar att bygga vidare på me-sidan, och fortsätta utveckla ett kortspel. De tankemässiga utmaningarna låg främst i att försöka strukturera koden på ett bra sätt enligt de riktlinjer vi lärt oss i kursen, att lösa regler och poängräkning för spelet, datorintelligens, samt att lära sig ramverk-specifika metoder för formulär och testning. Till skillnad från många tidigare kurser gick förhållandevis lite tid åt att lösa buggar, mycket på grund av att symfony erbjuder en väldigt tydlig och bra felhantering. Jag lade ganska mycket mer tid på projektet än planerat, men jag ville hellre sy ihop det hela på ett tillfredställande sätt, än att plocka bort feautures för att spara tid. Jag tycker projektet var rimligt, och jag upplevde inte att grundkraven var för svåra att lösa.
+
 ### Om kursen
+
+Generellt tycker jag att kursen var spännande och lärorik. Jag uppskattde utvecklingsmiljön, och det var kul att lära sig fler objektorienterade principer, inte minst genom att jobba med spellogik. ORM var också trevligt att bekanta sig med.
+
+Undervisningen har varit bra. Det enda kursmomentet jag inte riktigt gillade var kmom06, eftersom det var svårt att få ut något vettigt av de automatiska testerna. Jag tror det hade varit bättre för det kursmomentet om alla fick en färdig kodbas, som hade tydliga brister, och som man sedan med hjälp av metrics-verktygen skulle försöka förbättra.
+
+Jag ger kursen en 8:a i betyg, och skulle rekommendera kursen.
 

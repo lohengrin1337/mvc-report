@@ -3,6 +3,7 @@
 namespace App\PokerSquares;
 
 use App\Card\CardInterface;
+use App\PokerSquares\Rule\PokerRuleInterface;
 use App\PokerSquares\Rule;
 
 /**
