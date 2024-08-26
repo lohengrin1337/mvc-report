@@ -160,7 +160,8 @@ class PokerSquaresGame
      */
     public function process(string $slot): void
     {
-        $this->gameboard->placeCard($slot, $this->deck->draw());
+        $this->gameboard->placeCard($slot, $this->deck->peak());
+        $this->deck->draw(); // draw only if card placement was successful
         $this->setStartAndFinish();
         $this->calcScores();
     }
