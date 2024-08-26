@@ -2,6 +2,7 @@
 
 {% block content %}
     <main class="main">
+        {{ include('flash.html.twig') }}
 
         <div class="gameview">
             {% if game.playerType == "cpu" %}

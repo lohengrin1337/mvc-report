@@ -9,20 +9,19 @@
     filter: brightness(0.85);
 }
 
-// .img-center {
-//     display: flex;
-//     justify-content: center;
-// }
-
 figure,
 picture {
     margin: 0;
-    // display: flex;
+    margin-bottom: var.$baseline;
+
+    .img {
+        margin-bottom: 0;
+    }
 }
+
 
 figcaption {
     font-style: italic;
-    // text-align: center;
 }
 
 .profile-img {

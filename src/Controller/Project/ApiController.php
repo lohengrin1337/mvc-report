@@ -111,7 +111,8 @@ class ApiController extends AbstractController
     #[Route("/proj/api/selected-players", name: "proj_api_selected_players", methods: ["GET"])]
     public function showSelectedPlayers(
         SelectedPlayersService $sps,
-        SessionInterface $session
+        SessionInterface $session,
+        PlayerRepository $playerRepo
     ): JsonResponse {
         // get selected players from session that exists in db
         $players = $sps->getSelectedPlayers($session);
@@ -122,7 +123,7 @@ class ApiController extends AbstractController
                 "name" => $player->getName(),
                 "type" => $player->getType(),
                 "level" => $player->getLevel(),
-                "rounds" => count($player->getRounds()),
+                "rounds" => $player->getRounds()->count(),
             ];
         }, $players);
 

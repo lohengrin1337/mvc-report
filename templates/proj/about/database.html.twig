@@ -5,11 +5,14 @@
 
         <h1>{{ pageTitle }}</h1>
 
-        <figure class="img">
-            <img
-            width="480"
-            src="{{ asset('img/proj/er-diagram.png') }}"
-            alt="ER-diagram över databastabeller"/>
+        <figure>
+            <a href="{{ asset('img/proj/er-diagram.png') }}">
+                <img
+                    class="img"
+                    width="480"
+                    src="{{ asset('img/proj/er-diagram.png') }}"
+                    alt="ER-diagram över databastabeller"/>
+            </a>
             <figcaption>ER-diagram över fyra tabeller i databasen</figcaption>
         </figure>
 

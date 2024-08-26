@@ -22,6 +22,9 @@
         </div>
         {% endfor %}
 
-        <a class="button" href="{{ path('proj_game_init') }}">Nytt spel</a>
+        <div class="container-flex">
+            <a class="button margin-b" href="{{ path('proj_game_init') }}">Nytt spel</a>
+            <a class="button margin-b" href="{{ path('proj_highscore') }}">Visa topplista</a>
+        </div>
     </main>
 {% endblock %}

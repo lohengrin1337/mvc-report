@@ -84,7 +84,7 @@ class PlayerController extends AbstractController
         }
 
         $rounds = $player->getRounds();
-        $this->data["pageTitle"] = "{$player->getName()}s Rundor";
+        $this->data["pageTitle"] = "{$player->getName()}'s Rundor";
         $this->data["rounds"] = $rounds;
         return $this->render("proj/game/round/multiple_rounds.html.twig", $this->data);
     }

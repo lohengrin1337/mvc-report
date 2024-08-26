@@ -29,25 +29,25 @@ class SelectedPlayersService
 
 
     /**
-     * Get all selected players from session that are existing in database
+     * Get all selected players from session,
+     * and return those who are existing in database.
+     * Update session
      *
      * @return Player[] players
      */
     public function getSelectedPlayers(SessionInterface $session): array
     {
         // get players from session
-        $players = $session->get("players") ?? [];
+        $sessionPlayers = $session->get("players") ?? [];
 
-        foreach ($players as $index => $player) {
-            // verify their existance
-            if (!$this->playerRepo->find($player->getId())) {
-                // remove player
-                unset($players[$index]);
-            }
-            // update session
-            $session->set("players", $players);
-        }
+        // get actual players from database
+        $existingPlayers = array_filter(array_map(function ($player) {
+            return $this->playerRepo->find($player->getId());
+        }, $sessionPlayers));
 
-        return $players;
+        // update session
+        $session->set("players", $existingPlayers);
+
+        return $existingPlayers;
     }
 }

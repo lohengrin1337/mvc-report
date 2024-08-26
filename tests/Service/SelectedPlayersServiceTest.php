@@ -17,7 +17,7 @@ class SelectedPlayersServiceTest extends KernelTestCase
     private SelectedPlayersService $spService;
     private EntityManagerInterface $entityManager;
     private PlayerRepository $playerRepo;
-    private SessionInterface $sessionStub;
+    private SessionInterface $sessionMock;
 
     protected function setup(): void
     {
@@ -27,7 +27,7 @@ class SelectedPlayersServiceTest extends KernelTestCase
         // set entity manager, player repo and session stub
         $this->entityManager = self::getContainer()->get('doctrine')->getManager(); // @phpstan-ignore-line
         $this->playerRepo = $this->entityManager->getRepository(Player::class);
-        $this->sessionStub = $this->createStub(SessionInterface::class);
+        $this->sessionMock = $this->createMock(SessionInterface::class);
 
         // create the SelectedPlayersService instance
         $this->spService = new SelectedPlayersService(
@@ -41,23 +41,28 @@ class SelectedPlayersServiceTest extends KernelTestCase
         );
 
         // create THREE players (one stub)
-        $player1 = (new Player())
-            ->setName("Player1");
-        $player2 = (new Player())
-            ->setName("Player2");
+        $player1 = new Player();
+        $player1->setName("Player1");
+        $player2 = new Player();
+        $player2->setName("Player2");
         $player3Stub = $this->createStub(Player::class);
-        $player3Stub->method("getId")->willReturn(3);
+        $player3Stub->method("getId")->willReturn(999);
         $player3Stub->method("getName")->willReturn("Player3");
 
-        // mock session to return all players
-        $this->sessionStub
-            ->method("get")
-            ->willReturn([$player1, $player2, $player3Stub]);
 
         // persist TWO players
         $this->entityManager->persist($player1);
         $this->entityManager->persist($player2);
         $this->entityManager->flush();
+
+        // get the two real players (with id) from db
+        $players = $this->playerRepo->findAll();
+
+        // mock session to return all players
+        $this->sessionMock
+            ->method("get")
+            ->with("players")
+            ->willReturn([$players[0], $players[1], $player3Stub]);
     }
 
 
@@ -92,7 +97,7 @@ class SelectedPlayersServiceTest extends KernelTestCase
     public function testGetSelectedPlayers(): void
     {
         // get the selected players
-        $players = $this->spService->getSelectedPlayers($this->sessionStub);
+        $players = $this->spService->getSelectedPlayers($this->sessionMock);
 
         // assert count is 2
         $this->assertCount(2, $players);

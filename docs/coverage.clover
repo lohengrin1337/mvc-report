@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1724590417">
-  <project timestamp="1724590417">
+<coverage generated="1724678690">
+  <project timestamp="1724678690">
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="14" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
@@ -35,7 +35,7 @@
       <line num="238" type="stmt" count="4"/>
       <line num="240" type="stmt" count="4"/>
       <line num="241" type="stmt" count="4"/>
-      <line num="242" type="stmt" count="3"/>
+      <line num="242" type="stmt" count="2"/>
       <line num="245" type="stmt" count="4"/>
       <metrics loc="250" ncloc="144" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
     </file>
@@ -838,8 +838,7 @@
       <class name="App\PokerSquares\PokerSquareRules" namespace="global">
         <metrics complexity="5" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="20" elements="23" coveredelements="21"/>
       </class>
-      <line num="21" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-      <line num="24" type="stmt" count="8"/>
+      <line num="22" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
       <line num="25" type="stmt" count="8"/>
       <line num="26" type="stmt" count="8"/>
       <line num="27" type="stmt" count="8"/>
@@ -851,17 +850,18 @@
       <line num="33" type="stmt" count="8"/>
       <line num="34" type="stmt" count="8"/>
       <line num="35" type="stmt" count="8"/>
-      <line num="45" type="method" name="assessHand" visibility="public" complexity="4" crap="4.02" count="7"/>
-      <line num="48" type="stmt" count="7"/>
-      <line num="50" type="stmt" count="7"/>
+      <line num="36" type="stmt" count="8"/>
+      <line num="46" type="method" name="assessHand" visibility="public" complexity="4" crap="4.02" count="7"/>
+      <line num="49" type="stmt" count="7"/>
       <line num="51" type="stmt" count="7"/>
-      <line num="52" type="stmt" count="1"/>
-      <line num="55" type="stmt" count="6"/>
+      <line num="52" type="stmt" count="7"/>
+      <line num="53" type="stmt" count="1"/>
       <line num="56" type="stmt" count="6"/>
       <line num="57" type="stmt" count="6"/>
       <line num="58" type="stmt" count="6"/>
-      <line num="62" type="stmt" count="0"/>
-      <metrics loc="65" ncloc="46" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="20" elements="23" coveredelements="21"/>
+      <line num="59" type="stmt" count="6"/>
+      <line num="63" type="stmt" count="0"/>
+      <metrics loc="66" ncloc="47" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="20" elements="23" coveredelements="21"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/PokerSquares/PokerSquaresGame.php">
       <class name="App\PokerSquares\PokerSquaresGame" namespace="global">
@@ -1232,18 +1232,18 @@
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Service/SelectedPlayersService.php">
       <class name="App\Service\SelectedPlayersService" namespace="global">
-        <metrics complexity="4" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
       </class>
       <line num="24" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="27" type="stmt" count="2"/>
-      <line num="36" type="method" name="getSelectedPlayers" visibility="public" complexity="3" crap="3" count="1"/>
-      <line num="39" type="stmt" count="1"/>
+      <line num="38" type="method" name="getSelectedPlayers" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="41" type="stmt" count="1"/>
-      <line num="43" type="stmt" count="1"/>
+      <line num="44" type="stmt" count="1"/>
       <line num="45" type="stmt" count="1"/>
-      <line num="48" type="stmt" count="1"/>
+      <line num="46" type="stmt" count="1"/>
+      <line num="49" type="stmt" count="1"/>
       <line num="51" type="stmt" count="1"/>
-      <metrics loc="54" ncloc="35" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+      <metrics loc="54" ncloc="34" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
     </file>
     <file name="/home/lohengrin/dbwebb-kurser/mvc/me/report/src/Trait/Nameable.php">
       <class name="App\Trait\Nameable" namespace="global">
@@ -1255,6 +1255,6 @@
       <line num="34" type="stmt" count="41"/>
       <metrics loc="37" ncloc="23" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
-    <metrics files="56" loc="4119" ncloc="2904" classes="49" methods="187" coveredmethods="180" conditionals="0" coveredconditionals="0" statements="746" coveredstatements="739" elements="933" coveredelements="919"/>
+    <metrics files="56" loc="4120" ncloc="2904" classes="49" methods="187" coveredmethods="180" conditionals="0" coveredconditionals="0" statements="746" coveredstatements="739" elements="933" coveredelements="919"/>
   </project>
 </coverage>

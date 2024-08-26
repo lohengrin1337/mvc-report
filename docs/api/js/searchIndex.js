@@ -2423,7 +2423,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Service\\SelectedPlayersService\u003A\u003AgetSelectedPlayers\u0028\u0029",
             "name": "getSelectedPlayers",
-            "summary": "Get\u0020all\u0020selected\u0020players\u0020from\u0020session\u0020that\u0020are\u0020existing\u0020in\u0020database",
+            "summary": "Get\u0020all\u0020selected\u0020players\u0020from\u0020session,\nand\u0020return\u0020those\u0020who\u0020are\u0020existing\u0020in\u0020database.",
             "url": "classes/App-Service-SelectedPlayersService.html#method_getSelectedPlayers"
         },                {
             "fqsen": "\\App\\Service\\SelectedPlayersService\u003A\u003A\u0024playerRepo",

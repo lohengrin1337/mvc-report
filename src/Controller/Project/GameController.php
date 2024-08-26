@@ -8,6 +8,7 @@ use App\Entity\Board;
 use App\Entity\Player;
 use App\Entity\Round;
 use App\Entity\Score;
+use App\Exception\InvalidSlotException;
 use App\Form\ConfirmDeleteType;
 use App\Form\ConfirmType;
 use App\Form\PlayerSelectType;
@@ -205,7 +206,12 @@ class GameController extends AbstractController
         $slotId = $request->request->get("slot_id");
         $gameManager = $session->get("gameManager");
         $game = $gameManager->getCurrentGame();
-        $game->process($slotId);
+
+        try {
+            $game->process($slotId);
+        } catch (InvalidSlotException $e) {
+            $this->addFlash("warning", "Du var lite snabb, och klickade på samma ruta två gånger");
+        }
 
         return $this->redirectToRoute("proj_game_play");
     }
