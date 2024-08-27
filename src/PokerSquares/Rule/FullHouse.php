@@ -52,26 +52,5 @@ class FullHouse implements PokerRuleInterface
         }
 
         return $ruleIsMet;
-
-
-        // // check condition of rule (at least two of a rank once and three of a rank once)
-        // $ruleIsMet = false;
-        // $pairCount = 0;
-        // $threeOrMoreCount = 0;
-        // foreach ($rankMap as $count) {
-        //     // check for two or more of a kind
-        //     if ($count >= 2) {
-        //         $pairCount += 1;
-        //         $pairCount += $count === 2 ? 1 : 0;
-        //     }
-        // }
-
-        // if ($pairCount >= 2) {
-        //     foreach ($rankMap as $count) {
-        //         // check for 3 or more of a kind
-        //         if ($count >= 3) {
-        //             $ruleIsMet = true;
-        //         }
-        // }
     }
 }

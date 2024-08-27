@@ -38,18 +38,4 @@ trait RankMappingTrait
         // return count of unique ranks (rank => count)
         return array_count_values($this->getRanks($cards));
     }
-
-
-
-    // /**
-    //  * Get unique ranks
-    //  *
-    //  * @param CardInterface[] $cards
-    //  * @return int[]
-    //  */
-    // private function getUniqueRanks(array $cards): array
-    // {
-    //     // return unique ranks (no duplicates)
-    //     return array_unique($this->getRanks($cards));
-    // }
 }
