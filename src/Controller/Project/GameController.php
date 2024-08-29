@@ -168,10 +168,10 @@ class GameController extends AbstractController
     #[Route("/proj/game/play", name: "proj_game_play", methods: ["GET"])]
     public function gamePlay(SessionInterface $session): Response
     {
-        $gameManager = $session->get("gameManager") ?? null;
+        $gameManager = $session->get("gameManager", null);
         if (!$gameManager) {
-            $this->addFlash("warning", "Speldata saknades!");
-            $this->redirectToRoute("proj_game_init");
+            $this->addFlash("warning", "Speldata saknades i sessionen!");
+            return $this->redirectToRoute("proj_game_start");
         }
 
         // handle end of game
@@ -203,8 +203,19 @@ class GameController extends AbstractController
         Request $request,
         SessionInterface $session
     ): Response {
-        $slotId = $request->request->get("slot_id");
-        $gameManager = $session->get("gameManager");
+        $slotId = $request->request->get("slot_id", null);
+        if (is_null($slotId)) {
+            $this->addFlash("warning", "Prova att klicka på en ruta igen!");
+            return $this->redirectToRoute("proj_game_play");
+        }
+
+        $gameManager = $session->get("gameManager", null);
+        if (!$gameManager) {
+            $this->addFlash("warning", "Speldata saknades i sessionen!");
+            return $this->redirectToRoute("proj_game_start");
+
+        }
+
         $game = $gameManager->getCurrentGame();
 
         try {
@@ -225,8 +236,18 @@ class GameController extends AbstractController
         PlayerRepository $playerRepository,
         EntityManagerInterface $entityManager
     ): Response {
-        $gameIndex = $request->request->get("game_index");
-        $gameManager = $session->get("gameManager");
+        $gameIndex = $request->request->get("game_index", null);
+        if (is_null($gameIndex)) {
+            $this->addFlash("warning", "Prova att spara rundan på nytt!");
+            return $this->redirectToRoute("proj_game_play");
+        }
+
+        $gameManager = $session->get("gameManager", null);
+        if (!$gameManager) {
+            $this->addFlash("warning", "Rundan kunde inte sparas, eftersom speldata saknades i sessionen!");
+            return $this->redirectToRoute("proj_game_start");
+        }
+
         $game = $gameManager->getGameByIndex($gameIndex);
         $roundData = $game->getRoundData();
 
